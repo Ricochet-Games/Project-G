@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://baxkp7h6nixys"]
 
+[ext_resource type="Texture2D" uid="uid://4s8i0i03c1v1" path="res://Assets/GrassBladesSprite.png" id="1_yk8w2"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjgqi"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 shading_mode = 0
+albedo_color = Color(0.4627451, 0.8509804, 0.3882353, 1)
+albedo_texture = ExtResource("1_yk8w2")
+texture_filter = 0
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_i8nu1"]
@@ -12,4 +17,5 @@ material = SubResource("StandardMaterial3D_kjgqi")
 size = Vector2(0.1, 0.1)
 
 [node name="grass_standard" type="MeshInstance3D" unique_id=1834418723]
+cast_shadow = 0
 mesh = SubResource("QuadMesh_i8nu1")
