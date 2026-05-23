@@ -42,6 +42,7 @@ float normalIndicator(vec3 normalEdgeBias, vec3 baseNormal, vec3 newNormal, floa
 }
 
 void vertex(){
+	POSITION = vec4(VERTEX.xy, 1.0, 1.0);
     model_view_matrix = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
 }
 
