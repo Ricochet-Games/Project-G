@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c8xpokypwwt3u"]
 
 [ext_resource type="Script" uid="uid://p8iw5k8xkbyi" path="res://Scenes/spell_casting_manager.gd" id="1_qd26w"]
+[ext_resource type="PackedScene" uid="uid://b4wnbviojmhm8" path="res://Assets/spell_circle.tscn" id="2_s3oam"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30qil"]
 albedo_color = Color(0.11312426, 0.15515004, 0.17111987, 1)
@@ -33,11 +34,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_qd26w")
 
-[node name="SlotsContainer" type="Node2D" parent="CanvasLayer/SpellCastingUI" unique_id=1779974126]
-position = Vector2(640, 360)
-
-[node name="SigilSlot01" type="Control" parent="CanvasLayer/SpellCastingUI/SlotsContainer" unique_id=1869982316]
-layout_mode = 3
+[node name="SpellCircle" parent="CanvasLayer/SpellCastingUI" unique_id=50787285 instance=ExtResource("2_s3oam")]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -45,3 +43,5 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[editable path="CanvasLayer/SpellCastingUI/SpellCircle"]
