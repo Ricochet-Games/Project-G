@@ -8,9 +8,6 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d4hx"]
 albedo_color = Color(1, 0.101960786, 0.11372549, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktei5"]
-albedo_color = Color(0, 0, 0, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_7vbvf"]
 
 [sub_resource type="Environment" id="Environment_x2ivp"]
@@ -43,10 +40,10 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 mesh = SubResource("BoxMesh_kbf48")
 surface_material_override/0 = SubResource("StandardMaterial3D_0d4hx")
 
-[node name="Model" type="MeshInstance3D" parent="Model" unique_id=106521698]
-transform = Transform3D(0.38968417, 0, -0.19684602, 0, 0.19155298, 0, 0.3896842, 0, 0.19684604, 0.42231178, 0.2596717, -0.41420296)
+[node name="Model" type="MeshInstance3D" parent="Model" unique_id=1965189710]
+transform = Transform3D(0.6323484, 0, 0, 0, 0.6323484, 0, 0, 0, 0.6323484, 0.56435215, 0, 0)
 mesh = SubResource("BoxMesh_kbf48")
-surface_material_override/0 = SubResource("StandardMaterial3D_ktei5")
+surface_material_override/0 = SubResource("StandardMaterial3D_0d4hx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=518295535]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
@@ -57,10 +54,10 @@ transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
 top_level = true
 
 [node name="Camera_Target" type="Node3D" parent="Camera_Controller" unique_id=1603984124]
-transform = Transform3D(0.70710677, -0.35355338, 0.6123723, 0, 0.8660254, 0.49999988, -0.70710677, -0.35355338, 0.6123723, 2.5, 2, 2.4)
+transform = Transform3D(0.9999999, 0, 0, 0, 0.8660254, 0.49999988, 0, -0.5, 0.8660252, 0, 3.0846746, 5.26227)
 
 [node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Target" unique_id=1504166297]
-transform = Transform3D(1.0000001, 5.9604645e-08, 8.940697e-08, 0, 1.0000001, 2.0861626e-07, -8.940697e-08, -1.6391277e-07, 1.0000002, 0, 0, 0)
+transform = Transform3D(1.0000001, -1.4654944e-14, 8.940698e-08, 0, 1.0000001, 1.639128e-07, -8.940697e-08, -1.6391277e-07, 1.0000002, 0, 0, 0)
 environment = SubResource("Environment_x2ivp")
 attributes = SubResource("CameraAttributesPractical_v6vah")
 compositor = SubResource("Compositor_4eguo")
