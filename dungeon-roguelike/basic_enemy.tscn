@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c74a34oy8qd0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_m37v0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_naotq"]
+albedo_color = Color(1, 0.101960786, 0.11372549, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rwafm"]
+
+[node name="BasicEnemy" type="CharacterBody3D" unique_id=1755374623]
+
+[node name="Model" type="MeshInstance3D" parent="." unique_id=1977363320]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("BoxMesh_m37v0")
+surface_material_override/0 = SubResource("StandardMaterial3D_naotq")
+
+[node name="Model" type="MeshInstance3D" parent="Model" unique_id=1471011079]
+transform = Transform3D(0.6323484, 0, 0, 0, 0.6323484, 0, 0, 0, 0.6323484, 0.56435215, 0, 0)
+mesh = SubResource("BoxMesh_m37v0")
+surface_material_override/0 = SubResource("StandardMaterial3D_naotq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=498290347]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("BoxShape3D_rwafm")
