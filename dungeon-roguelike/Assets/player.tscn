@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://ds116btnx83sn" path="res://Scripts/player_controller.gd" id="1_4flbx"]
 [ext_resource type="Shader" uid="uid://cpd1kta6eyid3" path="res://Shaders/post_processing_new.gdshader" id="2_chitn"]
+[ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Assets/health_component.gd" id="3_x2ivp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kbf48"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d4hx"]
-albedo_color = Color(1, 0.101960786, 0.11372549, 1)
+albedo_color = Color(0.5549274, 0.41480064, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7vbvf"]
 
@@ -31,9 +32,10 @@ material = SubResource("ShaderMaterial_fc7o8")
 flip_faces = true
 size = Vector2(2, 2)
 
-[node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("camera")]
+[node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("camera", "health_component")]
 script = ExtResource("1_4flbx")
 camera = NodePath("Camera_Controller/Camera_Target/Camera3D")
+health_component = NodePath("Health Component")
 
 [node name="Model" type="MeshInstance3D" parent="." unique_id=1099329490]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
@@ -70,3 +72,6 @@ far = 30.0
 transform = Transform3D(0.7094724, -3.2358955e-08, -0.7047333, -0.35236675, 0.8660253, -0.35473627, 0.6103169, 0.5000001, 0.614421, 0, 0, 0)
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_iv8i7")
+
+[node name="Health Component" type="Node" parent="." unique_id=1288673849]
+script = ExtResource("3_x2ivp")
