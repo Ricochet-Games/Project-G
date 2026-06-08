@@ -40,7 +40,8 @@ texture = ExtResource("1_res43")
 
 [node name="ModifierSlots" type="Node" parent="." unique_id=1703536225]
 
-[node name="ModifierSlot_01" type="Container" parent="ModifierSlots" unique_id=1341977444]
+[node name="ModifierSlot_01" type="Control" parent="ModifierSlots" unique_id=919837612]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -53,7 +54,8 @@ offset_bottom = -580.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ModifierSlot_02" type="Container" parent="ModifierSlots" unique_id=1473646804]
+[node name="ModifierSlot_02" type="Control" parent="ModifierSlots" unique_id=1020648474]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -66,7 +68,8 @@ offset_bottom = -520.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ModifierSlot_03" type="Container" parent="ModifierSlots" unique_id=2069997967]
+[node name="ModifierSlot_03" type="Control" parent="ModifierSlots" unique_id=306435342]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -79,7 +82,8 @@ offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ModifierSlot_04" type="Container" parent="ModifierSlots" unique_id=1480851435]
+[node name="ModifierSlot_04" type="Control" parent="ModifierSlots" unique_id=1211621151]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -92,7 +96,8 @@ offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ModifierSlot_05" type="Container" parent="ModifierSlots" unique_id=1189529601]
+[node name="ModifierSlot_05" type="Control" parent="ModifierSlots" unique_id=197746390]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -105,7 +110,8 @@ offset_bottom = -140.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ModifierSlot_06" type="Container" parent="ModifierSlots" unique_id=1263039898]
+[node name="ModifierSlot_06" type="Control" parent="ModifierSlots" unique_id=1925738512]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -118,7 +124,8 @@ offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ModifierSlot_07" type="Container" parent="ModifierSlots" unique_id=1013634613]
+[node name="ModifierSlot_07" type="Control" parent="ModifierSlots" unique_id=1178125983]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -131,7 +138,8 @@ offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ModifierSlot_08" type="Container" parent="ModifierSlots" unique_id=728885407]
+[node name="ModifierSlot_08" type="Control" parent="ModifierSlots" unique_id=98768025]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
