@@ -7,6 +7,8 @@ extends CharacterBody3D
 
 @export var player_rotation_speed: float = 0.1
 
+@export var health_component: Health_Component
+	
 func _physics_process(delta: float) -> void:
 
 	# Add the gravity.
@@ -28,7 +30,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	move_camera()
-
 
 func move_camera():
 	$Camera_Controller.position = lerp($Camera_Controller.position, position, camera_follow_speed)
