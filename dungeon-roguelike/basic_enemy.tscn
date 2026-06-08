@@ -9,6 +9,9 @@ albedo_color = Color(1, 0.101960786, 0.11372549, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rwafm"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_naotq"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
 [node name="BasicEnemy" type="CharacterBody3D" unique_id=1755374623]
 
 [node name="Model" type="MeshInstance3D" parent="." unique_id=1977363320]
@@ -28,3 +31,15 @@ shape = SubResource("BoxShape3D_rwafm")
 [node name="HealthComponent" type="Node" parent="." unique_id=2100450032]
 script = ExtResource("1_naotq")
 metadata/_custom_type_script = "uid://bbt2tv46tokat"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=921046425]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0.273032, 0)
+texture = SubResource("ViewportTexture_naotq")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=411896428]
+size = Vector2i(240, 30)
+
+[node name="ProgressBar" type="ProgressBar" parent="Sprite3D/SubViewport" unique_id=1289219716]
+offset_right = 240.0
+offset_bottom = 30.0
+value = 50.0
