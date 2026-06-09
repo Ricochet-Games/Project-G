@@ -1,14 +1,10 @@
 [gd_scene format=3 uid="uid://baxkp7h6nixys"]
 
-[ext_resource type="Script" uid="uid://dlkx80s046yu3" path="res://Scripts/grass_script.gd" id="2_hat3i"]
 [ext_resource type="Shader" uid="uid://bb46o2gfxcq67" path="res://Shaders/grass_shader.gdshader" id="2_ord35"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yk8w2"]
 render_priority = 0
 shader = ExtResource("2_ord35")
-shader_parameter/ground_min = Vector2(-10, -10)
-shader_parameter/ground_max = Vector2(10, 10)
-shader_parameter/roughness = 0.8
 
 [sub_resource type="QuadMesh" id="QuadMesh_i8nu1"]
 material = SubResource("ShaderMaterial_yk8w2")
@@ -17,4 +13,3 @@ size = Vector2(0.1, 0.1)
 [node name="grass_standard" type="MeshInstance3D" unique_id=1834418723]
 cast_shadow = 0
 mesh = SubResource("QuadMesh_i8nu1")
-script = ExtResource("2_hat3i")
