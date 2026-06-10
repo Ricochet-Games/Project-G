@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_disabled;
 
-uniform sampler2D albedo_texture : source_color, hint_default_white;
+uniform sampler2D albedo_texture : source_color, hint_default_white, filter_nearest;
 uniform vec4 albedo_color : source_color = vec4(1.0);
 
 uniform float roughness : hint_range(0,1) = 1.0;
