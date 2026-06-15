@@ -1,43 +1,132 @@
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_disabled;
+render_mode diffuse_toon;
 
-uniform sampler2D albedo_texture : source_color, hint_default_white, filter_nearest;
-uniform vec4 albedo_color : source_color = vec4(1.0);
+// uniform vec3 albedo : source_color = vec3(1.0, 1.0, 1.0);
 
-uniform float roughness : hint_range(0,1) = 1.0;
-uniform float metallic : hint_range(0, 1) = 0.0;
+// toon shader
+const float pi = 3.1415926536f;
 
+uniform vec4 albedo : source_color = vec4(1.0f);
+uniform sampler2D albedo_texture : source_color, filter_nearest;
+uniform bool clamp_diffuse_to_max = false;
+
+uniform int cuts : hint_range(1, 8) = 3;
+uniform float wrap : hint_range(-2.0f, 2.0f) = 0.0f;
+uniform float steepness : hint_range(1.0f, 8.0f) = 1.0f;
+
+uniform bool use_attenuation = true;
+
+uniform bool use_specular = true;
+uniform float specular_strength : hint_range(0.0f, 1.0f) = 1.0f;
+uniform float specular_shininess : hint_range(0.0f, 32.0f) = 16.0f;
+uniform sampler2D specular_map : source_color;
+
+uniform bool use_rim = true;
+uniform float rim_width : hint_range(0.0f, 16.0f) = 8.0f;
+uniform vec4 rim_color : source_color = vec4(1.0f);
+
+uniform bool use_ramp = false;
+uniform sampler2D ramp : source_color;
+
+uniform bool use_borders = false;
+uniform float border_width = 0.01f;
+
+varying vec3 vertex_pos;
+varying vec3 normal;
+
+// scissor
+uniform float scissor_threshold : hint_range(0.0, 1.0) = 0.5;
+
+float split_specular(float specular) {
+	return step(0.5f, specular);
+}
 
 void vertex() {
 	// Called for every vertex the material is visible on.
 	
-	// Billboarding
-	// Get the world position into view space cleanly
-    vec4 origin = MODELVIEW_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+	vec3 cam_z = normalize(CAMERA_DIRECTION_WORLD);
+	vec3 cam_y = vec3(0.0, 1.0, 0.0);
+	vec3 cam_x = normalize(cross(cam_y, cam_z));
+	mat3 spherical_billboard = mat3(cam_x, cam_y, cam_z);
+	vec3 billboarded_vertex = spherical_billboard * VERTEX;
 
-    MODELVIEW_MATRIX[0] = vec4(1.0, 0.0, 0.0, 0.0);
-    MODELVIEW_MATRIX[1] = vec4(0.0, 1.0, 0.0, 0.0);
-    MODELVIEW_MATRIX[2] = vec4(0.0, 0.0, 1.0, 0.0);
-    MODELVIEW_MATRIX[3] = origin;
+    vec3 instance_origin = (MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
+    vec3 world_position = instance_origin + billboarded_vertex;
+    POSITION = PROJECTION_MATRIX * VIEW_MATRIX * vec4(world_position, 1.0);
+
+    NORMAL = (MODEL_MATRIX * vec4(0.0, 1.0, 0.0, 0.0)).xyz;
 	
+	// toon shader
+	vertex_pos = VERTEX;
+	normal = NORMAL;
 }
 
 void fragment() {
 	// Called for every pixel the material is visible on.
-	vec4 tex = texture(albedo_texture, UV);
-	ALBEDO = tex.rgb * albedo_color.rgb;
-	ALPHA = tex.a;
-	//ALPHA_SCISSOR_THRESHOLD = 0.5;
+	vec3 up_dir = vec3(0.0, 1.0, 0.0);
+	
+	vec4 tex_color = texture(albedo_texture, UV);
+	
+	ALBEDO = albedo.rgb * texture(albedo_texture, UV).rgb;
+	ALPHA = tex_color.a;
 }
 
 void light() {
 	// Called for every pixel for every light affecting the material.
+	
+	// toon shader
+	// Attenuation
+	float attenuation = 1.0f;
+	if (use_attenuation) {
+		attenuation = ATTENUATION;
+	}
+	
+	// Diffuse lighting.
+	float NdotL = dot(NORMAL, LIGHT);
+	float diffuse_amount = NdotL + (attenuation - 1.0) + wrap;
+	//float diffuse_amount = NdotL * attenuation + wrap;
+	diffuse_amount *= steepness;
+	float cuts_inv = 1.0f / float(cuts);
+	float diffuse_stepped = clamp(diffuse_amount + mod(1.0f - diffuse_amount, cuts_inv), 0.0f, 1.0f);
 
-    // If this light is casting a shadow on any part, darken the whole object
-    //if (ATTENUATION < 1.0) {
-    //    DIFFUSE_LIGHT += LIGHT_COLOR * ALBEDO * 0.1;
-    //} else {
-    //    DIFFUSE_LIGHT += LIGHT_COLOR * ALBEDO;
-    //}
-	//DIFFUSE_LIGHT += ALBEDO * ATTENUATION;
+	// Calculate borders.
+	float border = 0.0f;
+	if (use_borders) {
+		float corr_border_width = length(cross(NORMAL, LIGHT)) * border_width * steepness;
+		border = step(diffuse_stepped - corr_border_width, diffuse_amount)
+				 - step(1.0 - corr_border_width, diffuse_amount);
+	}
+	
+	// Apply diffuse result to different styles.
+	vec3 diffuse = ALBEDO.rgb * LIGHT_COLOR / PI;
+	if (use_ramp) {
+		diffuse *= texture(ramp, vec2(diffuse_stepped * (1.0f - border), 0.0f)).rgb;
+	} else {
+		diffuse *= diffuse_stepped * (1.0f - border);
+	}
+	
+	if (clamp_diffuse_to_max) {
+		// Clamp diffuse to max for multiple light sources.
+		DIFFUSE_LIGHT = max(DIFFUSE_LIGHT, diffuse);
+	} else {
+		DIFFUSE_LIGHT += diffuse;
+	}
+	
+	// Specular lighting.
+	if (use_specular) {
+		vec3 H = normalize(LIGHT + VIEW);
+		float NdotH = dot(NORMAL, H);
+		float specular_amount = max(pow(NdotH, specular_shininess*specular_shininess), 0.0f)
+							    * texture(specular_map, UV).r
+								* attenuation;
+		specular_amount = split_specular(specular_amount);
+		SPECULAR_LIGHT += specular_strength * specular_amount * LIGHT_COLOR;
+	}
+	
+	// Simple rim lighting.
+	if (use_rim) {
+		float NdotV = dot(NORMAL, VIEW);
+		float rim_light = pow(1.0 - NdotV, rim_width);
+		DIFFUSE_LIGHT += rim_light * rim_color.rgb * rim_color.a * LIGHT_COLOR / PI;
+	}
 }
