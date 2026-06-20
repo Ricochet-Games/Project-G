@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b4wnbviojmhm8"]
 
 [ext_resource type="Texture2D" uid="uid://vwcwimkgp1u1" path="res://Assets/SpellCircle.png" id="1_res43"]
+[ext_resource type="Script" uid="uid://bnvwcty2l3c73" path="res://Scripts/SpellCasting/modifier_slot.gd" id="2_mxftx"]
 
 [node name="SpellCircle" type="Control" unique_id=1121701569]
 layout_mode = 3
@@ -20,6 +21,7 @@ offset_right = 256.0
 offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(256, 256)
 texture = ExtResource("1_res43")
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=221020342]
@@ -36,118 +38,135 @@ offset_right = 192.0
 offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(192, 192)
 texture = ExtResource("1_res43")
 
-[node name="ModifierSlots" type="Node" parent="." unique_id=1703536225]
+[node name="ModifierSlots" type="Control" parent="." unique_id=1118388143]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ModifierSlot_01" type="Control" parent="ModifierSlots" unique_id=919837612]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -580.0
-offset_right = -640.0
-offset_bottom = -580.0
+offset_left = -10.0
+offset_top = -230.0
+offset_right = 10.0
+offset_bottom = -210.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_mxftx")
 
 [node name="ModifierSlot_02" type="Control" parent="ModifierSlots" unique_id=1020648474]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -480.0
-offset_top = -520.0
-offset_right = -480.0
-offset_bottom = -520.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ModifierSlot_03" type="Control" parent="ModifierSlots" unique_id=306435342]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -420.0
-offset_top = -360.0
-offset_right = -420.0
-offset_bottom = -360.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ModifierSlot_04" type="Control" parent="ModifierSlots" unique_id=1211621151]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -480.0
-offset_top = -200.0
-offset_right = -480.0
-offset_bottom = -200.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ModifierSlot_05" type="Control" parent="ModifierSlots" unique_id=197746390]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -140.0
-offset_right = -640.0
+offset_left = 150.0
+offset_top = -160.0
+offset_right = 170.00005
 offset_bottom = -140.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_mxftx")
+
+[node name="ModifierSlot_03" type="Control" parent="ModifierSlots" unique_id=306435342]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 210.0
+offset_top = -10.0
+offset_right = 230.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_mxftx")
+
+[node name="ModifierSlot_04" type="Control" parent="ModifierSlots" unique_id=1211621151]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 150.0
+offset_top = 150.0
+offset_right = 170.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_mxftx")
+
+[node name="ModifierSlot_05" type="Control" parent="ModifierSlots" unique_id=197746390]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = 210.0
+offset_right = 10.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_mxftx")
 
 [node name="ModifierSlot_06" type="Control" parent="ModifierSlots" unique_id=1925738512]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -800.0
-offset_top = -200.0
-offset_right = -800.0
-offset_bottom = -200.0
+offset_left = -160.0
+offset_top = 150.0
+offset_right = -140.0
+offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_mxftx")
 
 [node name="ModifierSlot_07" type="Control" parent="ModifierSlots" unique_id=1178125983]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -860.0
-offset_top = -360.0
-offset_right = -860.0
-offset_bottom = -360.0
+offset_left = -230.0
+offset_top = -10.0
+offset_right = -210.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_mxftx")
 
 [node name="ModifierSlot_08" type="Control" parent="ModifierSlots" unique_id=98768025]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -800.0
-offset_top = -520.0
-offset_right = -800.0
-offset_bottom = -520.0
+offset_left = -160.0
+offset_top = -160.0
+offset_right = -140.0
+offset_bottom = -140.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_mxftx")

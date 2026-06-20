@@ -60,9 +60,6 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ModifierSlot_01" parent="CanvasLayer/SpellCastingUI/SpellCircle/ModifierSlots" parent_id_path=PackedInt32Array(50787285, 1703536225) index="0" unique_id=919837612]
-script = null
-
 [node name="SigilContainer" type="Panel" parent="CanvasLayer/SpellCastingUI" unique_id=610353563]
 layout_mode = 1
 anchors_preset = 6
