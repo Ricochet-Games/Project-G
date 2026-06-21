@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://baxkp7h6nixys" path="res://Assets/grass_billboard_standard.tscn" id="2_yi8xp"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="3_wix4t"]
 [ext_resource type="PackedScene" uid="uid://dskimq7aam0br" path="res://Entities/Player/player.tscn" id="4_5n1oj"]
-[ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/basic_enemy.tscn" id="5_yi8xp"]
+[ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/BaseEnemy/EnemyBase.tscn" id="5_yi8xp"]
 
 [sub_resource type="Environment" id="Environment_srgcj"]
 
