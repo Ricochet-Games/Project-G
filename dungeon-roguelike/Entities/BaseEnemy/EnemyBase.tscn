@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c74a34oy8qd0"]
 
-[ext_resource type="Script" uid="uid://dgfb4wx2l2fkj" path="res://Entities/basic_enemy.gd" id="1_h8mmp"]
+[ext_resource type="Script" uid="uid://dgfb4wx2l2fkj" path="res://Entities/BaseEnemy/enemy_base.gd" id="1_h8mmp"]
 [ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Entities/health_component.gd" id="1_naotq"]
 [ext_resource type="Script" uid="uid://cpw0gbqptp1uu" path="res://Entities/health_bar.gd" id="3_4mduw"]
 

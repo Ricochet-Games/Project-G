@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name EnemyBase
 
 
 @onready var health: HealthComponent = $HealthComponent
