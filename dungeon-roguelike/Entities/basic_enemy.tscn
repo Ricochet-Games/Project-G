@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c74a34oy8qd0"]
 
-[ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Assets/health_component.gd" id="1_naotq"]
+[ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Entities/health_component.gd" id="1_naotq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_m37v0"]
 

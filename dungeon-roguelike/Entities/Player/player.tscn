@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dskimq7aam0br"]
 
-[ext_resource type="Script" uid="uid://ds116btnx83sn" path="res://Scripts/player_controller.gd" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Assets/health_component.gd" id="3_x2ivp"]
+[ext_resource type="Script" uid="uid://ds116btnx83sn" path="res://Entities/Player/player_movement.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Entities/health_component.gd" id="3_x2ivp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kbf48"]
 

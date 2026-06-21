@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://cpd1kta6eyid3" path="res://Shaders/post_processing_new.gdshader" id="1_3dogw"]
 [ext_resource type="Script" uid="uid://ctule5wjh77pc" path="res://Scenes/CameraRig.gd" id="1_50ct6"]
-[ext_resource type="PackedScene" uid="uid://dskimq7aam0br" path="res://Assets/player.tscn" id="3_hb2xm"]
+[ext_resource type="PackedScene" uid="uid://dskimq7aam0br" path="res://Entities/Player/player.tscn" id="3_hb2xm"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
 [ext_resource type="PackedScene" uid="uid://baxkp7h6nixys" path="res://Assets/grass_billboard_standard.tscn" id="5_rdbpf"]
 [ext_resource type="Shader" uid="uid://bb46o2gfxcq67" path="res://Shaders/grass_shader.gdshader" id="6_oho3u"]
