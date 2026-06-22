@@ -1,8 +1,5 @@
 [gd_scene format=3 uid="uid://c4loax645yjo7"]
 
-[ext_resource type="Shader" uid="uid://cpd1kta6eyid3" path="res://Shaders/post_processing_new.gdshader" id="1_3dogw"]
-[ext_resource type="Script" uid="uid://ctule5wjh77pc" path="res://Scenes/CameraRig.gd" id="1_50ct6"]
-[ext_resource type="PackedScene" uid="uid://dskimq7aam0br" path="res://Entities/Player/player.tscn" id="3_hb2xm"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
 [ext_resource type="PackedScene" uid="uid://byl0ew1r84fm7" path="res://Scenes/DebugOverlay.tscn" id="6_x033f"]
 [ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/EnemyDebug/EnemyDebug.tscn" id="8_oho3u"]
@@ -12,27 +9,6 @@
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3dogw"]
 
 [sub_resource type="Compositor" id="Compositor_r5l72"]
-
-[sub_resource type="Environment" id="Environment_50ct6"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hb2xm"]
-
-[sub_resource type="Compositor" id="Compositor_ak5v8"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x033f"]
-render_priority = 0
-shader = ExtResource("1_3dogw")
-shader_parameter/shadows_enabled = true
-shader_parameter/highlights_enabled = true
-shader_parameter/shadow_strength = 0.4
-shader_parameter/highlight_strength = 0.1
-shader_parameter/highlight_color = Color(1, 1, 1, 1)
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="QuadMesh" id="QuadMesh_rdbpf"]
-material = SubResource("ShaderMaterial_x033f")
-flip_faces = true
-size = Vector2(2, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e1a36"]
 render_priority = 0
@@ -122,31 +98,6 @@ compositor = SubResource("Compositor_r5l72")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=271538455]
 transform = Transform3D(1, 0, 0, 0, 0.67583466, 0.7370533, 0, -0.7370533, 0.67583466, 0, 0, 0)
-
-[node name="CamRig" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=1705803737 node_paths=PackedStringArray("target")]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.8660254, 0.49999994, 0, -0.5, 0.86602527, 0, 2.4609265, 4.2624497)
-script = ExtResource("1_50ct6")
-target = NodePath("../../../Player")
-follow_speed = 20.0
-offset = Vector3(0, 2.461, 4.262)
-
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CamRig" unique_id=1011909318]
-transform = Transform3D(1, 1.4901161e-08, 5.9604645e-08, 0, 1.0000001, 1.3411045e-07, -1.1920929e-07, -1.6391277e-07, 1, 0, 0, 0)
-environment = SubResource("Environment_50ct6")
-attributes = SubResource("CameraAttributesPractical_hb2xm")
-compositor = SubResource("Compositor_ak5v8")
-projection = 1
-current = true
-size = 2.0
-far = 30.0
-
-[node name="PostProcessing" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/CamRig/Camera3D" unique_id=1588349167]
-transform = Transform3D(0.7094724, -3.2358955e-08, -0.7047333, -0.35236675, 0.8660253, -0.35473627, 0.6103169, 0.5000001, 0.614421, 0, 0, 0)
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_rdbpf")
-
-[node name="Player" parent="." unique_id=1931111436 instance=ExtResource("3_hb2xm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19390738, 0.027268708, 0.116853714)
 
 [node name="BasicEnemy" parent="." unique_id=1755374623 instance=ExtResource("8_oho3u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0713767, -0.041577995, 0.28151345)
