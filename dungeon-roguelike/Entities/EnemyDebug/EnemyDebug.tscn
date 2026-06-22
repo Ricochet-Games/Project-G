@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c74a34oy8qd0"]
 
-[ext_resource type="Script" uid="uid://dgfb4wx2l2fkj" path="res://Entities/BaseEnemy/enemy_base.gd" id="1_h8mmp"]
+[ext_resource type="Script" uid="uid://dgfb4wx2l2fkj" path="res://Entities/EnemyDebug/enemy.gd" id="1_h8mmp"]
 [ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Entities/health_component.gd" id="1_naotq"]
 [ext_resource type="Script" uid="uid://cpw0gbqptp1uu" path="res://Entities/health_bar.gd" id="3_4mduw"]
 
@@ -14,7 +14,7 @@ albedo_color = Color(1, 0.101960786, 0.11372549, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_naotq"]
 viewport_path = NodePath("Sprite3D/SubViewport")
 
-[node name="BasicEnemy" type="CharacterBody3D" unique_id=1755374623]
+[node name="EnemyDebug" type="CharacterBody3D" unique_id=1755374623]
 script = ExtResource("1_h8mmp")
 
 [node name="Model" type="MeshInstance3D" parent="." unique_id=1977363320]

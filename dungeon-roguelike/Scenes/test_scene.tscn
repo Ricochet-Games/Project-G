@@ -4,8 +4,7 @@
 [ext_resource type="Script" uid="uid://ctule5wjh77pc" path="res://Scenes/CameraRig.gd" id="1_50ct6"]
 [ext_resource type="PackedScene" uid="uid://dskimq7aam0br" path="res://Entities/Player/player.tscn" id="3_hb2xm"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
-[ext_resource type="PackedScene" uid="uid://b0jyqacygfkbc" path="res://Entities/Damageable/DamagableBase.tscn" id="6_x033f"]
-[ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/BaseEnemy/EnemyBase.tscn" id="8_oho3u"]
+[ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/EnemyDebug/EnemyDebug.tscn" id="8_oho3u"]
 
 [sub_resource type="Environment" id="Environment_6w285"]
 
@@ -179,6 +178,3 @@ mesh = SubResource("BoxMesh_hb2xm")
 [node name="Cylinder" type="MeshInstance3D" parent="Level" unique_id=1378401570]
 transform = Transform3D(0.21266262, 0, -0.21266262, 8.96306e-09, 0.1967693, -2.6712e-16, 0.21266262, 8.293205e-09, 0.21266262, -0.84933865, 0.018669143, 0.060774416)
 mesh = SubResource("CylinderMesh_ak5v8")
-
-[node name="DamagableBase" parent="." unique_id=404147363 instance=ExtResource("6_x033f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7816103, -0.044661224, 0.3226446)
