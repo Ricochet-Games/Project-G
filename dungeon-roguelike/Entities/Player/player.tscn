@@ -14,6 +14,14 @@ albedo_color = Color(0.5549274, 0.41480064, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bai2n"]
 size = Vector3(0.5119629, 0.24505615, 0.73773193)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lu8i8"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("health_component")]
 script = ExtResource("1_4flbx")
 health_component = NodePath("HealthComponent")
@@ -46,5 +54,16 @@ script = ExtResource("3_lu8i8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackPivot/Hitbox" unique_id=446402282]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21956402, 0, 0)
 shape = SubResource("BoxShape3D_bai2n")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=218974347]
+replication_config = SubResource("SceneReplicationConfig_lu8i8")
+
+[node name="Nameplate" type="Label3D" parent="." unique_id=1851706151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30232, 0)
+billboard = 2
+fixed_size = true
+text = "Peer ID"
+font_size = 24
+outline_size = 8
 
 [connection signal="body_entered" from="AttackPivot/Hitbox" to="AttackPivot/Hitbox" method="_on_body_entered"]

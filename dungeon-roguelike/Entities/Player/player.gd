@@ -8,13 +8,24 @@ extends CharacterBody3D
 
 var is_attacking : bool = false
 @onready var hitbox: Area3D = $AttackPivot/Hitbox 
+@onready var nameplate: Label3D = $Nameplate
+
+func _enter_tree() -> void:
+	set_multiplayer_authority(int(name))
+
+func _ready() -> void:
+	add_to_group("Player")
+	nameplate.text = name
+	
+	if not is_multiplayer_authority():
+		set_process(false)
+		set_physics_process(false)
 
 func _input(event):
 	if event.is_action_pressed("attack"):
 		attack()
 
 func _physics_process(delta: float) -> void:
-
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
