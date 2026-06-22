@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://n12ws1deohx"]
+
+[ext_resource type="Script" uid="uid://blmmcf0stwoah" path="res://Scripts/projectile_script.gd" id="1_uxbpr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yguum"]
+
+[node name="projectile_base" type="Node3D" unique_id=1787370527]
+
+[node name="ProjectileScript" type="Node" parent="." unique_id=311900982]
+script = ExtResource("1_uxbpr")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1634956946]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1472897336]
+shape = SubResource("SphereShape3D_yguum")

@@ -1,12 +1,7 @@
 # Goes on the player, creates the projectiles for spells
 extends Node
 
+@export var projectile_scene: PackedScene
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func cast() -> void:
+	var projectile = projectile_scene.instantiate()
