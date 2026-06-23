@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c4loax645yjo7"]
 
+[ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/EnemyDebug/EnemyDebug.tscn" id="3_50ct6"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
 [ext_resource type="PackedScene" uid="uid://byl0ew1r84fm7" path="res://Scenes/DebugOverlay.tscn" id="6_x033f"]
-[ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/EnemyDebug/EnemyDebug.tscn" id="8_oho3u"]
 
 [sub_resource type="Environment" id="Environment_6w285"]
 
@@ -99,9 +99,6 @@ compositor = SubResource("Compositor_r5l72")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=271538455]
 transform = Transform3D(1, 0, 0, 0, 0.67583466, 0.7370533, 0, -0.7370533, 0.67583466, 0, 0, 0)
 
-[node name="BasicEnemy" parent="." unique_id=1755374623 instance=ExtResource("8_oho3u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0713767, -0.041577995, 0.28151345)
-
 [node name="Level" type="Node3D" parent="." unique_id=1271558426]
 
 [node name="Floor2" type="MeshInstance3D" parent="Level" unique_id=1019714411]
@@ -132,3 +129,6 @@ transform = Transform3D(0.21266262, 0, -0.21266262, 8.96306e-09, 0.1967693, -2.6
 mesh = SubResource("CylinderMesh_ak5v8")
 
 [node name="DebugOverlay" parent="." unique_id=652892075 instance=ExtResource("6_x033f")]
+
+[node name="EnemyDebug" parent="." unique_id=1755374623 instance=ExtResource("3_50ct6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2747469, 0.1414653, 0.8565951)

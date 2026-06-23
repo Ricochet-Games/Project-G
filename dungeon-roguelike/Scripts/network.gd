@@ -9,6 +9,14 @@ var PORT = 9999
 var IP_ADRESS = '127.0.0.1'
 var is_server: bool = false
 
+func _ready():
+	if get_tree().current_scene.name == "test_scene":
+		if OS.has_feature('server'):
+			Network.start_server()
+			add_player(multiplayer.get_unique_id())
+		else:
+			get_tree().quit()
+
 func start_server():
 	is_server = true;
 	enet_peer.create_server(PORT)
@@ -44,8 +52,10 @@ func add_player(peer_id: int):
 	player_cam.name = str(peer_id)+ "_cam"
 	get_tree().current_scene.add_child(new_player, true)
 
-	get_tree().get_root().get_node("Main/test_scene/SubViewportContainer/SubViewport").add_child(player_cam, true)
-	
+	if get_tree().current_scene.name == "test_scene":
+		get_tree().get_root().get_node("test_scene/SubViewportContainer/SubViewport").add_child(player_cam, true)
+	else:
+		get_tree().get_root().get_node("Main/test_scene/SubViewportContainer/SubViewport").add_child(player_cam, true)
 
 	player_cam.target = new_player
 
