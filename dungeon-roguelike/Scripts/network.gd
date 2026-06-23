@@ -55,7 +55,7 @@ func add_player(peer_id: int):
 	if get_tree().current_scene.name == "test_scene":
 		get_tree().get_root().get_node("test_scene/SubViewportContainer/SubViewport").add_child(player_cam, true)
 	else:
-		get_tree().get_root().get_node("Main/test_scene/SubViewportContainer/SubViewport").add_child(player_cam, true)
+		get_tree().get_root().get_node("SceneManager/test_scene/SubViewportContainer/SubViewport").add_child(player_cam, true)
 
 	player_cam.target = new_player
 
