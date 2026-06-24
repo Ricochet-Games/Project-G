@@ -56,6 +56,12 @@ shader_parameter/border_width = 0.01
 [sub_resource type="BoxMesh" id="BoxMesh_hb2xm"]
 material = SubResource("ShaderMaterial_3gpu4")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_stybw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0n4a7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ymmmm"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ii5jo"]
 render_priority = 0
 shader = ExtResource("4_hb2xm")
@@ -77,6 +83,10 @@ shader_parameter/border_width = 0.01
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ak5v8"]
 material = SubResource("ShaderMaterial_ii5jo")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bai2n"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_50ct6"]
 
 [node name="test_scene" type="Node3D" unique_id=2004884040]
 
@@ -116,19 +126,45 @@ shape = SubResource("BoxShape3D_r5l72")
 transform = Transform3D(0.08835894, 4.440892e-16, -0.248869, 7.106548e-09, 0.2914797, -3.3824967e-09, 0.248869, 1.2284952e-08, 0.08835894, 0.32697546, -0.032006487, 0.13388506)
 mesh = SubResource("BoxMesh_hb2xm")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Cube" unique_id=1651322859]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Cube/StaticBody3D" unique_id=572862951]
+shape = SubResource("BoxShape3D_stybw")
+
 [node name="Cube2" type="MeshInstance3D" parent="Level" unique_id=1093026493]
 transform = Transform3D(-0.026101619, 8.881784e-16, -0.2784605, 5.318066e-09, 0.5586223, -6.418167e-09, 0.2784605, 2.3544171e-08, -0.026101619, -0.27105808, 0.103200555, -0.29187265)
 mesh = SubResource("BoxMesh_hb2xm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Cube2" unique_id=545558320]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Cube2/StaticBody3D" unique_id=233580553]
+shape = SubResource("BoxShape3D_0n4a7")
 
 [node name="Cube3" type="MeshInstance3D" parent="Level" unique_id=1619331872]
 transform = Transform3D(0.18012522, 0, -0.07661821, 5.4104636e-09, 0.11734157, 2.1812472e-09, 0.07661821, 4.9455773e-09, 0.18012522, -0.27265307, -0.121501446, 0.30609852)
 mesh = SubResource("BoxMesh_hb2xm")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Cube3" unique_id=107013067]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, -1.7763568e-15, 0.99999994, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Cube3/StaticBody3D" unique_id=2098529239]
+transform = Transform3D(1.0000001, 0, 2.9802322e-08, 3.5527137e-15, 1.0000001, 3.5527137e-15, -2.9802322e-08, 1.7763568e-15, 1.0000001, 0, 0, 0)
+shape = SubResource("BoxShape3D_ymmmm")
+
 [node name="Cylinder" type="MeshInstance3D" parent="Level" unique_id=1378401570]
 transform = Transform3D(0.21266262, 0, -0.21266262, 8.96306e-09, 0.1967693, -2.6712e-16, 0.21266262, 8.293205e-09, 0.21266262, -0.84933865, 0.018669143, 0.060774416)
 mesh = SubResource("CylinderMesh_ak5v8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Cylinder" unique_id=1533037588]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Cylinder/StaticBody3D" unique_id=1535979150]
+shape = SubResource("CylinderShape3D_bai2n")
 
 [node name="DebugOverlay" parent="." unique_id=652892075 instance=ExtResource("6_x033f")]
 
 [node name="EnemyDebug" parent="." unique_id=1755374623 instance=ExtResource("3_50ct6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2747469, 0.1414653, 0.8565951)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=866433774]
+transform = Transform3D(0.70710677, 0, -0.70710677, 1.7763568e-15, 0.99999994, -8.881784e-16, 0.70710677, -3.5527137e-15, 0.70710677, -0.023042805, -0.03353478, 0.0019385368)
+navigation_mesh = SubResource("NavigationMesh_50ct6")
