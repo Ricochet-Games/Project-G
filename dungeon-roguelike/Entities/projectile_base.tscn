@@ -2,10 +2,22 @@
 
 [ext_resource type="Script" uid="uid://blmmcf0stwoah" path="res://Scripts/projectile_script.gd" id="1_uxbpr"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_yguum"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_j17jj"]
 
-[node name="projectile_base" type="RigidBody3D" unique_id=907319472]
+[node name="projectile_base" type="RigidBody3D" unique_id=907319472 node_paths=PackedStringArray("timer")]
+axis_lock_linear_y = true
 script = ExtResource("1_uxbpr")
+timer = NodePath("Timer")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=410303549]
+mesh = SubResource("SphereMesh_yguum")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1154371642]
 shape = SubResource("SphereShape3D_j17jj")
+
+[node name="Timer" type="Timer" parent="." unique_id=1452861078]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
