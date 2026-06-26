@@ -18,4 +18,9 @@ func cast() -> void:
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = global_position
 	
+	spell_manager.calculate()
+	
+	projectile.speed = spell_manager.speed
+	projectile.duration = spell_manager.duration
+	
 	projectile.shoot(direction)

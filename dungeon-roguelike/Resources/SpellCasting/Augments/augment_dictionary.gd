@@ -3,5 +3,5 @@ extends Resource
 
 
 var augments: Dictionary = {
-	"swift": preload("res://Resources/SpellCasting/Augments/augment_data_swift.gd")
+	"swift": preload("res://Resources/SpellCasting/Augments/augment_data_swift.gd").new()
 }
