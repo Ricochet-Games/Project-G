@@ -30,7 +30,7 @@ func spawn_player(peer_id: int) -> void:
 	add_child(new_player)
 	
 	add_child(player_cam, true)
-	cameraHolder.add_child(player_cam, true)
+	player_cam.reparent(cameraHolder)
 
 	initialize_player(new_player)
 
@@ -44,3 +44,5 @@ func initialize_player(player: CharacterBody3D) -> void:
 func _on_multiplayer_spawner_spawned(node: Node) -> void:
 	if node is CharacterBody3D:
 		initialize_player(node)
+	else
+		
