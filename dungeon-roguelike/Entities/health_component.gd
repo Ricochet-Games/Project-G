@@ -3,7 +3,7 @@ class_name HealthComponent
 
 
 signal damaged(amount: int, new_health: int)
-signal healed(amount: int, new_health)
+signal healed(amount: int, new_health: int)
 # signal health_changed(amount: int)
 signal died
 
@@ -12,7 +12,7 @@ signal died
 
 @export var current_health: int = 100:
 	set(value):
-		var old = current_health
+		var old : int = current_health
 		current_health = clamp(value, 0, max_health)
 		if old != current_health:
 			# health_changed.emit(current_health)

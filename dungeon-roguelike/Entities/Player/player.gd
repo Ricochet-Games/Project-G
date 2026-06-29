@@ -21,7 +21,7 @@ func _ready() -> void:
 		set_process(false)
 		set_physics_process(false)
 
-func _input(event):
+func _input(event: InputEvent)  -> void:
 	if not is_multiplayer_authority():
 		return
 		
@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
-		var target_rotation = atan2(direction.x, direction.z)
+		var target_rotation: float = atan2(direction.x, direction.z)
 		rotation.y = target_rotation + deg_to_rad(-90)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func attack(): 
+func attack()  -> void:
 	if is_attacking: 
 		return  
 	

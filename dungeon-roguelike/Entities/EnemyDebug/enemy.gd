@@ -11,7 +11,7 @@ func request_damage(amount: int) -> void:
 	health.request_damage(amount)
 	
 
-func die():
+func die() -> void:
 	if !multiplayer.is_server():
 		return
 
@@ -19,5 +19,5 @@ func die():
 
 
 @rpc("call_local", "reliable")
-func destroy():
+func destroy() -> void:
 	queue_free()

@@ -16,11 +16,11 @@ func _ready() -> void:
 		set_process(false)
 		set_physics_process(false)
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if target == null:
 		return
 
-	var desired_position = target.global_position + offset
+	var desired_position: Vector3 = target.global_position + offset
 
 	global_position = global_position.lerp(
 		desired_position,
