@@ -29,7 +29,7 @@ func spawn_player(peer_id: int) -> void:
 	
 	add_child(new_player)
 	
-	cameraHolder.add_child(player_cam, true)
+	add_child(player_cam, true)
 
 	initialize_player(new_player)
 

@@ -10,7 +10,7 @@ cameraHolder = NodePath("CAMERA | SubViewportContainer/SubViewport")
 playerHolder = NodePath("Players")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=2076728329]
-_spawnable_scenes = PackedStringArray("uid://dskimq7aam0br")
+_spawnable_scenes = PackedStringArray("uid://dskimq7aam0br", "uid://c42wahi6383ju")
 spawn_path = NodePath("..")
 
 [node name="Players" type="Node" parent="." unique_id=286061400]
