@@ -31,6 +31,7 @@ func _process(_delta: float) -> void:
 func host_lobby() -> void:
 	Steam.createLobby(LOBBY_TYPE, MAX_MEMBERS)
 
+@warning_ignore("shadowed_variable_base_class")
 func on_lobby_created(connect: int, _lobby_id: int) -> void:
 	if connect != Steam.RESULT_OK:
 		return

@@ -4,7 +4,7 @@ const DEBUG_SCENE = preload("uid://c4loax645yjo7")
 var level_holder: Node
 var current_level: Node
 
-@onready var main = get_tree().root.get_node("Main")
+@onready var current_scene: Node = get_tree().current_scene
 
 func _ready() -> void:
 	CreateLevelHolder()
@@ -26,4 +26,4 @@ func LoadDebugScene() -> void:
 func CreateLevelHolder() -> void:
 	level_holder = Node.new()
 	level_holder.name = "Current Level"
-	main.add_child(level_holder)
+	current_scene.add_child(level_holder)
