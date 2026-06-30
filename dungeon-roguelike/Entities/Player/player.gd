@@ -10,6 +10,8 @@ var is_attacking : bool = false
 @onready var hitbox: Area3D = $AttackPivot/Hitbox 
 @onready var nameplate: Label3D = $Nameplate
 
+const CAM_RIG = preload("uid://c42wahi6383ju")
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
 
@@ -20,6 +22,15 @@ func _ready() -> void:
 	if not is_multiplayer_authority():
 		set_process(false)
 		set_physics_process(false)
+		return;
+	
+	var player_cam: Node = CAM_RIG.instantiate()
+	player_cam.name = str(int(name))+ "_cam"
+	player_cam.target = $"." 
+	
+
+	get_tree().current_scene.cameraHolder.add_child(player_cam, true)
+	#player_cam.reparent(cameraHolder)
 
 func _input(event: InputEvent)  -> void:
 	if not is_multiplayer_authority():

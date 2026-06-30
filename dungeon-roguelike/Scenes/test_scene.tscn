@@ -2,13 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/EnemyDebug/EnemyDebug.tscn" id="3_50ct6"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
-[ext_resource type="PackedScene" uid="uid://byl0ew1r84fm7" path="res://Scenes/DebugOverlay.tscn" id="6_x033f"]
-
-[sub_resource type="Environment" id="Environment_6w285"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3dogw"]
-
-[sub_resource type="Compositor" id="Compositor_r5l72"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e1a36"]
 render_priority = 0
@@ -32,7 +25,7 @@ shader_parameter/border_width = 0.01
 [sub_resource type="PlaneMesh" id="PlaneMesh_yglu3"]
 material = SubResource("ShaderMaterial_e1a36")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_r5l72"]
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cqqll"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3gpu4"]
 render_priority = 0
@@ -90,25 +83,6 @@ material = SubResource("ShaderMaterial_ii5jo")
 
 [node name="test_scene" type="Node3D" unique_id=2004884040]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=2106523065]
-offset_right = 1280.0
-offset_bottom = 720.0
-stretch = true
-stretch_shrink = 3
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=275008000]
-handle_input_locally = false
-size = Vector2i(426, 240)
-render_target_update_mode = 4
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=1603107048]
-environment = SubResource("Environment_6w285")
-camera_attributes = SubResource("CameraAttributesPractical_3dogw")
-compositor = SubResource("Compositor_r5l72")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=271538455]
-transform = Transform3D(1, 0, 0, 0, 0.67583466, 0.7370533, 0, -0.7370533, 0.67583466, 0, 0, 0)
-
 [node name="Level" type="Node3D" parent="." unique_id=1271558426]
 
 [node name="Floor2" type="MeshInstance3D" parent="Level" unique_id=1019714411]
@@ -116,11 +90,10 @@ transform = Transform3D(2.8171418, 0, -2.8171418, 1.1873365e-07, 1, -3.5385386e-
 mesh = SubResource("PlaneMesh_yglu3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/Floor2" unique_id=1976826444]
-transform = Transform3D(0.25100148, -7.480427e-09, 0, -2.980232e-08, 0.99999994, 0, 0, -7.480427e-09, 0.25100148, 0.04441629, 0.14946102, 0.010801003)
+transform = Transform3D(1, 1.18733645e-07, 8.881785e-16, -1.18733645e-07, 1, 7.480428e-09, -1.0587912e-22, -7.480428e-09, 1, 0.04441629, 0.14946102, 0.010801003)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Floor2/StaticBody3D" unique_id=1229381979]
-transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 0, 0)
-shape = SubResource("BoxShape3D_r5l72")
+shape = SubResource("WorldBoundaryShape3D_cqqll")
 
 [node name="Cube" type="MeshInstance3D" parent="Level" unique_id=105671264]
 transform = Transform3D(0.08835894, 4.440892e-16, -0.248869, 7.106548e-09, 0.2914797, -3.3824967e-09, 0.248869, 1.2284952e-08, 0.08835894, 0.32697546, -0.032006487, 0.13388506)
@@ -160,11 +133,12 @@ mesh = SubResource("CylinderMesh_ak5v8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Cylinder/StaticBody3D" unique_id=1535979150]
 shape = SubResource("CylinderShape3D_bai2n")
 
-[node name="DebugOverlay" parent="." unique_id=652892075 instance=ExtResource("6_x033f")]
-
 [node name="EnemyDebug" parent="." unique_id=1755374623 instance=ExtResource("3_50ct6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2747469, 0.1414653, 0.8565951)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=866433774]
 transform = Transform3D(0.70710677, 0, -0.70710677, 1.7763568e-15, 0.99999994, -8.881784e-16, 0.70710677, -3.5527137e-15, 0.70710677, -0.023042805, -0.03353478, 0.0019385368)
 navigation_mesh = SubResource("NavigationMesh_50ct6")
+
+[node name="SpawnPoint" type="Node3D" parent="." unique_id=556582167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2809549, -0.056652993, 0.64730495)

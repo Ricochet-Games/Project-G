@@ -1,22 +1,9 @@
 extends CanvasLayer
-@onready var button_join: Button = %ButtonJoin
-@onready var button_quit: Button = %ButtonQuit
 
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	button_join.pressed.connect(on_join)
-	button_quit.pressed.connect(func(): get_tree().quit())
-	
-	if OS.has_feature('server'):
-		Network.start_server()
-	
-	
-func on_join():
-	add_world()
-	Network.join_server()
+func _on_create_lobby_pressed() -> void:
+	Network.host_lobby()
+	SceneManager.LoadDebugScene()
 	hide()
 
-func add_world():
-	SceneManager.LoadDebugScene()
+func _on_quit_game_pressed() -> void:
+		get_tree().quit()

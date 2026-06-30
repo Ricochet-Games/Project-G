@@ -37,12 +37,13 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer" unique_id=1077184521]
 layout_mode = 2
 
-[node name="ButtonJoin" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=2059122987]
-unique_name_in_owner = true
+[node name="Create Lobby" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=1677241249]
 layout_mode = 2
-text = "Join"
+text = "Host"
 
-[node name="ButtonQuit" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=982726878]
-unique_name_in_owner = true
+[node name="Quit Game" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=982726878]
 layout_mode = 2
 text = "Quit"
+
+[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/Create Lobby" to="." method="_on_create_lobby_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/Quit Game" to="." method="_on_quit_game_pressed"]
