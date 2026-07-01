@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c4loax645yjo7"]
 
 [ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/EnemyDebug/EnemyDebug.tscn" id="3_50ct6"]
+[ext_resource type="PackedScene" uid="uid://dskimq7aam0br" path="res://Entities/Player/player.tscn" id="3_ak5v8"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e1a36"]
@@ -81,7 +82,19 @@ material = SubResource("ShaderMaterial_ii5jo")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_50ct6"]
 
+[sub_resource type="Environment" id="Environment_50ct6"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hb2xm"]
+
+[sub_resource type="Compositor" id="Compositor_ak5v8"]
+
 [node name="test_scene" type="Node3D" unique_id=2004884040]
+
+[node name="Player" parent="." unique_id=1931111436 instance=ExtResource("3_ak5v8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2809549, -0.056652993, 0.64730495)
+
+[node name="SpawnPoint" type="Node3D" parent="." unique_id=556582167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2809549, -0.056652993, 0.64730495)
 
 [node name="Level" type="Node3D" parent="." unique_id=1271558426]
 
@@ -134,11 +147,18 @@ mesh = SubResource("CylinderMesh_ak5v8")
 shape = SubResource("CylinderShape3D_bai2n")
 
 [node name="EnemyDebug" parent="." unique_id=1755374623 instance=ExtResource("3_50ct6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2747469, 0.1414653, 0.8565951)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2747469, -0.06876156, 0.8565951)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=866433774]
 transform = Transform3D(0.70710677, 0, -0.70710677, 1.7763568e-15, 0.99999994, -8.881784e-16, 0.70710677, -3.5527137e-15, 0.70710677, -0.023042805, -0.03353478, 0.0019385368)
 navigation_mesh = SubResource("NavigationMesh_50ct6")
 
-[node name="SpawnPoint" type="Node3D" parent="." unique_id=556582167]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2809549, -0.056652993, 0.64730495)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=45945776]
+environment = SubResource("Environment_50ct6")
+camera_attributes = SubResource("CameraAttributesPractical_hb2xm")
+compositor = SubResource("Compositor_ak5v8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1599021426]
+transform = Transform3D(1, 0, 0, 0, 0.6299306, 0.7766515, 0, -0.7766515, 0.6299306, 0, 0, 0)
+shadow_enabled = true
+sky_mode = 1
