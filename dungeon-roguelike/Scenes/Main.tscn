@@ -4,14 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://lvcq7ix60u17" path="res://main_menu.tscn" id="1_r150o"]
 [ext_resource type="Script" uid="uid://dke62cxheas0" path="res://Scenes/user_interface.gd" id="3_rgh2o"]
 
-[node name="Main" type="Node" unique_id=2047407435 node_paths=PackedStringArray("cameraHolder", "playerHolder", "userInterface")]
+[node name="Main" type="Node" unique_id=2047407435 node_paths=PackedStringArray("userInterface")]
 script = ExtResource("1_idj7w")
-cameraHolder = NodePath("")
-playerHolder = NodePath("")
 userInterface = NodePath("UserInterface")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=2076728329]
-_spawnable_scenes = PackedStringArray("uid://dskimq7aam0br", "res://Entities/Player/cam_rig.tscn")
+_spawnable_scenes = PackedStringArray("uid://dskimq7aam0br")
 spawn_path = NodePath("..")
 
 [node name="UserInterface" type="Node" parent="." unique_id=1978203076 node_paths=PackedStringArray("mainMenu")]
