@@ -15,9 +15,9 @@ func _enter_tree() -> void:
 		set_multiplayer_authority(int(name))
 	
 		var camera_rig: Node3D = $"CAMERA | SubViewportContainer/SubViewport/CameraRig"
-		camera_rig.set_multiplayer_authority(int(name))
-		if is_multiplayer_authority():
+		if not is_multiplayer_authority():
 			camera_rig.camera.current = false
+			print("e")
 
 func _ready() -> void:
 	add_to_group("Player")
