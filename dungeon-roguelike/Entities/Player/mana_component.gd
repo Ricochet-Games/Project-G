@@ -1,11 +1,11 @@
 extends Node
+class_name ManaComponent
+
+signal used_mana(amount: int, new_mana: int)
+signal gained_mana(amount: int, new_mana: int)
+signal mana_changed(amount: int)
+signal out_of_mana
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+@export var max_mana : int = 100
+@export var current_mana: int = 100

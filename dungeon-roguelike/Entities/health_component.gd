@@ -4,7 +4,7 @@ class_name HealthComponent
 
 signal damaged(amount: int, new_health: int)
 signal healed(amount: int, new_health: int)
-# signal health_changed(amount: int)
+signal health_changed(amount: int)
 signal died
 
 
