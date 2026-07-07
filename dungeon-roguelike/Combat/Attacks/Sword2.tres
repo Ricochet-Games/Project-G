@@ -8,4 +8,5 @@ damage = 20.0
 windup = 0.4
 active_time = 0.5
 recovery = 0.3
+combo_window = 0.5
 metadata/_custom_type_script = "uid://d37us7ig17og3"

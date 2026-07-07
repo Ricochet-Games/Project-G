@@ -14,3 +14,7 @@ class_name WeaponData
 @export var attack_speed : float = 1.0
 
 @export var attack_range : float = 1.5
+
+@export var main_hand : bool = true
+
+@export var off_hand : bool = true
