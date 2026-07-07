@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://24irttm2prap" path="res://Combat/Attacks/Sword1.tres" id="2_hhwdq"]
 [ext_resource type="Resource" uid="uid://cqwukmnuv51dl" path="res://Combat/Attacks/Sword2.tres" id="3_igigs"]
 [ext_resource type="Script" uid="uid://cukfb368ajudm" path="res://Combat/WeaponData.gd" id="4_mwrtn"]
-[ext_resource type="Script" uid="uid://b7xlc3nwlnrc3" path="res://Combat/AttackSkill.gd" id="5_nbefj"]
+[ext_resource type="Script" uid="uid://b7xlc3nwlnrc3" path="res://Combat/AttackSkillData.gd" id="5_nbefj"]
 
 [resource]
 script = ExtResource("4_mwrtn")
