@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://dukf8jb2ys1yc"]
+
+[ext_resource type="Script" uid="uid://d37us7ig17og3" path="res://Combat/AttackData.gd" id="1_bhmed"]
+[ext_resource type="Resource" uid="uid://24irttm2prap" path="res://Combat/Attacks/Sword1.tres" id="2_hhwdq"]
+[ext_resource type="Resource" uid="uid://cqwukmnuv51dl" path="res://Combat/Attacks/Sword2.tres" id="3_igigs"]
+[ext_resource type="Script" uid="uid://cukfb368ajudm" path="res://Combat/WeaponData.gd" id="4_mwrtn"]
+[ext_resource type="Script" uid="uid://b7xlc3nwlnrc3" path="res://Combat/AttackSkill.gd" id="5_nbefj"]
+
+[resource]
+script = ExtResource("4_mwrtn")
+weapon_name = "Sword"
+attacks = Array[ExtResource("1_bhmed")]([ExtResource("2_hhwdq"), ExtResource("2_hhwdq"), ExtResource("3_igigs")])
+metadata/_custom_type_script = "uid://cukfb368ajudm"

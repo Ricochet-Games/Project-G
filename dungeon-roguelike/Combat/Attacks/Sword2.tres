@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://cqwukmnuv51dl"]
+
+[ext_resource type="Script" uid="uid://d37us7ig17og3" path="res://Combat/AttackData.gd" id="1_7wpt2"]
+
+[resource]
+script = ExtResource("1_7wpt2")
+damage = 20.0
+windup = 0.4
+active_time = 0.5
+recovery = 0.3
+metadata/_custom_type_script = "uid://d37us7ig17og3"

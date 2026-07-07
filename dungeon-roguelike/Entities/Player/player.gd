@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 @export var speed: float = 5.0
 
@@ -7,9 +8,12 @@ extends CharacterBody3D
 @export var health_component: HealthComponent
 @export var camera___sub_viewport_container: SubViewportContainer
 
-var is_attacking : bool = false
-@onready var hitbox: Area3D = $AttackPivot/Hitbox 
+
+@export var attack_compontent: AttackCompontent 
+
 @onready var nameplate: Label3D = $Nameplate
+
+
 
 func _enter_tree() -> void:
 	if Network.is_steam_initialized and multiplayer.has_multiplayer_peer():
@@ -34,7 +38,7 @@ func _input(event: InputEvent)  -> void:
 		return
 		
 	if event.is_action_pressed("attack"):
-		attack()
+		attack_compontent.attack()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -55,15 +59,3 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
-
-func attack()  -> void:
-	if is_attacking: 
-		return  
-	
-	is_attacking = true
-	hitbox.monitoring = true
-	
-	await get_tree().create_timer(0.15).timeout
-	
-	hitbox.monitoring = false
-	is_attacking = false

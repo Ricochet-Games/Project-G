@@ -4,7 +4,18 @@
 [ext_resource type="Script" uid="uid://bb53n60eaedei" path="res://Entities/Player/hitbox.gd" id="3_lu8i8"]
 [ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Entities/health_component.gd" id="3_x2ivp"]
 [ext_resource type="Script" uid="uid://ctule5wjh77pc" path="res://Scenes/CameraRig.gd" id="4_5c2io"]
+[ext_resource type="Script" uid="uid://ca54oalk1rbso" path="res://Entities/Player/WeaponHandler.gd" id="5_01a4e"]
 [ext_resource type="Shader" uid="uid://cpd1kta6eyid3" path="res://Shaders/post_processing_new.gdshader" id="5_4wf4l"]
+[ext_resource type="Script" uid="uid://bsxd4qhty2lq6" path="res://Entities/Player/AttackComponent.gd" id="7_7a1se"]
+[ext_resource type="Resource" uid="uid://dukf8jb2ys1yc" path="res://Combat/Weapons/Sword.tres" id="7_lub02"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lu8i8"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [sub_resource type="Environment" id="Environment_01a4e"]
 
@@ -27,28 +38,38 @@ material = SubResource("ShaderMaterial_x033f")
 flip_faces = true
 size = Vector2(2, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7vbvf"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_kbf48"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d4hx"]
 albedo_color = Color(0.5549274, 0.41480064, 1, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7vbvf"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_bai2n"]
 size = Vector3(0.5119629, 0.24505615, 0.73773193)
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lu8i8"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
+[sub_resource type="BoxMesh" id="BoxMesh_bai2n"]
+size = Vector3(0.49816895, 0.23474121, 0.7305908)
 
-[node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("health_component", "camera___sub_viewport_container") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("health_component", "camera___sub_viewport_container", "attack_compontent") groups=["Player"]]
 script = ExtResource("1_4flbx")
 health_component = NodePath("HealthComponent")
 camera___sub_viewport_container = NodePath("CAMERA | SubViewportContainer")
+attack_compontent = NodePath("AttackCompontent")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=218974347]
+replication_config = SubResource("SceneReplicationConfig_lu8i8")
+
+[node name="Nameplate" type="Label3D" parent="." unique_id=1851706151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30232, 0)
+billboard = 2
+fixed_size = true
+text = "Peer ID"
+font_size = 24
+outline_size = 8
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1288673849]
+script = ExtResource("3_x2ivp")
 
 [node name="CAMERA | SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1662572149]
 offset_right = 1280.0
@@ -85,6 +106,10 @@ transform = Transform3D(0.7094724, -3.2358955e-08, -0.7047333, -0.35236675, 0.86
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_x1y6q")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=518295535]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("BoxShape3D_7vbvf")
+
 [node name="Model" type="MeshInstance3D" parent="." unique_id=1099329490]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 mesh = SubResource("BoxMesh_kbf48")
@@ -95,12 +120,19 @@ transform = Transform3D(0.6323484, 0, 0, 0, 0.6323484, 0, 0, 0, 0.6323484, 0.564
 mesh = SubResource("BoxMesh_kbf48")
 surface_material_override/0 = SubResource("StandardMaterial3D_0d4hx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=518295535]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-shape = SubResource("BoxShape3D_7vbvf")
+[node name="AttackCompontent" type="Node" parent="." unique_id=1229905637 node_paths=PackedStringArray("weapon_handler", "combo_timer", "hitbox")]
+script = ExtResource("7_7a1se")
+weapon_handler = NodePath("WeaponHandler")
+combo_timer = NodePath("ComboTimer")
+hitbox = NodePath("../AttackPivot/Hitbox")
 
-[node name="HealthComponent" type="Node" parent="." unique_id=1288673849]
-script = ExtResource("3_x2ivp")
+[node name="WeaponHandler" type="Node" parent="AttackCompontent" unique_id=2110319129]
+script = ExtResource("5_01a4e")
+equipped_weapon = ExtResource("7_lub02")
+
+[node name="ComboTimer" type="Timer" parent="AttackCompontent" unique_id=2065212838]
+wait_time = 0.3
+one_shot = true
 
 [node name="AttackPivot" type="Node3D" parent="." unique_id=1159120520]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22366303, 0, 0)
@@ -114,15 +146,9 @@ script = ExtResource("3_lu8i8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21956402, 0, 0)
 shape = SubResource("BoxShape3D_bai2n")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=218974347]
-replication_config = SubResource("SceneReplicationConfig_lu8i8")
-
-[node name="Nameplate" type="Label3D" parent="." unique_id=1851706151]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30232, 0)
-billboard = 2
-fixed_size = true
-text = "Peer ID"
-font_size = 24
-outline_size = 8
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AttackPivot/Hitbox/CollisionShape3D" unique_id=399762693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007019043, -0.007507324, 0.005432129)
+visible = false
+mesh = SubResource("BoxMesh_bai2n")
 
 [connection signal="body_entered" from="AttackPivot/Hitbox" to="AttackPivot/Hitbox" method="_on_body_entered"]
