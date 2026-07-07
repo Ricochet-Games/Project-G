@@ -15,7 +15,7 @@ class_name AttackData
 
 @export var recovery : float = 0.2
 
-@export var damage_type : WeaponEnums.DamageType
+@export var damage_type : WeaponData.DamageType
 
 @export var combo_window : float = 0.25
 

@@ -3,7 +3,7 @@ class_name WeaponData
 
 @export var weapon_name : String
 
-@export var weapon_type : WeaponEnums.WeaponType
+@export var weapon_type : WeaponType
 
 @export var attacks : Array[AttackData]
 
@@ -18,3 +18,25 @@ class_name WeaponData
 @export var main_hand : bool = true
 
 @export var off_hand : bool = true
+
+enum WeaponType
+{
+	SWORD,
+	CLAYMORE,
+	GREATSWORD,
+	POLEARMS,
+	STAVES,
+	MACES,
+	DAGGER,
+	BOWS,
+	CROSSBOWS,
+	SHIELDS,
+	SCROLLS
+}
+
+enum DamageType
+{
+	BLUNT,
+	SLASH,
+	PIERCE,
+}
