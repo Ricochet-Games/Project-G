@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ds116btnx83sn" path="res://Entities/Player/player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bb53n60eaedei" path="res://Entities/Player/hitbox.gd" id="3_lu8i8"]
+[ext_resource type="Script" uid="uid://xi8yfcr64nd8" path="res://Entities/Player/StaminaComponent.gd" id="3_lub02"]
+[ext_resource type="Script" uid="uid://b0vdglsluco2g" path="res://Entities/Player/mana_component.gd" id="3_x1y6q"]
 [ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Entities/health_component.gd" id="3_x2ivp"]
 [ext_resource type="Script" uid="uid://ctule5wjh77pc" path="res://Scenes/CameraRig.gd" id="4_5c2io"]
 [ext_resource type="Script" uid="uid://ca54oalk1rbso" path="res://Entities/Player/WeaponHandler.gd" id="5_01a4e"]
@@ -70,6 +72,12 @@ outline_size = 8
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1288673849]
 script = ExtResource("3_x2ivp")
+
+[node name="ManaComponent" type="Node" parent="." unique_id=572190263]
+script = ExtResource("3_x1y6q")
+
+[node name="StaminaComponent" type="Node" parent="." unique_id=135193112]
+script = ExtResource("3_lub02")
 
 [node name="CAMERA | SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1662572149]
 offset_right = 1280.0

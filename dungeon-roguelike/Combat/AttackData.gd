@@ -5,6 +5,8 @@ class_name AttackData
 
 @export var mana_cost : float = 0
 
+@export var stamina_cost : float = 5
+
 @export var knockback : float = 0.0
 
 @export var windup : float = 0.1
