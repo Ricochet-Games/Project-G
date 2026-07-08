@@ -9,7 +9,7 @@ class_name Player
 @export var camera___sub_viewport_container: SubViewportContainer
 
 
-@export var attack_compontent: AttackCompontent 
+@export var attack_compontent: AttackComponent 
 
 @onready var nameplate: Label3D = $Nameplate
 

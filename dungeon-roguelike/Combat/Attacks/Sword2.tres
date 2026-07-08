@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_7wpt2")
 damage = 20.0
+stamina_cost = 20.0
 windup = 0.4
 active_time = 0.5
 recovery = 0.3

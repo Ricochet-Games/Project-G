@@ -1,14 +1,16 @@
 extends Node3D
-class_name AttackCompontent
+class_name AttackComponent
 
 @export var weapon_handler : WeaponHandler
-
+@export var stamina_component : StaminaComponent
 var combo := 0
 var can_combo := false
 @export var combo_timer : Timer
 
 @export var attack_pivot : Node3D
 @export var hitboxes: Array[Hitbox]
+
+signal attacked(stamina_used: int) 
 
 enum AttackState
 {
@@ -47,6 +49,9 @@ func attack() -> void:
 
 	var current_attack : AttackData = weapon.attacks[combo]
 
+	if stamina_component.current_stamina == 0:
+		return
+		
 	perform_attack(current_attack)
 
 	
@@ -78,6 +83,8 @@ func perform_attack(attack : AttackData) -> void:
 	
 	hitboxes.clear()
 	attack_state = AttackState.RECOVERING
+	attacked.emit(attack.stamina_cost)
+	
 	await get_tree().create_timer(attack.recovery).timeout
 	
 	attack_state = AttackState.IDLE

@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_wbmpy")
 damage = 30.0
+stamina_cost = 10.0
 windup = 0.4
 active_time = 0.6
 recovery = 0.4
