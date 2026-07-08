@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dsrdjx8ul7h4t"]
+
+[ext_resource type="Script" uid="uid://bb53n60eaedei" path="res://Entities/Player/hitbox.gd" id="1_wpqst"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bai2n"]
+size = Vector3(0.602, 0.245, 1.008)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bai2n"]
+size = Vector3(0.49816895, 0.23474121, 0.7305908)
+
+[node name="Hitbox" type="Area3D" unique_id=1108881074 node_paths=PackedStringArray("mesh_instance_3d")]
+monitoring = false
+monitorable = false
+script = ExtResource("1_wpqst")
+mesh_instance_3d = NodePath("CollisionShape3D/MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=451502265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+shape = SubResource("BoxShape3D_bai2n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1352356852]
+transform = Transform3D(1.1989775, 0, 0, 0, 1, 0, 0, 0, 1.3600392, -0.007019043, -0.007507324, 0.005432129)
+visible = false
+mesh = SubResource("BoxMesh_bai2n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

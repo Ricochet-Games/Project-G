@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://b0u6mu3o6l6aq"]
+
+[ext_resource type="PackedScene" uid="uid://5j5imqgr56lq" path="res://Combat/Hitboxes/small_spear_hb.tscn" id="1_ib3um"]
+[ext_resource type="Script" uid="uid://d37us7ig17og3" path="res://Combat/attack_data.gd" id="1_m6h7t"]
+
+[resource]
+script = ExtResource("1_m6h7t")
+damage = 15.0
+windup = 0.2
+active_time = 0.6
+damage_type = 2
+combo_window = 0.4
+hitbox_scenes = Array[PackedScene]([ExtResource("1_ib3um")])
+metadata/_custom_type_script = "uid://d37us7ig17og3"

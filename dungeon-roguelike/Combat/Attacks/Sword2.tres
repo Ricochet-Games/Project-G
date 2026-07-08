@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://cqwukmnuv51dl"]
 
 [ext_resource type="Script" uid="uid://d37us7ig17og3" path="res://Combat/attack_data.gd" id="1_7wpt2"]
+[ext_resource type="PackedScene" uid="uid://dsrdjx8ul7h4t" path="res://Combat/Hitboxes/big_sword_hb.tscn" id="1_mxtw5"]
 
 [resource]
 script = ExtResource("1_7wpt2")
@@ -9,4 +10,5 @@ windup = 0.4
 active_time = 0.5
 recovery = 0.3
 combo_window = 0.5
+hitbox_scenes = Array[PackedScene]([ExtResource("1_mxtw5")])
 metadata/_custom_type_script = "uid://d37us7ig17og3"

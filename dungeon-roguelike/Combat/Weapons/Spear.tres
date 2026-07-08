@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://cv1176vfcrln3"]
+
+[ext_resource type="Script" uid="uid://d37us7ig17og3" path="res://Combat/attack_data.gd" id="1_vse22"]
+[ext_resource type="Resource" uid="uid://24irttm2prap" path="res://Combat/Attacks/Sword1.tres" id="2_kjrdv"]
+[ext_resource type="Script" uid="uid://cukfb368ajudm" path="res://Combat/weapon_data.gd" id="2_of2j8"]
+[ext_resource type="Script" uid="uid://b7xlc3nwlnrc3" path="res://Combat/attack_skill_data.gd" id="3_kjrdv"]
+[ext_resource type="Resource" uid="uid://b0u6mu3o6l6aq" path="res://Combat/Attacks/Spear1.tres" id="3_vhi5m"]
+[ext_resource type="Resource" uid="uid://c1rbcrpratqdt" path="res://Combat/Attacks/Spear2.tres" id="4_54glm"]
+
+[resource]
+script = ExtResource("2_of2j8")
+attacks = Array[ExtResource("1_vse22")]([ExtResource("2_kjrdv"), ExtResource("2_kjrdv"), ExtResource("3_vhi5m"), ExtResource("4_54glm")])
+metadata/_custom_type_script = "uid://cukfb368ajudm"
