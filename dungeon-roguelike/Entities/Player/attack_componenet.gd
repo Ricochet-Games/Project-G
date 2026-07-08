@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 class_name AttackCompontent
 
 @export var weapon_handler : WeaponHandler
@@ -7,7 +7,8 @@ var combo := 0
 var can_combo := false
 @export var combo_timer : Timer
 
-@export var hitbox: Area3D
+@export var attack_pivot : Node3D
+@export var hitboxes: Array[Hitbox]
 
 enum AttackState
 {
@@ -53,24 +54,29 @@ func attack() -> void:
 @warning_ignore("shadowed_variable")
 func perform_attack(attack : AttackData) -> void:
 	
-	hitbox.damage = attack.damage
+	for packed_scene in attack.hitbox_scenes:
+		var hitbox : Hitbox = packed_scene.instantiate()
+		attack_pivot.add_child(hitbox)
+		hitboxes.append(hitbox)
+		hitbox.damage = attack.damage
+	
 	print(attack.resource_path + "  " + var_to_str(combo))
 	can_combo = false
 	
 	attack_state = AttackState.WINDING_UP
 	await get_tree().create_timer(attack.windup).timeout
 	
-	
-	hitbox.get_child(0).get_child(0).visible = true
-	hitbox.monitoring = true
+	for hitbox in hitboxes:
+		hitbox.enable_hitbox()
 	
 	attack_state = AttackState.ATTACKING
 	await get_tree().create_timer(attack.active_time).timeout
 	
-	hitbox.get_child(0).get_child(0).visible = false
-	hitbox.monitoring = false
-
+	for hitbox in hitboxes:
+		hitbox.disable_hitbox()
+		hitbox.queue_free()
 	
+	hitboxes.clear()
 	attack_state = AttackState.RECOVERING
 	await get_tree().create_timer(attack.recovery).timeout
 	
@@ -78,3 +84,4 @@ func perform_attack(attack : AttackData) -> void:
 	can_combo = true
 	combo_timer.start(attack.combo_window)
 	combo += 1
+	

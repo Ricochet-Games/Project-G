@@ -15,9 +15,11 @@ class_name WeaponData
 
 @export var attack_range : float = 1.5
 
-@export var main_hand : bool = true
+@export var can_two_hand : bool = true
 
-@export var off_hand : bool = true
+@export var can_main_hand : bool = true
+
+@export var can_off_hand : bool = true
 
 enum WeaponType
 {

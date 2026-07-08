@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dskimq7aam0br"]
 
 [ext_resource type="Script" uid="uid://ds116btnx83sn" path="res://Entities/Player/player.gd" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://bb53n60eaedei" path="res://Entities/Player/hitbox.gd" id="3_lu8i8"]
 [ext_resource type="Script" uid="uid://xi8yfcr64nd8" path="res://Entities/Player/stamina_component.gd" id="3_lub02"]
 [ext_resource type="Script" uid="uid://b0vdglsluco2g" path="res://Entities/Player/mana_component.gd" id="3_x1y6q"]
 [ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Entities/health_component.gd" id="3_x2ivp"]
@@ -9,7 +8,8 @@
 [ext_resource type="Script" uid="uid://ca54oalk1rbso" path="res://Entities/Player/weapon_handler.gd" id="5_01a4e"]
 [ext_resource type="Shader" uid="uid://cpd1kta6eyid3" path="res://Shaders/post_processing_new.gdshader" id="5_4wf4l"]
 [ext_resource type="Script" uid="uid://bsxd4qhty2lq6" path="res://Entities/Player/attack_componenet.gd" id="7_7a1se"]
-[ext_resource type="Resource" uid="uid://dukf8jb2ys1yc" path="res://Combat/Weapons/Sword.tres" id="7_lub02"]
+[ext_resource type="Resource" uid="uid://cv1176vfcrln3" path="res://Combat/Weapons/Spear.tres" id="10_ap3xn"]
+[ext_resource type="PackedScene" uid="uid://bt8gq4gwbsvh1" path="res://Combat/Hitboxes/small_sword_hb.tscn" id="10_x1y6q"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lu8i8"]
 properties/0/path = NodePath(".:position")
@@ -46,12 +46,6 @@ size = Vector2(2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d4hx"]
 albedo_color = Color(0.5549274, 0.41480064, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bai2n"]
-size = Vector3(0.5119629, 0.24505615, 0.73773193)
-
-[sub_resource type="BoxMesh" id="BoxMesh_bai2n"]
-size = Vector3(0.49816895, 0.23474121, 0.7305908)
 
 [node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("health_component", "camera___sub_viewport_container", "attack_compontent") groups=["Player"]]
 script = ExtResource("1_4flbx")
@@ -128,35 +122,21 @@ transform = Transform3D(0.6323484, 0, 0, 0, 0.6323484, 0, 0, 0, 0.6323484, 0.564
 mesh = SubResource("BoxMesh_kbf48")
 surface_material_override/0 = SubResource("StandardMaterial3D_0d4hx")
 
-[node name="AttackCompontent" type="Node" parent="." unique_id=1229905637 node_paths=PackedStringArray("weapon_handler", "combo_timer", "hitbox")]
+[node name="AttackCompontent" type="Node3D" parent="." unique_id=458938524 node_paths=PackedStringArray("weapon_handler", "combo_timer", "attack_pivot")]
 script = ExtResource("7_7a1se")
 weapon_handler = NodePath("WeaponHandler")
 combo_timer = NodePath("ComboTimer")
-hitbox = NodePath("../AttackPivot/Hitbox")
+attack_pivot = NodePath("AttackPivot")
+
+[node name="AttackPivot" type="Node3D" parent="AttackCompontent" unique_id=1159120520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22366303, 0, 0)
+
+[node name="Hitbox" parent="AttackCompontent/AttackPivot" unique_id=1108881074 instance=ExtResource("10_x1y6q")]
 
 [node name="WeaponHandler" type="Node" parent="AttackCompontent" unique_id=2110319129]
 script = ExtResource("5_01a4e")
-equipped_weapon = ExtResource("7_lub02")
+equipped_weapon = ExtResource("10_ap3xn")
 
 [node name="ComboTimer" type="Timer" parent="AttackCompontent" unique_id=2065212838]
 wait_time = 0.3
 one_shot = true
-
-[node name="AttackPivot" type="Node3D" parent="." unique_id=1159120520]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22366303, 0, 0)
-
-[node name="Hitbox" type="Area3D" parent="AttackPivot" unique_id=2055575347]
-monitoring = false
-monitorable = false
-script = ExtResource("3_lu8i8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackPivot/Hitbox" unique_id=446402282]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21956402, 0, 0)
-shape = SubResource("BoxShape3D_bai2n")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AttackPivot/Hitbox/CollisionShape3D" unique_id=399762693]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007019043, -0.007507324, 0.005432129)
-visible = false
-mesh = SubResource("BoxMesh_bai2n")
-
-[connection signal="body_entered" from="AttackPivot/Hitbox" to="AttackPivot/Hitbox" method="_on_body_entered"]
