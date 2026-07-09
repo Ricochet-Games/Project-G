@@ -6,10 +6,15 @@ class_name Player
 @export var player_rotation_speed: float = 0.1
 
 @export var health_component: HealthComponent
+@export var attack_compontent: AttackComponent 
+@export var stamina_component: StaminaComponent
+@export var mana_component: ManaComponent
+
+
 @export var camera___sub_viewport_container: SubViewportContainer
 
 
-@export var attack_compontent: AttackComponent 
+
 
 @onready var nameplate: Label3D = $Nameplate
 
@@ -39,6 +44,9 @@ func _input(event: InputEvent)  -> void:
 		
 	if event.is_action_pressed("attack"):
 		attack_compontent.attack()
+		
+	if event.is_action_pressed("attack_skill"):
+		attack_compontent.attack_skill()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

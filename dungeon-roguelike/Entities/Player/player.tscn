@@ -47,11 +47,13 @@ size = Vector2(2, 2)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d4hx"]
 albedo_color = Color(0.5549274, 0.41480064, 1, 1)
 
-[node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("health_component", "camera___sub_viewport_container", "attack_compontent") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("health_component", "attack_compontent", "stamina_component", "mana_component", "camera___sub_viewport_container") groups=["Player"]]
 script = ExtResource("1_4flbx")
 health_component = NodePath("HealthComponent")
-camera___sub_viewport_container = NodePath("CAMERA | SubViewportContainer")
 attack_compontent = NodePath("AttackComponent")
+stamina_component = NodePath("StaminaComponent")
+mana_component = NodePath("ManaComponent")
+camera___sub_viewport_container = NodePath("CAMERA | SubViewportContainer")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=218974347]
 replication_config = SubResource("SceneReplicationConfig_lu8i8")
@@ -67,8 +69,9 @@ outline_size = 8
 [node name="HealthComponent" type="Node" parent="." unique_id=1288673849]
 script = ExtResource("3_x2ivp")
 
-[node name="ManaComponent" type="Node" parent="." unique_id=572190263]
+[node name="ManaComponent" type="Node" parent="." unique_id=572190263 node_paths=PackedStringArray("attack_component")]
 script = ExtResource("3_x1y6q")
+attack_component = NodePath("../AttackComponent")
 
 [node name="StaminaComponent" type="Node" parent="." unique_id=135193112 node_paths=PackedStringArray("attack_component")]
 script = ExtResource("3_lub02")
@@ -123,10 +126,11 @@ transform = Transform3D(0.6323484, 0, 0, 0, 0.6323484, 0, 0, 0, 0.6323484, 0.564
 mesh = SubResource("BoxMesh_kbf48")
 surface_material_override/0 = SubResource("StandardMaterial3D_0d4hx")
 
-[node name="AttackComponent" type="Node3D" parent="." unique_id=458938524 node_paths=PackedStringArray("weapon_handler", "stamina_component", "combo_timer", "attack_pivot")]
+[node name="AttackComponent" type="Node3D" parent="." unique_id=458938524 node_paths=PackedStringArray("weapon_handler", "stamina_component", "mana_component", "combo_timer", "attack_pivot")]
 script = ExtResource("7_7a1se")
 weapon_handler = NodePath("WeaponHandler")
 stamina_component = NodePath("../StaminaComponent")
+mana_component = NodePath("../ManaComponent")
 combo_timer = NodePath("ComboTimer")
 attack_pivot = NodePath("AttackPivot")
 
