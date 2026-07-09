@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://chmcylg6rludq"]
+
+[ext_resource type="Script" uid="uid://v6sysq7j33nu" path="res://Scripts/hud.gd" id="1_kd8cr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mejbw"]
+bg_color = Color(1, 0.767347, 0.7692378, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kd8cr"]
+bg_color = Color(0.55987895, 0.11032549, 0.104507156, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddwof"]
+bg_color = Color(0.5389836, 0.63862956, 0.45212543, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n75gw"]
+bg_color = Color(0.12886626, 0.285731, 0.1463041, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8ahg"]
+bg_color = Color(0.76327235, 0.8331575, 0.93045545, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34gtx"]
+bg_color = Color(0.115260296, 0.3371417, 0.67037874, 1)
+
+[node name="HUD" type="CanvasLayer" unique_id=783075640 node_paths=PackedStringArray("health_bar", "stamina_bar", "mana_bar")]
+script = ExtResource("1_kd8cr")
+health_bar = NodePath("Control/VBoxContainer/Health")
+stamina_bar = NodePath("Control/VBoxContainer/Stamina")
+mana_bar = NodePath("Control/VBoxContainer/Mana")
+
+[node name="Control" type="Control" parent="." unique_id=1634583195]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1001669979]
+layout_mode = 0
+offset_right = 381.0
+offset_bottom = 98.0
+
+[node name="Health" type="ProgressBar" parent="Control/VBoxContainer" unique_id=188205395]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_mejbw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kd8cr")
+value = 75.0
+
+[node name="Stamina" type="ProgressBar" parent="Control/VBoxContainer" unique_id=158487536]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ddwof")
+theme_override_styles/fill = SubResource("StyleBoxFlat_n75gw")
+value = 75.0
+
+[node name="Mana" type="ProgressBar" parent="Control/VBoxContainer" unique_id=1235965030]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_k8ahg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_34gtx")
+value = 75.0

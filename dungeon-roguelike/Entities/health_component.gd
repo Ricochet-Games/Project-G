@@ -2,9 +2,9 @@ extends Node
 class_name HealthComponent
 
 
-signal damaged(amount: int, new_health: int)
-signal healed(amount: int, new_health: int)
-signal health_changed(amount: int)
+signal damaged(amount: int)
+signal healed(amount: int)
+signal health_changed(amount: int, new_health: int)
 signal died
 
 
@@ -15,11 +15,11 @@ signal died
 		var old : int = current_health
 		current_health = clamp(value, 0, max_health)
 		if old != current_health:
-			# health_changed.emit(current_health)
+			health_changed.emit(current_health - old,current_health)
 			if current_health < old:
-				damaged.emit(old - current_health, current_health)
+				damaged.emit(old - current_health)
 			elif current_health > old:
-				healed.emit(current_health - old, current_health)
+				healed.emit(current_health - old)
 				
 			if current_health <= 0 and is_alive():
 				died.emit()
