@@ -18,3 +18,5 @@ class_name AttackSkillData
 @export var damage : float = 40
 
 @export var hitbox_scenes : Array[PackedScene]
+
+@export var effects : Array[SkillEffect]
