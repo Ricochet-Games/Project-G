@@ -15,7 +15,7 @@ signal out_of_mana
 
 func _ready() -> void:
 	current_mana = max_mana
-	attack_component.attacked.connect(_on_attack)
+	attack_component.started_attack.connect(_on_attack)
 	
 
 func _on_attack(_stamina_used: int, mana_used: int) -> void:

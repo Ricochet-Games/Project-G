@@ -11,7 +11,7 @@ var can_combo := false
 @export var attack_pivot : Node3D
 @export var hitboxes: Array[Hitbox]
 
-signal attacked(stamina_used: int) 
+signal started_attack(stamina_used: int, mana_used: int) 
 
 enum AttackState
 {
@@ -69,6 +69,7 @@ func perform_attack(attack : AttackData) -> void:
 	can_combo = false
 	
 	attack_state = AttackState.WINDING_UP
+	started_attack.emit(attack.stamina_cost, attack.mana_cost)
 	await get_tree().create_timer(attack.windup).timeout
 	
 	for hitbox in hitboxes:
@@ -83,7 +84,7 @@ func perform_attack(attack : AttackData) -> void:
 	
 	hitboxes.clear()
 	attack_state = AttackState.RECOVERING
-	attacked.emit(attack.stamina_cost, attack.mana_cost)
+	
 	
 	await get_tree().create_timer(attack.recovery).timeout
 	
@@ -109,6 +110,7 @@ func attack_skill() -> void:
 		return
 		
 	perform_attack_skill(current_attack_skill)
+	
 @warning_ignore("shadowed_variable")
 func perform_attack_skill(attack_skill: AttackSkillData) -> void:
 	for packed_scene in attack_skill.hitbox_scenes:
@@ -118,6 +120,7 @@ func perform_attack_skill(attack_skill: AttackSkillData) -> void:
 		hitbox.damage = attack_skill.damage
 	
 	attack_state = AttackState.WINDING_UP
+	started_attack.emit(attack_skill.stamina_cost, attack_skill.mana_cost)
 	await get_tree().create_timer(attack_skill.windup).timeout
 	
 	for hitbox in hitboxes:
@@ -132,7 +135,7 @@ func perform_attack_skill(attack_skill: AttackSkillData) -> void:
 	
 	hitboxes.clear()
 	attack_state = AttackState.RECOVERING
-	attacked.emit(attack_skill.stamina_cost, attack_skill.mana_cost)
+	
 	
 	await get_tree().create_timer(attack_skill.recovery).timeout
 	

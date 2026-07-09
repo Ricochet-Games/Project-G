@@ -6,8 +6,23 @@ class_name HUD
 @export var stamina_bar : ProgressBar
 @export var mana_bar : ProgressBar
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _enter_tree() -> void:
+	if  get_tree().current_scene.name == "Main":
+		get_tree().current_scene.spawned_player.connect(_on_spawned_player)
+		hide()
+	
+	if get_tree().get_nodes_in_group("UI").any(func(node : Node) -> bool: return node.name == "HUD" and node != self):
+		queue_free()
+
+@warning_ignore("shadowed_variable")
+func _on_spawned_player(player: Player) -> void:
+	if player.is_multiplayer_authority():
+		self.player = player
+		init_HUD()
+	
+func init_HUD() -> void:
+	show()
+	
 	health_bar.value = player.health_component.max_health
 	stamina_bar.value = player.stamina_component.max_stamina
 	mana_bar.value = player.mana_component.max_mana

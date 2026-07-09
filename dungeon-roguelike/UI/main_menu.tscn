@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://lvcq7ix60u17"]
 
-[ext_resource type="Script" uid="uid://ci5j4066j4cu6" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://ci5j4066j4cu6" path="res://UI/main_menu.gd" id="1_06t4h"]
 
-[node name="MainMenu" type="CanvasLayer" unique_id=2048865178]
+[node name="MainMenu" type="CanvasLayer" unique_id=2048865178 groups=["UI"]]
 script = ExtResource("1_06t4h")
 
 [node name="Control" type="Control" parent="." unique_id=459617301]

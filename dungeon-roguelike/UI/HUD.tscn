@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chmcylg6rludq"]
 
-[ext_resource type="Script" uid="uid://v6sysq7j33nu" path="res://Scripts/hud.gd" id="1_kd8cr"]
+[ext_resource type="Script" uid="uid://v6sysq7j33nu" path="res://UI/hud.gd" id="1_kd8cr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mejbw"]
 bg_color = Color(1, 0.767347, 0.7692378, 1)
@@ -20,7 +20,7 @@ bg_color = Color(0.76327235, 0.8331575, 0.93045545, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34gtx"]
 bg_color = Color(0.115260296, 0.3371417, 0.67037874, 1)
 
-[node name="HUD" type="CanvasLayer" unique_id=783075640 node_paths=PackedStringArray("health_bar", "stamina_bar", "mana_bar")]
+[node name="HUD" type="CanvasLayer" unique_id=783075640 node_paths=PackedStringArray("health_bar", "stamina_bar", "mana_bar") groups=["UI"]]
 script = ExtResource("1_kd8cr")
 health_bar = NodePath("Control/VBoxContainer/Health")
 stamina_bar = NodePath("Control/VBoxContainer/Stamina")

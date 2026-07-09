@@ -2,6 +2,7 @@ extends Node
 
 const PLAYER = preload("uid://dskimq7aam0br")
 
+signal spawned_player(player: Player)
 
 @export var cameraHolder: Node
 @export var playerHolder: Node
@@ -23,7 +24,7 @@ func spawn_player(peer_id: int) -> void:
 	var new_player: CharacterBody3D = PLAYER.instantiate() as CharacterBody3D
 	new_player.name = str(peer_id)
 	add_child(new_player)
-
+	spawned_player.emit(new_player)
 	initialize_player(new_player)
 
 

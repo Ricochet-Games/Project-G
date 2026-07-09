@@ -15,7 +15,7 @@ signal out_of_stamina
 
 func _ready() -> void:
 	current_stamina = max_stamina
-	attack_component.attacked.connect(_on_attack)
+	attack_component.started_attack.connect(_on_attack)
 	
 
 func _on_attack(stamina_used: int, _mana_used: int) -> void:
