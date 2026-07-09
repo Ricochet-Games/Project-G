@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c4loax645yjo7"]
 
 [ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/EnemyDebug/EnemyDebug.tscn" id="3_50ct6"]
-[ext_resource type="PackedScene" uid="uid://dskimq7aam0br" path="res://Entities/Player/player.tscn" id="3_hb2xm"]
 [ext_resource type="PackedScene" uid="uid://chmcylg6rludq" path="res://UI/HUD.tscn" id="4_ak5v8"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
 
@@ -160,7 +159,5 @@ compositor = SubResource("Compositor_ak5v8")
 transform = Transform3D(1, 0, 0, 0, 0.6299306, 0.7766515, 0, -0.7766515, 0.6299306, 0, 0, 0)
 shadow_enabled = true
 sky_mode = 1
-
-[node name="Player" parent="." unique_id=1931111436 instance=ExtResource("3_hb2xm")]
 
 [node name="HUD" parent="." unique_id=783075640 instance=ExtResource("4_ak5v8")]

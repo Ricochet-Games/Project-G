@@ -16,10 +16,12 @@ class_name Player
 func _enter_tree() -> void:
 	if Network.is_steam_initialized and multiplayer.has_multiplayer_peer():
 		set_multiplayer_authority(int(name))
-
+	
+	
 
 func _ready() -> void:
 	nameplate.text = name
+	GameManager.spawned_player.emit(self)
 	
 	if not is_multiplayer_authority():
 		camera___sub_viewport_container.visible = false
