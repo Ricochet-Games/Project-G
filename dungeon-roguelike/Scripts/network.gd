@@ -4,10 +4,6 @@ signal host_created()
 
 var peer : SteamMultiplayerPeer
 
-#var PORT: int = 9999
-#var IP_ADRESS: String = '127.0.0.1'
-#var is_server: bool = false
-
 const LOBBY_TYPE := Steam.LobbyType.LOBBY_TYPE_FRIENDS_ONLY
 const MAX_MEMBERS := 4
 static var is_steam_initialized := false
@@ -42,6 +38,7 @@ func _process(_delta: float) -> void:
 
 func host_lobby() -> void:
 	if !is_steam_initialized:
+		host_created.emit()
 		return
 		
 	Steam.createLobby(LOBBY_TYPE, MAX_MEMBERS)

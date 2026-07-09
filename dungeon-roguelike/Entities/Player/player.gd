@@ -2,7 +2,6 @@ extends CharacterBody3D
 class_name Player
 
 @export var speed: float = 5.0
-
 @export var player_rotation_speed: float = 0.1
 
 @export var health_component: HealthComponent
@@ -10,24 +9,16 @@ class_name Player
 @export var stamina_component: StaminaComponent
 @export var mana_component: ManaComponent
 
-
 @export var camera___sub_viewport_container: SubViewportContainer
 
-
-
-
 @onready var nameplate: Label3D = $Nameplate
-
-
 
 func _enter_tree() -> void:
 	if Network.is_steam_initialized and multiplayer.has_multiplayer_peer():
 		set_multiplayer_authority(int(name))
-	
-		
+
 
 func _ready() -> void:
-	add_to_group("Player")
 	nameplate.text = name
 	
 	if not is_multiplayer_authority():
@@ -36,7 +27,7 @@ func _ready() -> void:
 	if Network.is_steam_initialized and multiplayer.has_multiplayer_peer() and not is_multiplayer_authority():
 		set_process(false)
 		set_physics_process(false)
-		return;
+
 
 func _input(event: InputEvent)  -> void:
 	if not is_multiplayer_authority():
