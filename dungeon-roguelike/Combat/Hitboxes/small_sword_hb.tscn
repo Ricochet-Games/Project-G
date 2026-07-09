@@ -8,11 +8,11 @@ size = Vector3(0.5119629, 0.24505615, 0.73773193)
 [sub_resource type="BoxMesh" id="BoxMesh_bai2n"]
 size = Vector3(0.49816895, 0.23474121, 0.7305908)
 
-[node name="Hitbox" type="Area3D" unique_id=1108881074 node_paths=PackedStringArray("mesh_instance_3d")]
+[node name="Hitbox" type="Area3D" unique_id=1108881074 node_paths=PackedStringArray("meshes")]
 monitoring = false
 monitorable = false
 script = ExtResource("1_6tf7b")
-mesh_instance_3d = NodePath("CollisionShape3D/MeshInstance3D")
+meshes = [NodePath("CollisionShape3D/MeshInstance3D")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=451502265]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21956402, 0, 0)

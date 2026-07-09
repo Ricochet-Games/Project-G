@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AttackSkillData" format=3 uid="uid://d0yqq235ri3m"]
+
+[ext_resource type="PackedScene" uid="uid://cgp6nraor1ibj" path="res://Combat/Hitboxes/spear_cast.tscn" id="1_fcc07"]
+[ext_resource type="Script" uid="uid://b7xlc3nwlnrc3" path="res://Combat/attack_skill_data.gd" id="1_s8gp6"]
+
+[resource]
+script = ExtResource("1_s8gp6")
+skill_name = "SpearCast"
+mana_cost = 30.0
+stamina_cost = 30.0
+damage_type = 2
+damage = 20.0
+hitbox_scenes = Array[PackedScene]([ExtResource("1_fcc07")])
+metadata/_custom_type_script = "uid://b7xlc3nwlnrc3"

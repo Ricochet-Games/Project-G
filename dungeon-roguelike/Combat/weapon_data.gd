@@ -9,7 +9,7 @@ class_name WeaponData
 
 @export var offhand_attacks : Array[AttackData]
 
-@export var skills : Array[AttackSkill]
+@export var attack_skills : Array[AttackSkillData]
 
 @export var attack_speed : float = 1.0
 

@@ -6,8 +6,11 @@
 [ext_resource type="Script" uid="uid://b7xlc3nwlnrc3" path="res://Combat/attack_skill_data.gd" id="3_kjrdv"]
 [ext_resource type="Resource" uid="uid://b0u6mu3o6l6aq" path="res://Combat/Attacks/Spear1.tres" id="3_vhi5m"]
 [ext_resource type="Resource" uid="uid://c1rbcrpratqdt" path="res://Combat/Attacks/Spear2.tres" id="4_54glm"]
+[ext_resource type="Resource" uid="uid://d0yqq235ri3m" path="res://Combat/AttackSkill/SpearCast.tres" id="7_54glm"]
 
 [resource]
 script = ExtResource("2_of2j8")
+weapon_type = 3
 attacks = Array[ExtResource("1_vse22")]([ExtResource("2_kjrdv"), ExtResource("2_kjrdv"), ExtResource("3_vhi5m"), ExtResource("4_54glm")])
+attack_skills = Array[ExtResource("3_kjrdv")]([ExtResource("7_54glm")])
 metadata/_custom_type_script = "uid://cukfb368ajudm"

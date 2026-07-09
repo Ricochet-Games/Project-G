@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cgp6nraor1ibj"]
+
+[ext_resource type="Script" uid="uid://bb53n60eaedei" path="res://Entities/Player/hitbox.gd" id="1_1ryav"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bai2n"]
+size = Vector3(1.4865079, 0.245, 0.213)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bai2n"]
+size = Vector3(0.49816895, 0.23474121, 0.7305908)
+
+[node name="Hitbox" type="Area3D" unique_id=1108881074 node_paths=PackedStringArray("meshes")]
+monitoring = false
+monitorable = false
+script = ExtResource("1_1ryav")
+meshes = [NodePath("CollisionShape3D3/MeshInstance3D"), NodePath("CollisionShape3D2/MeshInstance3D"), NodePath("CollisionShape3D/MeshInstance3D")]
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1854227472]
+transform = Transform3D(0.9252097, 0, -0.37945616, 0, 1, 0, 0.37945616, 0, 0.9252097, 0.628, 0, 0.377)
+shape = SubResource("BoxShape3D_bai2n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D3" unique_id=1748720446]
+transform = Transform3D(2.9456124, 0, 0, 0, 1.0381291, 0, 0, 0, 0.2832615, 0.005491376, -0.004805267, 0.005432129)
+visible = false
+mesh = SubResource("BoxMesh_bai2n")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1393872326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7143005, 0, 0)
+shape = SubResource("BoxShape3D_bai2n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D2" unique_id=2110506202]
+transform = Transform3D(2.9456124, 0, 0, 0, 1.0381291, 0, 0, 0, 0.2832615, 0.005491376, -0.004805267, 0.005432129)
+visible = false
+mesh = SubResource("BoxMesh_bai2n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=451502265]
+transform = Transform3D(0.9251041, 0, 0.37971368, 0, 1, 0, -0.37971368, 0, 0.9251041, 0.62753665, 0, -0.3769279)
+shape = SubResource("BoxShape3D_bai2n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1352356852]
+transform = Transform3D(2.9456124, 0, 0, 0, 1.0381291, 0, 0, 0, 0.2832615, 0.005491376, -0.004805267, 0.005432129)
+visible = false
+mesh = SubResource("BoxMesh_bai2n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
