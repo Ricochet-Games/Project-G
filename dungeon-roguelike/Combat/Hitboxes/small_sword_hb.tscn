@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bt8gq4gwbsvh1"]
 
-[ext_resource type="Script" uid="uid://bb53n60eaedei" path="res://Entities/Player/hitbox.gd" id="1_6tf7b"]
+[ext_resource type="Script" uid="uid://bb53n60eaedei" path="res://Entities/hitbox.gd" id="1_6tf7b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bai2n"]
 size = Vector3(0.5119629, 0.24505615, 0.73773193)

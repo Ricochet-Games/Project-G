@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dskimq7aam0br"]
 
 [ext_resource type="Script" uid="uid://ds116btnx83sn" path="res://Entities/Player/player.gd" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://xi8yfcr64nd8" path="res://Entities/Player/stamina_component.gd" id="3_lub02"]
-[ext_resource type="Script" uid="uid://b0vdglsluco2g" path="res://Entities/Player/mana_component.gd" id="3_x1y6q"]
+[ext_resource type="Script" uid="uid://xi8yfcr64nd8" path="res://Entities/stamina_component.gd" id="3_lub02"]
+[ext_resource type="Script" uid="uid://b0vdglsluco2g" path="res://Entities/mana_component.gd" id="3_x1y6q"]
 [ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Entities/health_component.gd" id="3_x2ivp"]
-[ext_resource type="Script" uid="uid://ctule5wjh77pc" path="res://Scenes/camera_rig.gd" id="4_5c2io"]
+[ext_resource type="Script" uid="uid://ctule5wjh77pc" path="res://Scripts/camera_rig.gd" id="4_5c2io"]
 [ext_resource type="Script" uid="uid://ca54oalk1rbso" path="res://Entities/Player/weapon_handler.gd" id="5_01a4e"]
 [ext_resource type="Shader" uid="uid://cpd1kta6eyid3" path="res://Shaders/post_processing_new.gdshader" id="5_4wf4l"]
-[ext_resource type="Script" uid="uid://bsxd4qhty2lq6" path="res://Entities/Player/attack_componenet.gd" id="7_7a1se"]
+[ext_resource type="Script" uid="uid://bsxd4qhty2lq6" path="res://Entities/attack_componenet.gd" id="7_7a1se"]
 [ext_resource type="Resource" uid="uid://cv1176vfcrln3" path="res://Combat/Weapons/Spear.tres" id="10_ap3xn"]
 [ext_resource type="PackedScene" uid="uid://bt8gq4gwbsvh1" path="res://Combat/Hitboxes/small_sword_hb.tscn" id="10_x1y6q"]
 

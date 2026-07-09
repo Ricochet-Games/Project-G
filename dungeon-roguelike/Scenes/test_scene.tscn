@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/EnemyDebug/EnemyDebug.tscn" id="3_50ct6"]
 [ext_resource type="PackedScene" uid="uid://dskimq7aam0br" path="res://Entities/Player/player.tscn" id="3_hb2xm"]
-[ext_resource type="PackedScene" uid="uid://chmcylg6rludq" path="res://Combat/AttackSkill/HUD.tscn" id="4_ak5v8"]
+[ext_resource type="PackedScene" uid="uid://chmcylg6rludq" path="res://UI/HUD.tscn" id="4_ak5v8"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e1a36"]
@@ -162,7 +162,5 @@ shadow_enabled = true
 sky_mode = 1
 
 [node name="Player" parent="." unique_id=1931111436 instance=ExtResource("3_hb2xm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011694789, -0.004711777, 1.1918303)
 
-[node name="HUD" parent="." unique_id=783075640 node_paths=PackedStringArray("player") instance=ExtResource("4_ak5v8")]
-player = NodePath("../Player")
+[node name="HUD" parent="." unique_id=783075640 instance=ExtResource("4_ak5v8")]
