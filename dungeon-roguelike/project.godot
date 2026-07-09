@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Network="*uid://dul6uxdhlx6jo"
 SceneManager="*uid://dn3jfrrvvi6s4"
+GameManager="*uid://dnymcxunkbbks"
 
 [debug]
 
@@ -34,6 +35,11 @@ window/stretch/aspect="keep_height"
 [dotnet]
 
 project/assembly_name="Dungeon Roguelike"
+
+[global_group]
+
+UI=""
+Player=""
 
 [input]
 
