@@ -16,7 +16,6 @@ func _enter_tree() -> void:
 
 @warning_ignore("shadowed_variable")
 func _on_spawned_player(player: Player) -> void:
-	print("e")
 	if player.is_multiplayer_authority():
 		self.player = player
 		init_HUD()
