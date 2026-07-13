@@ -56,3 +56,6 @@ health_component = NodePath("../../../HealthComponent")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=259891875]
 replication_config = SubResource("SceneReplicationConfig_pqlvj")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1770604678]
+path_desired_distance = 0.5
