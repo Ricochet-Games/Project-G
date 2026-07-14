@@ -1,0 +1,2 @@
+extends Transition
+class_name TargetNoticedTransition
