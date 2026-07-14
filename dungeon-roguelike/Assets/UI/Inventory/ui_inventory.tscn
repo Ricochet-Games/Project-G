@@ -2,12 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://yngtr8kr7sre" path="res://Assets/UI/Inventory/UIBook.png" id="1_glbya"]
 [ext_resource type="PackedScene" uid="uid://cudxdnexp8a64" path="res://Assets/UI/Inventory/ui_inventory_slot.tscn" id="2_evtp7"]
+[ext_resource type="Script" uid="uid://cbal5uqjt5ib1" path="res://Assets/UI/Inventory/ui_inventory.gd" id="2_nguks"]
 
 [node name="Inventory" type="TextureRect" unique_id=2138976244]
 texture_filter = 1
 offset_right = 700.0
 offset_bottom = 500.0
 texture = ExtResource("1_glbya")
+script = ExtResource("2_nguks")
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=942567918]
 layout_mode = 1
