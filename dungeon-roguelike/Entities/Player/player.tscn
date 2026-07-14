@@ -78,6 +78,7 @@ script = ExtResource("3_lub02")
 attack_component = NodePath("../AttackComponent")
 
 [node name="CAMERA | SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1662572149]
+texture_filter = 1
 offset_right = 1280.0
 offset_bottom = 720.0
 stretch = true
