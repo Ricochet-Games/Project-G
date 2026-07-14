@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2hcq61pq6a2b" path="res://Scripts/SpellCasting/spell_caster.gd" id="1_2ats5"]
 [ext_resource type="PackedScene" uid="uid://n12ws1deohx" path="res://Entities/projectile_base.tscn" id="2_qdkp2"]
-[ext_resource type="PackedScene" uid="uid://yo5eyyn0chws" path="res://Assets/spell_casting_ui.tscn" id="3_2ats5"]
+[ext_resource type="PackedScene" uid="uid://yo5eyyn0chws" path="res://Assets/UI/Spellcasting/spell_casting_ui.tscn" id="3_2ats5"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_2ats5"]
 radius = 0.25
