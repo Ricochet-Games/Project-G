@@ -32,13 +32,6 @@ properties/0/replication_mode = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_8qe5v"]
 size = Vector3(10, 10, 10)
 
-[sub_resource type="BoxMesh" id="BoxMesh_bai2n"]
-size = Vector3(9.895412, 9.5607605, 9.349396)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewsjv"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.09019608)
-
 [node name="EnemyDebug" type="CharacterBody3D" unique_id=1755374623]
 script = ExtResource("1_h8mmp")
 
@@ -81,7 +74,6 @@ replication_config = SubResource("SceneReplicationConfig_pqlvj")
 path_desired_distance = 0.5
 
 [node name="VisionComponent" type="Node3D" parent="." unique_id=2029307320 node_paths=PackedStringArray("timer", "vision_area", "ray_cast_3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9594084, 0, 0)
 script = ExtResource("4_0f3eu")
 timer = NodePath("Timer")
 vision_area = NodePath("VisionArea")
@@ -96,11 +88,6 @@ target_position = Vector3(10, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0891876, 0, -0.004784256)
 shape = SubResource("BoxShape3D_8qe5v")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VisionComponent/VisionArea" unique_id=1333068498]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1131697, -0.19847107, -0.065200806)
-mesh = SubResource("BoxMesh_bai2n")
-surface_material_override/0 = SubResource("StandardMaterial3D_ewsjv")
-
 [node name="Timer" type="Timer" parent="VisionComponent" unique_id=411610223]
 wait_time = 0.25
 autostart = true
@@ -110,20 +97,22 @@ script = ExtResource("5_5focn")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1726856964 node_paths=PackedStringArray("starting_state")]
 script = ExtResource("6_ewwm0")
-starting_state = NodePath("ChaseState")
+starting_state = NodePath("IdleState")
 metadata/_custom_type_script = "uid://cx8jv8jv6d6fg"
 
 [node name="IdleState" type="Node" parent="StateMachine" unique_id=1140677409]
 script = ExtResource("7_8jrhc")
 metadata/_custom_type_script = "uid://1mkpjp8f16qh"
 
+[node name="CanSeePlayerTransition" type="Node" parent="StateMachine/IdleState" unique_id=1881261349 node_paths=PackedStringArray("vision_component", "next_state")]
+script = ExtResource("9_b6puq")
+vision_component = NodePath("../../../VisionComponent")
+next_state = NodePath("../../ChaseState")
+metadata/_custom_type_script = "uid://brrs322f0e7yj"
+
 [node name="PatrolState" type="Node" parent="StateMachine" unique_id=2018449940]
 script = ExtResource("8_8wih3")
 metadata/_custom_type_script = "uid://bhie1hecuyggu"
-
-[node name="CanSeePlayerTransition" type="Node" parent="StateMachine/PatrolState" unique_id=1881261349]
-script = ExtResource("9_b6puq")
-metadata/_custom_type_script = "uid://brrs322f0e7yj"
 
 [node name="TargetNoticedTransition" type="Node" parent="StateMachine/PatrolState" unique_id=861558787]
 script = ExtResource("11_b6puq")
@@ -135,10 +124,6 @@ metadata/_custom_type_script = "uid://bhie1hecuyggu"
 
 [node name="TargetNoticedTransition" type="Node" parent="StateMachine/StalkState" unique_id=151538427]
 script = ExtResource("11_b6puq")
-metadata/_custom_type_script = "uid://b2g7ddncvt5k1"
-
-[node name="Transition" type="Node" parent="StateMachine/StalkState" unique_id=1351772595]
-script = ExtResource("8_8jrhc")
 metadata/_custom_type_script = "uid://b2g7ddncvt5k1"
 
 [node name="ChaseState" type="Node" parent="StateMachine" unique_id=1198110046 node_paths=PackedStringArray("navigation_agent")]

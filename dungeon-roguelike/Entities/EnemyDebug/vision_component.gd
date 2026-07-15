@@ -23,28 +23,22 @@ func _on_timer_timeout() -> void:
 	
 	for overlap in overlaps:
 		if overlap is not Player:
-			print(overlap)
-			print(overlap.name)
-			return
+			continue
 			
-		print(overlap)
 		
 		var local_target : Vector3 = ray_cast_3d.to_local(overlap.global_position)
 		ray_cast_3d.target_position = local_target
 		ray_cast_3d.force_raycast_update()
 		
 		if not ray_cast_3d.is_colliding():
-			print("e")
-			return
+			continue
 		
 		if ray_cast_3d.get_collider() == overlap:
-			print("Found Player" + str(overlap.global_position))
 			if has_target == false:
 				current_target = overlap
 				found_target.emit(current_target)
 			has_target = true
 		else:
-			print("Not Player")
 			if has_target:
 				lost_target.emit(current_target)
 				current_target = null

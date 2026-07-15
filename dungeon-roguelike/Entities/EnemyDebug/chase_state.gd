@@ -17,7 +17,6 @@ func physics_update(delta: float) -> void:
 	if target == null:
 		return
 
-	print("e")
 	navigation_agent.target_position = target.global_position
 
 	if navigation_agent.is_navigation_finished():

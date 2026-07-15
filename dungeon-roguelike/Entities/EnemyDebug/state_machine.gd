@@ -11,6 +11,7 @@ func _ready() -> void:
 			child.enemy = owner
 			child.state_machine = self
 
+
 	change_state(starting_state)
 
 func change_state(new_state: State) -> void:
@@ -25,7 +26,6 @@ func change_state(new_state: State) -> void:
 func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.physics_update(delta)
-
 
 func _process(delta: float) -> void:
 	if current_state:
