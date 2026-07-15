@@ -1,16 +1,26 @@
 extends Node
 class_name Transition
 
-var current_state : State
-@export var next_state : State 
-signal transition(new_stae: State)
 
-func _ready() -> void:
-	current_state = get_parent() as State
-	print(get_parent())
-	
-func start_transiton(_target: Node3D)-> void:
-	print(current_state)
-	#transition.emit(next_state)
-	print(current_state.state_machine)
-	next_state.state_machine.change_state(next_state)
+@export var target_state: State
+
+var context: AIContext
+var blackboard: Blackboard
+
+func initialize(
+	_ai_context: AIContext,
+	_blackboard: Blackboard
+) -> void:
+
+	context = _ai_context
+	blackboard = _blackboard
+
+## Override this in child transitions.
+##
+## Return true when this transition should happen.
+
+func can_transition() -> bool:
+	return false
+
+func on_transition() -> void:
+	pass

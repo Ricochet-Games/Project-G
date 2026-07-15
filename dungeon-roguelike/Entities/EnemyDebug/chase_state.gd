@@ -20,35 +20,35 @@ func physics_update(delta: float) -> void:
 	navigation_agent.target_position = target.global_position
 
 	if navigation_agent.is_navigation_finished():
-		enemy.velocity = Vector3.ZERO
-		enemy.move_and_slide()
+		context.enemy.velocity = Vector3.ZERO
+		context.enemy.move_and_slide()
 		return
 
 	var next_position : Vector3 = navigation_agent.get_next_path_position()
-	var direction : Vector3 = enemy.global_position.direction_to(next_position)
+	var direction : Vector3 = context.enemy.global_position.direction_to(next_position)
 	direction.y = 0
 	direction = direction.normalized()
 	var target_velocity : Vector3 = direction * speed
 
 
 
-	enemy.velocity.x = move_toward(
-		enemy.velocity.x,
+	context.enemy.velocity.x = move_toward(
+		context.enemy.velocity.x,
 		target_velocity.x,
 		acceleration * delta
 	)
 
-	enemy.velocity.z = move_toward(
-		enemy.velocity.z,
+	context.enemy.velocity.z = move_toward(
+		context.enemy.velocity.z,
 		target_velocity.z,
 		acceleration * delta
 	)
 
 	if direction.length() > 0:
-		enemy.rotation.y = atan2(direction.x, direction.z) - deg_to_rad(90)
+		context.enemy.rotation.y = atan2(direction.x, direction.z) - deg_to_rad(90)
 	
 	# Apply movement
-	enemy.move_and_slide()
+	context.enemy.move_and_slide()
 
 func update(_delta: float) -> void:
 	pass

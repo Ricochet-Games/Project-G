@@ -2,10 +2,8 @@ extends CharacterBody3D
 class_name EnemyBase
 
 
-@onready var health: HealthComponent = $HealthComponent
-
-@onready var movement = $MovementComponent
-@onready var vision = $VisionComponent
+@export var health: HealthComponent 
+@export var vision: VisionComponent 
 #@onready var attack = $AttackComponent
 
 var target: Node3D
