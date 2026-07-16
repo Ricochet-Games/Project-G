@@ -10,8 +10,8 @@ func _ready() -> void:
 	close()
 
 func update_slots() -> void:
-	for i in range(min(inv.items.size(), slots.size())):
-		slots[i].update(inv.items[i])
+	for i in range(min(inv.slots.size(), slots.size())):
+		slots[i].update(inv.slots[i])
 
 func _process(_delta: Variant) -> void:
 	if Input.is_action_just_pressed("test_input"):

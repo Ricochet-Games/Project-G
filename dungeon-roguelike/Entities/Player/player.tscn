@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bsxd4qhty2lq6" path="res://Entities/attack_componenet.gd" id="7_7a1se"]
 [ext_resource type="Resource" uid="uid://cv1176vfcrln3" path="res://Combat/Weapons/Spear.tres" id="10_ap3xn"]
 [ext_resource type="PackedScene" uid="uid://bt8gq4gwbsvh1" path="res://Combat/Hitboxes/small_sword_hb.tscn" id="10_x1y6q"]
+[ext_resource type="Script" uid="uid://27r66wuk8hrf" path="res://Entities/Player/item_pickup_component.gd" id="13_owvpp"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lu8i8"]
 properties/0/path = NodePath(".:position")
@@ -48,6 +49,8 @@ size = Vector2(2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d4hx"]
 albedo_color = Color(0.5549274, 0.41480064, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yguum"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("health_component", "attack_compontent", "stamina_component", "mana_component", "camera___sub_viewport_container") groups=["Player"]]
 script = ExtResource("1_4flbx")
@@ -163,3 +166,13 @@ equipped_weapon = ExtResource("10_ap3xn")
 [node name="ComboTimer" type="Timer" parent="AttackComponent" unique_id=2065212838]
 wait_time = 0.3
 one_shot = true
+
+[node name="ItemPickupComponent" type="Area3D" parent="." unique_id=866598945]
+script = ExtResource("13_owvpp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemPickupComponent" unique_id=1748209735]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+shape = SubResource("SphereShape3D_yguum")
+
+[connection signal="area_entered" from="ItemPickupComponent" to="ItemPickupComponent" method="_on_area_entered"]
+[connection signal="area_exited" from="ItemPickupComponent" to="ItemPickupComponent" method="_on_area_exited"]

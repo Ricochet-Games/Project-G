@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d0qn6a1or6y4k"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yguum"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yguum"]
+
+[node name="TestItem" type="Node3D" unique_id=881543732]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1349080471]
+mesh = SubResource("SphereMesh_yguum")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=370718651]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1396626610]
+shape = SubResource("SphereShape3D_yguum")
