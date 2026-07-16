@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://dskimq7aam0br"]
 
 [ext_resource type="Script" uid="uid://ds116btnx83sn" path="res://Entities/Player/player.gd" id="1_4flbx"]
+[ext_resource type="Resource" uid="uid://bph5a84yyljwh" path="res://Resources/Inventory/player_inventory.tres" id="2_ap3xn"]
 [ext_resource type="Script" uid="uid://xi8yfcr64nd8" path="res://Entities/stamina_component.gd" id="3_lub02"]
 [ext_resource type="Script" uid="uid://b0vdglsluco2g" path="res://Entities/mana_component.gd" id="3_x1y6q"]
 [ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Entities/health_component.gd" id="3_x2ivp"]
 [ext_resource type="Script" uid="uid://ctule5wjh77pc" path="res://Scripts/camera_rig.gd" id="4_5c2io"]
 [ext_resource type="Script" uid="uid://ca54oalk1rbso" path="res://Entities/Player/weapon_handler.gd" id="5_01a4e"]
 [ext_resource type="Shader" uid="uid://cpd1kta6eyid3" path="res://Shaders/post_processing_new.gdshader" id="5_4wf4l"]
+[ext_resource type="PackedScene" uid="uid://dlsicbixl1nr6" path="res://Assets/UI/Inventory/ui_inventory.tscn" id="6_iplt1"]
 [ext_resource type="Script" uid="uid://bsxd4qhty2lq6" path="res://Entities/attack_componenet.gd" id="7_7a1se"]
 [ext_resource type="Resource" uid="uid://cv1176vfcrln3" path="res://Combat/Weapons/Spear.tres" id="10_ap3xn"]
 [ext_resource type="PackedScene" uid="uid://bt8gq4gwbsvh1" path="res://Combat/Hitboxes/small_sword_hb.tscn" id="10_x1y6q"]
@@ -54,6 +56,7 @@ attack_compontent = NodePath("AttackComponent")
 stamina_component = NodePath("StaminaComponent")
 mana_component = NodePath("ManaComponent")
 camera___sub_viewport_container = NodePath("CAMERA | SubViewportContainer")
+inv = ExtResource("2_ap3xn")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=218974347]
 replication_config = SubResource("SceneReplicationConfig_lu8i8")
@@ -76,6 +79,19 @@ attack_component = NodePath("../AttackComponent")
 [node name="StaminaComponent" type="Node" parent="." unique_id=135193112 node_paths=PackedStringArray("attack_component")]
 script = ExtResource("3_lub02")
 attack_component = NodePath("../AttackComponent")
+
+[node name="Inventory" parent="." unique_id=2138976244 instance=ExtResource("6_iplt1")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CAMERA | SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1662572149]
 texture_filter = 1

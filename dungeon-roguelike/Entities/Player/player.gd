@@ -11,6 +11,8 @@ class_name Player
 
 @export var camera___sub_viewport_container: SubViewportContainer
 
+@export var inv: Inv
+
 @onready var nameplate: Label3D = $Nameplate
 
 func _enter_tree() -> void:

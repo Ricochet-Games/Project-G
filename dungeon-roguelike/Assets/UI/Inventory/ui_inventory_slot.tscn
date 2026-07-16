@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cudxdnexp8a64"]
 
+[ext_resource type="Script" uid="uid://bii2pyfdd1ukd" path="res://Assets/UI/Inventory/ui_inventory_slot.gd" id="1_c01ee"]
 [ext_resource type="Texture2D" uid="uid://ce7ko86d13im5" path="res://Assets/UI/Inventory/UIBook_Slot.png" id="1_hqi4l"]
 
 [node name="InventoryUISlot" type="Panel" unique_id=166101265]
@@ -8,10 +9,21 @@ custom_minimum_size = Vector2(32, 32)
 custom_maximum_size = Vector2(48, 48)
 offset_right = 32.0
 offset_bottom = 32.0
+script = ExtResource("1_c01ee")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1198124371]
 texture_filter = 1
 position = Vector2(16, 16)
 texture = ExtResource("1_hqi4l")
 
-[node name="ItemDisplay" type="Sprite2D" parent="." unique_id=264473414]
+[node name="Control" type="Control" parent="." unique_id=1496273979]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemDisplay" type="Sprite2D" parent="Control" unique_id=264473414]
