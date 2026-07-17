@@ -7,7 +7,6 @@ signal lost_target(target: Node3D)
 @export var timer: Timer
 @export var vision_area: Area3D
 @export var ray_cast_3d: RayCast3D
-@export var blackboard: Blackboard
 
 var has_target : bool = false
 var current_target : Node3D

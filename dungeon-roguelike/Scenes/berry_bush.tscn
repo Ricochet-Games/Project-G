@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://yv73fbubxixj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bai2n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stybw"]
+albedo_color = Color(0, 0.4509804, 0, 1)
+
+[node name="BerryBush" type="Node3D" unique_id=1063973715]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=534069173]
+mesh = SubResource("BoxMesh_bai2n")
+surface_material_override/0 = SubResource("StandardMaterial3D_stybw")

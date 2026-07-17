@@ -2,6 +2,7 @@ extends Node
 class_name StaminaComponent
 
 signal used_stamina(amount: int, new_stamina: int)
+@warning_ignore("unused_signal")
 signal gained_stamina(amount: int, new_stamina: int)
 signal stamina_changed(amount: int, new_stamina: int)
 signal out_of_stamina

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c24v1vgd5owa1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_bai2n"]
+radius = 0.125
+height = 0.25
+
+[node name="DebugTarget" type="Node3D" unique_id=1840488027]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1411367055]
+mesh = SubResource("SphereMesh_bai2n")

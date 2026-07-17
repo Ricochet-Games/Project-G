@@ -4,6 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/EnemyDebug/EnemyDebug.tscn" id="3_50ct6"]
 [ext_resource type="PackedScene" uid="uid://chmcylg6rludq" path="res://UI/HUD.tscn" id="4_ak5v8"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
+[ext_resource type="PackedScene" uid="uid://yv73fbubxixj" path="res://Scenes/berry_bush.tscn" id="5_ak5v8"]
+
+[sub_resource type="Environment" id="Environment_50ct6"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hb2xm"]
+
+[sub_resource type="Compositor" id="Compositor_ak5v8"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hb2xm"]
 vertices = PackedVector3Array(-2.1520255, -0.35629004, -3.2879, -1.9520257, -0.35629004, -3.0879, -1.7520256, -0.35629004, -3.2879, -0.05202532, -0.35629004, -5.3879, 0.9479747, -0.35629004, -3.0879, 1.5479746, -0.35629004, -2.6878998, 2.0479746, -0.35629004, -3.1878998, -2.0520256, -0.35629004, -2.2879, -5.3520255, -0.35629004, -0.18790007, -0.5520253, -0.35629004, -0.8878999, -0.2520256, -0.35629004, -0.8878999, -0.05202532, -0.35629004, -1.7879, -1.7520256, -0.35629004, -1.9879, -1.4520254, -0.35629004, -0.18790007, -2.6520255, -0.35629004, 2.5121002, -1.0520253, -0.35629004, 0.6121001, -1.4520254, -0.35629004, 0.31209993, 0.047974586, -0.35629004, -0.8878999, 1.5479746, -0.35629004, -1.9879, 0.5479746, -0.35629004, -0.48789978, 1.2479744, -0.35629004, -1.6879001, 0.9479747, -0.35629004, -0.087899685, 0.9479747, -0.35629004, 0.31209993, 3.4479742, -0.35629004, 1.5121002, 5.147975, -0.35629004, -0.18790007, 0.6479745, -0.35629004, 0.7121, 0.047974586, -0.35629004, 0.7121, -0.05202532, -0.35629004, 0.9121003, -0.05202532, -0.35629004, 5.1121006)
@@ -34,6 +41,7 @@ shader_parameter/border_width = 0.01
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yglu3"]
 material = SubResource("ShaderMaterial_e1a36")
+size = Vector2(10, 10)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cqqll"]
 plane = Plane(0, 0.01, 0, 0)
@@ -90,19 +98,22 @@ material = SubResource("ShaderMaterial_ii5jo")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bai2n"]
 
-[sub_resource type="Environment" id="Environment_50ct6"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hb2xm"]
-
-[sub_resource type="Compositor" id="Compositor_ak5v8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ak5v8"]
+viewport_path = NodePath("Sprite3D/SubViewport")
 
 [node name="test_scene" type="Node3D" unique_id=2004884040]
 
-[node name="Player" parent="." unique_id=1931111436 instance=ExtResource("1_hb2xm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94038403, -0.25581008, 0.55151826)
+[node name="HUD" parent="." unique_id=783075640 instance=ExtResource("4_ak5v8")]
 
-[node name="SpawnPoint" type="Node3D" parent="." unique_id=556582167]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2809549, -0.056652993, 0.64730495)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=45945776]
+environment = SubResource("Environment_50ct6")
+camera_attributes = SubResource("CameraAttributesPractical_hb2xm")
+compositor = SubResource("Compositor_ak5v8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1599021426]
+transform = Transform3D(1, 0, 0, 0, 0.6299306, 0.7766515, 0, -0.7766515, 0.6299306, 0, 0, 0)
+shadow_enabled = true
+sky_mode = 1
 
 [node name="NavigationRegion3D2" type="NavigationRegion3D" parent="." unique_id=135061143]
 navigation_mesh = SubResource("NavigationMesh_hb2xm")
@@ -166,17 +177,19 @@ mesh = SubResource("CylinderMesh_ak5v8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Level/Cylinder/StaticBody3D" unique_id=1535979150]
 shape = SubResource("CylinderShape3D_bai2n")
 
+[node name="Player" parent="." unique_id=1931111436 instance=ExtResource("1_hb2xm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94038403, -0.25581008, 0.55151826)
+
 [node name="EnemyDebug" parent="." unique_id=1755374623 instance=ExtResource("3_50ct6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2747469, -0.22885934, 0.8565951)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=45945776]
-environment = SubResource("Environment_50ct6")
-camera_attributes = SubResource("CameraAttributesPractical_hb2xm")
-compositor = SubResource("Compositor_ak5v8")
+[node name="Sprite3D" parent="EnemyDebug" index="2" unique_id=921046425]
+texture = SubResource("ViewportTexture_ak5v8")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1599021426]
-transform = Transform3D(1, 0, 0, 0, 0.6299306, 0.7766515, 0, -0.7766515, 0.6299306, 0, 0, 0)
-shadow_enabled = true
-sky_mode = 1
+[node name="ThreatTracker" parent="EnemyDebug/AIController/Blackboard" parent_id_path=PackedInt32Array(1755374623, 1317999935) index="0" unique_id=1225472640 node_paths=PackedStringArray("known_threats")]
+known_threats = [NodePath("../../../../Player")]
 
-[node name="HUD" parent="." unique_id=783075640 instance=ExtResource("4_ak5v8")]
+[node name="BerryBush" parent="." unique_id=1063973715 instance=ExtResource("5_ak5v8")]
+transform = Transform3D(0.21000001, 0, 0, 0, 0.21000001, 0, 0, 0, 0.21000001, 2.5699544, -0.2546287, 1.5178599)
+
+[editable path="EnemyDebug"]

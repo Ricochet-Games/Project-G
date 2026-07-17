@@ -1,9 +1,10 @@
 extends CharacterBody3D
-class_name EnemyBase
+class_name CreatureBase
 
 
 @export var health: HealthComponent 
 @export var vision: VisionComponent 
+@export var movement: MovementComponent 
 #@onready var attack = $AttackComponent
 
 var target: Node3D
