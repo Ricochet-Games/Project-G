@@ -6,6 +6,7 @@ extends TextureRect
 var is_open := false
 
 func _ready() -> void:
+	inv.update.connect(update_slots)
 	update_slots()
 	close()
 
@@ -14,7 +15,7 @@ func update_slots() -> void:
 		slots[i].update(inv.slots[i])
 
 func _process(_delta: Variant) -> void:
-	if Input.is_action_just_pressed("test_input"):
+	if Input.is_action_just_pressed("inventory"):
 		if is_open:
 			close()
 		else:

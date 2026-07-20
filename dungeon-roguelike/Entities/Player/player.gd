@@ -45,7 +45,9 @@ func _input(event: InputEvent)  -> void:
 		attack_compontent.attack_skill()
 		
 	if event.is_action_pressed("item_pickup"):
+		collect(itempickup_component.itemData)
 		itempickup_component.pickup_item()
+		
 	if event.is_action_pressed("toggle_camera"):
 		camera___sub_viewport_container.visible = !camera___sub_viewport_container.visible
 
@@ -69,5 +71,5 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func collect(item):
+func collect(item: Variant) -> void:
 	inv.insert(item)

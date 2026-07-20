@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://d0qn6a1or6y4k"]
 
+[ext_resource type="Script" uid="uid://dw7yhb1qk478r" path="res://Scripts/item_object.gd" id="1_yymef"]
+[ext_resource type="Resource" uid="uid://c5yh5gydiwgvc" path="res://Resources/Inventory/Items/test_item.tres" id="2_175s0"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_yguum"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yguum"]
 
 [node name="TestItem" type="Area3D" unique_id=382191950 groups=["Item"]]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("1_yymef")
+itemData = ExtResource("2_175s0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1349080471]
 mesh = SubResource("SphereMesh_yguum")
