@@ -8,8 +8,11 @@ class_name Player
 @export var attack_compontent: AttackComponent 
 @export var stamina_component: StaminaComponent
 @export var mana_component: ManaComponent
+@export var itempickup_component: ItemPickupComponent
 
 @export var camera___sub_viewport_container: SubViewportContainer
+
+@export var inv: Inv
 
 @onready var nameplate: Label3D = $Nameplate
 
@@ -40,6 +43,9 @@ func _input(event: InputEvent)  -> void:
 		
 	if event.is_action_pressed("attack_skill"):
 		attack_compontent.attack_skill()
+		
+	if event.is_action_pressed("item_pickup"):
+		itempickup_component.pickup_item()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -60,3 +66,6 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+
+func collect(item):
+	inv.insert(item)
