@@ -13,7 +13,7 @@ signal destination_unreachable
 @export var acceleration: float = 12.0
 @export var rotation_speed: float = 8.0
 
-var _target: Node3D
+var _target: Vector3
 var _stopping_distance: float = 1.5
 var _moving := false
 var _follow_target := false
@@ -29,9 +29,9 @@ func _physics_process(delta: float) -> void:
 
 	# Update path if following a moving target
 	if _follow_target:
-		navigation_agent.target_position = _target.global_position
+		navigation_agent.target_position = _target
 
-	var distance := body.global_position.distance_to(_target.global_position)
+	var distance := body.global_position.distance_to(_target)
 
 	# Close enough
 	if distance <= _stopping_distance:
@@ -80,6 +80,7 @@ func move_to(target: Vector3, stopping_distance: float = 1.5) -> void:
 	if target == null:
 		return
 
+	_target = target
 	_stopping_distance = stopping_distance
 	_follow_target = false
 	_moving = true
@@ -88,7 +89,7 @@ func move_to(target: Vector3, stopping_distance: float = 1.5) -> void:
 	print(target)
 
 
-func follow(target: Node3D, stopping_distance: float = 2.0) -> void:
+func follow(target: Vector3, stopping_distance: float = 2.0) -> void:
 	if target == null:
 		return
 
@@ -97,7 +98,7 @@ func follow(target: Node3D, stopping_distance: float = 2.0) -> void:
 	_follow_target = true
 	_moving = true
 
-	navigation_agent.target_position = target.global_position
+	navigation_agent.target_position = target
 
 
 func stop() -> void:

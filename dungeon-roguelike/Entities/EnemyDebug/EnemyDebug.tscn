@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://tckefgyw11sn" path="res://Entities/EnemyDebug/vision_component.gd" id="4_0f3eu"]
 [ext_resource type="Script" uid="uid://dy7m2whvxi7w6" path="res://AI/ai_controller.gd" id="5_isgjp"]
 [ext_resource type="Script" uid="uid://lj2letk0r85d" path="res://AI/brain.gd" id="6_4y81i"]
-[ext_resource type="PackedScene" uid="uid://c24v1vgd5owa1" path="res://DebugTarget.tscn" id="6_8qe5v"]
+[ext_resource type="PackedScene" uid="uid://cx8kuwl6vkumc" path="res://DebugTarget.tscn" id="6_8qe5v"]
 [ext_resource type="Script" uid="uid://dwgcgebsiospd" path="res://AI/blackboard.gd" id="7_4y81i"]
 [ext_resource type="Script" uid="uid://cx8jv8jv6d6fg" path="res://Entities/EnemyDebug/state_machine.gd" id="8_8jrhc"]
 [ext_resource type="Script" uid="uid://bxkdhc4g6iugo" path="res://Entities/EnemyDebug/threat_tracker.gd" id="8_8wih3"]
