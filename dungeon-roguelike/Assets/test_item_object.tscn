@@ -4,13 +4,11 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yguum"]
 
-[node name="TestItem" type="Node3D" unique_id=881543732]
+[node name="TestItem" type="Area3D" unique_id=382191950 groups=["Item"]]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1349080471]
 mesh = SubResource("SphereMesh_yguum")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=370718651]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1396626610]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1396626610]
 shape = SubResource("SphereShape3D_yguum")

@@ -52,12 +52,13 @@ albedo_color = Color(0.5549274, 0.41480064, 1, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yguum"]
 
-[node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("health_component", "attack_compontent", "stamina_component", "mana_component", "camera___sub_viewport_container") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("health_component", "attack_compontent", "stamina_component", "mana_component", "itempickup_component", "camera___sub_viewport_container") groups=["Player"]]
 script = ExtResource("1_4flbx")
 health_component = NodePath("HealthComponent")
 attack_compontent = NodePath("AttackComponent")
 stamina_component = NodePath("StaminaComponent")
 mana_component = NodePath("ManaComponent")
+itempickup_component = NodePath("ItemPickupComponent")
 camera___sub_viewport_container = NodePath("CAMERA | SubViewportContainer")
 inv = ExtResource("2_ap3xn")
 
