@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d0qn6a1or6y4k"]
 
-[ext_resource type="Script" uid="uid://dw7yhb1qk478r" path="res://Scripts/item_object.gd" id="1_yymef"]
+[ext_resource type="Script" uid="uid://dw7yhb1qk478r" path="res://Scripts/item_collectible.gd" id="1_yymef"]
 [ext_resource type="Resource" uid="uid://c5yh5gydiwgvc" path="res://Resources/Inventory/Items/test_item.tres" id="2_175s0"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_yguum"]
