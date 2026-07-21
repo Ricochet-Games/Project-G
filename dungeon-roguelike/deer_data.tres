@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CreatureData" format=3 uid="uid://cdsv8x5o7413y"]
+
+[ext_resource type="Script" uid="uid://bnx2a3e7d5nmx" path="res://Scripts/threat_creature_relationship.gd" id="1_wg1cx"]
+[ext_resource type="Script" uid="uid://b5jao6jtt3mem" path="res://Scripts/creature_data.gd" id="2_ngk6s"]
+
+[sub_resource type="Resource" id="Resource_3gp3i"]
+script = ExtResource("1_wg1cx")
+creature_id = "player"
+metadata/_custom_type_script = "uid://bnx2a3e7d5nmx"
+
+[sub_resource type="Resource" id="Resource_8qe5v"]
+script = ExtResource("1_wg1cx")
+creature_id = "wolf"
+metadata/_custom_type_script = "uid://bnx2a3e7d5nmx"
+
+[resource]
+script = ExtResource("2_ngk6s")
+fears = Array[ExtResource("1_wg1cx")]([SubResource("Resource_3gp3i"), SubResource("Resource_8qe5v")])
+metadata/_custom_type_script = "uid://b5jao6jtt3mem"
