@@ -29,7 +29,7 @@ func update(delta: float) -> void:
 		
 	if current_goal:
 		current_goal.update(delta)
-	print(current_goal)
+
 
 ## Add a chcek here for if goal can be switched too
 ## Don't want to return a failed goal state
