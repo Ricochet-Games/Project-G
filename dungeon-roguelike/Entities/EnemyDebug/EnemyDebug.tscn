@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://tckefgyw11sn" path="res://Entities/EnemyDebug/vision_component.gd" id="4_0f3eu"]
 [ext_resource type="Script" uid="uid://dy7m2whvxi7w6" path="res://AI/ai_controller.gd" id="5_isgjp"]
 [ext_resource type="Script" uid="uid://lj2letk0r85d" path="res://AI/brain.gd" id="6_4y81i"]
-[ext_resource type="PackedScene" uid="uid://cx8kuwl6vkumc" path="res://DebugTarget.tscn" id="6_8qe5v"]
+[ext_resource type="PackedScene" uid="uid://c24v1vgd5owa1" path="res://DebugTarget.tscn" id="6_8qe5v"]
 [ext_resource type="Script" uid="uid://dwgcgebsiospd" path="res://AI/blackboard.gd" id="7_4y81i"]
 [ext_resource type="Script" uid="uid://cx8jv8jv6d6fg" path="res://Entities/EnemyDebug/state_machine.gd" id="8_8jrhc"]
 [ext_resource type="Script" uid="uid://bxkdhc4g6iugo" path="res://Entities/EnemyDebug/threat_tracker.gd" id="8_8wih3"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://cbnlpneonwxbc" path="res://Entities/EnemyDebug/movement_component.gd" id="8_ewwm0"]
 [ext_resource type="Script" uid="uid://uqb4oyw8yfxh" path="res://Entities/EnemyDebug/flee_goal.gd" id="9_8qe5v"]
 [ext_resource type="Script" uid="uid://dtq0meqofoqhe" path="res://Entities/EnemyDebug/flee_state.gd" id="10_cvhpp"]
+[ext_resource type="Resource" uid="uid://cdsv8x5o7413y" path="res://deer_data.tres" id="12_b82ad"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_m37v0"]
 
@@ -30,8 +31,8 @@ properties/0/path = NodePath("HealthComponent:current_health")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8qe5v"]
-size = Vector3(10, 10, 10)
+[sub_resource type="SphereShape3D" id="SphereShape3D_bai2n"]
+radius = 2.76
 
 [node name="CreatureDebug" type="CharacterBody3D" unique_id=1755374623 node_paths=PackedStringArray("health", "vision", "movement")]
 script = ExtResource("1_h8mmp")
@@ -84,9 +85,8 @@ target_position = Vector3(10, 0, 0)
 
 [node name="VisionArea" type="Area3D" parent="VisionComponent" unique_id=773522368 groups=["Enemy"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VisionComponent/VisionArea" unique_id=813725003]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0891876, 0, -0.004784256)
-shape = SubResource("BoxShape3D_8qe5v")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="VisionComponent/VisionArea" unique_id=1456235979]
+shape = SubResource("SphereShape3D_bai2n")
 
 [node name="Timer" type="Timer" parent="VisionComponent" unique_id=411610223]
 wait_time = 0.25
@@ -126,11 +126,13 @@ metadata/_custom_type_script = "uid://t3nha36kxqw3"
 [node name="Blackboard" type="Node" parent="AIController" unique_id=1317999935 node_paths=PackedStringArray("threat_tracker")]
 script = ExtResource("7_4y81i")
 threat_tracker = NodePath("ThreatTracker")
+creature_data = ExtResource("12_b82ad")
 
-[node name="ThreatTracker" type="Node" parent="AIController/Blackboard" unique_id=1225472640 node_paths=PackedStringArray("creature", "debug_target")]
+[node name="ThreatTracker" type="Node" parent="AIController/Blackboard" unique_id=1225472640 node_paths=PackedStringArray("creature", "debug_target", "vision_component")]
 script = ExtResource("8_8wih3")
 creature = NodePath("../../..")
 debug_target = NodePath("../../../DebugTarget")
+vision_component = NodePath("../../../VisionComponent")
 
 [node name="StateMachine" type="Node" parent="AIController" unique_id=962051516 node_paths=PackedStringArray("states")]
 script = ExtResource("8_8jrhc")
