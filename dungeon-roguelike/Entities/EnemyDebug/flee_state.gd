@@ -17,7 +17,11 @@ func update(delta: float) -> void:
 	# I need to run from the most threatening thing 
 	# Ideally Ill find a path that get me away from all threats
 	
-#	if context.movement.has_reached_destination():
+	if context.movement.has_reached_destination():
+		
+		## If im still in danager, flee again
+		## If not then I can leave flee 
+		print("reached")
 	#	update_flee_destination()
 
 
@@ -28,5 +32,3 @@ func exit() -> void:
 func update_flee_destination() -> void:
 	var flee_position : Vector3 = blackboard.threat_tracker.get_flee_position()
 	context.movement.move_to(flee_position)
-	print(flee_position)
-	print(context.creature.global_position)

@@ -112,7 +112,7 @@ func is_moving() -> bool:
 	return _moving
 
 
-func has_arrived() -> bool:
+func has_reached_destination() -> bool:
 	return !_moving
 
 

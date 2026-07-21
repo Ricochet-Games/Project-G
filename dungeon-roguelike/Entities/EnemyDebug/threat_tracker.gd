@@ -15,7 +15,13 @@ class_name ThreatTracker
 
 @export var debug_target: Node3D
 
+@export var vision_component: VisionComponent 
+
+func _ready() -> void:
+	vision_component.found_target.connect(add_threat)
+	
 func add_threat(threat: Node3D) -> void:
+	print("e")
 	if not known_threats.has(threat):
 		known_threats.append(threat)
 
@@ -95,7 +101,6 @@ func get_threat_value(threat: Node3D) -> float:
 
 	return 0.0
 	
-	
 func get_threat_level() -> float:
 	var highest_threat := 0.0
 
@@ -106,3 +111,6 @@ func get_threat_level() -> float:
 			highest_threat = value
 
 	return highest_threat
+
+func creature_sensed(creature: CharacterBody3D) -> void:
+	pass
