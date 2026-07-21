@@ -6,6 +6,7 @@ class_name Blackboard
 ## However, this will hold the final result that those modules provide 
 
 @export var threat_tracker : ThreatTracker
+@export var creature_data : CreatureData
 var current_threat: Node3D
 
 var creature : CreatureBase 
