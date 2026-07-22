@@ -10,11 +10,14 @@
 [ext_resource type="Script" uid="uid://dwgcgebsiospd" path="res://AI/blackboard.gd" id="7_4y81i"]
 [ext_resource type="Script" uid="uid://cx8jv8jv6d6fg" path="res://Entities/EnemyDebug/state_machine.gd" id="8_8jrhc"]
 [ext_resource type="Script" uid="uid://bxkdhc4g6iugo" path="res://Entities/EnemyDebug/threat_tracker.gd" id="8_8wih3"]
-[ext_resource type="Script" uid="uid://t3nha36kxqw3" path="res://AI/goal.gd" id="8_ewsjv"]
 [ext_resource type="Script" uid="uid://cbnlpneonwxbc" path="res://Entities/EnemyDebug/movement_component.gd" id="8_ewwm0"]
 [ext_resource type="Script" uid="uid://uqb4oyw8yfxh" path="res://Entities/EnemyDebug/flee_goal.gd" id="9_8qe5v"]
+[ext_resource type="Script" uid="uid://cmv1d2get7dsq" path="res://Entities/EnemyDebug/idle_goal.gd" id="9_bdj01"]
+[ext_resource type="Script" uid="uid://cwbhcj4kk00e1" path="res://Entities/EnemyDebug/sleep_goal.gd" id="10_8h22y"]
 [ext_resource type="Script" uid="uid://dtq0meqofoqhe" path="res://Entities/EnemyDebug/flee_state.gd" id="10_cvhpp"]
 [ext_resource type="Resource" uid="uid://cdsv8x5o7413y" path="res://deer_data.tres" id="12_b82ad"]
+[ext_resource type="Script" uid="uid://cyh8saplwluc8" path="res://Entities/EnemyDebug/idle_state.gd" id="16_5cctx"]
+[ext_resource type="Script" uid="uid://cmbr8iu8ehm14" path="res://Entities/EnemyDebug/sleep_state.gd" id="17_bdj01"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_m37v0"]
 
@@ -34,7 +37,7 @@ properties/0/replication_mode = 1
 [sub_resource type="SphereShape3D" id="SphereShape3D_bai2n"]
 radius = 2.76
 
-[node name="CreatureDebug" type="CharacterBody3D" unique_id=1755374623 node_paths=PackedStringArray("health", "vision", "movement")]
+[node name="ScaledStag" type="CharacterBody3D" unique_id=1755374623 node_paths=PackedStringArray("health", "vision", "movement")]
 script = ExtResource("1_h8mmp")
 health = NodePath("HealthComponent")
 vision = NodePath("VisionComponent")
@@ -113,10 +116,14 @@ state_machine = NodePath("StateMachine")
 [node name="Brain" type="Node" parent="AIController" unique_id=768632257 node_paths=PackedStringArray("blackboard", "goals")]
 script = ExtResource("6_4y81i")
 blackboard = NodePath("../Blackboard")
-goals = [NodePath("Goal"), NodePath("FleeGoal")]
+goals = [NodePath("IdleGoal"), NodePath("SleepGoal"), NodePath("FleeGoal")]
 
-[node name="Goal" type="Node" parent="AIController/Brain" unique_id=1563170836]
-script = ExtResource("8_ewsjv")
+[node name="IdleGoal" type="Node" parent="AIController/Brain" unique_id=1563170836]
+script = ExtResource("9_bdj01")
+metadata/_custom_type_script = "uid://t3nha36kxqw3"
+
+[node name="SleepGoal" type="Node" parent="AIController/Brain" unique_id=1453406701]
+script = ExtResource("10_8h22y")
 metadata/_custom_type_script = "uid://t3nha36kxqw3"
 
 [node name="FleeGoal" type="Node" parent="AIController/Brain" unique_id=2025630047]
@@ -136,7 +143,14 @@ vision_component = NodePath("../../../VisionComponent")
 
 [node name="StateMachine" type="Node" parent="AIController" unique_id=962051516 node_paths=PackedStringArray("states")]
 script = ExtResource("8_8jrhc")
-states = [NodePath("FleeState")]
+states = [NodePath("IdleState"), NodePath("SleepState"), NodePath("FleeState")]
+
+[node name="IdleState" type="Node" parent="AIController/StateMachine" unique_id=2116136129]
+script = ExtResource("16_5cctx")
+metadata/_custom_type_script = "uid://dcwfcynvj78tm"
+
+[node name="SleepState" type="Node" parent="AIController/StateMachine" unique_id=1534316729]
+script = ExtResource("17_bdj01")
 
 [node name="FleeState" type="Node" parent="AIController/StateMachine" unique_id=36811995]
 script = ExtResource("10_cvhpp")

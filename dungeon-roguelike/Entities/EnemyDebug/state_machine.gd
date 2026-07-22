@@ -25,7 +25,6 @@ func build_state_map() -> void:
 
 func change_state(state_name: StringName) -> void:
 	var new_state : AIState = state_map.get(state_name)
-
 	if new_state == null:
 		push_error("State not found: " + str(state_name))
 		return

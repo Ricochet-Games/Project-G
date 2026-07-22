@@ -11,6 +11,7 @@ func new_threat(threat: Node3D) -> void:
 
 func enter() -> void:
 	blackboard.threat_tracker.new_threat.connect(new_threat)
+	blackboard.is_fleeing = true
 	super()
 	update_flee_destination()
 	# When I start to flee, I want to pick a target far away and then move there
@@ -40,6 +41,7 @@ func update(delta: float) -> void:
 
 
 func exit() -> void:
+	blackboard.is_fleeing = false
 	super()
 	context.movement.stop()
 
