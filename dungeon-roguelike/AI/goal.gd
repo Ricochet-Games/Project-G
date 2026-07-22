@@ -17,7 +17,7 @@ func initialize(_blackboard: Blackboard, _state_machine: AIStateMachine) -> void
 
 
 func evaluate() -> float:
-	return 0.0
+	return 1
 
 
 func enter() -> void:

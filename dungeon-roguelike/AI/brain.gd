@@ -54,7 +54,8 @@ func switch_goal(new_goal: Node) -> void:
 		
 	if current_goal:
 		current_goal.exit()
-		
+	
+	print("Switching from " + str(current_goal) + " to " + str(new_goal))
 	current_goal = new_goal
 	
 	if current_goal:

@@ -1,7 +1,10 @@
 extends AIState
 class_name FleeState
 
-
+func has_reached_safe_position() -> bool:
+	return context.movement.has_reached_destination()
+	
+	
 func new_threat(threat: Node3D) -> void:
 	update_flee_destination()
 	pass

@@ -86,7 +86,6 @@ func move_to(target: Vector3, stopping_distance: float = 1.5) -> void:
 	_moving = true
 
 	navigation_agent.target_position = target
-	print(target)
 
 
 func follow(target: Vector3, stopping_distance: float = 2.0) -> void:

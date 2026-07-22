@@ -23,7 +23,6 @@ func _ready() -> void:
 	vision_component.found_target.connect(add_threat)
 
 func _process(_delta: float) -> void:
-	print(known_threats)
 	for threat :Node3D in known_threats:
 		check_threat(threat)
 	
