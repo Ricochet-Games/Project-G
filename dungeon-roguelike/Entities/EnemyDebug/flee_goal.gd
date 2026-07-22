@@ -21,3 +21,12 @@ func enter() -> void:
 
 func update(delta: float) -> void:
 	super(delta)
+	
+func can_exit() -> bool:
+	## THIS NEEDS TO CHECK IF YOUVE REACHED END POITN AND NO FEAR
+	var fear : float = blackboard.threat_tracker.get_threat_level()
+	
+	if fear > flee_threshold:
+		return false
+
+	return true

@@ -47,6 +47,11 @@ func evaluate_goals() -> Goal:
 	return selected_goal
 
 func switch_goal(new_goal: Node) -> void:
+	if current_goal and !current_goal.can_exit():
+		print("Can't exit out of " + str(current_goal))
+		return
+		
+		
 	if current_goal:
 		current_goal.exit()
 		

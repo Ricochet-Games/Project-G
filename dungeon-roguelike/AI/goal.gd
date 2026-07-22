@@ -35,4 +35,4 @@ func update(delta: float) -> void:
 
 
 func can_exit() -> bool:
-	return active_time >= minimum_active_time
+	return true #active_time >= minimum_active_time

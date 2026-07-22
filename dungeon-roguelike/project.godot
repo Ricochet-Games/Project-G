@@ -42,7 +42,6 @@ UI=""
 Player=""
 Enemy=""
 Item="Group for any ground items in the world"
-Enemy=""
 
 [input]
 

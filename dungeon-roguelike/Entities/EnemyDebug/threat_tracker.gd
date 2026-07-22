@@ -7,6 +7,8 @@ class_name ThreatTracker
 
 ## Class should know of each creature, its distance, and how danagerous it is.
 
+signal new_threat(threat: Node3D)
+
 @export var flee_distance: float = 20.0
 @export var primary_threat_multiplier: float = 3.0
 
@@ -19,11 +21,21 @@ class_name ThreatTracker
 
 func _ready() -> void:
 	vision_component.found_target.connect(add_threat)
+
+func _process(_delta: float) -> void:
+	print(known_threats)
+	for threat :Node3D in known_threats:
+		check_threat(threat)
+	
+func check_threat(threat: Node3D) -> void:
+	if(creature.global_position.distance_to(threat.global_position) > 3):
+		known_threats.erase(threat)
+	
 	
 func add_threat(threat: Node3D) -> void:
-	print("e")
 	if not known_threats.has(threat):
 		known_threats.append(threat)
+		new_threat.emit(threat)
 
 func remove_threat(threat: Node3D) -> void:
 	known_threats.erase(threat)
@@ -32,6 +44,11 @@ func get_current_threats() -> Array[Node3D] :
 	return known_threats
 
 func get_flee_position() -> Vector3:
+	## I want to switch this to be checking possible positions 
+	## and then returning the best one that results in the lowest threat value there
+	## this requires the data base of relationships to be built
+	
+	
 	var flee_direction := Vector3.ZERO
 	var primary_threat : Node3D  = get_most_dangerous_threat()
 	
@@ -58,8 +75,11 @@ func get_flee_position() -> Vector3:
 		# Closer threats have more influence
 		var distance_weight : float = 1.0 / max(distance, 1.0)
 
-
+		## I am not sure about this, i wanna do more tests of the effectiveness in the future
+		var random_offset : Vector3 = Vector3(randf_range(-0.3, 0.3),	0, randf_range(-0.3, 0.3))
+			
 		flee_direction += direction * threat_value * distance_weight
+		flee_direction += random_offset
 
 
 	if flee_direction == Vector3.ZERO:
