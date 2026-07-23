@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dlsicbixl1nr6" path="res://Assets/UI/Inventory/ui_inventory.tscn" id="6_iplt1"]
 [ext_resource type="Script" uid="uid://bsxd4qhty2lq6" path="res://Entities/attack_componenet.gd" id="7_7a1se"]
 [ext_resource type="Resource" uid="uid://cv1176vfcrln3" path="res://Combat/Weapons/Spear.tres" id="10_ap3xn"]
-[ext_resource type="PackedScene" uid="uid://bt8gq4gwbsvh1" path="res://Combat/Hitboxes/small_sword_hb.tscn" id="10_x1y6q"]
 [ext_resource type="Script" uid="uid://27r66wuk8hrf" path="res://Entities/Player/item_pickup_component.gd" id="13_owvpp"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lu8i8"]
@@ -147,18 +146,17 @@ transform = Transform3D(0.6323484, 0, 0, 0, 0.6323484, 0, 0, 0, 0.6323484, 0.564
 mesh = SubResource("BoxMesh_kbf48")
 surface_material_override/0 = SubResource("StandardMaterial3D_0d4hx")
 
-[node name="AttackComponent" type="Node3D" parent="." unique_id=458938524 node_paths=PackedStringArray("weapon_handler", "stamina_component", "mana_component", "combo_timer", "attack_pivot")]
+[node name="AttackComponent" type="Node3D" parent="." unique_id=458938524 node_paths=PackedStringArray("weapon_handler", "stamina_component", "mana_component", "combo_timer", "attack_pivot", "attack_owner")]
 script = ExtResource("7_7a1se")
 weapon_handler = NodePath("WeaponHandler")
 stamina_component = NodePath("../StaminaComponent")
 mana_component = NodePath("../ManaComponent")
 combo_timer = NodePath("ComboTimer")
 attack_pivot = NodePath("AttackPivot")
+attack_owner = NodePath("..")
 
 [node name="AttackPivot" type="Node3D" parent="AttackComponent" unique_id=1159120520]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22366303, 0, 0)
-
-[node name="Hitbox" parent="AttackComponent/AttackPivot" unique_id=1108881074 instance=ExtResource("10_x1y6q")]
 
 [node name="WeaponHandler" type="Node" parent="AttackComponent" unique_id=2110319129]
 script = ExtResource("5_01a4e")

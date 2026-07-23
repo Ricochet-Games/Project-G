@@ -20,10 +20,14 @@ func enter() -> void:
 func can_exit() -> bool:
 	## THIS NEEDS TO CHECK IF YOUVE REACHED END POITN AND NO FEAR
 	var fear : float = blackboard.threat_tracker.get_threat_level()
-	
 	var flee_state : FleeState = state_machine.current_state
 	
+
+	
 	if fear > flee_threshold or !flee_state.has_reached_safe_position():
+		if blackboard.health.current_health < 50:
+			return true
+			
 		return false
 
 	return true

@@ -18,6 +18,9 @@ func _ready() -> void:
 func request_damage(amount: int) -> void:
 	health.request_damage(amount)
 	
+func set_most_recent_damage_source(source: Node3D) -> void:
+	health.set_most_recent_damage_source(source)
+
 
 func die() -> void:
 	if !multiplayer.is_server():

@@ -18,9 +18,13 @@ signal new_threat(threat: Node3D)
 @export var debug_target: Node3D
 
 @export var vision_component: VisionComponent 
+@export var health_component: HealthComponent
+
+var most_recent_damage_source : Node3D
 
 func _ready() -> void:
 	vision_component.found_target.connect(add_threat)
+	health_component.damaged.connect(on_damaged_by_threat)
 
 func _process(_delta: float) -> void:
 	for threat :Node3D in known_threats:
@@ -110,10 +114,10 @@ func get_most_dangerous_threat() -> Node3D:
 
 func get_threat_value(threat: Node3D) -> float:
 	if threat.is_in_group("Player"):
-		return 100.0
+		return 90.0
 
 	if threat.is_in_group("Predator"):
-		return 80.0
+		return 70.0
 
 	if threat.is_in_group("Enemy"):
 		return 50.0
@@ -131,5 +135,15 @@ func get_threat_level() -> float:
 
 	return highest_threat
 
-func creature_sensed(creature: CharacterBody3D) -> void:
+func creature_sensed(_creature: CharacterBody3D) -> void: ## What does this do???
 	pass
+
+func on_damaged_by_threat(_amount: float, source: Node3D) -> void:
+	most_recent_damage_source = source
+
+func get_threat_to_counter_attack() -> Node3D:
+	return most_recent_damage_source
+## When gets hurt I need to run a method 
+## It needs to check if it should like defend
+## and then save what its defending from 
+## It goes: if hurt and that causes health below 50 -> find attacker -> attack

@@ -2,10 +2,12 @@ extends Node
 class_name HealthComponent
 
 
-signal damaged(amount: int)
+signal damaged(amount: int, source: Node3D)
 signal healed(amount: int)
 signal health_changed(amount: int, new_health: int)
 signal died
+
+var most_recent_damage_source: Node3D
 
 
 @export var max_health : int = 100
@@ -17,13 +19,15 @@ signal died
 		if old != current_health:
 			health_changed.emit(current_health - old,current_health)
 			if current_health < old:
-				damaged.emit(old - current_health)
+				damaged.emit(old - current_health, most_recent_damage_source)
 			elif current_health > old:
 				healed.emit(current_health - old)
 				
 			if current_health <= 0 and is_alive():
 				died.emit()
 
+func set_most_recent_damage_source(source: Node3D) -> void:
+	most_recent_damage_source = source
 
 func _ready() -> void:
 	if multiplayer.is_server():
