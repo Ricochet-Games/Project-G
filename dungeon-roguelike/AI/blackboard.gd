@@ -17,12 +17,21 @@ var confidence : float ## 100
 
 ## decreases to 0 over time, attacking and fleeing speeds up the decrease
 ## Entering the sleep state reduces sleepiness
-var sleepiness: float 
+
+var is_sleeping: bool = false
+var max_sleepiness: float = 100
+var current_sleepiness: float 
 var sleep_rate: float = 0.1 # We prob should change this sometime maybe idk
 
 func _process(delta: float) -> void:
+	update_sleep(delta)
+
+func update_sleep(delta: float) -> void:
 	var current_sleep_rate : float = sleep_rate
+	## Need to change these values from being hard coded as 5
 	if is_fleeing:
 		current_sleep_rate *= 5
+	elif is_sleeping:
+		current_sleep_rate *= -5
 		
-	sleepiness = clampf(sleepiness + delta * current_sleep_rate, 0.0, 100.0)
+	current_sleepiness = clampf(current_sleepiness + delta * current_sleep_rate, 0.0, 100.0)

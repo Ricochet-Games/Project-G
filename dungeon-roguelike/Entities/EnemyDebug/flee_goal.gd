@@ -15,12 +15,7 @@ func evaluate() -> float:
 
 func enter() -> void:
 	super()
-
 	state_machine.change_state(&"FleeState")
-
-
-func update(delta: float) -> void:
-	super(delta)
 	
 func can_exit() -> bool:
 	## THIS NEEDS TO CHECK IF YOUVE REACHED END POITN AND NO FEAR
