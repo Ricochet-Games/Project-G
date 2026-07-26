@@ -120,5 +120,8 @@ func has_reached_destination() -> bool:
 
 
 func _rotate(direction: Vector3, delta: float) -> void:
-	var target_basis := Basis.looking_at(direction, Vector3.UP)
-	body.basis = body.basis.slerp(target_basis, rotation_speed * delta)
+	if direction.length_squared() < 0.0001:
+		return
+
+	var target_rotation := atan2(direction.x, direction.z)
+	body.rotation.y = target_rotation + deg_to_rad(-90)
