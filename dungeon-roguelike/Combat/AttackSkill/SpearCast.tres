@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cgp6nraor1ibj" path="res://Combat/Hitboxes/spear_cast.tscn" id="1_fcc07"]
 [ext_resource type="Script" uid="uid://b7xlc3nwlnrc3" path="res://Combat/attack_skill_data.gd" id="1_s8gp6"]
+[ext_resource type="Script" uid="uid://bu01ptpynoti8" path="res://Combat/skill_effect.gd" id="1_u6k5c"]
 
 [resource]
 script = ExtResource("1_s8gp6")
@@ -9,6 +10,6 @@ skill_name = "SpearCast"
 mana_cost = 30.0
 stamina_cost = 30.0
 damage_type = 2
-damage = 20.0
+damage = 70.0
 hitbox_scenes = Array[PackedScene]([ExtResource("1_fcc07")])
 metadata/_custom_type_script = "uid://b7xlc3nwlnrc3"

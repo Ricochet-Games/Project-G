@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_52xcg")
+damage = 50.0
 windup = 0.2
 active_time = 0.3
 combo_window = 0.6
