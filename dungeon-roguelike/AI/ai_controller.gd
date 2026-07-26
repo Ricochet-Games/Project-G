@@ -8,6 +8,8 @@ class_name AIController
 
 @export var state_machine: AIStateMachine
 
+@export var enemy_debug_info: EnemyDebugInfoOverlay
+
 var context: AIContext
 
 func _ready() -> void:
@@ -19,10 +21,10 @@ func initialize_context() -> void:
 
 func initialize_systems() -> void:
 	if brain:
-		brain.initialize(context, blackboard, state_machine)
+		brain.initialize(context, blackboard, state_machine, self)
 	
 	if state_machine:
-		state_machine.initialize(context, blackboard, brain)
+		state_machine.initialize(context, blackboard, brain, self)
 
 
 

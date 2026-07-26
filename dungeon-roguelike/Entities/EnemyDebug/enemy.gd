@@ -5,7 +5,7 @@ class_name CreatureBase
 @export var health: HealthComponent 
 @export var vision: VisionComponent 
 @export var movement: MovementComponent 
-#@onready var attack = $AttackComponent
+@export var attack: AttackComponent
 
 var target: Node3D
 

@@ -33,7 +33,8 @@ var attack_range : float = 2
 
 var target_position : Vector3
 
-var is_attakcing : bool = false
+var is_attacking : bool = false
+
 func _process(delta: float) -> void:
 	update_sleep(delta)
 

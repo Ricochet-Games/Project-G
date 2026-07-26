@@ -11,15 +11,16 @@ signal goal_changed(new_goal_name: String)
 @export var blackboard : Blackboard
 var context: AIContext
 var state_machine: AIStateMachine
-
+var ai_controller : AIController
 @export var goals: Array[Goal]
 var current_goal: Goal  = null
 
 
-func initialize(_context : AIContext, _blackboard: Blackboard, _state_machine: AIStateMachine) -> void:
+func initialize(_context : AIContext, _blackboard: Blackboard, _state_machine: AIStateMachine, _ai_controller : AIController) -> void:
 	context = _context
 	state_machine = _state_machine
 	blackboard = _blackboard
+	ai_controller = _ai_controller
 	
 	for goal in goals:
 		goal.initialize(_blackboard, _state_machine)
@@ -50,7 +51,6 @@ func evaluate_goals() -> Goal:
 
 func switch_goal(new_goal: Node) -> void:
 	if current_goal and !current_goal.can_exit():
-		#print("Can't exit out of " + str(current_goal))
 		return
 		
 		
@@ -61,6 +61,6 @@ func switch_goal(new_goal: Node) -> void:
 	if current_goal: 
 		print("Switching from " + str(current_goal.name) + " to " + str(new_goal.name))
 	current_goal = new_goal
-	
+	ai_controller.enemy_debug_info.update_goal(current_goal.get_script().get_global_name())
 	if current_goal:
 		current_goal.enter()

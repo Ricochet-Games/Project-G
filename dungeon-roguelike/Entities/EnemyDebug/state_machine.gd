@@ -9,10 +9,12 @@ var state_map: Dictionary[StringName, AIState] = {}
 var current_state: AIState
 var brain: Brain
 var blackboard: Blackboard
+var ai_controller: AIController
 
-func initialize(_context: AIContext, _blackboard: Blackboard, _brain: Brain) -> void:
+func initialize(_context: AIContext, _blackboard: Blackboard, _brain: Brain, _ai_controller) -> void:
 	blackboard = _blackboard
 	brain = _brain
+	ai_controller = _ai_controller
 	build_state_map()
 	
 	for state in states:
@@ -35,6 +37,7 @@ func change_state(state_name: StringName) -> void:
 		current_state.exit()
 
 	current_state = new_state
+	ai_controller.enemy_debug_info.update_state(str(current_state.get_state_id()))
 	current_state.enter()
 	current_state.state_event.connect(brain.current_goal.on_state_event)
 	

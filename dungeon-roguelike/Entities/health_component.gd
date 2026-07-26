@@ -62,7 +62,7 @@ func _apply_damage(amount: int) -> void:
 		return
 
 	current_health = max(current_health - amount, 0)
-	damaged.emit(amount, current_health)
+	damaged.emit(amount, most_recent_damage_source)
 	# health_changed.emit(amount)
 	
 	if(current_health <= 0):
