@@ -119,7 +119,7 @@ func has_reached_destination() -> bool:
 	return !_moving
 
 
-func _rotate(direction: Vector3, delta: float) -> void:
+func _rotate(direction: Vector3, _delta: float) -> void:
 	if direction.length_squared() < 0.0001:
 		return
 
