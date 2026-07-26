@@ -12,15 +12,19 @@ var active: bool = false
 var active_time: float = 0.0
 @export var minimum_active_time: float = 1.0
 
+signal state_event(event_name: String)
+
 func initialize(_context: AIContext, _blackboard: Blackboard, _state_machine: AIStateMachine) -> void: #, p_state_machine: StateMachine
 	context = _context
 	blackboard = _blackboard
 	state_machine = _state_machine
 
+func report(event_name: String) -> void:
+	state_event.emit(event_name)
+
 func enter() -> void:
 	active = true
 	active_time = 0.0
-
 
 func update(delta: float) -> void:
 	active_time += delta

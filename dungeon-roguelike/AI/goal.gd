@@ -27,6 +27,7 @@ func enter() -> void:
 
 
 func exit() -> void:
+	state_machine.current_state.state_event.disconnect(on_state_event)
 	active = false
 
 
@@ -36,3 +37,7 @@ func update(delta: float) -> void:
 
 func can_exit() -> bool:
 	return true #active_time >= minimum_active_time
+	
+func on_state_event(event: String) -> void:
+	print(event)
+	pass

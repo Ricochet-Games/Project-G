@@ -22,7 +22,7 @@ func initialize_systems() -> void:
 		brain.initialize(context, blackboard, state_machine)
 	
 	if state_machine:
-		state_machine.initialize(context, blackboard)
+		state_machine.initialize(context, blackboard, brain)
 
 
 

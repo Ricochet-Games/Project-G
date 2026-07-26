@@ -11,6 +11,12 @@ func enter() -> void:
 	super()
 
 func update(delta: float) -> void:
+	if target == null:
+		report("target_lost")
+
+	else:
+		report("in_attack_range")
+	
 	context.movement.move_to(target.global_position)
 	super(delta)
 

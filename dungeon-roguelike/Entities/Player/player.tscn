@@ -154,6 +154,7 @@ mana_component = NodePath("../ManaComponent")
 combo_timer = NodePath("ComboTimer")
 attack_pivot = NodePath("AttackPivot")
 attack_owner = NodePath("..")
+attack_state = null
 
 [node name="AttackPivot" type="Node3D" parent="AttackComponent" unique_id=1159120520]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22366303, 0, 0)

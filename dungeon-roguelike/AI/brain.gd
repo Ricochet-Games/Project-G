@@ -10,6 +10,7 @@ signal goal_changed(new_goal_name: String)
 
 @export var blackboard : Blackboard
 var context: AIContext
+var state_machine: AIStateMachine
 
 @export var goals: Array[Goal]
 var current_goal: Goal  = null
@@ -17,6 +18,7 @@ var current_goal: Goal  = null
 
 func initialize(_context : AIContext, _blackboard: Blackboard, _state_machine: AIStateMachine) -> void:
 	context = _context
+	state_machine = _state_machine
 	blackboard = _blackboard
 	
 	for goal in goals:
@@ -54,6 +56,7 @@ func switch_goal(new_goal: Node) -> void:
 		
 	if current_goal:
 		current_goal.exit()
+		
 	
 	if current_goal: 
 		print("Switching from " + str(current_goal.name) + " to " + str(new_goal.name))
