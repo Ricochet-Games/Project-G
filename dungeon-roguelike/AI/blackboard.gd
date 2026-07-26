@@ -29,7 +29,7 @@ var sleep_rate: float = 0.1 # We prob should change this sometime maybe idk
 var current_prey: Node3D
 var is_chasing: bool = false
 
-var attack_range : float = 2
+var attack_range : float = 1
 
 var target_position : Vector3
 
@@ -50,6 +50,9 @@ func update_sleep(delta: float) -> void:
 
 func is_in_attack_range() -> bool:
 	if creature.global_position.distance_to(target_position) < attack_range:
+		print("FUTURE ME THE PROBLEM IS HERE")
+		print("TARGET POSITIONS IS NOT POSITION OF CREATURE TO ATTACK")
+		print("ITS POSITION OF MOVEMENT")
 		return true
 	
 	return false

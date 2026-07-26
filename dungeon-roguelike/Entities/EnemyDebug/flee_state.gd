@@ -41,6 +41,7 @@ func update(delta: float) -> void:
 
 
 func exit() -> void:
+	blackboard.threat_tracker.new_threat.disconnect(new_threat)
 	blackboard.is_fleeing = false
 	super()
 	context.movement.stop()

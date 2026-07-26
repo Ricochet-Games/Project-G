@@ -19,8 +19,6 @@ func update(delta: float) -> void:
 	
 	if blackboard.is_in_attack_range():
 		report("in_attack_range")
-	else:
-		report("out_of_attack_range")
 	
 	## if I lost the target I need to flee
 		#report("lost_target")

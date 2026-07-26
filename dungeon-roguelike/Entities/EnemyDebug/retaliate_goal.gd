@@ -22,7 +22,7 @@ func on_state_event(event: String) -> void:
 		"in_attack_range":
 			state_machine.change_state(&"AttackState")
 
-		"target_out_of_range":
+		"out_of_attack_range":
 			state_machine.change_state(&"ChaseState")
 
 		"target_dead":
