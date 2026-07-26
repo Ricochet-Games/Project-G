@@ -21,6 +21,9 @@
 [ext_resource type="Script" uid="uid://cmbr8iu8ehm14" path="res://Entities/EnemyDebug/sleep_state.gd" id="17_bdj01"]
 [ext_resource type="Script" uid="uid://cma8qc16qt77a" path="res://Entities/EnemyDebug/chase_state.gd" id="20_d12tc"]
 [ext_resource type="Script" uid="uid://ojjwoa71dbhd" path="res://Entities/EnemyDebug/attack_state.gd" id="21_11urk"]
+[ext_resource type="Script" uid="uid://bsxd4qhty2lq6" path="res://Entities/attack_componenet.gd" id="22_limno"]
+[ext_resource type="Script" uid="uid://ca54oalk1rbso" path="res://Entities/Player/weapon_handler.gd" id="23_rep68"]
+[ext_resource type="Resource" uid="uid://cv1176vfcrln3" path="res://Combat/Weapons/Spear.tres" id="24_jdht3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_m37v0"]
 
@@ -102,10 +105,11 @@ autostart = true
 script = ExtResource("1_naotq")
 metadata/_custom_type_script = "uid://bbt2tv46tokat"
 
-[node name="MovementComponent" type="Node" parent="." unique_id=1989157694 node_paths=PackedStringArray("body", "navigation_agent")]
+[node name="MovementComponent" type="Node" parent="." unique_id=1989157694 node_paths=PackedStringArray("body", "navigation_agent", "blackboard")]
 script = ExtResource("8_ewwm0")
 body = NodePath("..")
 navigation_agent = NodePath("../NavigationAgent3D")
+blackboard = NodePath("../AIController/Blackboard")
 
 [node name="DebugTarget" parent="." unique_id=1840488027 instance=ExtResource("6_8qe5v")]
 
@@ -137,11 +141,12 @@ metadata/_custom_type_script = "uid://t3nha36kxqw3"
 script = ExtResource("12_5cctx")
 metadata/_custom_type_script = "uid://t3nha36kxqw3"
 
-[node name="Blackboard" type="Node" parent="AIController" unique_id=1317999935 node_paths=PackedStringArray("threat_tracker", "health")]
+[node name="Blackboard" type="Node" parent="AIController" unique_id=1317999935 node_paths=PackedStringArray("threat_tracker", "health", "creature")]
 script = ExtResource("7_4y81i")
 threat_tracker = NodePath("ThreatTracker")
 creature_data = ExtResource("12_b82ad")
 health = NodePath("../../HealthComponent")
+creature = NodePath("../..")
 
 [node name="ThreatTracker" type="Node" parent="AIController/Blackboard" unique_id=1225472640 node_paths=PackedStringArray("creature", "debug_target", "vision_component", "health_component")]
 script = ExtResource("8_8wih3")
@@ -152,7 +157,7 @@ health_component = NodePath("../../../HealthComponent")
 
 [node name="StateMachine" type="Node" parent="AIController" unique_id=962051516 node_paths=PackedStringArray("states")]
 script = ExtResource("8_8jrhc")
-states = [NodePath("IdleState"), NodePath("SleepState"), NodePath("FleeState"), NodePath("ChaseState")]
+states = [NodePath("IdleState"), NodePath("SleepState"), NodePath("FleeState"), NodePath("ChaseState"), NodePath("AttackState")]
 
 [node name="IdleState" type="Node" parent="AIController/StateMachine" unique_id=2116136129]
 script = ExtResource("16_5cctx")
@@ -171,3 +176,22 @@ metadata/_custom_type_script = "uid://dcwfcynvj78tm"
 [node name="AttackState" type="Node" parent="AIController/StateMachine" unique_id=1123125454]
 script = ExtResource("21_11urk")
 metadata/_custom_type_script = "uid://dcwfcynvj78tm"
+
+[node name="AttackComponent" type="Node3D" parent="." unique_id=1146440344 node_paths=PackedStringArray("weapon_handler", "combo_timer", "attack_pivot", "attack_owner")]
+script = ExtResource("22_limno")
+weapon_handler = NodePath("WeaponHandler")
+combo_timer = NodePath("ComboTimer")
+attack_pivot = NodePath("AttackPivot")
+attack_owner = NodePath("..")
+metadata/_custom_type_script = "uid://bsxd4qhty2lq6"
+
+[node name="AttackPivot" type="Node3D" parent="AttackComponent" unique_id=1070505273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22366303, 0, 0)
+
+[node name="WeaponHandler" type="Node" parent="AttackComponent" unique_id=2018311968]
+script = ExtResource("23_rep68")
+equipped_weapon = ExtResource("24_jdht3")
+
+[node name="ComboTimer" type="Timer" parent="AttackComponent" unique_id=1885331813]
+wait_time = 0.3
+one_shot = true

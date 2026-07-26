@@ -8,6 +8,8 @@ signal destination_unreachable
 
 @export var body: CharacterBody3D
 @export var navigation_agent: NavigationAgent3D
+@export var blackboard: Blackboard
+
 
 @export var move_speed: float = 4.0
 @export var acceleration: float = 12.0
@@ -80,6 +82,8 @@ func move_to(target: Vector3, stopping_distance: float = 1.5) -> void:
 	if target == null:
 		return
 
+	if blackboard:
+		blackboard.target_position = target
 	_target = target
 	_stopping_distance = stopping_distance
 	_follow_target = false

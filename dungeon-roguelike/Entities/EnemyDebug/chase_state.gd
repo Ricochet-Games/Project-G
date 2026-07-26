@@ -11,20 +11,23 @@ func enter() -> void:
 	super()
 
 func update(delta: float) -> void:
-	if target == null:
-		report("target_lost")
+	
 
-	else:
+## if im in attack range I need to attacck
+
+	
+	
+	if blackboard.is_in_attack_range():
 		report("in_attack_range")
+	else:
+		report("out_of_attack_range")
+	
+	## if I lost the target I need to flee
+		#report("lost_target")
 	
 	context.movement.move_to(target.global_position)
 	super(delta)
 
-## if I lost target I need to stop following
-## for the deer I need to then return to the pack
-## this is starting to get out of hand for the number of edge cases for complex behavior 
-## maybe doesnt have to return to pack but still needs to disengage
-## needs to sleep, eat, drink to increase health, could switch back to flee 
 
 func exit() -> void:
 	blackboard.is_chasing = false

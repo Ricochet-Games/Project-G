@@ -30,7 +30,8 @@ func change_state(state_name: StringName) -> void:
 		return
 
 	if current_state:
-		current_state.state_event.disconnect(brain.current_goal.on_state_event)
+		if current_state.state_event.is_connected(brain.current_goal.on_state_event):
+			current_state.state_event.disconnect(brain.current_goal.on_state_event)
 		current_state.exit()
 
 	current_state = new_state

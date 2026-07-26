@@ -12,7 +12,7 @@ class_name Blackboard
 var current_threat: Node3D
 var is_fleeing : bool = false
 
-var creature : CreatureBase 
+@export var creature : CreatureBase 
 
 var current_goal : Goal
 var confidence : float ## 100
@@ -29,6 +29,11 @@ var sleep_rate: float = 0.1 # We prob should change this sometime maybe idk
 var current_prey: Node3D
 var is_chasing: bool = false
 
+var attack_range : float = 2
+
+var target_position : Vector3
+
+var is_attakcing : bool = false
 func _process(delta: float) -> void:
 	update_sleep(delta)
 
@@ -41,6 +46,12 @@ func update_sleep(delta: float) -> void:
 		current_sleep_rate *= -5
 		
 	current_sleepiness = clampf(current_sleepiness + delta * current_sleep_rate, 0.0, 100.0)
+
+func is_in_attack_range() -> bool:
+	if creature.global_position.distance_to(target_position) < attack_range:
+		return true
+	
+	return false
 
 func get_prey() -> Node3D:
 	return current_prey

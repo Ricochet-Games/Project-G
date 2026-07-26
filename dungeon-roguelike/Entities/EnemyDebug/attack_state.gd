@@ -3,7 +3,7 @@ class_name AttackState
 
 
 func enter() -> void:	
-	#blackboard.is_attacking = true
+	blackboard.is_attacking = true
 	super()
 
 func update(delta: float) -> void:
@@ -12,9 +12,9 @@ func update(delta: float) -> void:
 #
 	#elif false:
 		#report("missed_target")
-	
+	print("ATTACKING")
 	super(delta)
 
 func exit() -> void:
-	#blackboard.is_attacking = true
+	blackboard.is_attacking = false
 	super()
