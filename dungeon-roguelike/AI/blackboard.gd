@@ -32,8 +32,12 @@ var is_chasing: bool = false
 var attack_range : float = 1
 
 var target_position : Vector3
+var creature_to_attack : CharacterBody3D
 
 var is_attacking : bool = false
+
+@export var time_since_last_hit: Timer
+
 
 func _process(delta: float) -> void:
 	update_sleep(delta)
@@ -49,13 +53,16 @@ func update_sleep(delta: float) -> void:
 	current_sleepiness = clampf(current_sleepiness + delta * current_sleep_rate, 0.0, 100.0)
 
 func is_in_attack_range() -> bool:
-	if creature.global_position.distance_to(target_position) < attack_range:
-		print("FUTURE ME THE PROBLEM IS HERE")
-		print("TARGET POSITIONS IS NOT POSITION OF CREATURE TO ATTACK")
-		print("ITS POSITION OF MOVEMENT")
+	if creature.global_position.distance_to(creature_to_attack.global_position) < attack_range:
 		return true
 	
 	return false
 
 func get_prey() -> Node3D:
 	return current_prey
+
+func set_creature_to_attack(_creature: CharacterBody3D) -> void:
+	creature_to_attack = _creature
+	
+func get_distance_to_creature_to_attack() -> float:
+	return creature.global_position.distance_to(creature_to_attack.global_position)

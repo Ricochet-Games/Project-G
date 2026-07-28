@@ -6,7 +6,6 @@ class_name FleeGoal
 
 func evaluate() -> float:
 	var fear : float = blackboard.threat_tracker.get_threat_level()
-
 	if fear < flee_threshold:
 		return 0.0
 
@@ -25,7 +24,7 @@ func can_exit() -> bool:
 
 	
 	if fear > flee_threshold or !flee_state.has_reached_safe_position():
-		if blackboard.health.current_health < 50:
+		if blackboard.health.current_health < 50 and blackboard.time_since_last_hit.time_left > 0:
 			return true
 			
 		return false

@@ -6,7 +6,14 @@ class_name RetaliateGoal
 ## But Dear beavior is unique in the way that it kinda like defends the pack
 ## I need a specific goal for it
 func evaluate() -> float:
-	if blackboard.health.current_health < 50:
+	
+	## if it is hit recently and then in range and health under
+	
+	if blackboard.health.current_health < 50 :
+		if blackboard.time_since_last_hit.time_left <= 0 \
+		and blackboard.get_distance_to_creature_to_attack() > 2: ## if player re-enters then it auto attacks
+			return 0
+		
 		return 100
 
 	return 0

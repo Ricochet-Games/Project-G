@@ -78,7 +78,7 @@ func _physics_process(delta: float) -> void:
 
 
 
-func move_to(target: Vector3, stopping_distance: float = 1.5) -> void:
+func move_to(target: Vector3, stopping_distance: float = 0) -> void:
 	if target == null:
 		return
 
@@ -92,16 +92,16 @@ func move_to(target: Vector3, stopping_distance: float = 1.5) -> void:
 	navigation_agent.target_position = target
 
 
-func follow(target: Vector3, stopping_distance: float = 2.0) -> void:
-	if target == null:
-		return
-
-	_target = target
-	_stopping_distance = stopping_distance
-	_follow_target = true
-	_moving = true
-
-	navigation_agent.target_position = target
+#func follow(target: Vector3, stopping_distance: float = 2.0) -> void:
+	#if target == null:
+		#return
+#
+	#_target = target
+	#_stopping_distance = stopping_distance
+	#_follow_target = true
+	#_moving = true
+#
+	#navigation_agent.target_position = target
 
 
 func stop() -> void:

@@ -144,21 +144,30 @@ metadata/_custom_type_script = "uid://t3nha36kxqw3"
 
 [node name="RetaliateGoal" type="Node" parent="AIController/Brain" unique_id=1755385362]
 script = ExtResource("12_5cctx")
+priority = null
+minimum_active_time = null
 metadata/_custom_type_script = "uid://t3nha36kxqw3"
 
-[node name="Blackboard" type="Node" parent="AIController" unique_id=1317999935 node_paths=PackedStringArray("threat_tracker", "health", "creature")]
+[node name="Blackboard" type="Node" parent="AIController" unique_id=1317999935 node_paths=PackedStringArray("threat_tracker", "health", "creature", "time_since_last_hit")]
 script = ExtResource("7_4y81i")
 threat_tracker = NodePath("ThreatTracker")
 creature_data = ExtResource("12_b82ad")
 health = NodePath("../../HealthComponent")
 creature = NodePath("../..")
+time_since_last_hit = NodePath("Timer")
 
-[node name="ThreatTracker" type="Node" parent="AIController/Blackboard" unique_id=1225472640 node_paths=PackedStringArray("creature", "debug_target", "vision_component", "health_component")]
+[node name="Timer" type="Timer" parent="AIController/Blackboard" unique_id=403559496]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="ThreatTracker" type="Node" parent="AIController/Blackboard" unique_id=1225472640 node_paths=PackedStringArray("creature", "debug_target", "vision_component", "health_component", "blackboard")]
 script = ExtResource("8_8wih3")
 creature = NodePath("../../..")
 debug_target = NodePath("../../../DebugTarget")
 vision_component = NodePath("../../../VisionComponent")
 health_component = NodePath("../../../HealthComponent")
+blackboard = NodePath("..")
 
 [node name="StateMachine" type="Node" parent="AIController" unique_id=962051516 node_paths=PackedStringArray("states")]
 script = ExtResource("8_8jrhc")

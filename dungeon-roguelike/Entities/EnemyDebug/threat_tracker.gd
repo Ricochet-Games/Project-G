@@ -19,6 +19,7 @@ signal new_threat(threat: Node3D)
 
 @export var vision_component: VisionComponent 
 @export var health_component: HealthComponent
+@export var blackboard: Blackboard
 
 var most_recent_damage_source : Node3D
 
@@ -140,6 +141,9 @@ func creature_sensed(_creature: CharacterBody3D) -> void: ## What does this do??
 
 func on_damaged_by_threat(_amount: float, source: Node3D) -> void:
 	most_recent_damage_source = source
+	blackboard.set_creature_to_attack(most_recent_damage_source)
+	blackboard.time_since_last_hit.start()
+	
 
 func get_threat_to_counter_attack() -> Node3D:
 	return most_recent_damage_source

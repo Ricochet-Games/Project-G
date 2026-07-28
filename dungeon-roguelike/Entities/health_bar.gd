@@ -6,7 +6,7 @@ func _ready()  -> void:
 	max_value = health_component.max_health
 	value = health_component.current_health
 
-	health_component.damaged.connect(_on_damaged)
+	health_component.health_changed.connect(_on_health_changed)
 
-func _on_damaged(_current: int, new_health: int) -> void:
+func _on_health_changed(_current: int, new_health: int) -> void:
 	value = new_health
