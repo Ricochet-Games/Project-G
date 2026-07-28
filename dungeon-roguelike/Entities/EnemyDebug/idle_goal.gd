@@ -2,7 +2,7 @@ extends Goal
 class_name IdleGoal
 
 func evaluate() -> float:
-	return 10 ## Change this from 10, this just forces idle but it should be gone / dynamic in some way
+	return 5 ## Change this from 5, this just forces idle but it should be gone / dynamic in some way
 
 func enter() -> void:
 	super()

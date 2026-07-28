@@ -175,7 +175,7 @@ mesh = SubResource("CylinderMesh_ak5v8")
 shape = SubResource("CylinderShape3D_bai2n")
 
 [node name="Player" parent="." unique_id=1931111436 instance=ExtResource("1_hb2xm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94038403, -0.25581008, 0.55151826)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5464306, -0.25581008, 3.0063372)
 
 [node name="EnemyDebug" parent="." unique_id=1755374623 instance=ExtResource("3_50ct6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3915071, -0.22885934, 0.8565951)

@@ -18,12 +18,14 @@
 [ext_resource type="Script" uid="uid://dtq0meqofoqhe" path="res://Entities/EnemyDebug/flee_state.gd" id="10_cvhpp"]
 [ext_resource type="Script" uid="uid://u50dgy3y41kf" path="res://Entities/EnemyDebug/retaliate_goal.gd" id="12_5cctx"]
 [ext_resource type="Resource" uid="uid://cdsv8x5o7413y" path="res://deer_data.tres" id="12_b82ad"]
+[ext_resource type="Script" uid="uid://h7mlcttfnjn8" path="res://Entities/EnemyDebug/wander_goal.gd" id="14_jdht3"]
 [ext_resource type="Script" uid="uid://cyh8saplwluc8" path="res://Entities/EnemyDebug/idle_state.gd" id="16_5cctx"]
 [ext_resource type="Script" uid="uid://cmbr8iu8ehm14" path="res://Entities/EnemyDebug/sleep_state.gd" id="17_bdj01"]
 [ext_resource type="Script" uid="uid://cma8qc16qt77a" path="res://Entities/EnemyDebug/chase_state.gd" id="20_d12tc"]
 [ext_resource type="Script" uid="uid://ojjwoa71dbhd" path="res://Entities/EnemyDebug/attack_state.gd" id="21_11urk"]
 [ext_resource type="Script" uid="uid://bsxd4qhty2lq6" path="res://Entities/attack_componenet.gd" id="22_limno"]
 [ext_resource type="Script" uid="uid://ca54oalk1rbso" path="res://Entities/Player/weapon_handler.gd" id="23_rep68"]
+[ext_resource type="Script" uid="uid://bdb840312ymny" path="res://Entities/EnemyDebug/wander_state.gd" id="24_3u5mj"]
 [ext_resource type="Resource" uid="uid://cv1176vfcrln3" path="res://Combat/Weapons/Spear.tres" id="24_jdht3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_m37v0"]
@@ -116,6 +118,7 @@ navigation_agent = NodePath("../NavigationAgent3D")
 blackboard = NodePath("../AIController/Blackboard")
 
 [node name="DebugTarget" parent="." unique_id=1840488027 instance=ExtResource("6_8qe5v")]
+top_level = true
 
 [node name="AIController" type="Node" parent="." unique_id=1851790212 node_paths=PackedStringArray("creature", "blackboard", "brain", "state_machine", "enemy_debug_info")]
 script = ExtResource("5_isgjp")
@@ -128,7 +131,7 @@ enemy_debug_info = NodePath("../EnemyDebugInfoOverlay")
 [node name="Brain" type="Node" parent="AIController" unique_id=768632257 node_paths=PackedStringArray("blackboard", "goals")]
 script = ExtResource("6_4y81i")
 blackboard = NodePath("../Blackboard")
-goals = [NodePath("IdleGoal"), NodePath("SleepGoal"), NodePath("FleeGoal"), NodePath("RetaliateGoal")]
+goals = [NodePath("IdleGoal"), NodePath("WanderGoal"), NodePath("SleepGoal"), NodePath("FleeGoal"), NodePath("RetaliateGoal")]
 
 [node name="IdleGoal" type="Node" parent="AIController/Brain" unique_id=1563170836]
 script = ExtResource("9_bdj01")
@@ -144,8 +147,10 @@ metadata/_custom_type_script = "uid://t3nha36kxqw3"
 
 [node name="RetaliateGoal" type="Node" parent="AIController/Brain" unique_id=1755385362]
 script = ExtResource("12_5cctx")
-priority = null
-minimum_active_time = null
+metadata/_custom_type_script = "uid://t3nha36kxqw3"
+
+[node name="WanderGoal" type="Node" parent="AIController/Brain" unique_id=184940288]
+script = ExtResource("14_jdht3")
 metadata/_custom_type_script = "uid://t3nha36kxqw3"
 
 [node name="Blackboard" type="Node" parent="AIController" unique_id=1317999935 node_paths=PackedStringArray("threat_tracker", "health", "creature", "time_since_last_hit")]
@@ -171,7 +176,7 @@ blackboard = NodePath("..")
 
 [node name="StateMachine" type="Node" parent="AIController" unique_id=962051516 node_paths=PackedStringArray("states")]
 script = ExtResource("8_8jrhc")
-states = [NodePath("IdleState"), NodePath("SleepState"), NodePath("FleeState"), NodePath("ChaseState"), NodePath("AttackState")]
+states = [NodePath("IdleState"), NodePath("SleepState"), NodePath("FleeState"), NodePath("ChaseState"), NodePath("AttackState"), NodePath("WanderState")]
 
 [node name="IdleState" type="Node" parent="AIController/StateMachine" unique_id=2116136129]
 script = ExtResource("16_5cctx")
@@ -189,6 +194,11 @@ metadata/_custom_type_script = "uid://dcwfcynvj78tm"
 
 [node name="AttackState" type="Node" parent="AIController/StateMachine" unique_id=1123125454]
 script = ExtResource("21_11urk")
+metadata/_custom_type_script = "uid://dcwfcynvj78tm"
+
+[node name="WanderState" type="Node" parent="AIController/StateMachine" unique_id=1476131102]
+script = ExtResource("24_3u5mj")
+wander_radius = 1.0
 metadata/_custom_type_script = "uid://dcwfcynvj78tm"
 
 [node name="AttackComponent" type="Node3D" parent="." unique_id=1146440344 node_paths=PackedStringArray("weapon_handler", "combo_timer", "attack_pivot", "attack_owner")]
