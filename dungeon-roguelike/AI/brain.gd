@@ -61,6 +61,7 @@ func switch_goal(new_goal: Node) -> void:
 	if current_goal: 
 		print("Switching from " + str(current_goal.name) + " to " + str(new_goal.name))
 	current_goal = new_goal
-	ai_controller.enemy_debug_info.update_goal(current_goal.get_script().get_global_name())
+	if ai_controller.enemy_debug_info:
+		ai_controller.enemy_debug_info.update_goal(current_goal.get_script().get_global_name())
 	if current_goal:
 		current_goal.enter()
