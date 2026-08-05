@@ -178,11 +178,11 @@ shape = SubResource("CylinderShape3D_bai2n")
 [node name="Player" parent="." unique_id=1931111436 instance=ExtResource("1_hb2xm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5464306, -0.25581008, 3.0063372)
 
-[node name="EnemyDebug" parent="." unique_id=1755374623 instance=ExtResource("3_50ct6")]
+[node name="ScaledStag" parent="." unique_id=1755374623 instance=ExtResource("3_50ct6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3915071, -0.22885934, 0.8565951)
 
 [node name="BerryBush" parent="." unique_id=1063973715 groups=["Enemy"] instance=ExtResource("5_ak5v8")]
 transform = Transform3D(0.21000001, 0, 0, 0, 0.21000001, 0, 0, 0, 0.21000001, 9.046, -0.2546288, 0.8539139)
 
 [node name="Warg" parent="." unique_id=1568361753 instance=ExtResource("6_x033f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9109406, -0.24348497, -0.5756078)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9034696, -0.24348545, 0.3668723)

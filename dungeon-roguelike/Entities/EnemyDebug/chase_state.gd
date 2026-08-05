@@ -4,7 +4,10 @@ class_name ChaseState
 var target : Node3D
 
 func enter() -> void:
-	target = blackboard.threat_tracker.get_threat_to_counter_attack()
+	blackboard.prey_tracker.new_prey.connect(new_prey)
+	##target = blackboard.get_attack_target()
+	
+	print(target)
 	context.movement.move_to(target.global_position)
 	
 	blackboard.is_chasing = true
@@ -26,8 +29,11 @@ func update(delta: float) -> void:
 	context.movement.move_to(target.global_position)
 	super(delta)
 
+func new_prey(_prey: Node3D) -> void:
+	target = _prey
 
 func exit() -> void:
+	blackboard.prey_tracker.new_prey.disconnect(new_prey)
 	blackboard.is_chasing = false
 	context.movement.stop()
 	super()

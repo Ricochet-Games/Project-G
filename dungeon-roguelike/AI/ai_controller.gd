@@ -9,6 +9,7 @@ class_name AIController
 @export var state_machine: AIStateMachine
 
 @export var enemy_debug_info: EnemyDebugInfoOverlay
+@export var debug_creature : bool
 
 var context: AIContext
 

@@ -5,6 +5,7 @@ class_name Blackboard
 ## Most Module logic should be self contained
 ## However, this will hold the final result that those modules provide 
 
+@export var prey_tracker: PreyTracker
 @export var threat_tracker : ThreatTracker
 @export var creature_data : CreatureData
 
@@ -51,6 +52,9 @@ func update_sleep(delta: float) -> void:
 		current_sleep_rate *= -5
 		
 	current_sleepiness = clampf(current_sleepiness + delta * current_sleep_rate, 0.0, 100.0)
+
+func get_attack_target() -> Node3D:
+	return creature_to_attack
 
 func is_in_attack_range() -> bool:
 	if creature.global_position.distance_to(creature_to_attack.global_position) < attack_range:

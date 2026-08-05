@@ -11,11 +11,14 @@
 [ext_resource type="Script" uid="uid://cx8jv8jv6d6fg" path="res://Entities/EnemyDebug/state_machine.gd" id="8_2o2bb"]
 [ext_resource type="Script" uid="uid://cwbhcj4kk00e1" path="res://Entities/EnemyDebug/sleep_goal.gd" id="8_6v1r7"]
 [ext_resource type="Script" uid="uid://h7mlcttfnjn8" path="res://Entities/EnemyDebug/wander_goal.gd" id="9_xyqjr"]
+[ext_resource type="Script" uid="uid://civjfe85xjdbb" path="res://Entities/attack_goal.gd" id="10_6v1r7"]
 [ext_resource type="Script" uid="uid://ojjwoa71dbhd" path="res://Entities/EnemyDebug/attack_state.gd" id="12_sm0v2"]
+[ext_resource type="Script" uid="uid://b2s51nhb7smy6" path="res://Entities/prey_tracker.gd" id="12_xyqjr"]
 [ext_resource type="Script" uid="uid://cma8qc16qt77a" path="res://Entities/EnemyDebug/chase_state.gd" id="13_mrycg"]
 [ext_resource type="Script" uid="uid://cyh8saplwluc8" path="res://Entities/EnemyDebug/idle_state.gd" id="14_dkt4o"]
 [ext_resource type="Script" uid="uid://cmbr8iu8ehm14" path="res://Entities/EnemyDebug/sleep_state.gd" id="15_2x2qn"]
 [ext_resource type="Script" uid="uid://bdb840312ymny" path="res://Entities/EnemyDebug/wander_state.gd" id="16_xslbd"]
+[ext_resource type="PackedScene" uid="uid://byl0ew1r84fm7" path="res://Scenes/EnemyDebugInformationOverlay.tscn" id="19_sm0v2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ey4ns"]
 
@@ -86,18 +89,20 @@ body = NodePath("..")
 navigation_agent = NodePath("../NavigationAgent3D")
 blackboard = NodePath("../AIController/Blackboard")
 
-[node name="AIController" type="Node" parent="." unique_id=1444227326 node_paths=PackedStringArray("creature", "blackboard", "brain", "state_machine")]
+[node name="AIController" type="Node" parent="." unique_id=1444227326 node_paths=PackedStringArray("creature", "blackboard", "brain", "state_machine", "enemy_debug_info")]
 script = ExtResource("5_m8fkk")
 creature = NodePath("..")
 blackboard = NodePath("Blackboard")
 brain = NodePath("Brain")
 state_machine = NodePath("AIStateMachine")
+enemy_debug_info = NodePath("../EnemyDebugInfoOverlay")
+debug_creature = true
 metadata/_custom_type_script = "uid://dy7m2whvxi7w6"
 
 [node name="Brain" type="Node" parent="AIController" unique_id=1137784385 node_paths=PackedStringArray("blackboard", "goals")]
 script = ExtResource("6_nwjex")
 blackboard = NodePath("../Blackboard")
-goals = [NodePath("IdleGoal"), NodePath("SleepGoal"), NodePath("WanderGoal")]
+goals = [NodePath("IdleGoal"), NodePath("SleepGoal"), NodePath("WanderGoal"), NodePath("AttackGoal")]
 metadata/_custom_type_script = "uid://lj2letk0r85d"
 
 [node name="IdleGoal" type="Node" parent="AIController/Brain" unique_id=1369350019]
@@ -112,11 +117,22 @@ metadata/_custom_type_script = "uid://cwbhcj4kk00e1"
 script = ExtResource("9_xyqjr")
 metadata/_custom_type_script = "uid://h7mlcttfnjn8"
 
-[node name="Blackboard" type="Node" parent="AIController" unique_id=1671665571 node_paths=PackedStringArray("health", "creature")]
+[node name="AttackGoal" type="Node" parent="AIController/Brain" unique_id=580902280]
+script = ExtResource("10_6v1r7")
+metadata/_custom_type_script = "uid://t3nha36kxqw3"
+
+[node name="Blackboard" type="Node" parent="AIController" unique_id=1671665571 node_paths=PackedStringArray("prey_tracker", "health", "creature")]
 script = ExtResource("7_wvsqc")
+prey_tracker = NodePath("PreyTracker")
 health = NodePath("../../HealthComponent")
 creature = NodePath("../..")
 metadata/_custom_type_script = "uid://dwgcgebsiospd"
+
+[node name="PreyTracker" type="Node" parent="AIController/Blackboard" unique_id=1299888734 node_paths=PackedStringArray("creature", "vision_component", "blackboard")]
+script = ExtResource("12_xyqjr")
+creature = NodePath("../../..")
+vision_component = NodePath("../../../VisionComponent")
+blackboard = NodePath("..")
 
 [node name="AIStateMachine" type="Node" parent="AIController" unique_id=1338847487 node_paths=PackedStringArray("states")]
 script = ExtResource("8_2o2bb")
@@ -142,3 +158,5 @@ metadata/_custom_type_script = "uid://cmbr8iu8ehm14"
 [node name="WanderState" type="Node" parent="AIController/AIStateMachine" unique_id=621124151]
 script = ExtResource("16_xslbd")
 metadata/_custom_type_script = "uid://bdb840312ymny"
+
+[node name="EnemyDebugInfoOverlay" parent="." unique_id=652892075 instance=ExtResource("19_sm0v2")]
