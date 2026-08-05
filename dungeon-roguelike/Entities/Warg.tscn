@@ -1,3 +1,141 @@
 [gd_scene format=3 uid="uid://cnsddimtirgcw"]
 
+[ext_resource type="Script" uid="uid://dgfb4wx2l2fkj" path="res://Entities/EnemyDebug/enemy.gd" id="1_vu0ca"]
+[ext_resource type="Script" uid="uid://tckefgyw11sn" path="res://Entities/EnemyDebug/vision_component.gd" id="2_1y20d"]
+[ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Entities/health_component.gd" id="3_m8fkk"]
+[ext_resource type="Script" uid="uid://cbnlpneonwxbc" path="res://Entities/EnemyDebug/movement_component.gd" id="4_5jfkh"]
+[ext_resource type="Script" uid="uid://dy7m2whvxi7w6" path="res://AI/ai_controller.gd" id="5_m8fkk"]
+[ext_resource type="Script" uid="uid://lj2letk0r85d" path="res://AI/brain.gd" id="6_nwjex"]
+[ext_resource type="Script" uid="uid://cmv1d2get7dsq" path="res://Entities/EnemyDebug/idle_goal.gd" id="7_qf0j3"]
+[ext_resource type="Script" uid="uid://dwgcgebsiospd" path="res://AI/blackboard.gd" id="7_wvsqc"]
+[ext_resource type="Script" uid="uid://cx8jv8jv6d6fg" path="res://Entities/EnemyDebug/state_machine.gd" id="8_2o2bb"]
+[ext_resource type="Script" uid="uid://cwbhcj4kk00e1" path="res://Entities/EnemyDebug/sleep_goal.gd" id="8_6v1r7"]
+[ext_resource type="Script" uid="uid://h7mlcttfnjn8" path="res://Entities/EnemyDebug/wander_goal.gd" id="9_xyqjr"]
+[ext_resource type="Script" uid="uid://ojjwoa71dbhd" path="res://Entities/EnemyDebug/attack_state.gd" id="12_sm0v2"]
+[ext_resource type="Script" uid="uid://cma8qc16qt77a" path="res://Entities/EnemyDebug/chase_state.gd" id="13_mrycg"]
+[ext_resource type="Script" uid="uid://cyh8saplwluc8" path="res://Entities/EnemyDebug/idle_state.gd" id="14_dkt4o"]
+[ext_resource type="Script" uid="uid://cmbr8iu8ehm14" path="res://Entities/EnemyDebug/sleep_state.gd" id="15_2x2qn"]
+[ext_resource type="Script" uid="uid://bdb840312ymny" path="res://Entities/EnemyDebug/wander_state.gd" id="16_xslbd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ey4ns"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu0ca"]
+albedo_color = Color(1, 0.101960786, 0.11372549, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ey4ns"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ey4ns"]
+properties/0/path = NodePath("HealthComponent:current_health")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bft6p"]
+radius = 2.76
+
 [node name="Warg" type="CharacterBody3D" unique_id=1568361753]
+script = ExtResource("1_vu0ca")
+
+[node name="Model" type="MeshInstance3D" parent="." unique_id=1216492982]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("BoxMesh_ey4ns")
+surface_material_override/0 = SubResource("StandardMaterial3D_vu0ca")
+
+[node name="Model" type="MeshInstance3D" parent="Model" unique_id=721437973]
+transform = Transform3D(0.6323484, 0, 0, 0, 0.6323484, 0, 0, 0, 0.6323484, 0.56435215, 0, 0)
+mesh = SubResource("BoxMesh_ey4ns")
+surface_material_override/0 = SubResource("StandardMaterial3D_vu0ca")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1078960546]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("BoxShape3D_ey4ns")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1954810599]
+replication_config = SubResource("SceneReplicationConfig_ey4ns")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=2105224459]
+path_desired_distance = 0.5
+
+[node name="VisionComponent" type="Node3D" parent="." unique_id=1444996860 node_paths=PackedStringArray("timer", "vision_area", "ray_cast_3d")]
+script = ExtResource("2_1y20d")
+timer = NodePath("Timer")
+vision_area = NodePath("VisionArea")
+ray_cast_3d = NodePath("RayCast3D")
+
+[node name="RayCast3D" type="RayCast3D" parent="VisionComponent" unique_id=1611448214]
+target_position = Vector3(10, 0, 0)
+
+[node name="VisionArea" type="Area3D" parent="VisionComponent" unique_id=1788180669 groups=["Enemy"]]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="VisionComponent/VisionArea" unique_id=850606342]
+shape = SubResource("SphereShape3D_bft6p")
+
+[node name="Timer" type="Timer" parent="VisionComponent" unique_id=407948934]
+wait_time = 0.25
+autostart = true
+
+[node name="HealthComponent" type="Node" parent="." unique_id=618917493]
+script = ExtResource("3_m8fkk")
+metadata/_custom_type_script = "uid://bbt2tv46tokat"
+
+[node name="MovementComponent" type="Node" parent="." unique_id=676424666 node_paths=PackedStringArray("body", "navigation_agent", "blackboard")]
+script = ExtResource("4_5jfkh")
+body = NodePath("")
+navigation_agent = NodePath("")
+blackboard = NodePath("")
+
+[node name="AIController" type="Node" parent="." unique_id=1444227326 node_paths=PackedStringArray("creature", "blackboard", "brain", "state_machine")]
+script = ExtResource("5_m8fkk")
+creature = NodePath("..")
+blackboard = NodePath("Blackboard")
+brain = NodePath("Brain")
+state_machine = NodePath("AIStateMachine")
+metadata/_custom_type_script = "uid://dy7m2whvxi7w6"
+
+[node name="Brain" type="Node" parent="AIController" unique_id=1137784385 node_paths=PackedStringArray("blackboard", "goals")]
+script = ExtResource("6_nwjex")
+blackboard = NodePath("../Blackboard")
+goals = [NodePath("IdleGoal"), NodePath("SleepGoal"), NodePath("WanderGoal")]
+metadata/_custom_type_script = "uid://lj2letk0r85d"
+
+[node name="IdleGoal" type="Node" parent="AIController/Brain" unique_id=1369350019]
+script = ExtResource("7_qf0j3")
+metadata/_custom_type_script = "uid://cmv1d2get7dsq"
+
+[node name="SleepGoal" type="Node" parent="AIController/Brain" unique_id=36425655]
+script = ExtResource("8_6v1r7")
+metadata/_custom_type_script = "uid://cwbhcj4kk00e1"
+
+[node name="WanderGoal" type="Node" parent="AIController/Brain" unique_id=1901899262]
+script = ExtResource("9_xyqjr")
+metadata/_custom_type_script = "uid://h7mlcttfnjn8"
+
+[node name="Blackboard" type="Node" parent="AIController" unique_id=1671665571 node_paths=PackedStringArray("health", "creature")]
+script = ExtResource("7_wvsqc")
+health = NodePath("../../HealthComponent")
+creature = NodePath("../..")
+metadata/_custom_type_script = "uid://dwgcgebsiospd"
+
+[node name="AIStateMachine" type="Node" parent="AIController" unique_id=1338847487 node_paths=PackedStringArray("states")]
+script = ExtResource("8_2o2bb")
+states = [NodePath("AttackState"), NodePath("ChaseState"), NodePath("IdleState"), NodePath("SleepState"), NodePath("WanderState")]
+metadata/_custom_type_script = "uid://cx8jv8jv6d6fg"
+
+[node name="AttackState" type="Node" parent="AIController/AIStateMachine" unique_id=1551613254]
+script = ExtResource("12_sm0v2")
+metadata/_custom_type_script = "uid://ojjwoa71dbhd"
+
+[node name="ChaseState" type="Node" parent="AIController/AIStateMachine" unique_id=1514147063]
+script = ExtResource("13_mrycg")
+metadata/_custom_type_script = "uid://cma8qc16qt77a"
+
+[node name="IdleState" type="Node" parent="AIController/AIStateMachine" unique_id=1776326364]
+script = ExtResource("14_dkt4o")
+metadata/_custom_type_script = "uid://cyh8saplwluc8"
+
+[node name="SleepState" type="Node" parent="AIController/AIStateMachine" unique_id=430454943]
+script = ExtResource("15_2x2qn")
+metadata/_custom_type_script = "uid://cmbr8iu8ehm14"
+
+[node name="WanderState" type="Node" parent="AIController/AIStateMachine" unique_id=621124151]
+script = ExtResource("16_xslbd")
+metadata/_custom_type_script = "uid://bdb840312ymny"
