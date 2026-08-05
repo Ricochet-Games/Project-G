@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c4loax645yjo7"]
 
 [ext_resource type="PackedScene" uid="uid://dskimq7aam0br" path="res://Entities/Player/player.tscn" id="1_hb2xm"]
-[ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/EnemyDebug/EnemyDebug.tscn" id="3_50ct6"]
+[ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/EnemyDebug/ScaledStag.tscn" id="3_50ct6"]
 [ext_resource type="PackedScene" uid="uid://chmcylg6rludq" path="res://UI/HUD.tscn" id="4_ak5v8"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
 [ext_resource type="PackedScene" uid="uid://yv73fbubxixj" path="res://Scenes/berry_bush.tscn" id="5_ak5v8"]
