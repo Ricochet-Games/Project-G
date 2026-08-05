@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://chmcylg6rludq" path="res://UI/HUD.tscn" id="4_ak5v8"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
 [ext_resource type="PackedScene" uid="uid://yv73fbubxixj" path="res://Scenes/berry_bush.tscn" id="5_ak5v8"]
+[ext_resource type="PackedScene" uid="uid://cnsddimtirgcw" path="res://Entities/Warg.tscn" id="6_x033f"]
 
 [sub_resource type="Environment" id="Environment_50ct6"]
 
@@ -182,3 +183,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3915071, -0.22885934, 0.856
 
 [node name="BerryBush" parent="." unique_id=1063973715 groups=["Enemy"] instance=ExtResource("5_ak5v8")]
 transform = Transform3D(0.21000001, 0, 0, 0, 0.21000001, 0, 0, 0, 0.21000001, 9.046, -0.2546288, 0.8539139)
+
+[node name="Warg" parent="." unique_id=1568361753 instance=ExtResource("6_x033f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9109406, -0.24348497, -0.5756078)
