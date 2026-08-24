@@ -34,6 +34,8 @@ uniform float border_width = 0.01f;
 varying vec3 vertex_pos;
 varying vec3 normal;
 
+varying vec3 model_origin;
+
 // scissor
 uniform float scissor_threshold : hint_range(0.0, 1.0) = 0.5;
 
@@ -59,10 +61,13 @@ void vertex() {
 	// toon shader
 	vertex_pos = VERTEX;
 	normal = NORMAL;
+	
+	model_origin = (MODELVIEW_MATRIX * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
 }
 
 void fragment() {
 	// Called for every pixel the material is visible on.
+	LIGHT_VERTEX = model_origin;
 	vec3 up_dir = vec3(0.0, 1.0, 0.0);
 	
 	vec4 tex_color = texture(albedo_texture, UV);

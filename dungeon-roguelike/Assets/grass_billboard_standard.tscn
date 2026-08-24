@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://baxkp7h6nixys"]
 
-[ext_resource type="Texture2D" uid="uid://4s8i0i03c1v1" path="res://Assets/GrassBladesSprite.png" id="2_hat3i"]
+[ext_resource type="Texture2D" uid="uid://2t4frt04vp0h" path="res://Assets/GrassV02.png" id="2_hat3i"]
 [ext_resource type="Shader" uid="uid://bb46o2gfxcq67" path="res://Shaders/grass_shader.gdshader" id="2_ord35"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yk8w2"]
@@ -26,7 +26,7 @@ shader_parameter/scissor_threshold = 0.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_i8nu1"]
 material = SubResource("ShaderMaterial_yk8w2")
-size = Vector2(0.1, 0.1)
+size = Vector2(0.2, 0.2)
 
 [node name="grass_standard" type="MeshInstance3D" unique_id=1834418723]
 cast_shadow = 0
