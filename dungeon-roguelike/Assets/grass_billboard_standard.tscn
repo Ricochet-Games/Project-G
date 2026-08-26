@@ -3,6 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://2t4frt04vp0h" path="res://Assets/GrassV02.png" id="2_hat3i"]
 [ext_resource type="Shader" uid="uid://bb46o2gfxcq67" path="res://Shaders/grass_shader.gdshader" id="2_ord35"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n5sef"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ord35"]
+noise = SubResource("FastNoiseLite_n5sef")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2j3kb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hat3i"]
+noise = SubResource("FastNoiseLite_2j3kb")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yk8w2"]
 render_priority = 0
 shader = ExtResource("2_ord35")
@@ -23,10 +33,18 @@ shader_parameter/use_ramp = false
 shader_parameter/use_borders = false
 shader_parameter/border_width = 0.01
 shader_parameter/scissor_threshold = 0.5
+shader_parameter/albedo2 = Color(0.22352941, 0.827451, 0.4627451, 1)
+shader_parameter/albedo2_noise = SubResource("NoiseTexture2D_ord35")
+shader_parameter/albedo2_scale = 0.10000000475
+shader_parameter/albedo2_threshold = 0.604
+shader_parameter/albedo3 = Color(0.1882353, 0.7529412, 0.5294118, 1)
+shader_parameter/albedo3_noise = SubResource("NoiseTexture2D_hat3i")
+shader_parameter/albedo3_scale = 0.10000000475
+shader_parameter/albedo3_threshold = 0.604
 
 [sub_resource type="QuadMesh" id="QuadMesh_i8nu1"]
 material = SubResource("ShaderMaterial_yk8w2")
-size = Vector2(0.2, 0.2)
+size = Vector2(0.15, 0.15)
 
 [node name="grass_standard" type="MeshInstance3D" unique_id=1834418723]
 cast_shadow = 0

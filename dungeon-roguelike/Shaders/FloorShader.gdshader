@@ -1,22 +1,19 @@
 shader_type spatial;
-render_mode diffuse_toon;
 
-// uniform vec3 albedo : source_color = vec3(1.0, 1.0, 1.0);
-
-// toon shader
-const float pi = 3.1415926536f;
+// Toon shader variables
+//const float pi = 3.1415926536f;
 
 uniform vec4 albedo : source_color = vec4(1.0f);
-uniform sampler2D albedo_texture : source_color, filter_nearest;
+uniform sampler2D albedo_texture : source_color;
 uniform bool clamp_diffuse_to_max = false;
 
 uniform int cuts : hint_range(1, 8) = 3;
 uniform float wrap : hint_range(-2.0f, 2.0f) = 0.0f;
-uniform float steepness : hint_range(1.0f, 8.0f) = 1.0f;
+uniform float steepness : hint_range(1.0f, 8.0f) = 2.0f;
 
 uniform bool use_attenuation = true;
 
-uniform bool use_specular = true;
+uniform bool use_specular = false;
 uniform float specular_strength : hint_range(0.0f, 1.0f) = 1.0f;
 uniform float specular_shininess : hint_range(0.0f, 32.0f) = 16.0f;
 uniform sampler2D specular_map : source_color;
@@ -33,11 +30,6 @@ uniform float border_width = 0.01f;
 
 varying vec3 vertex_pos;
 varying vec3 normal;
-
-varying vec3 model_origin;
-
-// scissor
-uniform float scissor_threshold : hint_range(0.0, 1.0) = 0.5;
 
 // Grass patch code based on Dylearn on youtube
 // Grass Patches variables
@@ -58,41 +50,18 @@ float split_specular(float specular) {
 }
 
 void vertex() {
-	// Called for every vertex the material is visible on.
-	
-	vec3 cam_z = normalize(CAMERA_DIRECTION_WORLD);
-	vec3 cam_y = vec3(0.0, 1.0, 0.0);
-	vec3 cam_x = normalize(cross(cam_y, cam_z));
-	mat3 spherical_billboard = mat3(cam_x, cam_y, cam_z);
-	vec3 billboarded_vertex = spherical_billboard * VERTEX;
-
-    vec3 instance_origin = (MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
-    vec3 world_position = instance_origin + billboarded_vertex;
-    POSITION = PROJECTION_MATRIX * VIEW_MATRIX * vec4(world_position, 1.0);
-
-    NORMAL = (MODEL_MATRIX * vec4(0.0, 1.0, 0.0, 0.0)).xyz;
-	
-	// toon shader
+	// Toon shader
 	vertex_pos = VERTEX;
 	normal = NORMAL;
 	
-	model_origin = (MODELVIEW_MATRIX * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
-	vertex_world = world_position;
+	vertex_world = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 }
 
 void fragment() {
-	// Called for every pixel the material is visible on.
-	LIGHT_VERTEX = model_origin;
-	vec3 up_dir = vec3(0.0, 1.0, 0.0);
-	
-	vec4 tex_color = texture(albedo_texture, UV);
-	
-	ALBEDO = albedo.rgb * texture(albedo_texture, UV).rgb;
-	ALPHA = tex_color.a;
-	
+	// Grass Patches
 	float albedo2_noise_tex = texture(albedo2_noise, vertex_world.xz * (albedo2_scale)).r;
 	float albedo3_noise_tex = texture(albedo3_noise, vertex_world.xz * (albedo3_scale)).r;
-	ALBEDO = albedo.rgb * texture(albedo_texture, UV).rgb;
+	ALBEDO = albedo.rgb;
 	if (albedo2_noise_tex > albedo2_threshold) {
 		ALBEDO = albedo2.rgb;
 	}
@@ -102,10 +71,9 @@ void fragment() {
 }
 
 void light() {
-	// Called for every pixel for every light affecting the material.
 	
-	// toon shader
-	// Attenuation
+	// Toon shader
+	// Attenuation.
 	float attenuation = 1.0f;
 	if (use_attenuation) {
 		attenuation = ATTENUATION;
