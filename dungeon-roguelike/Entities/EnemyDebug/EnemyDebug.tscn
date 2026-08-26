@@ -42,6 +42,7 @@ metadata/_custom_type_script = "uid://bbt2tv46tokat"
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=921046425]
 transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0.273032, 0)
+render_priority = 1
 texture = SubResource("ViewportTexture_naotq")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=411896428]
