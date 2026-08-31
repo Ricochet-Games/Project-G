@@ -42,7 +42,8 @@ func _input(event: InputEvent)  -> void:
 		attack_compontent.attack()
 		
 	if event.is_action_pressed("attack_skill"):
-		attack_compontent.attack_skill()
+		attack_compontent.attack(true)
+
 		
 	if event.is_action_pressed("item_pickup"):
 		collect(itempickup_component.itemData)
