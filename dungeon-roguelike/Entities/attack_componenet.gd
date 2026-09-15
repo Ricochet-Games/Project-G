@@ -8,6 +8,11 @@ var combo := 0
 var can_combo := false
 @export var combo_timer : Timer
 
+enum AttackHand {MAIN, ALT, NULL}
+@export var last_attack_hand : AttackHand
+var last_weapon : WeaponData = null 
+
+
 @export var attack_pivot : Node3D
 @export var hitboxes: Array[Hitbox]
 @export var attack_owner : Node3D
@@ -34,28 +39,55 @@ func on_combo_timer_timeout() -> void:
 	combo = 0
 	can_combo = false
 
-func attack(is_attack_skill : bool = false) -> void:
+func attack(attack_hand : AttackHand = AttackHand.NULL) -> void:
+	var is_attack_skill : bool = false # Placeholder till we get attack skills going
+	
 	if not attack_state == AttackStatus.IDLE:
 		return
 
-	var weapon : WeaponData = weapon_handler.get_weapon()
-
+	var weapon: WeaponData = (
+	weapon_handler.get_weapon()
+	if attack_hand == AttackHand.MAIN
+	else weapon_handler.get_offhand_weapon()
+)
 	if weapon == null:
 		return
+		
+	if weapon != last_weapon:
+		combo = 0
+	if attack_hand != last_attack_hand:
+		combo = 0 
+	
+	
 	
 	if not is_attack_skill:
 		if not can_combo:
 			combo = 0
-	
-		if combo >= weapon.attacks.size():
+		
+		if attack_hand == AttackHand.MAIN && combo >= weapon.attacks.size():
 			combo = 0
+		elif attack_hand == AttackHand.ALT && combo >= weapon.offhand_attacks.size():
+			combo = 0
+# need to check if current weapon is the same as last weapon
+# need to check if current hand is same as the last hand 
+
+# we can save these out at the end of the prior attack
+# we need to check for any null cases on the first attack
+
 
 	var current_attack_data : Variant ## Attack Data or Attack Skill Data
 	
 	if is_attack_skill:
 		## Need a way to select which attack skill in the future
 		current_attack_data = weapon.attack_skills[0] 
+	elif attack_hand == AttackHand.ALT:
+		if weapon.offhand_attacks.size() == 0:
+			return
+		 
+		current_attack_data = weapon.offhand_attacks[combo]
 	else:
+		if weapon.attacks.size() == 0:
+			return
 		current_attack_data = weapon.attacks[combo]
 
 	if stamina_component and stamina_component.current_stamina == 0:
@@ -64,6 +96,9 @@ func attack(is_attack_skill : bool = false) -> void:
 		return
 	
 	perform_attack(current_attack_data)
+	
+	last_weapon = weapon
+	last_attack_hand = attack_hand
 
 @warning_ignore("shadowed_variable") 
 func perform_attack(attack : Variant) -> void:
@@ -92,6 +127,8 @@ func perform_attack(attack : Variant) -> void:
 	
 	
 	await get_tree().create_timer(attack.recovery).timeout
+	
+	
 	
 	attack_state = AttackStatus.IDLE
 	
