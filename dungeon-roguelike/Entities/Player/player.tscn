@@ -168,6 +168,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22366303, 0, 0)
 [node name="WeaponHandler" type="Node" parent="AttackComponent" unique_id=2110319129]
 script = ExtResource("5_01a4e")
 equipped_weapon = ExtResource("12_owvpp")
+equipped_offhand_weapon = ExtResource("12_owvpp")
 
 [node name="ComboTimer" type="Timer" parent="AttackComponent" unique_id=2065212838]
 wait_time = 0.3
