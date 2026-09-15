@@ -10,4 +10,5 @@
 script = ExtResource("4_mwrtn")
 weapon_name = "Sword"
 attacks = Array[ExtResource("1_bhmed")]([ExtResource("3_bhmed"), ExtResource("3_bhmed"), ExtResource("4_hhwdq")])
+offhand_attacks = Array[ExtResource("1_bhmed")]([ExtResource("3_bhmed"), ExtResource("4_hhwdq")])
 metadata/_custom_type_script = "uid://cukfb368ajudm"
