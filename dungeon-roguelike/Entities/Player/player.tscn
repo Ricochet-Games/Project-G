@@ -83,7 +83,14 @@ attack_component = NodePath("../AttackComponent")
 
 [node name="StaminaComponent" type="Node" parent="." unique_id=135193112 node_paths=PackedStringArray("attack_component")]
 script = ExtResource("3_lub02")
+stamina_regen_amount = 1
 attack_component = NodePath("../AttackComponent")
+
+[node name="StaminaRegenTimer" type="Timer" parent="StaminaComponent" unique_id=35735681]
+wait_time = 0.1
+autostart = true
+
+[node name="StaminaRegenPauseTimer" type="Timer" parent="StaminaComponent" unique_id=91866376]
 
 [node name="Inventory" parent="." unique_id=2138976244 instance=ExtResource("6_iplt1")]
 anchors_preset = 8
