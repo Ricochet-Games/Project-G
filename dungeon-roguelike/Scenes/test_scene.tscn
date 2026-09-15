@@ -255,7 +255,7 @@ camera_attributes = SubResource("CameraAttributesPractical_hb2xm")
 compositor = SubResource("Compositor_ak5v8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1599021426]
-transform = Transform3D(1, 0, 0, 0, 0.6299306, 0.7766515, 0, -0.7766515, 0.6299306, 0, 0, 0)
+transform = Transform3D(0.8588067, 0.39787832, -0.32271326, 0, 0.62993056, 0.77665156, 0.5122998, -0.6669935, 0.54098856, -1.9573123, 3.3313751, 1.9122822)
 shadow_enabled = true
 sky_mode = 1
 
