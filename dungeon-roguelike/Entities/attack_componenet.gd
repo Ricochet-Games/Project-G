@@ -68,13 +68,7 @@ func attack(attack_hand : AttackHand = AttackHand.NULL) -> void:
 			combo = 0
 		elif attack_hand == AttackHand.ALT && combo >= weapon.offhand_attacks.size():
 			combo = 0
-# need to check if current weapon is the same as last weapon
-# need to check if current hand is same as the last hand 
-
-# we can save these out at the end of the prior attack
-# we need to check for any null cases on the first attack
-
-
+	
 	var current_attack_data : Variant ## Attack Data or Attack Skill Data
 	
 	if is_attack_skill:
