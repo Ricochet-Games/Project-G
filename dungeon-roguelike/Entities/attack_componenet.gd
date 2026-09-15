@@ -89,7 +89,10 @@ func attack(attack_hand : AttackHand = AttackHand.NULL) -> void:
 	if mana_component and mana_component.current_mana < current_attack_data.mana_cost:
 		return
 	
+	## Check here if this is a block type of weapon or an attack weapon
+	
 	perform_attack(current_attack_data)
+	
 	
 	last_weapon = weapon
 	last_attack_hand = attack_hand
@@ -139,3 +142,6 @@ func create_hitboxes(damage : float, new_hitboxes :Array[PackedScene]) -> void:
 		hitbox.damage = damage
 		#hitbox.damage_owner = attack_owner
 	
+@warning_ignore("shadowed_variable") 
+func perform_block(_attack : Variant) -> void:
+	pass
