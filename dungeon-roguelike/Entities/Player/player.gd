@@ -38,11 +38,11 @@ func _input(event: InputEvent)  -> void:
 	if not is_multiplayer_authority():
 		return
 		
-	if event.is_action_pressed("attack"):
+	if event.is_action_pressed("attack_main"):
 		attack_compontent.attack()
 		
-	if event.is_action_pressed("attack_skill"):
-		attack_compontent.attack(true)
+	if event.is_action_pressed("attack_alt"):
+		attack_compontent.attack()
 
 		
 	if event.is_action_pressed("item_pickup"):
