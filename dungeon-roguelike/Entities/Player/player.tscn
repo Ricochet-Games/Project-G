@@ -10,8 +10,8 @@
 [ext_resource type="Shader" uid="uid://cpd1kta6eyid3" path="res://Shaders/post_processing_new.gdshader" id="5_4wf4l"]
 [ext_resource type="PackedScene" uid="uid://dlsicbixl1nr6" path="res://Assets/UI/Inventory/ui_inventory.tscn" id="6_iplt1"]
 [ext_resource type="Script" uid="uid://bsxd4qhty2lq6" path="res://Entities/attack_componenet.gd" id="7_7a1se"]
-[ext_resource type="Resource" uid="uid://cv1176vfcrln3" path="res://Combat/Weapons/Spear.tres" id="10_ap3xn"]
-[ext_resource type="PackedScene" uid="uid://bt8gq4gwbsvh1" path="res://Combat/Hitboxes/small_sword_hb.tscn" id="10_x1y6q"]
+[ext_resource type="PackedScene" uid="uid://bt8gq4gwbsvh1" path="res://Combat/Hitboxes/Sword_Small_Slash_BH.tscn" id="10_x1y6q"]
+[ext_resource type="Resource" uid="uid://dukf8jb2ys1yc" path="res://Combat/Weapons/Sword.tres" id="12_owvpp"]
 [ext_resource type="Script" uid="uid://27r66wuk8hrf" path="res://Entities/Player/item_pickup_component.gd" id="13_owvpp"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lu8i8"]
@@ -167,7 +167,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22366303, 0, 0)
 
 [node name="WeaponHandler" type="Node" parent="AttackComponent" unique_id=2110319129]
 script = ExtResource("5_01a4e")
-equipped_weapon = ExtResource("10_ap3xn")
+equipped_weapon = ExtResource("12_owvpp")
 
 [node name="ComboTimer" type="Timer" parent="AttackComponent" unique_id=2065212838]
 wait_time = 0.3
