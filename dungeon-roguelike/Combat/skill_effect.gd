@@ -1,5 +1,5 @@
 extends Resource
 class_name SkillEffect
 
-func execute(user: Node) -> void:
+func execute(_user: Node) -> void:
 	push_error("SkillEffect.execute() must be overridden")

@@ -3,6 +3,7 @@ extends Node
 
 const PLAYER = preload("uid://dskimq7aam0br")
 
+@warning_ignore("unused_signal")
 signal spawned_player(player: Player)
 
 @export var cameraHolder: Node

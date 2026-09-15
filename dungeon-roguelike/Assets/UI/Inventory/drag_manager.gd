@@ -15,7 +15,7 @@ func pickup(data: Texture2D, preview: Control) -> void:
 	# add preview to follow mouse
 
 func drop() -> Variant:
-	var data = texture_data
+	var data : Variant = texture_data
 	if preview_node:
 		preview_node.queue_free()
 	texture_data = null

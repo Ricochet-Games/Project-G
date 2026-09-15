@@ -2,7 +2,7 @@ extends Node
 class_name ManaComponent
 
 signal used_mana(amount: int, new_mana: int)
-signal gained_mana(amount: int, new_mana: int)
+# signal gained_mana(amount: int, new_mana: int)
 signal mana_changed(amount: int, new_mana: int)
 signal out_of_mana
 
