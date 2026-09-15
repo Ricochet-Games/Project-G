@@ -39,10 +39,10 @@ func _input(event: InputEvent)  -> void:
 		return
 		
 	if event.is_action_pressed("attack_main"):
-		attack_compontent.attack()
+		attack_compontent.attack(attack_compontent.AttackHand.MAIN)
 		
 	if event.is_action_pressed("attack_alt"):
-		attack_compontent.attack()
+		attack_compontent.attack(attack_compontent.AttackHand.ALT)
 
 		
 	if event.is_action_pressed("item_pickup"):
