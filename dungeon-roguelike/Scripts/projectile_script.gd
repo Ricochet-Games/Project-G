@@ -1,4 +1,8 @@
+class_name Projectile
 extends RigidBody3D
+
+var augment_dictionary:= preload("res://Resources/SpellCasting/Augments/augment_dictionary.gd").new()
+var augment_names: Array[String]
 
 var speed: float = 1
 var duration: float = 1

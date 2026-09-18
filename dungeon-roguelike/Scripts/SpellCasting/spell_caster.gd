@@ -5,7 +5,7 @@ extends Node3D
 @export var spell_manager: Node
 
 func _input(event: Variant) -> void:
-	if event.is_action_pressed("attack"):
+	if event.is_action_pressed("attack_main"):
 		cast()
 
 func cast() -> void:
