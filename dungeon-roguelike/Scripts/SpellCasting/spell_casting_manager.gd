@@ -1,7 +1,7 @@
 # Place on the spellcasting UI, calculates the spells based on existing parts placed in spell menu
 extends Control
 
-var augment_dictionary:= preload("res://Resources/SpellCasting/Augments/augment_dictionary.gd").new()
+var augment_dictionary:= preload("res://Resources/SpellCasting/AugmentResourceScripts/augment_dictionary.gd").new()
 
 @export var augment_slots: Array[Node]
 var augment_names: Array[String]
