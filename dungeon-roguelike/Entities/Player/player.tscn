@@ -71,7 +71,7 @@ billboard = 2
 fixed_size = true
 render_priority = 1
 text = "Peer ID"
-font_size = 24
+font_size = 18
 outline_size = 8
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1288673849]
@@ -127,7 +127,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.8660254, 0.49999997, 0, -0.5, 0.8
 script = ExtResource("4_5c2io")
 camera = NodePath("Camera3D")
 target = NodePath("../../..")
-follow_speed = 20.0
+follow_speed = 10.0
 offset = Vector3(0, 2.461, 4.262)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CamRig" unique_id=1832579326]
@@ -137,7 +137,7 @@ attributes = SubResource("CameraAttributesPractical_owvpp")
 compositor = SubResource("Compositor_xr8lj")
 projection = 1
 current = true
-size = 2.0
+size = 4.5
 far = 75.0
 
 [node name="PostProcessing" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/CamRig/Camera3D" unique_id=1840059005]
