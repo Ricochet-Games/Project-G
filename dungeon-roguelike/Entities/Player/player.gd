@@ -57,7 +57,6 @@ func _input(event: InputEvent)  -> void:
 		
 	if event.is_action_pressed("attack_alt"):
 		attack_compontent.attack(attack_compontent.AttackHand.ALT)
-
 		
 	if event.is_action_pressed("item_pickup"):
 		collect(itempickup_component.itemData)
@@ -65,6 +64,11 @@ func _input(event: InputEvent)  -> void:
 		
 	if event.is_action_pressed("toggle_camera"):
 		sub_viewport_container.visible = !sub_viewport_container.visible
+	
+	if event.is_action_pressed("block"):
+		state = PlayerState.BLOCKING
+	if event.is_action_released("block"):
+		state = PlayerState.IDLE
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -100,6 +104,13 @@ func look_at_cursor() -> void:
 		player_pos.y = 0
 		var delta_pos : Vector3 = (player_pos - cursor_world_position)
 		self.rotation.y = atan2(delta_pos.x, delta_pos.z)  + PI / 2.0
+
+func request_damage(amount: int) -> void:
+	#Calculate Block Damage Here
+	if PlayerState.BLOCKING == state:
+		return
+		
+	health_component.request_damage(amount)
 
 func collect(item: Variant) -> void:
 	inv.insert(item)
