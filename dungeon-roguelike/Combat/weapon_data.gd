@@ -5,6 +5,8 @@ class_name WeaponData
 
 @export var weapon_type : WeaponType
 
+@export var off_hand_pairs : Array[WeaponType]
+
 @export var attacks : Array[AttackData]
 
 @export var offhand_attacks : Array[AttackData]
@@ -26,14 +28,14 @@ enum WeaponType
 	SWORD,
 	CLAYMORE,
 	GREATSWORD,
-	POLEARMS,
-	STAVES,
+	POLEARM,
+	STAVE,
 	MACES,
 	DAGGER,
-	BOWS,
-	CROSSBOWS,
-	SHIELDS,
-	SCROLLS
+	BOW,
+	CROSSBOW,
+	SHIELD,
+	SCROLL
 }
 
 enum DamageType
