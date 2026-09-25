@@ -7,6 +7,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_j17jj"]
 
 [node name="projectile_base" type="RigidBody3D" unique_id=907319472 node_paths=PackedStringArray("timer")]
+collision_layer = 4
 axis_lock_linear_y = true
 script = ExtResource("1_uxbpr")
 timer = NodePath("Timer")

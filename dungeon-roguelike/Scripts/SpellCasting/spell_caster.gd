@@ -4,6 +4,8 @@ extends Node3D
 @export var projectile_scene: PackedScene
 @export var spell_manager: Node
 
+var direction: Vector3
+
 var augments: Array[AugmentResource] = []
 
 func _input(event: Variant) -> void:
@@ -19,7 +21,8 @@ func open_menu() -> void:
 
 func cast() -> void:
 	var projectile := projectile_scene.instantiate()
-	var direction: Vector3
+	
+	projectile.caster = self
 	
 	# change this direction variable based on how we're handling the way the player is facing
 	direction = -get_global_transform().basis.z

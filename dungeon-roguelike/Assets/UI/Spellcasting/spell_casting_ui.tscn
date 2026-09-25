@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://p8iw5k8xkbyi" path="res://Scripts/SpellCasting/spell_casting_manager.gd" id="1_pmu4q"]
 [ext_resource type="PackedScene" uid="uid://b4wnbviojmhm8" path="res://Assets/spell_circle.tscn" id="2_1k8vh"]
 [ext_resource type="PackedScene" uid="uid://ccpyhag683ak3" path="res://Assets/spell_augment.tscn" id="3_5pe66"]
+[ext_resource type="Texture2D" uid="uid://bxdlr8547d2xt" path="res://Assets/PlaceHolderTexture02.png" id="4_eek7h"]
 
 [node name="SpellCastingUI" type="Control" unique_id=545222661 node_paths=PackedStringArray("augment_slots")]
 layout_mode = 3
@@ -98,7 +99,8 @@ offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
-augment_name = "swift"
+texture = ExtResource("4_eek7h")
+augment_name = "split"
 
 [node name="Slot_3" type="Control" parent="SigilContainer/Slots" unique_id=1031944756]
 layout_mode = 1
