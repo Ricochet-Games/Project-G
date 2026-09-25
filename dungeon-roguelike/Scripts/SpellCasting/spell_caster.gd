@@ -7,8 +7,15 @@ extends Node3D
 var augments: Array[AugmentResource] = []
 
 func _input(event: Variant) -> void:
-	if event.is_action_pressed("attack_main"):
-		cast()
+	if event.is_action_pressed("spell_cast"):
+		if !spell_manager.visible:
+			cast()
+
+	if event.is_action_pressed("spell_menu"):
+		open_menu()
+
+func open_menu() -> void:
+	spell_manager.visible = !spell_manager.visible
 
 func cast() -> void:
 	var projectile := projectile_scene.instantiate()
