@@ -2,6 +2,7 @@ class_name SpellProjectile
 extends RigidBody3D
 
 var augments: Array[AugmentResource]
+var caster: Variant
 
 var speed: float = 1
 var duration: float = 1
