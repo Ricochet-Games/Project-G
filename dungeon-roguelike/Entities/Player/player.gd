@@ -101,5 +101,8 @@ func look_at_cursor() -> void:
 		var delta_pos : Vector3 = (player_pos - cursor_world_position)
 		self.rotation.y = atan2(delta_pos.x, delta_pos.z)  + PI / 2.0
 
+func request_damage(amount: int) -> void:
+	health_component.request_damage(amount)
+
 func collect(item: Variant) -> void:
 	inv.insert(item)

@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://baxkp7h6nixys" path="res://Assets/grass_billboard_standard.tscn" id="6_d3awe"]
 [ext_resource type="Shader" uid="uid://bb46o2gfxcq67" path="res://Shaders/grass_shader.gdshader" id="7_yglu3"]
 [ext_resource type="Texture2D" uid="uid://2t4frt04vp0h" path="res://Assets/GrassV02.png" id="8_bwjpn"]
+[ext_resource type="Script" uid="uid://d2al5c7o8aa2l" path="res://Combat/Hitboxes/timer_hitbox.gd" id="9_yglu3"]
+[ext_resource type="PackedScene" uid="uid://bt8gq4gwbsvh1" path="res://Combat/Hitboxes/Sword_Small_Slash_BH.tscn" id="10_yglu3"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hb2xm"]
 vertices = PackedVector3Array(-2.1520255, -0.35629004, -3.2879, -1.9520257, -0.35629004, -3.0879, -1.7520256, -0.35629004, -3.2879, -0.05202532, -0.35629004, -5.3879, 0.9479747, -0.35629004, -3.0879, 1.5479746, -0.35629004, -2.6878998, 2.0479746, -0.35629004, -3.1878998, -2.0520256, -0.35629004, -2.2879, -5.3520255, -0.35629004, -0.18790007, -0.5520253, -0.35629004, -0.8878999, -0.2520256, -0.35629004, -0.8878999, -0.05202532, -0.35629004, -1.7879, -1.7520256, -0.35629004, -1.9879, -1.4520254, -0.35629004, -0.18790007, -2.6520255, -0.35629004, 2.5121002, -1.0520253, -0.35629004, 0.6121001, -1.4520254, -0.35629004, 0.31209993, 0.047974586, -0.35629004, -0.8878999, 1.5479746, -0.35629004, -1.9879, 0.5479746, -0.35629004, -0.48789978, 1.2479744, -0.35629004, -1.6879001, 0.9479747, -0.35629004, -0.087899685, 0.9479747, -0.35629004, 0.31209993, 3.4479742, -0.35629004, 1.5121002, 5.147975, -0.35629004, -0.18790007, 0.6479745, -0.35629004, 0.7121, 0.047974586, -0.35629004, 0.7121, -0.05202532, -0.35629004, 0.9121003, -0.05202532, -0.35629004, 5.1121006)
@@ -261,3 +263,18 @@ shadow_enabled = true
 sky_mode = 1
 
 [node name="HUD" parent="." unique_id=783075640 instance=ExtResource("4_ak5v8")]
+
+[node name="Timed Attack" type="Node" parent="." unique_id=743454261]
+script = ExtResource("9_yglu3")
+
+[node name="Hitbox" parent="Timed Attack" unique_id=1108881074 instance=ExtResource("10_yglu3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.949399, -0.24360704, 2.0394962)
+monitoring = true
+
+[node name="WaitTimer" type="Timer" parent="Timed Attack" unique_id=1889548899]
+one_shot = true
+autostart = true
+
+[node name="ActiveTimer" type="Timer" parent="Timed Attack" unique_id=2077637490]
+wait_time = 0.25
+one_shot = true
