@@ -1,4 +1,4 @@
-class_name Projectile
+class_name SpellProjectile
 extends RigidBody3D
 
 var augments: Array[AugmentResource]
