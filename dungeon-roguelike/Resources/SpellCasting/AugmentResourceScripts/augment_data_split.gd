@@ -1,6 +1,6 @@
 extends AugmentResource
 
-
+@export var delay: float = 1.5
 @export var split_count: int = 2
 @export var split_angle: float = 45.0
 
