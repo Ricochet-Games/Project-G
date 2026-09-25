@@ -10,7 +10,7 @@ class_name Player
 @export var mana_component: ManaComponent
 @export var itempickup_component: ItemPickupComponent
 
-@export var camera___sub_viewport_container: SubViewportContainer
+@export var sub_viewport_container: SubViewportContainer
 
 @export var inv: Inv
 
@@ -18,12 +18,15 @@ class_name Player
 
 @export var state : PlayerState = PlayerState.IDLE 
 	
+@export var camera : Camera3D
+
 enum PlayerState
 {
 	IDLE,
 	WALKING,
 	SPRINTING,
 	ATTACKING,
+	BLOCKING,
 }
 
 
@@ -38,7 +41,7 @@ func _ready() -> void:
 	GameManager.spawned_player.emit(self)
 	
 	if not is_multiplayer_authority():
-		camera___sub_viewport_container.visible = false
+		sub_viewport_container.visible = false
 	
 	if Network.is_steam_initialized and multiplayer.has_multiplayer_peer() and not is_multiplayer_authority():
 		set_process(false)
@@ -61,7 +64,7 @@ func _input(event: InputEvent)  -> void:
 		itempickup_component.pickup_item()
 		
 	if event.is_action_pressed("toggle_camera"):
-		camera___sub_viewport_container.visible = !camera___sub_viewport_container.visible
+		sub_viewport_container.visible = !sub_viewport_container.visible
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -75,13 +78,28 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
-		var target_rotation: float = atan2(direction.x, direction.z)
-		rotation.y = target_rotation + deg_to_rad(-90)
+		#var target_rotation: float = atan2(direction.x, direction.z)
+		#rotation.y = target_rotation + deg_to_rad(-90)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
+	look_at_cursor()
 	move_and_slide()
+
+func look_at_cursor() -> void:
+	var target_plane : Plane =  Plane(Vector3.UP, global_position.y)
+	var ray_legth : float = 2000
+	var mouse_position : Vector2 = get_viewport().get_mouse_position() / sub_viewport_container.stretch_shrink
+	
+	var ray_start : Vector3 = camera.project_ray_origin(mouse_position)
+	var ray_direction : Vector3 = ray_start + camera.project_ray_normal(mouse_position) * ray_legth
+	var cursor_world_position : Variant = target_plane.intersects_ray(ray_start, ray_direction)
+	if cursor_world_position:
+		var player_pos : Vector3 = self.global_position
+		player_pos.y = 0
+		var delta_pos : Vector3 = (player_pos - cursor_world_position)
+		self.rotation.y = atan2(delta_pos.x, delta_pos.z)  + PI / 2.0
 
 func collect(item: Variant) -> void:
 	inv.insert(item)
