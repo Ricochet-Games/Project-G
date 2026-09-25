@@ -1,8 +1,7 @@
 class_name Projectile
 extends RigidBody3D
 
-var augment_dictionary:= preload("res://Resources/SpellCasting/AugmentResourceScripts/augment_dictionary.gd").new()
-var augment_names: Array[String]
+var augments: Array[AugmentResource]
 
 var speed: float = 1
 var duration: float = 1
@@ -14,11 +13,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	for augment in augments:
+		augment.on_physics_tick(self)
 
 func shoot(direction: Vector3) -> void:
+	for augment in augments:
+		augment.on_spawn(self)
 	apply_impulse(direction * speed)
 
 
 func _on_timer_timeout() -> void:
+	for augment in augments:
+		augment.on_expire(self)
 	queue_free()

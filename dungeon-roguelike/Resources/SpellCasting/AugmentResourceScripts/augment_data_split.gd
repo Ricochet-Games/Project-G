@@ -5,4 +5,4 @@ extends AugmentResource
 @export var split_angle: float = 45.0
 
 func on_spawn(proj: Projectile) -> void:
-	pass
+	print("did something on spawn")
