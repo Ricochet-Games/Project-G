@@ -48,8 +48,7 @@ func attack(attack_hand : AttackHand = AttackHand.NULL) -> void:
 	var weapon: WeaponData = (
 	weapon_handler.get_weapon()
 	if attack_hand == AttackHand.MAIN
-	else weapon_handler.get_offhand_weapon()
-)
+	else weapon_handler.get_offhand_weapon())
 	if weapon == null:
 		return
 		
@@ -141,7 +140,19 @@ func create_hitboxes(damage : float, new_hitboxes :Array[PackedScene]) -> void:
 		hitboxes.append(hitbox)
 		hitbox.damage = damage
 		#hitbox.damage_owner = attack_owner
+
+func block() -> void:
+	print("block")
+	# This is where we get the information about the block being done 
+	# Deflect / block / parry
+	# 
+	# Then we need to see if the player can preform this type of block
 	
+	perform_block()
+	pass
 @warning_ignore("shadowed_variable") 
-func perform_block(_attack : Variant) -> void:
+func perform_block() -> void:
+	# Timer for block to 
+	# Animations
+	# Block calculations / Damage reduction
 	pass
