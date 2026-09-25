@@ -33,8 +33,7 @@ mesh = SubResource("PlaneMesh_30qil")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=998989899]
 follow_viewport_enabled = true
 
-[node name="SpellCastingUI" parent="CanvasLayer" unique_id=545222661 node_paths=PackedStringArray("augment_slots") instance=ExtResource("3_2ats5")]
-augment_slots = []
+[node name="SpellCastingUI" parent="CanvasLayer" unique_id=545222661 instance=ExtResource("3_2ats5")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1726085908]
 transform = Transform3D(1, 0, 0, 0, -0.21713822, 0.97614086, 0, -0.97614086, -0.21713822, 0, 0, 0)

@@ -4,6 +4,8 @@ extends Node3D
 @export var projectile_scene: PackedScene
 @export var spell_manager: Node
 
+var augments: Array[AugmentResource] = []
+
 func _input(event: Variant) -> void:
 	if event.is_action_pressed("attack_main"):
 		cast()
@@ -19,11 +21,15 @@ func cast() -> void:
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = global_position
 	
-	# Calculates the cumulative stats of the spell
-	spell_manager.calculate()
+	# Grabs the augments from the spell manager
+	augments.clear()
+	augments = spell_manager.calculate()
 	
-	projectile.speed = spell_manager.speed
-	projectile.duration = spell_manager.duration
+	# Sends the augments to the projectile
+	projectile.augments = augments
+	
+	#projectile.speed = spell_manager.speed
+	#projectile.duration = spell_manager.duration
 	
 	# Fires the spell
 	projectile.shoot(direction)

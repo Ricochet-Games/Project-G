@@ -3,11 +3,9 @@ extends Control
 
 var augment_dictionary:= preload("res://Resources/SpellCasting/AugmentResourceScripts/augment_dictionary.gd").new()
 
+@export var augments: Array[AugmentResource] = []
 @export var augment_slots: Array[Node]
 var augment_names: Array[String]
-
-var speed: float = 1.0
-var duration: float = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,15 +22,15 @@ func _get_augments() -> void:
 		if spell_modifier:
 			augment_names.append(spell_modifier.augment_name)
 
-func calculate() -> void:
+func calculate() -> Array[AugmentResource]:
 	reset_values()
 	_get_augments()
 	for augment_name in augment_names:
-		var augment: Resource = augment_dictionary.augments.get(augment_name, null)
-		if augment:
-			speed += augment.speed
+		var augment_ref: AugmentResource = augment_dictionary.augments.get(augment_name, null)
+		if augment_ref:
+			augments.append(augment_ref.duplicate())
+	return augments
 
 func reset_values() -> void:
 	augment_names.clear()
-	speed = 1.0
-	duration = 1.0
+	augments.clear()

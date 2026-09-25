@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://n12ws1deohx"]
 
-[ext_resource type="Script" uid="uid://blmmcf0stwoah" path="res://Scripts/projectile_script.gd" id="1_uxbpr"]
+[ext_resource type="Script" uid="uid://blmmcf0stwoah" path="res://Scripts/spell_projectile_script.gd" id="1_uxbpr"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_yguum"]
 
