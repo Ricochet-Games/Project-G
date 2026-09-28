@@ -13,21 +13,21 @@ signal out_of_stamina
 @export var stamina_regen_amount: int = 5
 @onready var stamina_regen_timer: Timer = $StaminaRegenTimer
 @onready var stamina_regen_pause_timer: Timer = $StaminaRegenPauseTimer
-
+@export var stamina_regen_pause_time : float = 1
+@onready var player: Player = $".."
 @export var attack_component : AttackComponent
 
 
 func _ready() -> void:
 	current_stamina = max_stamina
-	attack_component.started_attack.connect(_on_attack)
+	attack_component.started_attack.connect(_on_staminia_used)
+	player.blocked.connect(_on_staminia_used)
 	stamina_regen_timer.timeout.connect(_regenerate_stamina)
 	stamina_regen_pause_timer.timeout.connect(_start_stamina_regen)
+	stamina_regen_pause_timer.wait_time = stamina_regen_pause_time
 
-func _on_attack(stamina_used: int, _mana_used: int) -> void:
+func _on_staminia_used(stamina_used: int, _mana_used: int) -> void:
 	if stamina_used == 0:
-		return
-		
-	if current_stamina <= 0:
 		return
 	
 	stamina_regen_timer.stop()
