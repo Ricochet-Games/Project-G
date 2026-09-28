@@ -85,6 +85,7 @@ attack_component = NodePath("../AttackComponent")
 [node name="StaminaComponent" type="Node" parent="." unique_id=135193112 node_paths=PackedStringArray("attack_component")]
 script = ExtResource("3_lub02")
 stamina_regen_amount = 1
+stamina_regen_pause_time = 2.0
 attack_component = NodePath("../AttackComponent")
 
 [node name="StaminaRegenTimer" type="Timer" parent="StaminaComponent" unique_id=35735681]
@@ -160,12 +161,13 @@ transform = Transform3D(0.6323484, 0, 0, 0, 0.6323484, 0, 0, 0, 0.6323484, 0.564
 mesh = SubResource("BoxMesh_kbf48")
 surface_material_override/0 = SubResource("StandardMaterial3D_0d4hx")
 
-[node name="AttackComponent" type="Node3D" parent="." unique_id=458938524 node_paths=PackedStringArray("weapon_handler", "stamina_component", "mana_component", "combo_timer", "attack_pivot")]
+[node name="AttackComponent" type="Node3D" parent="." unique_id=458938524 node_paths=PackedStringArray("weapon_handler", "stamina_component", "mana_component", "combo_timer", "stamina_drain_timer", "attack_pivot")]
 script = ExtResource("7_7a1se")
 weapon_handler = NodePath("WeaponHandler")
 stamina_component = NodePath("../StaminaComponent")
 mana_component = NodePath("../ManaComponent")
 combo_timer = NodePath("ComboTimer")
+stamina_drain_timer = NodePath("StaminiaDrainTimer")
 attack_pivot = NodePath("AttackPivot")
 
 [node name="AttackPivot" type="Node3D" parent="AttackComponent" unique_id=1159120520]
@@ -179,6 +181,10 @@ equipped_weapon = ExtResource("12_owvpp")
 equipped_offhand_weapon = ExtResource("12_owvpp")
 
 [node name="ComboTimer" type="Timer" parent="AttackComponent" unique_id=2065212838]
+wait_time = 0.3
+one_shot = true
+
+[node name="StaminiaDrainTimer" type="Timer" parent="AttackComponent" unique_id=2100561033]
 wait_time = 0.3
 one_shot = true
 
