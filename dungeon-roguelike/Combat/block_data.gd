@@ -3,7 +3,13 @@ class_name BlockData
 
 @export var mana_cost : float = 0
 
-@export var stamina_cost : float = 5
+@export var parry_sucess_stamina_cost : float = 10
+
+@export var parry_fail_stamina_cost : float = 40
+
+@export var stamina_drain : float = 5
+
+@export var stamina_drain_time : float = 10
 
 @export var parry_window : float = 0.1
 
