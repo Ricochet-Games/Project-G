@@ -7,6 +7,7 @@ class_name AttackComponent
 var combo := 0
 var can_combo := false
 @export var combo_timer : Timer
+@export var stamina_drain_timer : Timer
 
 enum AttackHand {MAIN, ALT, NULL}
 @export var last_attack_hand : AttackHand
@@ -36,6 +37,7 @@ enum AttackStatus
 
 func _ready() -> void:
 	combo_timer.timeout.connect(on_combo_timer_timeout)
+	stamina_drain_timer.timeout.connect(on_stamina_drain_timer_timeout)
 
 func on_combo_timer_timeout() -> void:
 	if not attack_state == AttackStatus.IDLE:
@@ -171,6 +173,7 @@ func block() -> void:
 
 @warning_ignore("shadowed_variable")
 func perform_block(block: BlockData) -> void:
+	stamina_drain_timer.start(block.stamina_drain_time)
 	current_block = block
 	attack_state = AttackStatus.PARRYING
 
@@ -182,15 +185,22 @@ func perform_block(block: BlockData) -> void:
 	elif block.block_type == WeaponData.BlockType.DEFLECT:
 		attack_state = AttackStatus.DEFLECTING
 
-
+	await get_tree().create_timer(current_block.stamina_drain).timeout
 func end_block() -> void:
 	if current_block == null:
 		return
 	
+	stamina_drain_timer.stop()
 	attack_state = AttackStatus.RECOVERING
 	await get_tree().create_timer(current_block.recovery).timeout
 	
 	
 	attack_state = AttackStatus.IDLE
 	current_block = null
+
+func on_stamina_drain_timer_timeout() -> void:
+	print("Drain")  ## start another timer that drains here
 	pass
+	
+func get_block_data() -> BlockData:
+	return current_block
