@@ -107,11 +107,12 @@ func look_at_cursor() -> void:
 		self.rotation.y = atan2(delta_pos.x, delta_pos.z)  + PI / 2.0
 
 func request_damage(amount: int) -> void:
-	print(AttackComponent.AttackStatus.keys()[attack_compontent.attack_state])
+	# print(AttackComponent.AttackStatus.keys()[attack_compontent.attack_state])
 	## Damage cal based on current gear / blocking / damage type being applied 
 	
 	match attack_compontent.attack_state:
 		AttackComponent.AttackStatus.PARRYING:
+			print("Perfect Parry")
 			# Apply knockback / stun to attacker
 			# Need a reference to who is applying the damage
 			# Need to know if it is a melee attack (don't want to knock back/stun a ranged attack)
