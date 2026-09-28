@@ -20,6 +20,8 @@ class_name Player
 	
 @export var camera : Camera3D
 
+signal blocked(stamina_used: int, mana_used: int) 
+
 enum PlayerState
 {
 	IDLE,
@@ -107,26 +109,30 @@ func look_at_cursor() -> void:
 		self.rotation.y = atan2(delta_pos.x, delta_pos.z)  + PI / 2.0
 
 func request_damage(amount: int) -> void:
-	# print(AttackComponent.AttackStatus.keys()[attack_compontent.attack_state])
-	## Damage cal based on current gear / blocking / damage type being applied 
-	
+	var final_damage : int =  amount
+
+	var current_block : BlockData = attack_compontent.get_block_data()
 	match attack_compontent.attack_state:
 		AttackComponent.AttackStatus.PARRYING:
 			print("Perfect Parry")
+			
 			# Apply knockback / stun to attacker
 			# Need a reference to who is applying the damage
 			# Need to know if it is a melee attack (don't want to knock back/stun a ranged attack)
+			blocked.emit(current_block.parry_sucess_stamina_cost, current_block.mana_cost)
 			return
 		AttackComponent.AttackStatus.BLOCKING:
-			# Prevent bulk of damage
+			final_damage /= 2 # Temp way of reducing damage, this should be calcualted based on shield stats
 			# Need a reference to who is applying the damage to know direction of knockback 
+			blocked.emit(current_block.parry_fail_stamina_cost, current_block.mana_cost)
 			pass
 		AttackComponent.AttackStatus.DEFLECTING:
 			# Damage is still applied 
 			# Maneuverability stuff, I could see maybe a dash window?
+			blocked.emit(current_block.parry_fail_stamina_cost, current_block.mana_cost)
 			pass
 
-	health_component.request_damage(amount)
+	health_component.request_damage(final_damage)
 
 func collect(item: Variant) -> void:
 	inv.insert(item)
