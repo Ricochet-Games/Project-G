@@ -173,14 +173,14 @@ func block() -> void:
 func perform_block(block: BlockData) -> void:
 	current_block = block
 	attack_state = AttackStatus.PARRYING
-	print("PARRYING")
+
 	# Possibily add started block signal emit here
 	await get_tree().create_timer(block.parry_window).timeout
 	
-	
-	attack_state = AttackStatus.BLOCKING
-	print("BLOCKING")
-	#This just goes until we let go 
+	if block.block_type == WeaponData.BlockType.BLOCK:
+		attack_state = AttackStatus.BLOCKING
+	elif block.block_type == WeaponData.BlockType.DEFLECT:
+		attack_state = AttackStatus.DEFLECTING
 
 
 func end_block() -> void:
@@ -188,7 +188,6 @@ func end_block() -> void:
 		return
 	
 	attack_state = AttackStatus.RECOVERING
-	print("RECOVERING")
 	await get_tree().create_timer(current_block.recovery).timeout
 	
 	
