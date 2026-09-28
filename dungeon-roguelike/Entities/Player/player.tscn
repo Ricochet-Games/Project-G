@@ -54,8 +54,6 @@ albedo_color = Color(0.5549274, 0.41480064, 1, 1)
 
 [node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("health_component", "attack_compontent", "stamina_component", "mana_component", "itempickup_component", "sub_viewport_container", "camera") groups=["Player"]]
 script = ExtResource("1_4flbx")
-speed = null
-player_rotation_speed = null
 health_component = NodePath("HealthComponent")
 attack_compontent = NodePath("AttackComponent")
 stamina_component = NodePath("StaminaComponent")
@@ -63,7 +61,6 @@ mana_component = NodePath("ManaComponent")
 itempickup_component = NodePath("ItemPickupComponent")
 sub_viewport_container = NodePath("SubViewportContainer")
 inv = ExtResource("2_ap3xn")
-state = null
 camera = NodePath("SubViewportContainer/SubViewport/CamRig/Camera3D")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=218974347]
