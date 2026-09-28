@@ -59,6 +59,8 @@ func _input(event: InputEvent)  -> void:
 		attack_compontent.attack(attack_compontent.AttackHand.ALT)
 	if event.is_action_pressed("block"):
 		attack_compontent.block()
+	if event.is_action_released("block"):
+		attack_compontent.end_block()
 
 	if event.is_action_pressed("item_pickup"):
 		collect(itempickup_component.itemData)

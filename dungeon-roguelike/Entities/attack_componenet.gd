@@ -23,11 +23,15 @@ enum AttackStatus
 {
 	IDLE,
 	WINDING_UP,
-	ATTACKING,
+	PARRYING,
+	BLOCKING,
+	ATTACKING, 
 	RECOVERING,
 }
 
 @export var attack_state : AttackStatus = AttackStatus.IDLE
+
+@export var current_block : BlockData
 
 func _ready() -> void:
 	combo_timer.timeout.connect(on_combo_timer_timeout)
@@ -142,17 +146,51 @@ func create_hitboxes(damage : float, new_hitboxes :Array[PackedScene]) -> void:
 		#hitbox.damage_owner = attack_owner
 
 func block() -> void:
-	print("block")
-	# This is where we get the information about the block being done 
-	# Deflect / block / parry
-	# 
-	# Then we need to see if the player can preform this type of block
+	if not attack_state == AttackStatus.IDLE:
+		return
 	
-	perform_block()
+	var weapon: WeaponData = weapon_handler.get_offhand_weapon()
+	if weapon == null:
+		return
+		
+	combo = 0 
+	
+	var current_block_data : Variant ## Attack Data or Attack Skill Data
+	
+	current_block_data = weapon.block
+	print(current_block_data)
+
+	if stamina_component and stamina_component.current_stamina == 0:
+		return
+	if mana_component and mana_component.current_mana < current_block_data.mana_cost:
+		return
+	
+	perform_block(current_block_data)
 	pass
-@warning_ignore("shadowed_variable") 
-func perform_block() -> void:
-	# Timer for block to 
-	# Animations
-	# Block calculations / Damage reduction
+
+@warning_ignore("shadowed_variable")
+func perform_block(block: BlockData) -> void:
+	current_block = block
+	attack_state = AttackStatus.PARRYING
+	print("PARRYING")
+	# Possibily add started block signal emit here
+	await get_tree().create_timer(block.parry_window).timeout
+	
+	
+	attack_state = AttackStatus.BLOCKING
+	print("BLOCKING")
+	#This just goes until we let go 
+
+
+func end_block() -> void:
+	if current_block == null:
+		return
+	
+	attack_state = AttackStatus.RECOVERING
+	print("RECOVERING")
+	await get_tree().create_timer(current_block.recovery).timeout
+	
+	
+	attack_state = AttackStatus.IDLE
+	current_block = null
 	pass

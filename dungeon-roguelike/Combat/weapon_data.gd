@@ -5,6 +5,8 @@ class_name WeaponData
 
 @export var weapon_type : WeaponType
 
+@export var block_type : BlockType
+
 @export var off_hand_pairs : Array[WeaponType]
 
 @export var attacks : Array[AttackData]
@@ -12,6 +14,8 @@ class_name WeaponData
 @export var offhand_attacks : Array[AttackData]
 
 @export var attack_skills : Array[AttackSkillData]
+
+@export var block : BlockData
 
 @export var attack_speed : float = 1.0
 
@@ -43,4 +47,11 @@ enum DamageType
 	BLUNT,
 	SLASH,
 	PIERCE,
+}
+
+enum BlockType
+{
+	BLOCK,
+	PARRY,
+	DEFLECT,
 }

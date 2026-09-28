@@ -4,7 +4,12 @@
 [ext_resource type="Resource" uid="uid://24irttm2prap" path="res://Combat/Attacks/Sword_Small_Slash.tres" id="3_bhmed"]
 [ext_resource type="Resource" uid="uid://cqwukmnuv51dl" path="res://Combat/Attacks/Sword_Big_Slash.tres" id="4_hhwdq"]
 [ext_resource type="Script" uid="uid://cukfb368ajudm" path="res://Combat/weapon_data.gd" id="4_mwrtn"]
+[ext_resource type="Script" uid="uid://c3n2f0tq5awdn" path="res://Combat/block_data.gd" id="5_hhwdq"]
 [ext_resource type="Script" uid="uid://b7xlc3nwlnrc3" path="res://Combat/attack_skill_data.gd" id="5_nbefj"]
+
+[sub_resource type="Resource" id="Resource_yglu3"]
+script = ExtResource("5_hhwdq")
+metadata/_custom_type_script = "uid://c3n2f0tq5awdn"
 
 [resource]
 script = ExtResource("4_mwrtn")
@@ -12,4 +17,5 @@ weapon_name = "Sword"
 off_hand_pairs = Array[int]([9])
 attacks = Array[ExtResource("1_bhmed")]([ExtResource("3_bhmed"), ExtResource("3_bhmed"), ExtResource("4_hhwdq")])
 offhand_attacks = Array[ExtResource("1_bhmed")]([ExtResource("3_bhmed"), ExtResource("4_hhwdq")])
+block = SubResource("Resource_yglu3")
 metadata/_custom_type_script = "uid://cukfb368ajudm"
