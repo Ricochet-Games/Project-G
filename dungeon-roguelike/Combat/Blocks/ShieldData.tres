@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BlockData" format=3 uid="uid://dki7hbt3aivqw"]
+
+[ext_resource type="Script" uid="uid://c3n2f0tq5awdn" path="res://Combat/block_data.gd" id="1_r0ekm"]
+
+[resource]
+script = ExtResource("1_r0ekm")
+metadata/_custom_type_script = "uid://c3n2f0tq5awdn"
