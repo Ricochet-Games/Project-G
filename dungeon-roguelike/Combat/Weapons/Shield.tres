@@ -3,10 +3,12 @@
 [ext_resource type="Script" uid="uid://b7xlc3nwlnrc3" path="res://Combat/attack_skill_data.gd" id="1_g5620"]
 [ext_resource type="Script" uid="uid://d37us7ig17og3" path="res://Combat/attack_data.gd" id="2_vdcax"]
 [ext_resource type="Script" uid="uid://cukfb368ajudm" path="res://Combat/weapon_data.gd" id="3_lh4wr"]
+[ext_resource type="Resource" uid="uid://dki7hbt3aivqw" path="res://Combat/Blocks/ShieldData.tres" id="3_vdcax"]
 
 [resource]
 script = ExtResource("3_lh4wr")
 weapon_name = "Shield"
 weapon_type = 9
+block = ExtResource("3_vdcax")
 can_main_hand = false
 metadata/_custom_type_script = "uid://cukfb368ajudm"

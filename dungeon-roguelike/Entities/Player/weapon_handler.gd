@@ -12,7 +12,7 @@ func equip_weapon(new_weapon : WeaponData) -> void:
 	equipped_weapon = new_weapon
 
 func get_offhand_weapon() -> WeaponData:
-	return equipped_weapon
+	return equipped_offhand_weapon
 
 func equip_offhand_weapon(new_weapon : WeaponData) -> void:
-	equipped_weapon = new_weapon
+	equipped_offhand_weapon = new_weapon

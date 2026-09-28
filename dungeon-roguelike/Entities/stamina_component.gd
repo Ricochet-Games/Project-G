@@ -21,7 +21,9 @@ signal out_of_stamina
 func _ready() -> void:
 	current_stamina = max_stamina
 	attack_component.started_attack.connect(_on_staminia_used)
+	attack_component.stamina_drained.connect(_on_staminia_used)
 	player.blocked.connect(_on_staminia_used)
+	
 	stamina_regen_timer.timeout.connect(_regenerate_stamina)
 	stamina_regen_pause_timer.timeout.connect(_start_stamina_regen)
 	stamina_regen_pause_timer.wait_time = stamina_regen_pause_time

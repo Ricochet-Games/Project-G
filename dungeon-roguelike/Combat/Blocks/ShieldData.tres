@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_r0ekm")
+stamina_drain = 2.0
+stamina_drain_time = 1.0
 metadata/_custom_type_script = "uid://c3n2f0tq5awdn"
