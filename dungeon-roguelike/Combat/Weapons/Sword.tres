@@ -14,6 +14,7 @@ metadata/_custom_type_script = "uid://c3n2f0tq5awdn"
 [resource]
 script = ExtResource("4_mwrtn")
 weapon_name = "Sword"
+block_type = 1
 off_hand_pairs = Array[int]([9])
 attacks = Array[ExtResource("1_bhmed")]([ExtResource("3_bhmed"), ExtResource("3_bhmed"), ExtResource("4_hhwdq")])
 offhand_attacks = Array[ExtResource("1_bhmed")]([ExtResource("3_bhmed"), ExtResource("4_hhwdq")])
