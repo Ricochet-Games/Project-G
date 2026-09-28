@@ -52,6 +52,5 @@ enum DamageType
 enum BlockType
 {
 	BLOCK,
-	PARRY,
 	DEFLECT,
 }
