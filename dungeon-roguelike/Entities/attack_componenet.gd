@@ -156,16 +156,12 @@ func block() -> void:
 		return
 	
 	var weapon: WeaponData = weapon_handler.get_offhand_weapon()
-	print(weapon)
 	if weapon == null:
 		return
-		
+		y
 	combo = 0 
 	
-	var current_block_data : Variant ## Attack Data or Attack Skill Data
-	
-	current_block_data = weapon.block
-	print(current_block_data)
+	var current_block_data : BlockData = weapon.block
 
 	if stamina_component and stamina_component.current_stamina == 0:
 		return
@@ -173,14 +169,13 @@ func block() -> void:
 		return
 	
 	perform_block(current_block_data)
-	pass
 
 @warning_ignore("shadowed_variable")
 func perform_block(block: BlockData) -> void:
 	
+	stamina_component.lock_stamina_regen("block")
 	current_block = block
 	attack_state = AttackStatus.PARRYING
-
 	# Possibily add started block signal emit here
 	await get_tree().create_timer(block.parry_window).timeout
 	
@@ -189,27 +184,36 @@ func perform_block(block: BlockData) -> void:
 	elif block.block_type == WeaponData.BlockType.DEFLECT:
 		attack_state = AttackStatus.DEFLECTING
 
+	
 	defensive_stance_timer.start(block.stamina_drain_time)
-	print(block)
 	#await get_tree().create_timer(current_block.stamina_drain).timeout
 func end_block() -> void:
 	if current_block == null:
+		attack_state = AttackStatus.IDLE
+		stamina_component.unlock_stamina_regen("block")
 		return
-	
-	defensive_stance_timer.stop()
+		
 	stamina_drain_timer.stop()
+	defensive_stance_timer.stop()
+	
 	attack_state = AttackStatus.RECOVERING
 	await get_tree().create_timer(current_block.recovery).timeout
 	
 	attack_state = AttackStatus.IDLE
+	stamina_component.unlock_stamina_regen("block")
 	current_block = null
 	
 
 func on_defensive_stance_timer_timeout() -> void:
 	print("start drain")
+	defensive_stance_timer.stop()
 	stamina_drain_timer.start()
 	
 func on_stamina_drain_timer_timeout() -> void:
+	if current_block == null:
+		stamina_drain_timer.stop()
+		return
+		
 	stamina_drained.emit(current_block.stamina_drain, 0)
 	print("draining")
 	pass
