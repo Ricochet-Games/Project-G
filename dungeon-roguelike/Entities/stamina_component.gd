@@ -18,6 +18,9 @@ signal out_of_stamina
 @export var attack_component : AttackComponent
 
 
+@export var stamina_regen_locks: Dictionary = {}
+
+
 func _ready() -> void:
 	current_stamina = max_stamina
 	attack_component.started_attack.connect(_on_staminia_used)
@@ -27,6 +30,18 @@ func _ready() -> void:
 	stamina_regen_timer.timeout.connect(_regenerate_stamina)
 	stamina_regen_pause_timer.timeout.connect(_start_stamina_regen)
 	stamina_regen_pause_timer.wait_time = stamina_regen_pause_time
+
+
+func lock_stamina_regen(source: String) -> void:
+	stamina_regen_locks[source] = true
+	stamina_regen_timer.stop()
+	stamina_regen_pause_timer.stop()
+
+func unlock_stamina_regen(source: String) -> void:
+	stamina_regen_locks.erase(source)
+
+	if stamina_regen_locks.is_empty():
+		stamina_regen_pause_timer.start()
 
 func _on_staminia_used(stamina_used: int, _mana_used: int) -> void:
 	if stamina_used == 0:
