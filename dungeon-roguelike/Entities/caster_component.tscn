@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://r0mlbj20h3xw"]
+
+[ext_resource type="Script" uid="uid://c2hcq61pq6a2b" path="res://Scripts/SpellCasting/spell_caster.gd" id="1_n5lu7"]
+[ext_resource type="PackedScene" uid="uid://n12ws1deohx" path="res://Entities/projectile_base.tscn" id="2_qrswy"]
+
+[node name="CasterComponent" type="Node3D" unique_id=358663077]
+script = ExtResource("1_n5lu7")
+projectile_scene = ExtResource("2_qrswy")
