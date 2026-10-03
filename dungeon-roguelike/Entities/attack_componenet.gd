@@ -158,7 +158,6 @@ func block() -> void:
 	var weapon: WeaponData = weapon_handler.get_offhand_weapon()
 	if weapon == null:
 		return
-		y
 	combo = 0 
 	
 	var current_block_data : BlockData = weapon.block
