@@ -25,7 +25,7 @@ func cast() -> void:
 	projectile.caster = self
 	
 	# change this direction variable based on how we're handling the way the player is facing
-	direction = -get_global_transform().basis.z
+	direction = get_global_transform().basis.x
 	
 	# Adds projectile to scene and sets the position of the projectile
 	get_tree().current_scene.add_child(projectile)

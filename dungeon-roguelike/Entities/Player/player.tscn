@@ -207,6 +207,7 @@ shape = SubResource("SphereShape3D_yguum")
 [node name="SpellCastingUI" parent="CanvasLayer" unique_id=545222661 instance=ExtResource("15_r8fok")]
 
 [node name="CasterComponent" parent="." unique_id=358663077 node_paths=PackedStringArray("spell_manager") instance=ExtResource("16_nhbkt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42556766, 0, 0)
 spell_manager = NodePath("../CanvasLayer/SpellCastingUI")
 
 [connection signal="area_entered" from="ItemPickupComponent" to="ItemPickupComponent" method="_on_area_entered"]
