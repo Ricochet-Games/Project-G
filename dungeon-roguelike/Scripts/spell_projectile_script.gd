@@ -33,6 +33,6 @@ func _on_timer_timeout() -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.has_method("request_damage"):
 		body.request_damage(damage)
-		for augment in augments:
+	for augment in augments:
 			augment.on_hit(self)
-		queue_free()
+	queue_free()
