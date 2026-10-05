@@ -8,5 +8,5 @@ func _ready()  -> void:
 
 	health_component.damaged.connect(_on_damaged)
 
-func _on_damaged(_current: int, new_health: int) -> void:
+func _on_damaged(new_health: int) -> void:
 	value = new_health
