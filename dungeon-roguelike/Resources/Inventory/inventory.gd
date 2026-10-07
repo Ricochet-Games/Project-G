@@ -16,9 +16,8 @@ func insert(item: InventoryItem) -> void:
 			emptyslots[0].amount = 1
 	update.emit()
 
-func add_item_to_slot(slot_index: int) -> void
-	slots[]
-	pass
+#func add_item_to_slot(slot_index: int, item: InventorySlot) -> void
+	#pass
 
 func swap_items(from_inventory_slot, to_invetory_slot) -> void:
 	#temp to_invetory_slot DATA

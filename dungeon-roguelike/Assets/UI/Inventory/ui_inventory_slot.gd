@@ -58,6 +58,6 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	#refresh()
 
 
-func _clear()
-	pass
+#func _clear()
+	#pass
 	

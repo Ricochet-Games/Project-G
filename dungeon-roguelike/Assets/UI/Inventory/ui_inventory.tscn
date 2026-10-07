@@ -57,123 +57,93 @@ columns = 5
 
 [node name="InventoryUISlot" parent="BookTexture/GridContainer" unique_id=166101265 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot2" parent="BookTexture/GridContainer" unique_id=716526492 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot3" parent="BookTexture/GridContainer" unique_id=1948577214 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot4" parent="BookTexture/GridContainer" unique_id=1663655990 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot5" parent="BookTexture/GridContainer" unique_id=1725943453 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot6" parent="BookTexture/GridContainer" unique_id=25552129 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot7" parent="BookTexture/GridContainer" unique_id=410977512 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot8" parent="BookTexture/GridContainer" unique_id=234367905 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot9" parent="BookTexture/GridContainer" unique_id=2040347002 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot10" parent="BookTexture/GridContainer" unique_id=1977116597 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot11" parent="BookTexture/GridContainer" unique_id=742842997 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot12" parent="BookTexture/GridContainer" unique_id=904374670 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot13" parent="BookTexture/GridContainer" unique_id=1844178854 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot14" parent="BookTexture/GridContainer" unique_id=21970846 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot15" parent="BookTexture/GridContainer" unique_id=611315451 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot16" parent="BookTexture/GridContainer" unique_id=1438738229 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot17" parent="BookTexture/GridContainer" unique_id=751337462 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot18" parent="BookTexture/GridContainer" unique_id=926506161 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot19" parent="BookTexture/GridContainer" unique_id=792359762 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot20" parent="BookTexture/GridContainer" unique_id=374810998 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot21" parent="BookTexture/GridContainer" unique_id=529105249 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot22" parent="BookTexture/GridContainer" unique_id=327641063 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot23" parent="BookTexture/GridContainer" unique_id=133990331 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot24" parent="BookTexture/GridContainer" unique_id=966503533 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot25" parent="BookTexture/GridContainer" unique_id=2136860027 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot26" parent="BookTexture/GridContainer" unique_id=1916339435 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot27" parent="BookTexture/GridContainer" unique_id=487032503 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot28" parent="BookTexture/GridContainer" unique_id=220859742 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot29" parent="BookTexture/GridContainer" unique_id=1308895843 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="InventoryUISlot30" parent="BookTexture/GridContainer" unique_id=1113437623 instance=ExtResource("2_evtp7")]
 layout_mode = 2
-slot_index = null
 
 [node name="DragManager" type="Node" parent="." unique_id=386713106]
 script = ExtResource("4_pw5fm")
