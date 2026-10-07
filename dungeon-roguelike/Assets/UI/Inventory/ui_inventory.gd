@@ -1,11 +1,11 @@
-extends TextureRect
+extends Control
 
 @onready var inv: Inv = preload("res://Resources/Inventory/player_inventory.tres")
-@onready var slots: Array = $GridContainer.get_children()
+@onready var slots: Array = $Inventory/GridContainer.get_children()
 
 var is_open := false
 
-func _ready() -> void:
+func _ready() -> void:	
 	inv.update.connect(update_slots)
 	update_slots()
 	close()
