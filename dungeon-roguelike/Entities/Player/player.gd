@@ -12,7 +12,7 @@ class_name Player
 
 @export var sub_viewport_container: SubViewportContainer
 
-@export var inv: Inv
+@export var inv: Inventory
 
 @onready var nameplate: Label3D = $Nameplate
 

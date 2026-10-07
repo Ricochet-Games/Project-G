@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://chmcylg6rludq" path="res://UI/HUD.tscn" id="4_ak5v8"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
 [ext_resource type="Shader" uid="uid://bpocxjcu6kajn" path="res://Shaders/FloorShader.gdshader" id="5_oho3u"]
+[ext_resource type="PackedScene" uid="uid://d0qn6a1or6y4k" path="res://Assets/test_item_collectible.tscn" id="6_bwjpn"]
 [ext_resource type="PackedScene" uid="uid://baxkp7h6nixys" path="res://Assets/grass_billboard_standard.tscn" id="6_d3awe"]
 [ext_resource type="Shader" uid="uid://bb46o2gfxcq67" path="res://Shaders/grass_shader.gdshader" id="7_yglu3"]
 [ext_resource type="Texture2D" uid="uid://2t4frt04vp0h" path="res://Assets/GrassV02.png" id="8_bwjpn"]
@@ -199,6 +200,9 @@ transform = Transform3D(0.99999994, 1.336945e-07, 0, -1.18733645e-07, 0.99999994
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Level/Floor/StaticBody3D" unique_id=1229381979]
 shape = SubResource("WorldBoundaryShape3D_cqqll")
+
+[node name="TestItem" parent="NavigationRegion3D2/Level/Floor" unique_id=382191950 instance=ExtResource("6_bwjpn")]
+transform = Transform3D(0.04437121, 1.870107e-09, 0.04437121, -1.0536712e-08, 0.24999999, -8.953086e-16, -0.04437121, -1.8701067e-09, 0.04437121, 0.59814304, 0.12500006, 0.23009996)
 
 [node name="Cube" type="MeshInstance3D" parent="NavigationRegion3D2/Level" unique_id=105671264]
 transform = Transform3D(0.08835894, 4.440892e-16, -0.248869, 7.106548e-09, 0.2914797, -3.3824967e-09, 0.248869, 1.2284952e-08, 0.08835894, 0.32697546, -0.2381243, 0.13388506)

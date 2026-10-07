@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 func pickup(data: Texture2D, preview: Control) -> void:
 	texture_data = data
 	preview_node = preview
-	# add preview to follow mouse
+	# add preview to follow mou+se
 
 func drop() -> Variant:
 	var data : Variant = texture_data

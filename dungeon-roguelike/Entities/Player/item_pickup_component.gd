@@ -3,7 +3,7 @@ class_name ItemPickupComponent
 
 var items: Array[Area3D] = []
 var closest_item: Area3D = null
-var itemData: InvItem = null
+var itemData: InventoryItem = null
 
 func _process(_delta: float) -> void:
 	calc_dist()

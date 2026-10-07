@@ -1,16 +1,25 @@
 extends Control
 
-@onready var inv: Inv = preload("res://Resources/Inventory/player_inventory.tres")
-@onready var slots: Array = $Inventory/GridContainer.get_children()
+@onready var inv: Inventory = preload("res://Resources/Inventory/player_inventory.tres")
+@onready var slots: Array = $BookTexture/GridContainer.get_children()
 
 var is_open := false
 
-func _ready() -> void:	
-	inv.update.connect(update_slots)
-	update_slots()
+func _ready() -> void:	 
+	inv.update.connect(refresh)
+	refresh()
 	close()
 
-func update_slots() -> void:
+func swap_item() -> void:
+	#Take in From Item
+	#Take in To Item
+	#Swaps the data using Inv
+	
+	refresh()
+	pass
+
+
+func refresh() -> void:
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].update(inv.slots[i])
 

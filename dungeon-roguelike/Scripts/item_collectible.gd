@@ -1,3 +1,3 @@
 extends Area3D
 
-@export var itemData: InvItem
+@export var itemData: InventoryItem
