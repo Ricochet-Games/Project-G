@@ -4,6 +4,7 @@ class_name ItemPickupComponent
 var items: Array[Area3D] = []
 var closest_item: Area3D = null
 var itemData: InventoryItem = null
+@onready var player: Player = $".."
 
 func _process(_delta: float) -> void:
 	calc_dist()
@@ -11,6 +12,7 @@ func _process(_delta: float) -> void:
 func pickup_item() -> void:
 	if closest_item:
 		closest_item.queue_free()
+		player.collect(itemData)
 		print("Picked up Item")
 
 func _on_area_entered(area: Area3D) -> void:

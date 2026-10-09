@@ -182,6 +182,18 @@ navigation_mesh = SubResource("NavigationMesh_hb2xm")
 
 [node name="Level" type="Node3D" parent="NavigationRegion3D2" unique_id=1271558426]
 
+[node name="TestItem4" parent="NavigationRegion3D2/Level" unique_id=382191950 instance=ExtResource("6_bwjpn")]
+transform = Transform3D(0.25, 1.7763568e-15, 0, -1.7763568e-15, 0.25, 0, 0, 0, 0.25, 1.6611046, -0.32337847, 2.64557)
+
+[node name="TestItem3" parent="NavigationRegion3D2/Level" unique_id=1824144640 instance=ExtResource("6_bwjpn")]
+transform = Transform3D(0.25, 1.3322676e-15, 0, -1.3322676e-15, 0.25, 0, 0, 0, 0.25, 1.6538612, -0.31957403, 2.0308604)
+
+[node name="TestItem2" parent="NavigationRegion3D2/Level" unique_id=1002997461 instance=ExtResource("6_bwjpn")]
+transform = Transform3D(0.25, 8.881785e-16, 0, -8.881785e-16, 0.25, 0, 0, 0, 0.25, 1.1488595, -0.30435622, 2.724577)
+
+[node name="TestItem" parent="NavigationRegion3D2/Level" unique_id=929624165 instance=ExtResource("6_bwjpn")]
+transform = Transform3D(0.24999999, 4.440892e-16, 0, -4.440892e-16, 0.24999999, -4.440892e-16, 0, 0, 0.24999999, 0.91908765, -0.24348499, 2.1796615)
+
 [node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D2/Level" unique_id=379948587]
 transform = Transform3D(2.8171418, -4.214685e-08, -2.8171418, 1.1873366e-07, 1, -1.18733645e-07, 2.8171418, -1.7763568e-15, 2.8171418, -0.11774184, -0.3684851, -0.15361641)
 mesh = SubResource("PlaneMesh_yglu3")
@@ -200,9 +212,6 @@ transform = Transform3D(0.99999994, 1.336945e-07, 0, -1.18733645e-07, 0.99999994
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Level/Floor/StaticBody3D" unique_id=1229381979]
 shape = SubResource("WorldBoundaryShape3D_cqqll")
-
-[node name="TestItem" parent="NavigationRegion3D2/Level/Floor" unique_id=382191950 instance=ExtResource("6_bwjpn")]
-transform = Transform3D(0.04437121, 1.870107e-09, 0.04437121, -1.0536712e-08, 0.24999999, -8.953086e-16, -0.04437121, -1.8701067e-09, 0.04437121, 0.59814304, 0.12500006, 0.23009996)
 
 [node name="Cube" type="MeshInstance3D" parent="NavigationRegion3D2/Level" unique_id=105671264]
 transform = Transform3D(0.08835894, 4.440892e-16, -0.248869, 7.106548e-09, 0.2914797, -3.3824967e-09, 0.248869, 1.2284952e-08, 0.08835894, 0.32697546, -0.2381243, 0.13388506)

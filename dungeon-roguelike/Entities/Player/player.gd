@@ -65,14 +65,11 @@ func _input(event: InputEvent)  -> void:
 		attack_compontent.end_block()
 
 	if event.is_action_pressed("item_pickup"):
-		collect(itempickup_component.itemData)
 		itempickup_component.pickup_item()
 		
 	if event.is_action_pressed("toggle_camera"):
 		sub_viewport_container.visible = !sub_viewport_container.visible
 	
-	
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

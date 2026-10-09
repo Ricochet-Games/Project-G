@@ -13,6 +13,11 @@ extends Panel
 func process() -> void:
 	pass
 
+func init(inv: Inventory, index: int) -> void:
+	inventory = inv
+	slot_index = index
+	pass
+
 func update(slot: InventorySlot) -> void:
 	if !slot.item:
 		item_visual.visible = false

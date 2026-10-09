@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dskimq7aam0br"]
 
 [ext_resource type="Script" uid="uid://ds116btnx83sn" path="res://Entities/Player/player.gd" id="1_4flbx"]
-[ext_resource type="Resource" uid="uid://bph5a84yyljwh" path="res://Resources/Inventory/player_inventory.tres" id="2_ap3xn"]
 [ext_resource type="Script" uid="uid://xi8yfcr64nd8" path="res://Entities/stamina_component.gd" id="3_lub02"]
 [ext_resource type="Script" uid="uid://b0vdglsluco2g" path="res://Entities/mana_component.gd" id="3_x1y6q"]
 [ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Entities/health_component.gd" id="3_x2ivp"]
@@ -13,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bt8gq4gwbsvh1" path="res://Combat/Hitboxes/Sword_Small_Slash_BH.tscn" id="10_x1y6q"]
 [ext_resource type="Resource" uid="uid://dukf8jb2ys1yc" path="res://Combat/Weapons/Sword.tres" id="12_owvpp"]
 [ext_resource type="Script" uid="uid://27r66wuk8hrf" path="res://Entities/Player/item_pickup_component.gd" id="13_owvpp"]
+[ext_resource type="Script" uid="uid://0el5hcmqo0x2" path="res://Resources/Inventory/inventory.gd" id="13_vskfa"]
 [ext_resource type="Resource" uid="uid://y1rcl3gq0le8" path="res://Combat/Weapons/Shield.tres" id="13_xr8lj"]
 [ext_resource type="PackedScene" uid="uid://yo5eyyn0chws" path="res://Assets/UI/Spellcasting/spell_casting_ui.tscn" id="15_r8fok"]
 [ext_resource type="PackedScene" uid="uid://r0mlbj20h3xw" path="res://Entities/caster_component.tscn" id="16_nhbkt"]
@@ -55,7 +55,7 @@ albedo_color = Color(0.5549274, 0.41480064, 1, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yguum"]
 
-[node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("health_component", "attack_compontent", "stamina_component", "mana_component", "itempickup_component", "sub_viewport_container", "camera") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1931111436 node_paths=PackedStringArray("health_component", "attack_compontent", "stamina_component", "mana_component", "itempickup_component", "sub_viewport_container", "inv", "camera") groups=["Player"]]
 script = ExtResource("1_4flbx")
 health_component = NodePath("HealthComponent")
 attack_compontent = NodePath("AttackComponent")
@@ -63,7 +63,7 @@ stamina_component = NodePath("StaminaComponent")
 mana_component = NodePath("ManaComponent")
 itempickup_component = NodePath("ItemPickupComponent")
 sub_viewport_container = NodePath("SubViewportContainer")
-inv = ExtResource("2_ap3xn")
+inv = NodePath("Inventory")
 camera = NodePath("SubViewportContainer/SubViewport/CamRig/Camera3D")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=218974347]
@@ -182,6 +182,10 @@ one_shot = true
 [node name="StaminiaDrainTimer" type="Timer" parent="AttackComponent/DefensiveStanceTimer" unique_id=1531674074]
 wait_time = 0.1
 
+[node name="Inventory" type="Node" parent="." unique_id=1774035413]
+script = ExtResource("13_vskfa")
+inv_size = 30
+
 [node name="ItemPickupComponent" type="Area3D" parent="." unique_id=866598945]
 collision_layer = 2
 script = ExtResource("13_owvpp")
@@ -192,24 +196,19 @@ shape = SubResource("SphereShape3D_yguum")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=371865371]
 
-[node name="InventoryUI" type="Control" parent="CanvasLayer" unique_id=1698617988]
-layout_mode = 3
+[node name="InventoryUI" parent="CanvasLayer" unique_id=2138976244 node_paths=PackedStringArray("inv") instance=ExtResource("6_iplt1")]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Inventory" parent="CanvasLayer/InventoryUI" unique_id=2138976244 instance=ExtResource("6_iplt1")]
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 270.0
 offset_top = 90.0
 offset_right = 970.0
 offset_bottom = 590.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_horizontal = 1
+grow_vertical = 1
+inv = NodePath("../../Inventory")
 
 [node name="SpellCastingUI" parent="CanvasLayer" unique_id=545222661 instance=ExtResource("15_r8fok")]
 visible = false
