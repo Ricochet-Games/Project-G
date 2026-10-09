@@ -29,14 +29,10 @@ func update(slot: InventorySlot) -> void:
 		if slot.amount > 1:
 			amount_text.visible = true
 		amount_text.text = str(slot.amount)
-		#texture = item_visual.texture
 
 func _get_drag_data(_at_position: Vector2) -> InventorySlotUI:
 	if item_visual.texture == null:
 		return
-	
-	# Set visual previews
-	# creat payload
 	
 	var wrapper : Control = Control.new()
 	wrapper.custom_minimum_size = item_visual.texture.get_size()
@@ -59,9 +55,3 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	var to_invetory_slot: InventorySlotUI = self
 	
 	inventory_ui.inv.swap_items(from_inventory_slot, to_invetory_slot)
-
-
-
-#func _clear()
-	#pass
-	

@@ -11,18 +11,6 @@ func _ready() -> void:
 	close()
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].init(inv, i)
-	
-
-
-
-func swap_item() -> void:
-	#Take in From Item
-	#Take in To Item
-	#Swaps the data using Inv
-	
-	refresh()
-	pass
-
 
 func refresh() -> void:
 	for i in range(min(inv.slots.size(), slots.size())):
