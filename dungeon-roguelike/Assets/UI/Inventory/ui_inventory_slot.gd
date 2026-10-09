@@ -1,4 +1,5 @@
 extends Panel
+class_name InventorySlotUI
 
 @export var inventory: Inventory
 
@@ -30,7 +31,10 @@ func update(slot: InventorySlot) -> void:
 		amount_text.text = str(slot.amount)
 		#texture = item_visual.texture
 
-func _get_drag_data(_at_position: Vector2) -> Dictionary:
+func _get_drag_data(_at_position: Vector2) -> InventorySlotUI:
+	if item_visual.texture == null:
+		return
+	
 	# Set visual previews
 	# creat payload
 	
@@ -44,23 +48,18 @@ func _get_drag_data(_at_position: Vector2) -> Dictionary:
 
 	set_drag_preview(wrapper)
 	
-	return {
-		"inventory_slot": self,
-		"slot_index": slot_index
-	}
-
+	return self
+	
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
-	return data is Dictionary \
-		and data.has("inventory_slot") \
-		and data.has("slot_index")
+	return data is InventorySlotUI 
+
 	
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	var from_inventory_slot: Panel = data["inventory_slot"]
-	var to_invetory_slot: Panel = self
-	#var from_index: int = data["slot_index"]
+	var from_inventory_slot: InventorySlotUI = data
+	var to_invetory_slot: InventorySlotUI = self
 	
 	inventory_ui.inv.swap_items(from_inventory_slot, to_invetory_slot)
-	#refresh()
+
 
 
 #func _clear()
