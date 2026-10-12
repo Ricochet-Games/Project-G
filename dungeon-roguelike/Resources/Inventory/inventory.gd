@@ -11,7 +11,7 @@ func _ready() -> void:
 		slots.append(InventorySlot.new())
 
 func insert(item: InventoryItem) -> void:   
-	var itemslots := slots.filter(func(slot: Variant) -> bool: return slot.item == item) # if there's already a slot
+	var itemslots := slots.filter(func(slot: Variant) -> bool: return slot.item == item and slot.amount < item.max_stack_size) # if there's already a slot
 	if !itemslots.is_empty():
 		itemslots[0].amount += 1
 	else: # if the slot is empty

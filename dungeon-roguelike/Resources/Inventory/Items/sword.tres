@@ -8,4 +8,5 @@
 script = ExtResource("1_wl6xp")
 weapon_data = ExtResource("3_bhk56")
 texture = ExtResource("2_hxucy")
+max_stack_size = 1.0
 metadata/_custom_type_script = "uid://06f2dog5xoae"
