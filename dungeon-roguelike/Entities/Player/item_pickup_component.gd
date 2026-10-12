@@ -3,7 +3,6 @@ class_name ItemPickupComponent
 
 var items: Array[Area3D] = []
 var closest_item: Area3D = null
-var itemData: InventoryItem = null
 @onready var player: Player = $".."
 
 func _process(_delta: float) -> void:
@@ -11,8 +10,10 @@ func _process(_delta: float) -> void:
 
 func pickup_item() -> void:
 	if closest_item:
+		var itemData : InventoryItem = closest_item.itemData
+		var amount : int = closest_item.amount
 		closest_item.queue_free()
-		player.collect(itemData)
+		player.collect(itemData, amount)
 		print("Picked up Item")
 
 func _on_area_entered(area: Area3D) -> void:
@@ -43,10 +44,8 @@ func calc_dist() -> void:
 			var closest_item_dist: float = global_position.distance_to(closest_item.global_position)
 			if global_position.distance_to(item.global_position) < closest_item_dist:
 				closest_item = item
-				itemData = closest_item.itemData
 				print("replaced closest_item")
 		else:
 			# Automatically adds item to closestItem if closestItem is null
 			closest_item = item
-			itemData = closest_item.itemData
 			print("set initial item to closest_item")

@@ -131,5 +131,5 @@ func request_damage(amount: int) -> void:
 
 	health_component.request_damage(final_damage)
 
-func collect(item: Variant) -> void:
-	inv.insert(item)
+func collect(item: InventoryItem, amount : int) -> void:
+	inv.insert(item, amount)

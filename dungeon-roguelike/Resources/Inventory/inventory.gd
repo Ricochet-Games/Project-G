@@ -10,15 +10,15 @@ func _ready() -> void:
 	while slots.size() < inv_size:
 		slots.append(InventorySlot.new())
 
-func insert(item: InventoryItem) -> void:   
+func insert(item: InventoryItem, amount: int) -> void:   
 	var itemslots := slots.filter(func(slot: Variant) -> bool: return slot.item == item and slot.amount < item.max_stack_size) # if there's already a slot
 	if !itemslots.is_empty():
-		itemslots[0].amount += 1
+		itemslots[0].amount += amount
 	else: # if the slot is empty
 		var emptyslots := slots.filter(func(slot: Variant) -> bool: return slot.item == null)
 		if !emptyslots.is_empty():
 			emptyslots[0].item = item
-			emptyslots[0].amount = 1
+			emptyslots[0].amount = amount
 	update.emit()
 
 func add_item_to_slot(slot_index: int, inv_item: InventoryItem, amount: int) -> void:
