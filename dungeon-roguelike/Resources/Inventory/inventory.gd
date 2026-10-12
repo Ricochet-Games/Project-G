@@ -29,11 +29,11 @@ func swap_items(dragged_panel: InventorySlotUI, dropped_panel: InventorySlotUI) 
 	var dragged_inventory : Inventory =  dragged_panel.inventory
 	var dropped_inventory : Inventory =  dropped_panel.inventory
 	
-	var dragged_slot : InventorySlot = dragged_inventory.slots[dragged_panel.slot_index]
+	var _dragged_slot : InventorySlot = dragged_inventory.slots[dragged_panel.slot_index]
 	var dragged_item : InventoryItem = dragged_inventory.slots[dragged_panel.slot_index].item
 	var dragged_amount : int = dragged_inventory.slots[dragged_panel.slot_index].amount
 	
-	var dropped_slot : InventorySlot = dropped_inventory.slots[dropped_panel.slot_index]
+	var _dropped_slot : InventorySlot = dropped_inventory.slots[dropped_panel.slot_index]
 	var dropped_item : InventoryItem = dropped_inventory.slots[dropped_panel.slot_index].item
 	var dropped_amount : int = dropped_inventory.slots[dropped_panel.slot_index].amount
 	
