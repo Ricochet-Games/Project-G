@@ -14,13 +14,9 @@ func insert(item: InventoryItem, amount: int) -> void:
 	var itemslots := slots.filter(func(slot: Variant) -> bool: return slot.item == item and slot.amount < item.max_stack_size) # if there's already a slot
 	if !itemslots.is_empty():
 		for itemslot : InventorySlot in itemslots:
-			
-			print("Trying to add: %s" % amount)
+	
 			var can_add : int = item.max_stack_size - itemslot.amount 
-			print("Slot has: %s" % itemslot.amount )
-			print("Can add: %s" % can_add)
 			if amount <= can_add :
-				print("Adding : %s" % amount)
 				itemslot.amount += amount
 				amount = 0
 			else:
