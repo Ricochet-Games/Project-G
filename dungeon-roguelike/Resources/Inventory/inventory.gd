@@ -14,19 +14,18 @@ func insert(item: InventoryItem, amount: int) -> void:
 	var itemslots := slots.filter(func(slot: Variant) -> bool: return slot.item == item and slot.amount < item.max_stack_size) # if there's already a slot
 	if !itemslots.is_empty():
 		for itemslot : InventorySlot in itemslots:
-	
 			var can_add : int = item.max_stack_size - itemslot.amount 
 			if amount <= can_add :
 				itemslot.amount += amount
-				amount = 0
+				amount = 0 # Added all that were picked up
 			else:
-				amount -= can_add
+				amount -= can_add # Calculate remainder for overflow
 				itemslot.amount += can_add
 				
-
-	if amount <= 0:
+	if amount <= 0: # Early out if there is no items to add to an empty slot
 		update.emit()
 		return
+	
 	var emptyslots := slots.filter(func(slot: Variant) -> bool: return slot.item == null)
 	if !emptyslots.is_empty():
 		emptyslots[0].item = item
