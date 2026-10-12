@@ -14,13 +14,12 @@ func pickup_item() -> void:
 		var amount : int = closest_item.amount
 		closest_item.queue_free()
 		player.collect(itemData, amount)
-		print("Picked up Item")
 
 func _on_area_entered(area: Area3D) -> void:
 	# Add object to the array if they enter the area
 	if area.is_in_group("Item"):
 		items.append(area)
-		print("item entered, array size: ", items.size())
+
 
 
 func _on_area_exited(area: Area3D) -> void:
@@ -29,7 +28,7 @@ func _on_area_exited(area: Area3D) -> void:
 		items.erase(area)
 		if closest_item == area:
 			closest_item = null
-		print("item exited, array size: ", items.size())
+
 
 func calc_dist() -> void:
 	for item in items:
@@ -44,8 +43,7 @@ func calc_dist() -> void:
 			var closest_item_dist: float = global_position.distance_to(closest_item.global_position)
 			if global_position.distance_to(item.global_position) < closest_item_dist:
 				closest_item = item
-				print("replaced closest_item")
+
 		else:
 			# Automatically adds item to closestItem if closestItem is null
 			closest_item = item
-			print("set initial item to closest_item")

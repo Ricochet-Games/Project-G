@@ -4,4 +4,4 @@ class_name InventoryItem
 
 @export var name: String = ""
 @export var texture: Texture2D
-@export var max_stack_size : float = 10
+@export var max_stack_size : int = 10
