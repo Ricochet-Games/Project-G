@@ -195,8 +195,8 @@ transform = Transform3D(0.25, 1.3322676e-15, 0, -1.3322676e-15, 0.25, 0, 0, 0, 0
 amount = 2
 
 [node name="TestItem6" parent="NavigationRegion3D2/Level" unique_id=846524682 instance=ExtResource("6_bwjpn")]
-transform = Transform3D(0.25, 1.3322676e-15, 0, -1.3322676e-15, 0.25, 0, 0, 0, 0.25, -0.25023723, -0.31957403, 2.0308604)
-amount = 2
+transform = Transform3D(0.25, 1.3322676e-15, 0, -1.3322676e-15, 0.25, 0, 0, 0, 0.25, 0.07775706, -0.31957403, 1.0477681)
+amount = 32
 
 [node name="TestItem8" parent="NavigationRegion3D2/Level" unique_id=719103228 instance=ExtResource("6_bwjpn")]
 transform = Transform3D(0.25, 1.3322676e-15, 0, -1.3322676e-15, 0.25, 0, 0, 0, 0.25, 0.759618, -0.31957403, 1.6433285)

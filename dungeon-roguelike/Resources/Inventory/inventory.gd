@@ -28,8 +28,19 @@ func insert(item: InventoryItem, amount: int) -> void:
 	
 	var emptyslots := slots.filter(func(slot: Variant) -> bool: return slot.item == null)
 	if !emptyslots.is_empty():
-		emptyslots[0].item = item
-		emptyslots[0].amount = amount
+		for itemslot : InventorySlot in emptyslots:
+			if amount > item.max_stack_size :
+				itemslot.item = item
+				itemslot.amount = item.max_stack_size # Fill up empty slot
+				amount -= item.max_stack_size 
+			else:
+				itemslot.item = item
+				itemslot.amount = amount # Add remainder to slot
+				amount = 0
+
+			if amount <= 0: # Early out if there is no items to add to an empty slot
+				break
+
 	update.emit()
 
 func add_item_to_slot(slot_index: int, inv_item: InventoryItem, amount: int) -> void:
