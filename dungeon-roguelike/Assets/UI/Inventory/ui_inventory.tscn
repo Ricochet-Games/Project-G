@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://yngtr8kr7sre" path="res://Assets/UI/Inventory/UIBook.png" id="1_glbya"]
 [ext_resource type="PackedScene" uid="uid://cudxdnexp8a64" path="res://Assets/UI/Inventory/ui_inventory_slot.tscn" id="2_evtp7"]
 [ext_resource type="Script" uid="uid://cbal5uqjt5ib1" path="res://Assets/UI/Inventory/ui_inventory.gd" id="2_nguks"]
+[ext_resource type="Script" uid="uid://cnrjyaqxkc08n" path="res://Assets/UI/Inventory/ui_display_slot.gd" id="4_jdygk"]
 [ext_resource type="Script" uid="uid://bx7jflc84xt5w" path="res://Assets/UI/Inventory/drag_manager.gd" id="4_pw5fm"]
 
 [node name="Inventory" type="Control" unique_id=2006837540]
@@ -144,6 +145,15 @@ layout_mode = 2
 
 [node name="InventoryUISlot30" parent="BookTexture/GridContainer" unique_id=1113437623 instance=ExtResource("2_evtp7")]
 layout_mode = 2
+
+[node name="InventoryUISlot" parent="." unique_id=809678656 instance=ExtResource("2_evtp7")]
+layout_mode = 0
+script = ExtResource("4_jdygk")
+
+[node name="InventoryUISlot2" parent="." unique_id=1614034264 instance=ExtResource("2_evtp7")]
+layout_mode = 0
+offset_left = 97.0
+offset_right = 129.0
 
 [node name="DragManager" type="Node" parent="." unique_id=386713106]
 script = ExtResource("4_pw5fm")
