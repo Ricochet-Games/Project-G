@@ -8,13 +8,14 @@ class_name InventorySlotUI
 @onready var item_visual: Sprite2D = $Control/ItemDisplay
 @onready var amount_text: Label = $Control/Label
 #var texture: Texture2D
-@onready var inventory_ui : Control = $"../../.."
+var inventory_ui : Control 
 
 
 func process() -> void:
 	pass
 
-func init(inv: Inventory, index: int) -> void:
+func init(inv_ui: Control, inv: Inventory, index: int) -> void:
+	inventory_ui = inv_ui
 	inventory = inv
 	slot_index = index
 	pass
@@ -39,7 +40,7 @@ func _get_drag_data(_at_position: Vector2) -> InventorySlotUI:
 	
 	var preview : TextureRect = TextureRect.new()
 	preview.texture = item_visual.texture
-	preview.position = item_visual.texture.get_size() * 0.5
+	preview.position = item_visual.texture.get_size() * -0.5
 	wrapper.add_child(preview)
 
 	set_drag_preview(wrapper)

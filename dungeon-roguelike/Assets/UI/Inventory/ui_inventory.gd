@@ -10,7 +10,7 @@ func _ready() -> void:
 	refresh()
 	close()
 	for i in range(min(inv.slots.size(), slots.size())):
-		slots[i].init(inv, i)
+		slots[i].init(self, inv, i)
 
 func refresh() -> void:
 	for i in range(min(inv.slots.size(), slots.size())):
