@@ -8,7 +8,7 @@ class_name Player
 @export var attack_compontent: AttackComponent 
 @export var stamina_component: StaminaComponent
 @export var mana_component: ManaComponent
-@export var itempickup_component: ItemPickupComponent
+@export var interact_component: InteractComponent
 
 @export var sub_viewport_container: SubViewportContainer
 
@@ -64,10 +64,8 @@ func _input(event: InputEvent)  -> void:
 	if event.is_action_released("block"):
 		attack_compontent.end_block()
 
-	if event.is_action_pressed("interact"):
-		## Figureout what to interact with?
-		
-		itempickup_component.pickup_item()
+	if event.is_action_pressed("interact"):	
+		interact_component.interact()
 		
 	if event.is_action_pressed("toggle_camera"):
 		sub_viewport_container.visible = !sub_viewport_container.visible

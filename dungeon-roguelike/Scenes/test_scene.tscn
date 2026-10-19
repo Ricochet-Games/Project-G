@@ -174,9 +174,6 @@ material = SubResource("ShaderMaterial_ii5jo")
 
 [node name="Player" parent="." unique_id=1931111436 instance=ExtResource("1_hb2xm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94038403, -0.25581008, 0.55151826)
-speed = null
-player_rotation_speed = null
-state = null
 
 [node name="SpawnPoint" type="Node3D" parent="." unique_id=556582167]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2809549, -0.056652993, 0.64730495)
