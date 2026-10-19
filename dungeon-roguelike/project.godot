@@ -40,8 +40,8 @@ project/assembly_name="Dungeon Roguelike"
 
 UI=""
 Player=""
-Item="Group for any ground items in the world"
 Enemy=""
+Interactable="Group for any interactable objects in the world"
 
 [input]
 
