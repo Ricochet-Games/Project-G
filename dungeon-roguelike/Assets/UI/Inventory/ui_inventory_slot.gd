@@ -22,7 +22,9 @@ func init(inv_ui: Control, inv: Inventory, index: int) -> void:
 
 func update(slot: InventorySlot) -> void:
 	if !slot.item:
+		item_visual.texture = null
 		item_visual.visible = false
+		amount_text.text = "0"
 		amount_text.visible = false
 	else:
 		item_visual.visible = true
