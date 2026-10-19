@@ -184,7 +184,7 @@ wait_time = 0.1
 
 [node name="Inventory" type="Node" parent="." unique_id=1774035413]
 script = ExtResource("13_vskfa")
-inv_size = 30
+inv_size = 32
 
 [node name="ItemPickupComponent" type="Area3D" parent="." unique_id=866598945]
 collision_layer = 2
