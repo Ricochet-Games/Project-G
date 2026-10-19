@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="InventoryWeapon" format=3 uid="uid://bce5fsicsrwnp"]
+[gd_resource type="Resource" script_class="InventoryEquipment" format=3 uid="uid://bce5fsicsrwnp"]
 
-[ext_resource type="Script" uid="uid://06f2dog5xoae" path="res://Resources/Inventory/inventory_weapon.gd" id="1_wl6xp"]
+[ext_resource type="Script" uid="uid://06f2dog5xoae" path="res://Resources/Inventory/inventory_equipment.gd" id="1_wl6xp"]
 [ext_resource type="Texture2D" uid="uid://4s8i0i03c1v1" path="res://Assets/GrassBladesSprite.png" id="2_hxucy"]
 [ext_resource type="Resource" uid="uid://dukf8jb2ys1yc" path="res://Combat/Weapons/Sword.tres" id="3_bhk56"]
 
 [resource]
 script = ExtResource("1_wl6xp")
-weapon_data = ExtResource("3_bhk56")
+equipment_data = ExtResource("3_bhk56")
 texture = ExtResource("2_hxucy")
 max_stack_size = 1.0
 metadata/_custom_type_script = "uid://06f2dog5xoae"
