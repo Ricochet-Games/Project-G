@@ -2,19 +2,29 @@ extends Control
 
 @export var inv: Inventory 
 @onready var slots: Array = $BookTexture/GridContainer.get_children()
+@onready var extra_slots: Array = $ExtraSlots.get_children()
+
 
 var is_open := false
 
 func _ready() -> void:	 	
+	
 	inv.update.connect(refresh)
 	refresh()
 	close()
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].init(self, inv, i)
+	
+	for i in extra_slots.size(): 	
+		extra_slots[i].init(self, inv, slots.size() + i)
+	
 
 func refresh() -> void:
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].update(inv.slots[i])
+	
+	for i in extra_slots.size(): 	
+		extra_slots[i].update(inv.slots[slots.size() + i])
 
 func _process(_delta: Variant) -> void:
 	if Input.is_action_just_pressed("inventory"):
