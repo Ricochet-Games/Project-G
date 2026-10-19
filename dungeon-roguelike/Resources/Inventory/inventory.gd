@@ -64,3 +64,7 @@ func swap_items(dragged_panel: InventorySlotUI, dropped_panel: InventorySlotUI) 
 	
 	update.emit()
 	pass
+
+func get_item_at(slot_index: int) -> InventorySlot:
+	
+	return slots[slot_index]
