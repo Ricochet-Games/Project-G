@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dj70arsqsdr3s"]
+
+[ext_resource type="Script" uid="uid://c1m5iw6bjj5gd" path="res://Assets/chest.gd" id="1_vxi8x"]
+[ext_resource type="Script" uid="uid://0el5hcmqo0x2" path="res://Resources/Inventory/inventory.gd" id="2_qted4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxi8x"]
+albedo_color = Color(0.29355896, 0.14190644, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qted4"]
+material = SubResource("StandardMaterial3D_vxi8x")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vxi8x"]
+
+[node name="Chest" type="Area3D" unique_id=382191950 groups=["Interactable"]]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("1_vxi8x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1349080471]
+mesh = SubResource("BoxMesh_qted4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1396626610]
+shape = SubResource("BoxShape3D_vxi8x")
+
+[node name="Inventory" type="Node" parent="." unique_id=302510738]
+script = ExtResource("2_qted4")
+inv_size = 30
+metadata/_custom_type_script = "uid://0el5hcmqo0x2"
