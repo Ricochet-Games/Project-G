@@ -64,7 +64,9 @@ func _input(event: InputEvent)  -> void:
 	if event.is_action_released("block"):
 		attack_compontent.end_block()
 
-	if event.is_action_pressed("item_pickup"):
+	if event.is_action_pressed("interact"):
+		## Figureout what to interact with?
+		
 		itempickup_component.pickup_item()
 		
 	if event.is_action_pressed("toggle_camera"):
