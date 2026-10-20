@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://y1rcl3gq0le8" path="res://Combat/Weapons/Shield.tres" id="13_xr8lj"]
 [ext_resource type="PackedScene" uid="uid://yo5eyyn0chws" path="res://Assets/UI/Spellcasting/spell_casting_ui.tscn" id="15_r8fok"]
 [ext_resource type="PackedScene" uid="uid://r0mlbj20h3xw" path="res://Entities/caster_component.tscn" id="16_nhbkt"]
+[ext_resource type="PackedScene" uid="uid://caudx745hd3sg" path="res://UI/hud_ui.tscn" id="16_vskfa"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lu8i8"]
 properties/0/path = NodePath(".:position")
@@ -209,9 +210,14 @@ offset_bottom = 590.0
 grow_horizontal = 1
 grow_vertical = 1
 inv = NodePath("../../Inventory")
+metadata/_edit_use_anchors_ = true
 
 [node name="SpellCastingUI" parent="CanvasLayer" unique_id=545222661 instance=ExtResource("15_r8fok")]
 visible = false
+
+[node name="HUDUI" parent="CanvasLayer" unique_id=815842314 node_paths=PackedStringArray("player") instance=ExtResource("16_vskfa")]
+visible = false
+player = NodePath("../..")
 
 [node name="CasterComponent" parent="." unique_id=358663077 node_paths=PackedStringArray("spell_manager") instance=ExtResource("16_nhbkt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42556766, 0, 0)
