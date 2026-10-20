@@ -311,3 +311,6 @@ one_shot = true
 
 [node name="Chest" parent="." unique_id=1073216872 instance=ExtResource("13_4blnk")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -2.7945054, -0.08077383, 0.16091621)
+
+[node name="Chest2" parent="." unique_id=722473254 instance=ExtResource("13_4blnk")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.1338577, -0.08077383, 0.16091621)
