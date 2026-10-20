@@ -3,7 +3,10 @@ extends Area3D
 
 
 func interact(player: Player) -> void:
-	player.inventory_ui.open_chest(inventory)
+	if player.inventory_ui.is_open:
+		player.inventory_ui.close()
+	else:
+		player.inventory_ui.open_chest(inventory)
 
 	## Subscribe the Chest UI to this inv
 	## Refresh the UI
