@@ -37,7 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_glbya")
 
-[node name="GridContainer" type="GridContainer" parent="BookTexture" unique_id=942567918]
+[node name="MainInventory" type="GridContainer" parent="." unique_id=942567918]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,102 +55,211 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 16
 columns = 5
 
-[node name="InventoryUISlot" parent="BookTexture/GridContainer" unique_id=166101265 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot" parent="MainInventory" unique_id=166101265 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot2" parent="BookTexture/GridContainer" unique_id=716526492 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot2" parent="MainInventory" unique_id=716526492 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot3" parent="BookTexture/GridContainer" unique_id=1948577214 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot3" parent="MainInventory" unique_id=1948577214 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot4" parent="BookTexture/GridContainer" unique_id=1663655990 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot4" parent="MainInventory" unique_id=1663655990 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot5" parent="BookTexture/GridContainer" unique_id=1725943453 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot5" parent="MainInventory" unique_id=1725943453 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot6" parent="BookTexture/GridContainer" unique_id=25552129 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot6" parent="MainInventory" unique_id=25552129 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot7" parent="BookTexture/GridContainer" unique_id=410977512 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot7" parent="MainInventory" unique_id=410977512 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot8" parent="BookTexture/GridContainer" unique_id=234367905 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot8" parent="MainInventory" unique_id=234367905 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot9" parent="BookTexture/GridContainer" unique_id=2040347002 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot9" parent="MainInventory" unique_id=2040347002 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot10" parent="BookTexture/GridContainer" unique_id=1977116597 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot10" parent="MainInventory" unique_id=1977116597 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot11" parent="BookTexture/GridContainer" unique_id=742842997 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot11" parent="MainInventory" unique_id=742842997 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot12" parent="BookTexture/GridContainer" unique_id=904374670 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot12" parent="MainInventory" unique_id=904374670 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot13" parent="BookTexture/GridContainer" unique_id=1844178854 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot13" parent="MainInventory" unique_id=1844178854 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot14" parent="BookTexture/GridContainer" unique_id=21970846 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot14" parent="MainInventory" unique_id=21970846 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot15" parent="BookTexture/GridContainer" unique_id=611315451 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot15" parent="MainInventory" unique_id=611315451 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot16" parent="BookTexture/GridContainer" unique_id=1438738229 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot16" parent="MainInventory" unique_id=1438738229 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot17" parent="BookTexture/GridContainer" unique_id=751337462 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot17" parent="MainInventory" unique_id=751337462 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot18" parent="BookTexture/GridContainer" unique_id=926506161 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot18" parent="MainInventory" unique_id=926506161 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot19" parent="BookTexture/GridContainer" unique_id=792359762 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot19" parent="MainInventory" unique_id=792359762 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot20" parent="BookTexture/GridContainer" unique_id=374810998 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot20" parent="MainInventory" unique_id=374810998 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot21" parent="BookTexture/GridContainer" unique_id=529105249 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot21" parent="MainInventory" unique_id=529105249 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot22" parent="BookTexture/GridContainer" unique_id=327641063 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot22" parent="MainInventory" unique_id=327641063 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot23" parent="BookTexture/GridContainer" unique_id=133990331 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot23" parent="MainInventory" unique_id=133990331 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot24" parent="BookTexture/GridContainer" unique_id=966503533 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot24" parent="MainInventory" unique_id=966503533 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot25" parent="BookTexture/GridContainer" unique_id=2136860027 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot25" parent="MainInventory" unique_id=2136860027 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot26" parent="BookTexture/GridContainer" unique_id=1916339435 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot26" parent="MainInventory" unique_id=1916339435 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot27" parent="BookTexture/GridContainer" unique_id=487032503 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot27" parent="MainInventory" unique_id=487032503 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot28" parent="BookTexture/GridContainer" unique_id=220859742 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot28" parent="MainInventory" unique_id=220859742 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot29" parent="BookTexture/GridContainer" unique_id=1308895843 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot29" parent="MainInventory" unique_id=1308895843 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="InventoryUISlot30" parent="BookTexture/GridContainer" unique_id=1113437623 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot30" parent="MainInventory" unique_id=1113437623 instance=ExtResource("2_evtp7")]
 layout_mode = 2
 
-[node name="ExtraSlots" type="Control" parent="." unique_id=1522487195]
+[node name="ChestInventory" type="GridContainer" parent="." unique_id=1094090720]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -451.0
+offset_top = -282.0
+offset_right = -259.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 16
+columns = 5
+
+[node name="InventoryUISlot" parent="ChestInventory" unique_id=901112783 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot2" parent="ChestInventory" unique_id=1491883786 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot3" parent="ChestInventory" unique_id=1376350653 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot4" parent="ChestInventory" unique_id=355677375 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot5" parent="ChestInventory" unique_id=515038755 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot6" parent="ChestInventory" unique_id=1783162333 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot7" parent="ChestInventory" unique_id=1081081106 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot8" parent="ChestInventory" unique_id=1007814751 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot9" parent="ChestInventory" unique_id=797435598 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot10" parent="ChestInventory" unique_id=1522485703 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot11" parent="ChestInventory" unique_id=1676728803 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot12" parent="ChestInventory" unique_id=1250828541 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot13" parent="ChestInventory" unique_id=922404188 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot14" parent="ChestInventory" unique_id=2075722549 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot15" parent="ChestInventory" unique_id=625258325 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot16" parent="ChestInventory" unique_id=1378267741 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot17" parent="ChestInventory" unique_id=751699749 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot18" parent="ChestInventory" unique_id=2084572055 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot19" parent="ChestInventory" unique_id=1679354464 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot20" parent="ChestInventory" unique_id=1624558794 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot21" parent="ChestInventory" unique_id=1687517823 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot22" parent="ChestInventory" unique_id=1658091703 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot23" parent="ChestInventory" unique_id=201223465 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot24" parent="ChestInventory" unique_id=1167040153 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot25" parent="ChestInventory" unique_id=1691638027 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot26" parent="ChestInventory" unique_id=260793396 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot27" parent="ChestInventory" unique_id=560078205 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot28" parent="ChestInventory" unique_id=544206429 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot29" parent="ChestInventory" unique_id=544131140 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="InventoryUISlot30" parent="ChestInventory" unique_id=1451626174 instance=ExtResource("2_evtp7")]
+layout_mode = 2
+
+[node name="EquipmentInventory" type="Control" parent="." unique_id=1522487195]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="InventoryUISlot" parent="ExtraSlots" unique_id=809678656 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot" parent="EquipmentInventory" unique_id=809678656 instance=ExtResource("2_evtp7")]
 layout_mode = 0
 offset_left = -39.0
 offset_top = -14.0
@@ -160,7 +269,7 @@ scale = Vector2(4, 4)
 script = ExtResource("4_jdygk")
 equipment_type = 0
 
-[node name="InventoryUISlot2" parent="ExtraSlots" unique_id=1614034264 instance=ExtResource("2_evtp7")]
+[node name="InventoryUISlot2" parent="EquipmentInventory" unique_id=1614034264 instance=ExtResource("2_evtp7")]
 layout_mode = 0
 offset_left = 121.0
 offset_top = -14.0
