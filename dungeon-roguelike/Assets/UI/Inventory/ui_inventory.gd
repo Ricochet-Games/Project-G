@@ -68,7 +68,7 @@ func open_chest(chest_inv : Inventory) -> void:
 func close() -> void:
 	$EquipmentInventory.hide()
 	$MainInventory.hide()
-	$ChestInventory.shidehow()
+	$ChestInventory.hide()
 	visible = false
 	is_open = false
 	chest_inv = null
