@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dskimq7aam0br" path="res://Entities/Player/player.tscn" id="1_hb2xm"]
 [ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/EnemyDebug/EnemyDebug.tscn" id="3_50ct6"]
 [ext_resource type="Resource" uid="uid://bce5fsicsrwnp" path="res://Resources/Inventory/Items/sword.tres" id="3_ibmi3"]
-[ext_resource type="PackedScene" uid="uid://chmcylg6rludq" path="res://UI/HUD.tscn" id="4_ak5v8"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
 [ext_resource type="Shader" uid="uid://bpocxjcu6kajn" path="res://Shaders/FloorShader.gdshader" id="5_oho3u"]
 [ext_resource type="PackedScene" uid="uid://d0qn6a1or6y4k" path="res://Assets/test_item_collectible.tscn" id="6_bwjpn"]
@@ -294,8 +293,6 @@ compositor = SubResource("Compositor_ak5v8")
 transform = Transform3D(0.26296163, 0.7129627, -0.6500272, -0.24810396, 0.70105135, 0.6685593, 0.9323602, -0.014531195, 0.3612385, -1.9573123, 2.0328546, 1.9122822)
 shadow_enabled = true
 sky_mode = 1
-
-[node name="HUD" parent="." unique_id=783075640 instance=ExtResource("4_ak5v8")]
 
 [node name="Timed Attack" type="Node" parent="." unique_id=743454261]
 script = ExtResource("9_yglu3")
