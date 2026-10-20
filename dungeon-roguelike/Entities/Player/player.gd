@@ -13,6 +13,9 @@ class_name Player
 @export var sub_viewport_container: SubViewportContainer
 
 @export var inv: Inventory
+@onready var inventory_ui: Control = $CanvasLayer/InventoryUI
+
+
 
 @onready var nameplate: Label3D = $Nameplate
 
