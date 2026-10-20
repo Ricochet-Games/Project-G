@@ -91,8 +91,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
-	look_at_cursor()
-	move_and_slide()
+	if not inventory_ui.is_open:
+		look_at_cursor()
+		move_and_slide()
+	
 
 func look_at_cursor() -> void:
 	var target_plane : Plane =  Plane(Vector3.UP, global_position.y)
