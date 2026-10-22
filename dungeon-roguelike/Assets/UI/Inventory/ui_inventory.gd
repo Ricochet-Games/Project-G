@@ -59,6 +59,7 @@ func open_inventory() -> void:
 @warning_ignore("shadowed_variable")
 func open_chest(chest_inv : Inventory) -> void:
 	self.chest_inv = chest_inv
+	chest_inv.update.connect(refresh)
 	$MainInventory.show()
 	$ChestInventory.show()
 	visible = true
@@ -74,4 +75,6 @@ func close() -> void:
 	$ChestInventory.hide()
 	visible = false
 	is_open = false
+	if chest_inv:
+		chest_inv.update.disconnect(refresh)
 	chest_inv = null
