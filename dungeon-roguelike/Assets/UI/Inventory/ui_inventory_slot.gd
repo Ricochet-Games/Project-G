@@ -41,28 +41,36 @@ func _gui_input(event: InputEvent) -> void:
 	if event.button_index == MOUSE_BUTTON_LEFT and not inventory_ui.is_holding_item:
 		if not inventory.slots[slot_index].item:
 			return
-		
-		inventory_ui.is_holding_item = true
-		inventory_ui.mouse_container.show()
-		
-		inventory_ui.mouse_container.add_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
-		inventory.clear_slot(slot_index)
-
+		pick_up_stack()
 		
 	elif event.button_index == MOUSE_BUTTON_LEFT and inventory_ui.is_holding_item:
-	
-		
-		
 		if inventory.slots[slot_index].item:
-			var item : InventoryItem = inventory_ui.mouse_container.item
-			var amount : int = inventory_ui.mouse_container.amount	
-			inventory_ui.mouse_container.add_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
-			inventory.clear_slot(slot_index)
-			inventory.add_item_to_slot(slot_index, item, amount)
+			swap_stack()
+			
 		else:
-			inventory_ui.is_holding_item = false
-			inventory_ui.mouse_container.hide()
-			inventory.add_item_to_slot(slot_index, inventory_ui.mouse_container.item, inventory_ui.mouse_container.amount)
-			inventory_ui.mouse_container.clear()
+			place_stack()
+			
+func pick_up_stack() -> void:
+	inventory_ui.is_holding_item = true
+	inventory_ui.mouse_container.show()
+		
+	inventory_ui.mouse_container.add_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
+	inventory.clear_slot(slot_index)
 
+func place_stack() -> void:
+	inventory_ui.is_holding_item = false
+	inventory_ui.mouse_container.hide()
+	inventory.add_item_to_slot(slot_index, inventory_ui.mouse_container.item, inventory_ui.mouse_container.amount)
+	inventory_ui.mouse_container.clear()
 	
+func place_one() -> void:
+	pass
+func pick_up_half() -> void:
+	pass
+	
+func swap_stack() -> void:
+	var item : InventoryItem = inventory_ui.mouse_container.item
+	var amount : int = inventory_ui.mouse_container.amount	
+	inventory_ui.mouse_container.add_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
+	inventory.clear_slot(slot_index)
+	inventory.add_item_to_slot(slot_index, item, amount)
