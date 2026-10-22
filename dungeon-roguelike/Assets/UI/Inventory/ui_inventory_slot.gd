@@ -32,29 +32,37 @@ func update(slot: InventorySlot) -> void:
 		if slot.item.max_stack_size > 1:
 			amount_text.visible = true
 		amount_text.text = str(slot.amount)
-
-func _get_drag_data(_at_position: Vector2) -> InventorySlotUI:
-	if item_visual.texture == null:
+		
+func _gui_input(event: InputEvent) -> void:
+	
+	if not event is InputEventMouseButton or not event.pressed:
 		return
 	
-	var wrapper : Control = Control.new()
-	wrapper.custom_minimum_size = item_visual.texture.get_size()
-	
-	var preview : TextureRect = TextureRect.new()
-	preview.texture = item_visual.texture
-	preview.position = item_visual.texture.get_size() * -0.5
-	wrapper.add_child(preview)
+	if event.button_index == MOUSE_BUTTON_LEFT and not inventory_ui.is_holding_item:
+		if not inventory.slots[slot_index].item:
+			return
+		
+		inventory_ui.is_holding_item = true
+		inventory_ui.mouse_container.show()
+		
+		inventory_ui.mouse_container.add_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
+		inventory.clear_slot(slot_index)
 
-	set_drag_preview(wrapper)
+		
+	elif event.button_index == MOUSE_BUTTON_LEFT and inventory_ui.is_holding_item:
 	
-	return self
-	
-func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
-	return data is InventorySlotUI 
+		
+		
+		if inventory.slots[slot_index].item:
+			var item : InventoryItem = inventory_ui.mouse_container.item
+			var amount : int = inventory_ui.mouse_container.amount	
+			inventory_ui.mouse_container.add_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
+			inventory.clear_slot(slot_index)
+			inventory.add_item_to_slot(slot_index, item, amount)
+		else:
+			inventory_ui.is_holding_item = false
+			inventory_ui.mouse_container.hide()
+			inventory.add_item_to_slot(slot_index, inventory_ui.mouse_container.item, inventory_ui.mouse_container.amount)
+			inventory_ui.mouse_container.clear()
 
 	
-func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	var from_inventory_slot: InventorySlotUI = data
-	var to_invetory_slot: InventorySlotUI = self
-	
-	inventory_ui.inv.swap_items(from_inventory_slot, to_invetory_slot)
