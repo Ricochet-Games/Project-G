@@ -12,6 +12,7 @@ extends Control
 @onready var main_inventory: GridContainer = $MainInventory
 @onready var chest_inventory: GridContainer = $ChestInventory
 @onready var equipment_inventory: Control = $EquipmentInventory
+@onready var mouse_container: Control = $MouseContainer
 
 
 var is_open := false
