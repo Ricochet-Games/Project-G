@@ -56,6 +56,7 @@ func open_inventory() -> void:
 	visible = true
 	is_open = true
 
+@warning_ignore("shadowed_variable")
 func open_chest(chest_inv : Inventory) -> void:
 	self.chest_inv = chest_inv
 	$MainInventory.show()
