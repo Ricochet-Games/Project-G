@@ -15,7 +15,8 @@ extends Control
 @onready var mouse_container: Control = $MouseContainer
 
 
-var is_open := false
+var is_open : bool = false
+var is_holding_item : bool = false
 
 func _ready() -> void:	 	
 	
