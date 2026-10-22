@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cudxdnexp8a64" path="res://Assets/UI/Inventory/ui_inventory_slot.tscn" id="2_evtp7"]
 [ext_resource type="Script" uid="uid://cbal5uqjt5ib1" path="res://Assets/UI/Inventory/ui_inventory.gd" id="2_nguks"]
 [ext_resource type="Script" uid="uid://cnrjyaqxkc08n" path="res://Assets/UI/Inventory/ui_equipment_slot.gd" id="4_jdygk"]
+[ext_resource type="Script" uid="uid://61njcn6atx4e" path="res://Assets/UI/Inventory/mouse_container.gd" id="5_jdygk"]
+[ext_resource type="Texture2D" uid="uid://vwcwimkgp1u1" path="res://Assets/SpellCircle.png" id="6_8vbos"]
 
 [node name="Inventory" type="Control" unique_id=2006837540]
 texture_filter = 1
@@ -278,3 +280,23 @@ offset_bottom = 18.0
 scale = Vector2(4, 4)
 script = ExtResource("4_jdygk")
 equipment_type = 1
+
+[node name="MouseContainer" type="Control" parent="." unique_id=1306567957]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("5_jdygk")
+
+[node name="Label" type="Label" parent="MouseContainer" unique_id=1714937283]
+custom_minimum_size = Vector2(20, 23)
+layout_mode = 0
+offset_right = 20.000002
+offset_bottom = 23.0
+scale = Vector2(0.75, 0.75)
+text = "99"
+horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MouseContainer" unique_id=443664708]
+texture = ExtResource("6_8vbos")
