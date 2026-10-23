@@ -43,7 +43,7 @@ func insert(item: InventoryItem, amount: int) -> void:
 
 	update.emit()
 
-func add_item_to_slot(slot_index: int, inv_item: InventoryItem, amount: int) -> void:
+func set_item_at_slot(slot_index: int, inv_item: InventoryItem, amount: int) -> void:
 	slots[slot_index].item = inv_item
 	slots[slot_index].amount = amount
 	update.emit()
@@ -60,8 +60,8 @@ func swap_items(dragged_panel: InventorySlotUI, dropped_panel: InventorySlotUI) 
 	var dropped_item : InventoryItem = dropped_inventory.slots[dropped_panel.slot_index].item
 	var dropped_amount : int = dropped_inventory.slots[dropped_panel.slot_index].amount
 	
-	dropped_inventory.add_item_to_slot(dropped_panel.slot_index, dragged_item, dragged_amount)
-	dragged_inventory.add_item_to_slot(dragged_panel.slot_index, dropped_item, dropped_amount)
+	dropped_inventory.set_item_at_slot(dropped_panel.slot_index, dragged_item, dragged_amount)
+	dragged_inventory.set_item_at_slot(dragged_panel.slot_index, dropped_item, dropped_amount)
 	
 	update.emit()
 	pass
@@ -69,6 +69,14 @@ func swap_items(dragged_panel: InventorySlotUI, dropped_panel: InventorySlotUI) 
 func get_item_at(slot_index: int) -> InventorySlot:
 	
 	return slots[slot_index]
+
+func add_item_to_slot(slot_index: int, amount: int) -> void:
+	slots[slot_index].amount += amount
+	update.emit()
+
+func remove_item_from_slot(slot_index: int, amount: int) -> void:
+	slots[slot_index].amount -= amount
+	update.emit()
 
 func clear_slot(slot_index: int) -> void:
 	slots[slot_index].clear()

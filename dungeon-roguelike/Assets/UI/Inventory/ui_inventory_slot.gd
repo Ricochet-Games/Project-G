@@ -37,20 +37,31 @@ func _gui_input(event: InputEvent) -> void:
 	
 	if not event is InputEventMouseButton or not event.pressed:
 		return
+	if event.button_index == MOUSE_BUTTON_LEFT:
+		if not inventory_ui.is_holding_item:
+			if not inventory.slots[slot_index].item:
+				return
+			pick_up_stack()
+		elif inventory_ui.is_holding_item:
+			if inventory.slots[slot_index].item == inventory_ui.mouse_container.item:
+				fill_stack()
+			
+			elif inventory.slots[slot_index].item:
+				swap_stack()
+			else:
+				place_stack()
+	elif event.button_index == MOUSE_BUTTON_RIGHT:
+		if not inventory_ui.is_holding_item:
+			if not inventory.slots[slot_index].item:
+				return
+			pick_up_half()
+		elif inventory_ui.is_holding_item:
+			if inventory.slots[slot_index].item:
+				swap_stack()
+			pass
 	
-	if event.button_index == MOUSE_BUTTON_LEFT and not inventory_ui.is_holding_item:
-		if not inventory.slots[slot_index].item:
-			return
-		pick_up_stack()
-		
-	elif event.button_index == MOUSE_BUTTON_LEFT and inventory_ui.is_holding_item:
-		if inventory.slots[slot_index].item:
-			swap_stack()
-			
-		else:
-			place_stack()
-			
 func pick_up_stack() -> void:
+	print("pick up stack")
 	inventory_ui.is_holding_item = true
 	inventory_ui.mouse_container.show()
 		
@@ -58,19 +69,49 @@ func pick_up_stack() -> void:
 	inventory.clear_slot(slot_index)
 
 func place_stack() -> void:
+	print("place stack")
 	inventory_ui.is_holding_item = false
 	inventory_ui.mouse_container.hide()
-	inventory.add_item_to_slot(slot_index, inventory_ui.mouse_container.item, inventory_ui.mouse_container.amount)
+	inventory.set_item_at_slot(slot_index, inventory_ui.mouse_container.item, inventory_ui.mouse_container.amount)
 	inventory_ui.mouse_container.clear()
 	
 func place_one() -> void:
 	pass
 func pick_up_half() -> void:
-	pass
+	print("pick up half")
+	inventory_ui.is_holding_item = true
+	inventory_ui.mouse_container.show()
 	
+	var amount : int = inventory.slots[slot_index].amount
+	
+	var half_stack: int = amount / 2
+	inventory_ui.mouse_container.add_item(inventory.slots[slot_index].item, half_stack)
+	inventory.remove_item_from_slot(slot_index, half_stack)
+	
+func fill_stack() -> void:
+	print("fill stack")
+	var hold_amount: int = inventory_ui.mouse_container.amount
+	var slot_amount: int = inventory.slots[slot_index].amount
+	var slot_item: InventoryItem = inventory.slots[slot_index].item
+
+	if not slot_item:
+		return
+	var can_add: int = slot_item.max_stack_size - slot_amount
+	var amount_to_add: int = min(hold_amount, can_add)
+
+	inventory.add_item_to_slot(slot_index, amount_to_add)
+	inventory_ui.mouse_container.amount = hold_amount - amount_to_add
+
+	if inventory_ui.mouse_container.amount == 0:
+		inventory_ui.mouse_container.clear()
+		inventory_ui.mouse_container.hide()
+		inventory_ui.is_holding_item = false
+
+
 func swap_stack() -> void:
+	print("swap stack")
 	var item : InventoryItem = inventory_ui.mouse_container.item
 	var amount : int = inventory_ui.mouse_container.amount	
 	inventory_ui.mouse_container.add_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
 	inventory.clear_slot(slot_index)
-	inventory.add_item_to_slot(slot_index, item, amount)
+	inventory.set_item_at_slot(slot_index, item, amount)
