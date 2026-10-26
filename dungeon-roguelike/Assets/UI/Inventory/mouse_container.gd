@@ -13,7 +13,7 @@ func _process(_delta: float) -> void:
 	pass
 
 @warning_ignore("shadowed_variable")
-func add_item(item: InventoryItem, amount: int)-> void:
+func set_item(item: InventoryItem, amount: int)-> void:
 	self.item = item
 	self.amount = amount
 	refresh() 
