@@ -1,7 +1,7 @@
 extends Node3D
 class_name AttackComponent
 
-@export var weapon_handler : WeaponHandler
+@export var equipment_handler : EquipmentHandler
 @export var stamina_component : StaminaComponent
 @export var mana_component : ManaComponent
 var combo := 0
@@ -56,9 +56,9 @@ func attack(attack_hand : AttackHand = AttackHand.NULL) -> void:
 		return
 
 	var weapon: WeaponData = (
-	weapon_handler.get_weapon()
+	equipment_handler.get_weapon()
 	if attack_hand == AttackHand.MAIN
-	else weapon_handler.get_offhand_weapon())
+	else equipment_handler.get_offhand_weapon())
 	if weapon == null:
 		return
 		
@@ -155,7 +155,7 @@ func block() -> void:
 	if not attack_state == AttackStatus.IDLE:
 		return
 	
-	var weapon: WeaponData = weapon_handler.get_offhand_weapon()
+	var weapon: WeaponData = equipment_handler.get_offhand_weapon()
 	if weapon == null:
 		return
 	combo = 0 

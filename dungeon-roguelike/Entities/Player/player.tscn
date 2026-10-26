@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b0vdglsluco2g" path="res://Entities/mana_component.gd" id="3_x1y6q"]
 [ext_resource type="Script" uid="uid://bbt2tv46tokat" path="res://Entities/health_component.gd" id="3_x2ivp"]
 [ext_resource type="Script" uid="uid://ctule5wjh77pc" path="res://Scripts/camera_rig.gd" id="4_5c2io"]
-[ext_resource type="Script" uid="uid://ca54oalk1rbso" path="res://Entities/Player/weapon_handler.gd" id="5_01a4e"]
+[ext_resource type="Script" uid="uid://ca54oalk1rbso" path="res://Entities/Player/equipment_handler.gd" id="5_01a4e"]
 [ext_resource type="Shader" uid="uid://cpd1kta6eyid3" path="res://Shaders/post_processing_new.gdshader" id="5_4wf4l"]
 [ext_resource type="PackedScene" uid="uid://dlsicbixl1nr6" path="res://Assets/UI/Inventory/ui_inventory.tscn" id="6_iplt1"]
 [ext_resource type="Script" uid="uid://bsxd4qhty2lq6" path="res://Entities/attack_componenet.gd" id="7_7a1se"]
@@ -140,6 +140,9 @@ mesh = SubResource("QuadMesh_r8fok")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 shape = SubResource("BoxShape3D_7vbvf")
 
+[node name="EquipentHandler" type="Node" parent="." unique_id=2110319129]
+script = ExtResource("5_01a4e")
+
 [node name="Model" type="MeshInstance3D" parent="." unique_id=1099329490]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 mesh = SubResource("BoxMesh_kbf48")
@@ -150,9 +153,9 @@ transform = Transform3D(0.6323484, 0, 0, 0, 0.6323484, 0, 0, 0, 0.6323484, 0.564
 mesh = SubResource("BoxMesh_kbf48")
 surface_material_override/0 = SubResource("StandardMaterial3D_0d4hx")
 
-[node name="AttackComponent" type="Node3D" parent="." unique_id=458938524 node_paths=PackedStringArray("weapon_handler", "stamina_component", "mana_component", "combo_timer", "defensive_stance_timer", "stamina_drain_timer", "attack_pivot")]
+[node name="AttackComponent" type="Node3D" parent="." unique_id=458938524 node_paths=PackedStringArray("equipment_handler", "stamina_component", "mana_component", "combo_timer", "defensive_stance_timer", "stamina_drain_timer", "attack_pivot")]
 script = ExtResource("7_7a1se")
-weapon_handler = NodePath("WeaponHandler")
+equipment_handler = NodePath("../EquipentHandler")
 stamina_component = NodePath("../StaminaComponent")
 mana_component = NodePath("../ManaComponent")
 combo_timer = NodePath("ComboTimer")
@@ -164,9 +167,6 @@ attack_pivot = NodePath("AttackPivot")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22366303, 0, 0)
 
 [node name="Hitbox" parent="AttackComponent/AttackPivot" unique_id=1108881074 instance=ExtResource("10_x1y6q")]
-
-[node name="WeaponHandler" type="Node" parent="AttackComponent" unique_id=2110319129]
-script = ExtResource("5_01a4e")
 
 [node name="ComboTimer" type="Timer" parent="AttackComponent" unique_id=2065212838]
 wait_time = 0.3
