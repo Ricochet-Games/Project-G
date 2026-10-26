@@ -78,7 +78,21 @@ func place_stack() -> void:
 	inventory_ui.mouse_container.clear()
 	
 func place_one() -> void:
-	pass
+	print("place one")
+	
+	if inventory_ui.mouse_container.item == inventory.slots[slot_index].item:
+		inventory.add_item_to_slot(slot_index, 1)
+	else:
+		inventory.set_item_at_slot(slot_index, inventory_ui.mouse_container.item, 1)
+	
+	inventory_ui.mouse_container.remove_item(1)
+	
+	
+	if inventory_ui.mouse_container.amount == 0:
+		inventory_ui.is_holding_item = false
+		inventory_ui.mouse_container.hide()
+		inventory_ui.mouse_container.clear()
+	
 func pick_up_half() -> void:
 	print("pick up half")
 	inventory_ui.is_holding_item = true
