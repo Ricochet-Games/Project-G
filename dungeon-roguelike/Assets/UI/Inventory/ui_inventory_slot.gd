@@ -78,6 +78,11 @@ func place_stack() -> void:
 	inventory_ui.mouse_container.clear()
 	
 func place_one() -> void:
+	
+	
+	if inventory.slots[slot_index].item and inventory.slots[slot_index].amount >= inventory.slots[slot_index].item.max_stack_size:
+		return
+	
 	print("place one")
 	
 	if inventory_ui.mouse_container.item == inventory.slots[slot_index].item:
