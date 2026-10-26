@@ -94,13 +94,17 @@ func place_one() -> void:
 		inventory_ui.mouse_container.clear()
 	
 func pick_up_half() -> void:
+	var amount : int = inventory.slots[slot_index].amount
+	
+	if amount <= 0:
+		return
+	
 	print("pick up half")
 	inventory_ui.is_holding_item = true
 	inventory_ui.mouse_container.show()
 	
-	var amount : int = inventory.slots[slot_index].amount
 	
-	var half_stack: int = amount / 2
+	var half_stack: int = max(1, amount / 2)
 	inventory_ui.mouse_container.set_item(inventory.slots[slot_index].item, half_stack)
 	inventory.remove_item_from_slot(slot_index, half_stack)
 	

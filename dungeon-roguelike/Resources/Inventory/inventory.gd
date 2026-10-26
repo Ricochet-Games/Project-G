@@ -76,6 +76,8 @@ func add_item_to_slot(slot_index: int, amount: int) -> void:
 
 func remove_item_from_slot(slot_index: int, amount: int) -> void:
 	slots[slot_index].amount -= amount
+	if slots[slot_index].amount <= 0:
+		slots[slot_index].clear()
 	update.emit()
 
 func clear_slot(slot_index: int) -> void:
