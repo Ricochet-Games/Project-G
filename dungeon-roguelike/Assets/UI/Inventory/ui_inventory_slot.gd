@@ -87,7 +87,7 @@ func pick_up_half() -> void:
 	var amount : int = inventory.slots[slot_index].amount
 	
 	var half_stack: int = amount / 2
-	inventory_ui.mouse_container.add_item(inventory.slots[slot_index].item, half_stack)
+	inventory_ui.mouse_container.set_item(inventory.slots[slot_index].item, half_stack)
 	inventory.remove_item_from_slot(slot_index, half_stack)
 	
 func fill_stack() -> void:
@@ -114,6 +114,6 @@ func swap_stack() -> void:
 	print("swap stack")
 	var item : InventoryItem = inventory_ui.mouse_container.item
 	var amount : int = inventory_ui.mouse_container.amount	
-	inventory_ui.mouse_container.add_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
+	inventory_ui.mouse_container.set_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
 	inventory.clear_slot(slot_index)
 	inventory.set_item_at_slot(slot_index, item, amount)
