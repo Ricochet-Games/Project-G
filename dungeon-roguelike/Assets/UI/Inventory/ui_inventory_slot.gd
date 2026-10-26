@@ -67,7 +67,7 @@ func pick_up_stack() -> void:
 	inventory_ui.is_holding_item = true
 	inventory_ui.mouse_container.show()
 		
-	inventory_ui.mouse_container.add_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
+	inventory_ui.mouse_container.set_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
 	inventory.clear_slot(slot_index)
 
 func place_stack() -> void:
