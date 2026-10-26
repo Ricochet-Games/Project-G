@@ -10,10 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dlsicbixl1nr6" path="res://Assets/UI/Inventory/ui_inventory.tscn" id="6_iplt1"]
 [ext_resource type="Script" uid="uid://bsxd4qhty2lq6" path="res://Entities/attack_componenet.gd" id="7_7a1se"]
 [ext_resource type="PackedScene" uid="uid://bt8gq4gwbsvh1" path="res://Combat/Hitboxes/Sword_Small_Slash_BH.tscn" id="10_x1y6q"]
-[ext_resource type="Resource" uid="uid://dukf8jb2ys1yc" path="res://Combat/Weapons/Sword.tres" id="12_owvpp"]
 [ext_resource type="Script" uid="uid://27r66wuk8hrf" path="res://Entities/Player/interact_component.gd" id="13_owvpp"]
 [ext_resource type="Script" uid="uid://0el5hcmqo0x2" path="res://Resources/Inventory/inventory.gd" id="13_vskfa"]
-[ext_resource type="Resource" uid="uid://y1rcl3gq0le8" path="res://Combat/Weapons/Shield.tres" id="13_xr8lj"]
 [ext_resource type="PackedScene" uid="uid://yo5eyyn0chws" path="res://Assets/UI/Spellcasting/spell_casting_ui.tscn" id="15_r8fok"]
 [ext_resource type="PackedScene" uid="uid://r0mlbj20h3xw" path="res://Entities/caster_component.tscn" id="16_nhbkt"]
 [ext_resource type="PackedScene" uid="uid://caudx745hd3sg" path="res://UI/hud_ui.tscn" id="16_vskfa"]
@@ -169,8 +167,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22366303, 0, 0)
 
 [node name="WeaponHandler" type="Node" parent="AttackComponent" unique_id=2110319129]
 script = ExtResource("5_01a4e")
-equipped_weapon = ExtResource("12_owvpp")
-equipped_offhand_weapon = ExtResource("13_xr8lj")
 
 [node name="ComboTimer" type="Timer" parent="AttackComponent" unique_id=2065212838]
 wait_time = 0.3
