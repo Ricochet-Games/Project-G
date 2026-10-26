@@ -20,5 +20,13 @@ func place_stack() -> void:
 	super()
 	equip_weapon(item)
 
+func pick_up_stack() -> void:
+	super()
+	clear_weapon()
+
+
 func equip_weapon(item: InventoryEquipment) -> void:
 	inventory_ui.player.equip_weapon(item)
+	
+func clear_weapon() -> void:
+	inventory_ui.player.clear_weapon()

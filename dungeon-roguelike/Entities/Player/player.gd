@@ -140,6 +140,7 @@ func collect(item: InventoryItem, amount : int) -> void:
 	inv.insert(item, amount)
 
 func equip_weapon(item: InventoryEquipment) -> void:
-	attack_compontent.weapon_handler.set_weapon(item.equipment_data)
-	pass
-	
+	attack_compontent.equipment_handler.set_weapon(item.equipment_data)
+
+func clear_weapon() -> void:
+	attack_compontent.equipment_handler.clear_weapon()
