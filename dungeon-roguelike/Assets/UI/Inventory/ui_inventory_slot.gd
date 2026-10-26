@@ -56,7 +56,9 @@ func _gui_input(event: InputEvent) -> void:
 				return
 			pick_up_half()
 		elif inventory_ui.is_holding_item:
-			if inventory.slots[slot_index].item:
+			if inventory.slots[slot_index].item == inventory_ui.mouse_container.item or inventory.slots[slot_index].item == null:
+				place_one()
+			elif inventory.slots[slot_index].item:
 				swap_stack()
 			pass
 	
