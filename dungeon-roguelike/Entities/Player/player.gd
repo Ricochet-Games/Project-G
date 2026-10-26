@@ -138,3 +138,8 @@ func request_damage(amount: int) -> void:
 
 func collect(item: InventoryItem, amount : int) -> void:
 	inv.insert(item, amount)
+
+func equip_weapon(item: InventoryEquipment) -> void:
+	attack_compontent.weapon_handler.set_weapon(item.equipment_data)
+	pass
+	
