@@ -1,5 +1,5 @@
 extends Node
-class_name WeaponHandler
+class_name EquipmentHandler
 
 @export var equipped_weapon : WeaponData
 
@@ -18,3 +18,6 @@ func get_offhand_weapon() -> WeaponData:
 
 func set_offhand_weapon(new_weapon : WeaponData) -> void:
 	equipped_offhand_weapon = new_weapon
+	
+func clear_weapon() -> void:
+	equipped_weapon = null
