@@ -10,7 +10,7 @@ func swap_stack()-> void:
 	if not equipment_type == item.equipment_data.equipment_type:
 		return
 	super()
-	
+	equip_weapon(item)
 func place_stack() -> void:
 	var item : InventoryItem = inventory_ui.mouse_container.item
 	if not item is InventoryEquipment:
@@ -18,5 +18,7 @@ func place_stack() -> void:
 	if not equipment_type == item.equipment_data.equipment_type:
 		return
 	super()
-	
-	
+	equip_weapon(item)
+
+func equip_weapon(item: InventoryEquipment) -> void:
+	inventory_ui.player.equip_weapon(item)
