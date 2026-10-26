@@ -18,6 +18,14 @@ func set_item(item: InventoryItem, amount: int)-> void:
 	self.amount = amount
 	refresh() 
 
+func remove_item(amount: int)-> void:
+	self.amount -= amount
+	
+	if self.amount == 0:
+		clear()
+	else:
+		refresh() 
+
 
 func clear() -> void:
 	item = null
