@@ -4,10 +4,12 @@ extends AugmentResource
 @export var split_count : int = 2
 @export var split_angle : float = 45.0
 @export var projectile_scene : PackedScene = preload("res://Entities/projectile_base.tscn")
+@export var direction : Variant
 
 func on_spawn(proj: SpellProjectile) -> void:
 	# Triggering the augment after a delay
 	proj.duration = delay
+	direction = proj.caster.get_global_transform().basis.x
 
 func on_expire(proj: SpellProjectile) -> void:
 	
@@ -15,15 +17,14 @@ func on_expire(proj: SpellProjectile) -> void:
 		# Spawning two projectiles
 		var projectile := projectile_scene.instantiate()
 		var split_angle_rad := deg_to_rad(split_angle)
-		var base_dir : Vector3 = proj.caster.get_global_transform().basis.x
 	
 		projectile.caster = self
 	
 		# change this direction variable based on how we're handling the way the player is facing
 		if i < 1:
-			proj.caster.direction = base_dir.rotated(Vector3.UP, split_angle_rad)
+			proj.caster.direction = direction.rotated(Vector3.UP, split_angle_rad)
 		else:
-			proj.caster.direction = base_dir.rotated(Vector3.UP, -split_angle_rad)
+			proj.caster.direction = direction.rotated(Vector3.UP, -split_angle_rad)
 	
 		# Adds projectile to scene and sets the position of the projectile
 		proj.caster.get_tree().current_scene.add_child(projectile)
