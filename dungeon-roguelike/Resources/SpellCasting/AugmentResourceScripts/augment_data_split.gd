@@ -1,3 +1,4 @@
+class_name AugmentDataSplit
 extends AugmentResource
 
 @export var delay : float = .25

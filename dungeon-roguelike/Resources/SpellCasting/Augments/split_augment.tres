@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AugmentDataSplit" format=3 uid="uid://ctsof5cfuc254"]
+
+[ext_resource type="PackedScene" uid="uid://n12ws1deohx" path="res://Entities/projectile_base.tscn" id="1_obwya"]
+[ext_resource type="Script" uid="uid://cdrspu4kxxxh2" path="res://Resources/SpellCasting/AugmentResourceScripts/augment_data_split.gd" id="2_pcgqc"]
+
+[resource]
+script = ExtResource("2_pcgqc")
+direction = null
+name = "Split"
+metadata/_custom_type_script = "uid://cdrspu4kxxxh2"

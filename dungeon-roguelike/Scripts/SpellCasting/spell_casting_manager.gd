@@ -7,6 +7,8 @@ var augment_dictionary:= preload("res://Resources/SpellCasting/AugmentResourceSc
 @export var augment_slots: Array[Node]
 var augment_names: Array[String]
 
+@onready var mouse_container: Control = $MouseContainer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass

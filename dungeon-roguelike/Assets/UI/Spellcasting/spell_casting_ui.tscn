@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b4wnbviojmhm8" path="res://Assets/spell_circle.tscn" id="2_1k8vh"]
 [ext_resource type="PackedScene" uid="uid://ccpyhag683ak3" path="res://Assets/spell_augment.tscn" id="3_5pe66"]
 [ext_resource type="Texture2D" uid="uid://bxdlr8547d2xt" path="res://Assets/PlaceHolderTexture02.png" id="4_eek7h"]
+[ext_resource type="Script" uid="uid://bwmo8hlpn218k" path="res://Assets/UI/Spellcasting/casting_mouse_container.gd" id="5_k1gdm"]
+[ext_resource type="Texture2D" uid="uid://vwcwimkgp1u1" path="res://Assets/SpellCircle.png" id="6_fywsd"]
 
 [node name="SpellCastingUI" type="Control" unique_id=545222661 node_paths=PackedStringArray("augment_slots")]
 layout_mode = 3
@@ -209,5 +211,25 @@ offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
+
+[node name="MouseContainer" type="Control" parent="." unique_id=1484741356]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("5_k1gdm")
+
+[node name="Label" type="Label" parent="MouseContainer" unique_id=939505346]
+custom_minimum_size = Vector2(20, 23)
+layout_mode = 0
+offset_right = 20.000002
+offset_bottom = 23.0
+scale = Vector2(0.75, 0.75)
+text = "99"
+horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MouseContainer" unique_id=1169173342]
+texture = ExtResource("6_fywsd")
 
 [editable path="SpellCircle"]
