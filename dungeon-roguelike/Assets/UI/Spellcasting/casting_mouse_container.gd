@@ -18,6 +18,7 @@ func set_augment(augment: AugmentResource, amount: int)-> void:
 	self.amount = amount
 	refresh() 
 
+@warning_ignore("shadowed_variable")
 func remove_augment(amount: int)-> void:
 	self.amount -= amount
 	
