@@ -66,28 +66,19 @@ func _gui_input(event: InputEvent) -> void:
 			pass
 	
 func pick_up_stack() -> void:
-	print("pick up stack")
 	inventory_ui.is_holding_item = true
 	inventory_ui.mouse_container.show()
-		
 	inventory_ui.mouse_container.set_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
+	
 	inventory.clear_slot(slot_index)
 
 func place_stack() -> void:
-	print("place stack")
-	inventory_ui.is_holding_item = false
 	inventory.set_item_at_slot(slot_index, inventory_ui.mouse_container.item, inventory_ui.mouse_container.amount)
-	inventory_ui.mouse_container.clear()
-	inventory_ui.mouse_container.show_hover_name()
-	inventory_ui.mouse_container.set_hover_name(inventory.slots[slot_index].item.name)
+	clear_mouse_container()
 	
 func place_one() -> void:
-	
-	
 	if inventory.slots[slot_index].item and inventory.slots[slot_index].amount >= inventory.slots[slot_index].item.max_stack_size:
 		return
-	
-	print("place one")
 	
 	if inventory_ui.mouse_container.item == inventory.slots[slot_index].item:
 		inventory.add_item_to_slot(slot_index, 1)
@@ -96,30 +87,25 @@ func place_one() -> void:
 	
 	inventory_ui.mouse_container.remove_item(1)
 	
-	
 	if inventory_ui.mouse_container.amount == 0:
-		inventory_ui.is_holding_item = false
-		inventory_ui.mouse_container.clear()
-		inventory_ui.mouse_container.show_hover_name()
-		inventory_ui.mouse_container.set_hover_name(inventory.slots[slot_index].item.name)
+		clear_mouse_container()
 	
 func pick_up_half() -> void:
 	var amount : int = inventory.slots[slot_index].amount
+	@warning_ignore("integer_division")
+	# Use integer division to remove decimal on 0.5s
+	var half_stack: int = max(1, ((amount - 1) / 2) + 1)
 	
 	if amount <= 0:
 		return
 	
-	print("pick up half")
 	inventory_ui.is_holding_item = true
 	inventory_ui.mouse_container.show()
-	
-	
-	var half_stack: int = max(1, amount / 2)
 	inventory_ui.mouse_container.set_item(inventory.slots[slot_index].item, half_stack)
+	
 	inventory.remove_item_from_slot(slot_index, half_stack)
 	
 func fill_stack() -> void:
-	print("fill stack")
 	var hold_amount: int = inventory_ui.mouse_container.amount
 	var slot_amount: int = inventory.slots[slot_index].amount
 	var slot_item: InventoryItem = inventory.slots[slot_index].item
@@ -133,13 +119,9 @@ func fill_stack() -> void:
 	inventory_ui.mouse_container.amount = hold_amount - amount_to_add
 
 	if inventory_ui.mouse_container.amount == 0:
-		inventory_ui.mouse_container.clear()
-		inventory_ui.is_holding_item = false
-		inventory_ui.mouse_container.show_hover_name()
-		inventory_ui.mouse_container.set_hover_name(inventory.slots[slot_index].item.name)
+		clear_mouse_container()
 
 func swap_stack() -> void:
-	print("swap stack")
 	var item : InventoryItem = inventory_ui.mouse_container.item
 	var amount : int = inventory_ui.mouse_container.amount	
 	inventory_ui.mouse_container.set_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
@@ -147,26 +129,20 @@ func swap_stack() -> void:
 	inventory.set_item_at_slot(slot_index, item, amount)
 
 func _on_mouse_entered() -> void:
-	
 	inventory_ui.is_hovering_item = true
 	
-	
-	if inventory.slots[slot_index].item == null:
-		return
-	
-	if inventory_ui.mouse_container.item:
+	if inventory.slots[slot_index].item == null or inventory_ui.mouse_container.item:
 		return
 	
 	inventory_ui.mouse_container.show_hover_name()
 	inventory_ui.mouse_container.set_hover_name(inventory.slots[slot_index].item.name)
-					
-	
-	
-	print("Mouse hovering over UI")
 
 func _on_mouse_exited() -> void:
 	inventory_ui.is_hovering_item = false
-	
-	# I prob want some if statements here but I cant think of any right now 
 	inventory_ui.mouse_container.hide_hover_name()
-	print("Mouse NOT hovering over UI")
+
+func clear_mouse_container() -> void:
+		inventory_ui.is_holding_item = false
+		inventory_ui.mouse_container.clear()
+		inventory_ui.mouse_container.show_hover_name()
+		inventory_ui.mouse_container.set_hover_name(inventory.slots[slot_index].item.name)
