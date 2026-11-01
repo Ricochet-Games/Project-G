@@ -40,8 +40,6 @@ func clear() -> void:
 	item = null
 	amount = 0
 
-
-
 func refresh() -> void:
 	sprite_2d.texture = item.texture
 	label.text = str(amount)
