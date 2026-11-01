@@ -10,6 +10,9 @@ class_name InventorySlotUI
 #var texture: Texture2D
 var inventory_ui : Control 
 
+func _ready() -> void:
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
 func process() -> void:
 	pass
@@ -73,9 +76,10 @@ func pick_up_stack() -> void:
 func place_stack() -> void:
 	print("place stack")
 	inventory_ui.is_holding_item = false
-	inventory_ui.mouse_container.hide()
 	inventory.set_item_at_slot(slot_index, inventory_ui.mouse_container.item, inventory_ui.mouse_container.amount)
 	inventory_ui.mouse_container.clear()
+	inventory_ui.mouse_container.show_hover_name()
+	inventory_ui.mouse_container.set_hover_name(inventory.slots[slot_index].item.name)
 	
 func place_one() -> void:
 	
@@ -95,8 +99,9 @@ func place_one() -> void:
 	
 	if inventory_ui.mouse_container.amount == 0:
 		inventory_ui.is_holding_item = false
-		inventory_ui.mouse_container.hide()
 		inventory_ui.mouse_container.clear()
+		inventory_ui.mouse_container.show_hover_name()
+		inventory_ui.mouse_container.set_hover_name(inventory.slots[slot_index].item.name)
 	
 func pick_up_half() -> void:
 	var amount : int = inventory.slots[slot_index].amount
@@ -129,9 +134,9 @@ func fill_stack() -> void:
 
 	if inventory_ui.mouse_container.amount == 0:
 		inventory_ui.mouse_container.clear()
-		inventory_ui.mouse_container.hide()
 		inventory_ui.is_holding_item = false
-
+		inventory_ui.mouse_container.show_hover_name()
+		inventory_ui.mouse_container.set_hover_name(inventory.slots[slot_index].item.name)
 
 func swap_stack() -> void:
 	print("swap stack")
@@ -140,3 +145,28 @@ func swap_stack() -> void:
 	inventory_ui.mouse_container.set_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
 	inventory.clear_slot(slot_index)
 	inventory.set_item_at_slot(slot_index, item, amount)
+
+func _on_mouse_entered() -> void:
+	
+	inventory_ui.is_hovering_item = true
+	
+	
+	if inventory.slots[slot_index].item == null:
+		return
+	
+	if inventory_ui.mouse_container.item:
+		return
+	
+	inventory_ui.mouse_container.show_hover_name()
+	inventory_ui.mouse_container.set_hover_name(inventory.slots[slot_index].item.name)
+					
+	
+	
+	print("Mouse hovering over UI")
+
+func _on_mouse_exited() -> void:
+	inventory_ui.is_hovering_item = false
+	
+	# I prob want some if statements here but I cant think of any right now 
+	inventory_ui.mouse_container.hide_hover_name()
+	print("Mouse NOT hovering over UI")

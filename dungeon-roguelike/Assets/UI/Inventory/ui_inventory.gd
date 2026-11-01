@@ -18,6 +18,7 @@ extends Control
 
 var is_open : bool = false
 var is_holding_item : bool = false
+var is_hovering_item : bool = false
 
 func _ready() -> void:	 	
 	
