@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://yngtr8kr7sre" path="res://Assets/UI/Inventory/UIBook.png" id="1_glbya"]
 [ext_resource type="PackedScene" uid="uid://cudxdnexp8a64" path="res://Assets/UI/Inventory/ui_inventory_slot.tscn" id="2_evtp7"]
 [ext_resource type="Script" uid="uid://cbal5uqjt5ib1" path="res://Assets/UI/Inventory/ui_inventory.gd" id="2_nguks"]
-[ext_resource type="Texture2D" uid="uid://bxdlr8547d2xt" path="res://Assets/PlaceHolderTexture02.png" id="2_ywtm6"]
 [ext_resource type="Script" uid="uid://b3mvg4p83t8f6" path="res://Assets/UI/Inventory/drop_item_box.gd" id="3_accwp"]
 [ext_resource type="Script" uid="uid://cnrjyaqxkc08n" path="res://Assets/UI/Inventory/ui_equipment_slot.gd" id="4_jdygk"]
 [ext_resource type="Script" uid="uid://61njcn6atx4e" path="res://Assets/UI/Inventory/mouse_container.gd" id="5_jdygk"]
@@ -24,15 +23,16 @@ grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("2_nguks")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=5072409]
+[node name="ItemDropBox" type="TextureRect" parent="." unique_id=5072409 node_paths=PackedStringArray("inventory_ui", "mouse_container")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ywtm6")
 script = ExtResource("3_accwp")
+inventory_ui = NodePath("..")
+mouse_container = NodePath("../MouseContainer")
 
 [node name="BookTexture" type="TextureRect" parent="." unique_id=609742416]
 layout_mode = 1
