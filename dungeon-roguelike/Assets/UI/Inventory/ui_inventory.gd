@@ -22,7 +22,7 @@ var is_holding_item : bool = false
 var is_hovering_item : bool = false
 
 func _ready() -> void:	 	
-	
+
 	inv.update.connect(refresh)
 	refresh()
 	close()
@@ -91,5 +91,4 @@ func close() -> void:
 	chest_inv = null
 
 func spawn_dropped_item(item: InventoryItem, amount: int) -> void:
-	
-	pass
+	player.item_pool.spawn_item(player.global_position, item, amount)
