@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://c4loax645yjo7"]
 
 [ext_resource type="PackedScene" uid="uid://dskimq7aam0br" path="res://Entities/Player/player.tscn" id="1_hb2xm"]
+[ext_resource type="Script" uid="uid://budbyqxea2u42" path="res://Scenes/item_pool.gd" id="1_tnimv"]
 [ext_resource type="PackedScene" uid="uid://c74a34oy8qd0" path="res://Entities/EnemyDebug/EnemyDebug.tscn" id="3_50ct6"]
 [ext_resource type="Resource" uid="uid://bce5fsicsrwnp" path="res://Resources/Inventory/Items/sword.tres" id="3_ibmi3"]
 [ext_resource type="Shader" uid="uid://dqg2a5ev3rm4c" path="res://Shaders/ToonShader.gdshader" id="4_hb2xm"]
 [ext_resource type="Shader" uid="uid://bpocxjcu6kajn" path="res://Shaders/FloorShader.gdshader" id="5_oho3u"]
-[ext_resource type="PackedScene" uid="uid://d0qn6a1or6y4k" path="res://Assets/test_item_collectible.tscn" id="6_bwjpn"]
+[ext_resource type="PackedScene" uid="uid://d0qn6a1or6y4k" path="res://Assets/ItemDrop.tscn" id="6_bwjpn"]
 [ext_resource type="PackedScene" uid="uid://baxkp7h6nixys" path="res://Assets/grass_billboard_standard.tscn" id="6_d3awe"]
 [ext_resource type="Shader" uid="uid://bb46o2gfxcq67" path="res://Shaders/grass_shader.gdshader" id="7_yglu3"]
 [ext_resource type="Texture2D" uid="uid://2t4frt04vp0h" path="res://Assets/GrassV02.png" id="8_bwjpn"]
@@ -173,6 +174,41 @@ material = SubResource("ShaderMaterial_ii5jo")
 
 [node name="test_scene" type="Node3D" unique_id=2004884040]
 
+[node name="ItemPool" type="Node3D" parent="." unique_id=1009087651]
+script = ExtResource("1_tnimv")
+
+[node name="TestItem4" parent="ItemPool" unique_id=382191950 instance=ExtResource("6_bwjpn")]
+transform = Transform3D(0.25, 1.7763568e-15, 0, -1.7763568e-15, 0.25, 0, 0, 0, 0.25, -0.8756341, -0.32337847, 2.64557)
+amount = 3
+
+[node name="TestItem3" parent="ItemPool" unique_id=1824144640 instance=ExtResource("6_bwjpn")]
+transform = Transform3D(0.25, 1.3322676e-15, 0, -1.3322676e-15, 0.25, 0, 0, 0, 0.25, -0.88287747, -0.31957403, 2.0308604)
+amount = 2
+
+[node name="TestItem6" parent="ItemPool" unique_id=846524682 instance=ExtResource("6_bwjpn")]
+transform = Transform3D(0.25, 1.3322676e-15, 0, -1.3322676e-15, 0.25, 0, 0, 0, 0.25, 0.07775706, -0.31957403, 1.0477681)
+amount = 32
+
+[node name="TestItem8" parent="ItemPool" unique_id=719103228 instance=ExtResource("6_bwjpn")]
+transform = Transform3D(0.25, 1.3322676e-15, 0, -1.3322676e-15, 0.25, 0, 0, 0, 0.25, 0.759618, -0.31957403, 1.6433285)
+amount = 10
+
+[node name="TestItem7" parent="ItemPool" unique_id=201079120 instance=ExtResource("6_bwjpn")]
+transform = Transform3D(0.25, 1.7763568e-15, 0, -1.7763568e-15, 0.25, 0, 0, 0, 0.25, 0.36211896, -0.32337847, 2.64557)
+amount = 3
+
+[node name="TestItem5" parent="ItemPool" unique_id=1267220427 instance=ExtResource("6_bwjpn")]
+transform = Transform3D(0.25, 1.7763568e-15, 0, -1.7763568e-15, 0.25, 0, 0, 0, 0.25, -0.24299407, -0.32337847, 2.64557)
+amount = 3
+
+[node name="TestItem2" parent="ItemPool" unique_id=1002997461 instance=ExtResource("6_bwjpn")]
+transform = Transform3D(0.25, 8.881785e-16, 0, -8.881785e-16, 0.25, 0, 0, 0, 0.25, -2.8243222, -0.30435622, 2.724577)
+itemData = ExtResource("3_ibmi3")
+
+[node name="TestItem" parent="ItemPool" unique_id=929624165 instance=ExtResource("6_bwjpn")]
+transform = Transform3D(0.24999467, -0.0010712763, 0.0012307299, 0.001071382, 0.24999769, -1.8859273e-05, -0.0012306379, 2.4127332e-05, 0.24999696, -3.0501325, -0.24348499, 2.1796615)
+itemData = ExtResource("3_ibmi3")
+
 [node name="Player" parent="." unique_id=1931111436 instance=ExtResource("1_hb2xm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94038403, -0.25581008, 0.55151826)
 
@@ -183,38 +219,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2809549, -0.056652993, 0.64
 navigation_mesh = SubResource("NavigationMesh_hb2xm")
 
 [node name="Level" type="Node3D" parent="NavigationRegion3D2" unique_id=1271558426]
-
-[node name="TestItem4" parent="NavigationRegion3D2/Level" unique_id=382191950 instance=ExtResource("6_bwjpn")]
-transform = Transform3D(0.25, 1.7763568e-15, 0, -1.7763568e-15, 0.25, 0, 0, 0, 0.25, -0.8756341, -0.32337847, 2.64557)
-amount = 3
-
-[node name="TestItem3" parent="NavigationRegion3D2/Level" unique_id=1824144640 instance=ExtResource("6_bwjpn")]
-transform = Transform3D(0.25, 1.3322676e-15, 0, -1.3322676e-15, 0.25, 0, 0, 0, 0.25, -0.88287747, -0.31957403, 2.0308604)
-amount = 2
-
-[node name="TestItem6" parent="NavigationRegion3D2/Level" unique_id=846524682 instance=ExtResource("6_bwjpn")]
-transform = Transform3D(0.25, 1.3322676e-15, 0, -1.3322676e-15, 0.25, 0, 0, 0, 0.25, 0.07775706, -0.31957403, 1.0477681)
-amount = 32
-
-[node name="TestItem8" parent="NavigationRegion3D2/Level" unique_id=719103228 instance=ExtResource("6_bwjpn")]
-transform = Transform3D(0.25, 1.3322676e-15, 0, -1.3322676e-15, 0.25, 0, 0, 0, 0.25, 0.759618, -0.31957403, 1.6433285)
-amount = 10
-
-[node name="TestItem7" parent="NavigationRegion3D2/Level" unique_id=201079120 instance=ExtResource("6_bwjpn")]
-transform = Transform3D(0.25, 1.7763568e-15, 0, -1.7763568e-15, 0.25, 0, 0, 0, 0.25, 0.36211896, -0.32337847, 2.64557)
-amount = 3
-
-[node name="TestItem5" parent="NavigationRegion3D2/Level" unique_id=1267220427 instance=ExtResource("6_bwjpn")]
-transform = Transform3D(0.25, 1.7763568e-15, 0, -1.7763568e-15, 0.25, 0, 0, 0, 0.25, -0.24299407, -0.32337847, 2.64557)
-amount = 3
-
-[node name="TestItem2" parent="NavigationRegion3D2/Level" unique_id=1002997461 instance=ExtResource("6_bwjpn")]
-transform = Transform3D(0.25, 8.881785e-16, 0, -8.881785e-16, 0.25, 0, 0, 0, 0.25, -2.8243222, -0.30435622, 2.724577)
-itemData = ExtResource("3_ibmi3")
-
-[node name="TestItem" parent="NavigationRegion3D2/Level" unique_id=929624165 instance=ExtResource("6_bwjpn")]
-transform = Transform3D(0.24999467, -0.0010712763, 0.0012307299, 0.001071382, 0.24999769, -1.8859273e-05, -0.0012306379, 2.4127332e-05, 0.24999696, -3.0501325, -0.24348499, 2.1796615)
-itemData = ExtResource("3_ibmi3")
 
 [node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D2/Level" unique_id=379948587]
 transform = Transform3D(2.8171418, -4.214685e-08, -2.8171418, 1.1873366e-07, 1, -1.18733645e-07, 2.8171418, -1.7763568e-15, 2.8171418, -0.11774184, -0.3684851, -0.15361641)
