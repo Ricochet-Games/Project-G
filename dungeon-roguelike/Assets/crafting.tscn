@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://7yvson0ld7jm"]
+
+[ext_resource type="Script" uid="uid://brkd11fb7nrim" path="res://crafting_table.gd" id="1_pqiwq"]
+[ext_resource type="Script" uid="uid://0el5hcmqo0x2" path="res://Resources/Inventory/inventory.gd" id="2_bpra0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxi8x"]
+albedo_color = Color(0.2808698, 0.1090145, 0.26910642, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qted4"]
+material = SubResource("StandardMaterial3D_vxi8x")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vxi8x"]
+
+[node name="Crafting" type="Area3D" unique_id=382191950 groups=["Interactable"]]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("1_pqiwq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1349080471]
+mesh = SubResource("BoxMesh_qted4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1396626610]
+shape = SubResource("BoxShape3D_vxi8x")
+
+[node name="Inventory" type="Node" parent="." unique_id=302510738]
+script = ExtResource("2_bpra0")
+inv_size = 30
+metadata/_custom_type_script = "uid://0el5hcmqo0x2"
