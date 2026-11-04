@@ -8,6 +8,7 @@ class_name EnemyBase
 @export var acceleration: float = 10.0
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var item_pool: ItemPool = get_tree().current_scene.find_child("ItemPool", true, false)
 
 var target: Node3D
 

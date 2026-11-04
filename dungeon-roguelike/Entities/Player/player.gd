@@ -23,6 +23,8 @@ class_name Player
 	
 @export var camera : Camera3D
 
+@onready var item_pool: ItemPool = get_tree().current_scene.find_child("ItemPool", true, false)
+
 signal blocked(stamina_used: int, mana_used: int) 
 
 enum PlayerState
