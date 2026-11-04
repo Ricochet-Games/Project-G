@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cnrjyaqxkc08n" path="res://Assets/UI/Inventory/ui_equipment_slot.gd" id="4_jdygk"]
 [ext_resource type="Script" uid="uid://61njcn6atx4e" path="res://Assets/UI/Inventory/mouse_container.gd" id="5_jdygk"]
 [ext_resource type="Texture2D" uid="uid://vwcwimkgp1u1" path="res://Assets/SpellCircle.png" id="6_8vbos"]
+[ext_resource type="Texture2D" uid="uid://o0ey1rt3fa0h" path="res://icon.svg" id="9_3ap8r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stybw"]
 bg_color = Color(0.37036446, 0.37036452, 0.37036437, 1)
@@ -157,6 +158,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ChestInventory" type="GridContainer" parent="." unique_id=1094090720]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -265,6 +267,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="EquipmentInventory" type="Control" parent="." unique_id=1522487195]
+visible = false
 anchors_preset = 0
 offset_left = 240.0
 offset_top = 116.0
@@ -325,3 +328,25 @@ offset_right = 91.0
 offset_bottom = 12.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_stybw")
 text = "TEST TEXT"
+
+[node name="CraftingInventory" type="Control" parent="." unique_id=912272940]
+anchors_preset = 0
+offset_left = 360.0
+offset_top = 269.0
+offset_right = 400.0
+offset_bottom = 309.0
+
+[node name="TextureRect" type="TextureRect" parent="CraftingInventory" unique_id=1224017325]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_3ap8r")
