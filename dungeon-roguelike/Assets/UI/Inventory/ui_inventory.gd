@@ -12,6 +12,7 @@ extends Control
 @onready var main_inventory: GridContainer = $MainInventory
 @onready var chest_inventory: GridContainer = $ChestInventory
 @onready var equipment_inventory: Control = $EquipmentInventory
+@onready var crafting_inventory: Control = $CraftingInventory
 @onready var mouse_container: Control = $MouseContainer
 @onready var player: Player = $"../.."
 
@@ -69,6 +70,13 @@ func open_chest(chest_inv : Inventory) -> void:
 	
 	for i in chest_slots.size(): 	
 		chest_slots[i].init(self, chest_inv,  i)
+	refresh()
+
+func open_crafting_table() -> void:
+	$MainInventory.show()
+	$CraftingInventory.show()
+	visible = true
+	is_open = true
 	refresh()
 
 func close() -> void:
