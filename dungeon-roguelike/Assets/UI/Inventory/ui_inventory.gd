@@ -83,6 +83,7 @@ func close() -> void:
 	$EquipmentInventory.hide()
 	$MainInventory.hide()
 	$ChestInventory.hide()
+	$CraftingInventory.hide()
 	visible = false
 	is_open = false
 	if chest_inv:
@@ -90,4 +91,5 @@ func close() -> void:
 	chest_inv = null
 
 func spawn_dropped_item(item: InventoryItem, amount: int) -> void:
+	
 	pass
