@@ -193,20 +193,8 @@ shape = SubResource("SphereShape3D_yguum")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=371865371]
 
-[node name="InventoryUI" parent="CanvasLayer" unique_id=2138976244 node_paths=PackedStringArray("inv") instance=ExtResource("6_iplt1")]
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 270.0
-offset_top = 90.0
-offset_right = 970.0
-offset_bottom = 590.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="InventoryUI" parent="CanvasLayer" unique_id=2006837540 node_paths=PackedStringArray("inv") instance=ExtResource("6_iplt1")]
 inv = NodePath("../../Inventory")
-metadata/_edit_use_anchors_ = true
 
 [node name="SpellCastingUI" parent="CanvasLayer" unique_id=545222661 instance=ExtResource("15_r8fok")]
 visible = false

@@ -80,3 +80,6 @@ func close() -> void:
 	if chest_inv:
 		chest_inv.update.disconnect(refresh)
 	chest_inv = null
+
+func spawn_dropped_item(item: InventoryItem, amount: int) -> void:
+	pass
