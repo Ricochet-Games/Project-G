@@ -1,6 +1,7 @@
 extends Control
 
 @export var inv: Inventory 
+@export var equipment_inv: Inventory 
 @onready var slots: Array = $MainInventory.get_children()
 @onready var extra_slots: Array = $EquipmentInventory.get_children()
 
@@ -24,20 +25,21 @@ var is_hovering_item : bool = false
 func _ready() -> void:	 	
 
 	inv.update.connect(refresh)
+	equipment_inv.update.connect(refresh)
 	refresh()
 	close()
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].init(self, inv, i)
 	
 	for i in extra_slots.size(): 	
-		extra_slots[i].init(self, inv, slots.size() + i)
+		extra_slots[i].init(self, equipment_inv, i)
 
 func refresh() -> void:
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].update(inv.slots[i])
 	
 	for i in extra_slots.size(): 	
-		extra_slots[i].update(inv.slots[slots.size() + i])
+		extra_slots[i].update(equipment_inv.slots[i])
 	
 	if chest_inv == null:
 		return

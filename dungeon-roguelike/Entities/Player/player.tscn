@@ -181,7 +181,12 @@ wait_time = 0.1
 
 [node name="Inventory" type="Node" parent="." unique_id=1774035413]
 script = ExtResource("13_vskfa")
-inv_size = 32
+inv_size = 30
+
+[node name="EquipmentInventory" type="Node" parent="Inventory" unique_id=558340637]
+script = ExtResource("13_vskfa")
+inv_size = 2
+metadata/_custom_type_script = "uid://0el5hcmqo0x2"
 
 [node name="ItemPickupComponent" type="Area3D" parent="." unique_id=866598945]
 collision_layer = 2
@@ -193,8 +198,9 @@ shape = SubResource("SphereShape3D_yguum")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=371865371]
 
-[node name="InventoryUI" parent="CanvasLayer" unique_id=2006837540 node_paths=PackedStringArray("inv") instance=ExtResource("6_iplt1")]
+[node name="InventoryUI" parent="CanvasLayer" unique_id=2006837540 node_paths=PackedStringArray("inv", "equipment_inv") instance=ExtResource("6_iplt1")]
 inv = NodePath("../../Inventory")
+equipment_inv = NodePath("../../Inventory/EquipmentInventory")
 
 [node name="SpellCastingUI" parent="CanvasLayer" unique_id=545222661 instance=ExtResource("15_r8fok")]
 visible = false
