@@ -5,9 +5,8 @@ class_name ItemDrop
 @export var amount : int = 1
 
 func interact(player: Player) -> void:
-	self.queue_free()
-	player.collect(itemData, amount)
-	pass
+	player.collect(itemData, amount, self)
+	
 
 func set_item(item : InventoryItem, amount : int) -> void:
 	itemData = item

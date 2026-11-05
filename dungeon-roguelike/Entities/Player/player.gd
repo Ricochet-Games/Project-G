@@ -138,8 +138,13 @@ func request_damage(amount: int) -> void:
 
 	health_component.request_damage(final_damage)
 
-func collect(item: InventoryItem, amount : int) -> void:
-	inv.insert(item, amount)
+func collect(item: InventoryItem, amount : int, collectable : ItemDrop) -> void:
+	if inv.can_add_item(item, amount):
+		inv.insert(item, amount)
+		collectable.queue_free()
+	else:
+		print("No room in inventory too add item")
+	
 
 func equip_weapon(item: InventoryEquipment) -> void:
 	attack_compontent.equipment_handler.set_weapon(item.equipment_data)
