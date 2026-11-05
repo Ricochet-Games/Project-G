@@ -82,6 +82,23 @@ func open_crafting_table() -> void:
 	refresh()
 
 func close() -> void:
+	
+	if is_holding_item:
+		var max_to_add : int = inv.get_maxium_to_add(mouse_container.item)
+		
+		var to_add: int = mini(mouse_container.amount, max_to_add)
+		var remainder: int = mouse_container.amount - to_add
+	
+		if to_add > 0:
+			inv.insert(mouse_container.item, to_add)
+
+		if remainder > 0:
+			spawn_dropped_item(mouse_container.item, remainder)
+	
+		mouse_container.clear()
+		is_holding_item = false
+	
+	
 	$EquipmentInventory.hide()
 	$MainInventory.hide()
 	$ChestInventory.hide()
