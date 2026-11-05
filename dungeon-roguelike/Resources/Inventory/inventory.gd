@@ -39,9 +39,26 @@ func insert(item: InventoryItem, amount: int) -> void:
 				amount = 0
 
 			if amount <= 0: # Early out if there is no items to add to an empty slot
-				break
-
+				update.emit()
+				return 
+	
 	update.emit()
+
+func get_maxium_to_add(item: InventoryItem) -> int:
+	var total_free : int = 0
+	
+	var emptyslots := slots.filter(func(slot: Variant) -> bool: return slot.item == null)
+	total_free += emptyslots.size() * item.max_stack_size
+	
+	
+	var itemslots := slots.filter(func(slot: Variant) -> bool:return slot.item == item and slot.amount < item.max_stack_size)
+	for itemslot: InventorySlot in itemslots:
+		total_free += item.max_stack_size - itemslot.amount
+	
+	return total_free
+
+func can_add_item(item: InventoryItem, amount: int) -> bool:
+	return get_maxium_to_add(item) >= amount
 
 func set_item_at_slot(slot_index: int, inv_item: InventoryItem, amount: int) -> void:
 	slots[slot_index].item = inv_item
