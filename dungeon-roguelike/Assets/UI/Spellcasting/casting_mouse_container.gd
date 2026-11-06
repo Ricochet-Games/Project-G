@@ -4,6 +4,7 @@ class_name CastingMouseContainer
 var augment : AugmentResource
 var amount : int
 
+@onready var augment_holder: Control = $Augment
 @onready var label: Label = $Label
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
@@ -16,7 +17,7 @@ func _process(_delta: float) -> void:
 func set_augment(augment: AugmentResource, amount: int)-> void:
 	self.augment = augment
 	self.amount = amount
-	refresh() 
+	refresh()
 
 @warning_ignore("shadowed_variable")
 func remove_augment(amount: int)-> void:

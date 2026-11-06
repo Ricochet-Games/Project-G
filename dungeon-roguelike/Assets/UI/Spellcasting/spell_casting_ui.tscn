@@ -220,7 +220,14 @@ offset_bottom = 40.0
 mouse_filter = 2
 script = ExtResource("5_k1gdm")
 
-[node name="Label" type="Label" parent="MouseContainer" unique_id=939505346]
+[node name="Augment" type="Control" parent="MouseContainer" unique_id=2116415081]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MouseContainer/Augment" unique_id=1281882027]
 custom_minimum_size = Vector2(20, 23)
 layout_mode = 0
 offset_right = 20.000002
@@ -229,7 +236,7 @@ scale = Vector2(0.75, 0.75)
 text = "99"
 horizontal_alignment = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MouseContainer" unique_id=1169173342]
+[node name="Sprite2D" type="Sprite2D" parent="MouseContainer/Augment" unique_id=1876510889]
 texture = ExtResource("6_fywsd")
 
 [editable path="SpellCircle"]
