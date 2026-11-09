@@ -7,3 +7,6 @@ class_name InventorySlot
 func clear() -> void:
 	item = null
 	amount = 0
+
+func has_item() -> bool:
+	return item != null
