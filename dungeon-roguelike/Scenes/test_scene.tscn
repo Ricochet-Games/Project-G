@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://bt8gq4gwbsvh1" path="res://Combat/Hitboxes/Sword_Small_Slash_BH.tscn" id="10_yglu3"]
 [ext_resource type="PackedScene" uid="uid://dj70arsqsdr3s" path="res://Assets/chest.tscn" id="13_4blnk"]
 [ext_resource type="PackedScene" uid="uid://7yvson0ld7jm" path="res://Assets/crafting.tscn" id="13_tnimv"]
+[ext_resource type="PackedScene" uid="uid://bbnshveandssl" path="res://Assets/Column1.glb" id="15_4qg1e"]
+[ext_resource type="PackedScene" uid="uid://chj3nvrekk2ix" path="res://Assets/Column2.glb" id="16_i0miu"]
+[ext_resource type="PackedScene" uid="uid://ccvkuiwglpwft" path="res://Assets/Path.glb" id="17_6bfml"]
+[ext_resource type="PackedScene" uid="uid://ce8jgd4aswh0j" path="res://Assets/PathCenter.glb" id="18_0g4ye"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hb2xm"]
 vertices = PackedVector3Array(-0.093135834, -0.27356073, -1.6833715, -0.093135834, -0.27356073, -1.1833715, 0.40686417, -0.27356073, -0.93337154, 1.4068642, -0.27356073, -1.4333715, 1.6568642, -0.27356073, -2.9333715, 8.656864, -0.27356073, 4.5666285, 0.40686417, -0.073560745, 0.066628456, 1.5854359, -0.27356073, 0.709486, -6.843136, -0.27356073, -6.9333715, -2.3431358, -0.27356073, -2.9333715, -2.0931358, -0.27356073, -3.4333715, 13.406864, -0.27356073, 0.066628456, 13.406864, -0.27356073, -0.43337154, 0.15686417, -0.27356073, -13.683372, -0.34313583, -0.27356073, -13.683372, -0.84313583, -0.27356073, -1.1833715, -2.0931358, -0.27356073, -1.6833715, -0.34313583, -0.27356073, 0.81662846, -1.5931358, -0.27356073, 0.56662846, -13.593136, -0.27356073, 0.066628456, -0.34313583, -0.27356073, 13.316628, 0.15686417, -0.27356073, 13.316628, -1.5931358, -0.27356073, -0.43337154, -13.593136, -0.27356073, -0.43337154)
@@ -322,3 +326,15 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.1338577, -0.08077
 
 [node name="Crafting" parent="." unique_id=1443325700 instance=ExtResource("13_tnimv")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -2.3885512, -0.19011012, 1.2862601)
+
+[node name="Column1" parent="." unique_id=358344755 instance=ExtResource("15_4qg1e")]
+transform = Transform3D(0.8980609, 0, 0.4398711, 0, 1, 0, -0.4398711, 0, 0.8980609, 2.2431898, -0.36121643, -2.114715)
+
+[node name="Column2" parent="." unique_id=413083655 instance=ExtResource("16_i0miu")]
+transform = Transform3D(-0.5842643, 0, -0.8115634, 0, 1, 0, 0.8115634, 0, -0.5842643, 5.0834665, -0.36183465, -2.4164867)
+
+[node name="Path" parent="." unique_id=1286356267 instance=ExtResource("17_6bfml")]
+transform = Transform3D(0.1564244, 0, -0.5342835, 0, 1, 0, 1.0565703, 0, 0.07910026, 3.9134028, -0.3460117, -0.66869843)
+
+[node name="PathCenter" parent="." unique_id=1430354175 instance=ExtResource("18_0g4ye")]
+transform = Transform3D(0.80503243, 0, -0.5932308, 0, 1, 0, 0.5932308, 0, 0.80503243, 3.64938, -0.32242984, -2.3160381)
