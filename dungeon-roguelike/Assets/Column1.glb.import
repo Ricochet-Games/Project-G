@@ -43,7 +43,7 @@ _subresources={
 "materials": {
 "fallback Material": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Assets/Column1_Shader.tres",
+"use_external/fallback_path": "res://Assets/Column1_Material.tres",
 "use_external/path": "uid://7unn161okkco"
 }
 }
