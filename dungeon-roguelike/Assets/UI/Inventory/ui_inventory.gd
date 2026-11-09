@@ -69,6 +69,8 @@ func open_inventory() -> void:
 	$ChestInventory.hide()
 	visible = true
 	is_open = true
+	inventory_state = InventoryState.MAIN
+	refresh()
 
 @warning_ignore("shadowed_variable")
 func open_chest(chest_inv : Inventory) -> void:
@@ -81,6 +83,7 @@ func open_chest(chest_inv : Inventory) -> void:
 	
 	for i in chest_slots.size(): 	
 		chest_slots[i].init(self, chest_inv,  i)
+	inventory_state = InventoryState.CHEST
 	refresh()
 
 func open_crafting_table() -> void:
@@ -88,6 +91,7 @@ func open_crafting_table() -> void:
 	$CraftingInventory.show()
 	visible = true
 	is_open = true
+	inventory_state = InventoryState.CRAFTING
 	refresh()
 
 func close() -> void:
@@ -117,6 +121,7 @@ func close() -> void:
 	if chest_inv:
 		chest_inv.update.disconnect(refresh)
 	chest_inv = null
+	inventory_state = InventoryState.CLOSED
 
 func spawn_dropped_item(item: InventoryItem, amount: int) -> void:
 	player.item_pool.spawn_item(player.global_position, item, amount)
