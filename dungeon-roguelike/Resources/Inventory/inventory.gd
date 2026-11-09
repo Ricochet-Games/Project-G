@@ -101,3 +101,11 @@ func clear_slot(slot_index: int) -> void:
 	slots[slot_index].clear()
 	update.emit()
 	pass
+
+func get_slot_index(slot : InventorySlot) -> int:
+	var i : int = 0
+	for s in slots:
+		if s == slot:
+			return i
+		i += i
+	return -1
