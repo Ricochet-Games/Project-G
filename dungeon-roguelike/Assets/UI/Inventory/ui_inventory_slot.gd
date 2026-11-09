@@ -35,12 +35,18 @@ func update(slot: InventorySlot) -> void:
 		if slot.item.max_stack_size > 1:
 			amount_text.visible = true
 		amount_text.text = str(slot.amount)
-		
+
+func has_item() -> bool:
+	return inventory.slots[slot_index].has_item()
+
 func _gui_input(event: InputEvent) -> void:
 	
 	if not event is InputEventMouseButton or not event.pressed:
 		return
 	if event.button_index == MOUSE_BUTTON_LEFT:
+		if Input.is_key_pressed(KEY_SHIFT):
+			shift_click()
+			return
 		if not inventory_ui.is_holding_item:
 			if not inventory.slots[slot_index].item:
 				return
@@ -54,6 +60,9 @@ func _gui_input(event: InputEvent) -> void:
 			else:
 				place_stack()
 	elif event.button_index == MOUSE_BUTTON_RIGHT:
+		if Input.is_key_pressed(KEY_SHIFT):
+			shift_click()
+			return
 		if not inventory_ui.is_holding_item:
 			if not inventory.slots[slot_index].item:
 				return
@@ -146,3 +155,41 @@ func clear_mouse_container() -> void:
 		inventory_ui.mouse_container.clear()
 		inventory_ui.mouse_container.show_hover_name()
 		inventory_ui.mouse_container.set_hover_name(inventory.slots[slot_index].item.name)
+
+func shift_click() -> void:
+	var temp_item : InventoryItem = inventory.slots[slot_index].item
+	if temp_item == null:
+		return
+	
+	match inventory_ui.inventory_state:
+		inventory_ui.InventoryState.CHEST:
+			
+			var to_inventory : Inventory 
+			if inventory == inventory_ui.chest_inv:
+				to_inventory = inventory_ui.inv
+			else:
+				to_inventory = inventory_ui.chest_inv
+			
+			var max_to_add : int = to_inventory.get_maxium_to_add(inventory.slots[slot_index].item)
+			var amount_to_add : int = mini(inventory.slots[slot_index].amount, max_to_add)
+			to_inventory.insert(inventory.slots[slot_index].item, amount_to_add)
+			inventory.remove_item_from_slot(slot_index, amount_to_add)
+			
+		inventory_ui.InventoryState.MAIN:
+			if inventory == inventory_ui.inv:
+				if inventory.slots[slot_index].item is InventoryEquipment:
+					var slot = inventory_ui.find_typed_slot(inventory.slots[slot_index].item.equipment_data.equipment_type)
+					if !slot.has_item():
+						inventory_ui.equipment_inv.set_item_at_slot(slot.slot_index, inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
+						inventory.clear_slot(slot_index)
+			elif inventory == inventory_ui.equipment_inv:
+				if inventory_ui.inv.can_add_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount):
+					var temp_amount : int = inventory.slots[slot_index].amount
+					inventory.clear_slot(slot_index)
+					inventory_ui.inv.insert(temp_item, temp_amount)
+					pass
+	
+	var temp_amount : int = inventory.slots[slot_index].amount
+	inventory.clear_slot(slot_index)
+	inventory.insert(temp_item, temp_amount)
+	pass
