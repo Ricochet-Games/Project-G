@@ -17,6 +17,15 @@ extends Control
 @onready var mouse_container: Control = $MouseContainer
 @onready var player: Player = $"../.."
 
+enum InventoryState
+{
+	CRAFTING,
+	CHEST,
+	MAIN,
+	CLOSED,
+}
+
+var inventory_state : InventoryState = InventoryState.CLOSED
 
 var is_open : bool = false
 var is_holding_item : bool = false
