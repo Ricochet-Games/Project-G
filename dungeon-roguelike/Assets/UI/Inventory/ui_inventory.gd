@@ -125,3 +125,9 @@ func close() -> void:
 
 func spawn_dropped_item(item: InventoryItem, amount: int) -> void:
 	player.item_pool.spawn_item(player.global_position, item, amount)
+	
+func find_typed_slot(type: EquipmentData.EquipmentType) -> EquipmentSlotUI:
+	for slot in extra_slots:
+		if slot.equipment_type == type:
+			return slot
+	return null
