@@ -3,9 +3,17 @@
 [ext_resource type="Script" uid="uid://p8iw5k8xkbyi" path="res://Scripts/SpellCasting/spell_casting_manager.gd" id="1_pmu4q"]
 [ext_resource type="PackedScene" uid="uid://b4wnbviojmhm8" path="res://Assets/spell_circle.tscn" id="2_1k8vh"]
 [ext_resource type="PackedScene" uid="uid://ccpyhag683ak3" path="res://Assets/spell_augment.tscn" id="3_5pe66"]
+[ext_resource type="Script" uid="uid://mgi2k00tte12" path="res://Assets/UI/Spellcasting/ui_augments.gd" id="3_fywsd"]
 [ext_resource type="Texture2D" uid="uid://bxdlr8547d2xt" path="res://Assets/PlaceHolderTexture02.png" id="4_eek7h"]
+[ext_resource type="PackedScene" uid="uid://n12ws1deohx" path="res://Entities/projectile_base.tscn" id="4_mlscv"]
+[ext_resource type="Script" uid="uid://cdrspu4kxxxh2" path="res://Resources/SpellCasting/AugmentResourceScripts/augment_data_split.gd" id="5_3cng6"]
 [ext_resource type="Script" uid="uid://bwmo8hlpn218k" path="res://Assets/UI/Spellcasting/casting_mouse_container.gd" id="5_k1gdm"]
 [ext_resource type="Texture2D" uid="uid://vwcwimkgp1u1" path="res://Assets/SpellCircle.png" id="6_fywsd"]
+
+[sub_resource type="Resource" id="Resource_pcgqc"]
+script = ExtResource("5_3cng6")
+direction = null
+metadata/_custom_type_script = "uid://cdrspu4kxxxh2"
 
 [node name="SpellCastingUI" type="Control" unique_id=545222661 node_paths=PackedStringArray("augment_slots")]
 layout_mode = 3
@@ -24,7 +32,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_pmu4q")
-augment_slots = [NodePath("SpellCircle/Augments_1/AugmentSlot_01"), NodePath("SpellCircle/Augments_1/AugmentSlot_02"), NodePath("SpellCircle/Augments_1/AugmentSlot_03"), NodePath("SpellCircle/Augments_1/AugmentSlot_04"), NodePath("SpellCircle/Augments_1/AugmentSlot_05"), NodePath("SpellCircle/Augments_1/AugmentSlot_06"), NodePath("SpellCircle/Augments_1/AugmentSlot_07"), NodePath("SpellCircle/Augments_1/AugmentSlot_08")]
+augment_slots = [null, null, null, null, null, null, null, null]
 
 [node name="SpellCircle" parent="." unique_id=1121701569 instance=ExtResource("2_1k8vh")]
 layout_mode = 1
@@ -35,6 +43,13 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Augments_1" parent="SpellCircle" index="2" unique_id=1118388143 node_paths=PackedStringArray("cursor")]
+script = ExtResource("3_fywsd")
+cursor = NodePath("../../MouseContainer")
+
+[node name="AugmentUISlot" parent="SpellCircle/Augments_1" index="0" unique_id=166101265]
+augment = SubResource("Resource_pcgqc")
 
 [node name="SigilContainer" type="Panel" parent="." unique_id=426950174]
 layout_mode = 1
