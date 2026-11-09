@@ -119,7 +119,7 @@ script = ExtResource("4_5c2io")
 camera = NodePath("Camera3D")
 target = NodePath("../../..")
 follow_speed = 10.0
-offset = Vector3(0, 2.461, 4.262)
+offset = Vector3(0, 8, 14)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CamRig" unique_id=1832579326]
 transform = Transform3D(1, 1.4901161e-08, 5.9604645e-08, 0, 1.0000001, 1.3411045e-07, -1.1920929e-07, -1.6391277e-07, 1, 0, 0, 0)
@@ -129,7 +129,8 @@ compositor = SubResource("Compositor_xr8lj")
 projection = 1
 current = true
 size = 4.5
-far = 90.0
+near = 1.0
+far = 97.0
 
 [node name="PostProcessing" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/CamRig/Camera3D" unique_id=1840059005]
 transform = Transform3D(0.7094724, -3.2358955e-08, -0.7047333, -0.35236675, 0.8660253, -0.35473627, 0.6103169, 0.5000001, 0.614421, 0, 0, 0)
