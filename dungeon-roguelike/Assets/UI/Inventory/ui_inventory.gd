@@ -63,7 +63,7 @@ func _process(_delta: Variant) -> void:
 		else:
 			open_inventory()
 	if Input.is_action_just_pressed("test_input"):
-		inv.sort_inventory()
+		fast_deposit()
 	
 func open_inventory() -> void:
 	$EquipmentInventory.show()
@@ -133,3 +133,23 @@ func find_typed_slot(type: EquipmentData.EquipmentType) -> EquipmentSlotUI:
 		if slot.equipment_type == type:
 			return slot
 	return null
+	
+func fast_deposit() -> void:
+	# Needs a from inventory and a to inventory
+	# this can lowkey be hard coded when we set up the UI buttoms for this
+	var slot_index : int = 0
+	for slot in inv.slots:
+		if slot.item == null:
+			slot_index += 1
+			continue
+		
+		var max_to_add : int = chest_inv.get_maxium_to_add(slot.item)
+		
+		var to_add: int = mini(slot.amount, max_to_add)
+		#var remainder: int = slot.amount - to_add
+	
+		if to_add > 0:
+			chest_inv.insert(slot.item, to_add)
+			inv.remove_item_from_slot(slot_index, to_add)
+		
+		slot_index += 1
