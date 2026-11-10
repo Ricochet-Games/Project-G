@@ -139,9 +139,10 @@ func request_damage(amount: int) -> void:
 	health_component.request_damage(final_damage)
 
 func collect(item: InventoryItem, amount : int, collectable : ItemDrop) -> void:
-	if inv.can_add_item(item, amount):
-		inv.insert(item, amount)
-		collectable.queue_free()
+	var to_add : int = inv.get_maxium_to_add(item) if inv.get_maxium_to_add(item) < amount else amount
+	if inv.can_add_item(item, to_add):
+		inv.insert(item, to_add)
+		collectable.pick_up(to_add)
 	else:
 		print("No room in inventory too add item")
 	

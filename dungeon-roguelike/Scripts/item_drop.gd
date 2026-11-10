@@ -11,3 +11,9 @@ func interact(player: Player) -> void:
 func set_item(item : InventoryItem, amount : int) -> void:
 	itemData = item
 	self.amount = amount
+	
+func pick_up(amount: int) -> void:
+	self.amount -= amount
+	if self.amount <= 0:
+		queue_free()
+	pass
