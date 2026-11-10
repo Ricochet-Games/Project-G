@@ -120,9 +120,9 @@ func sort_inventory() -> void:
 				"amount": slot.amount
 			})
 
-	items.sort_custom(func(a, b):
+	items.sort_custom(func(a:Variant, b: Variant) -> Variant:
 		return a.item.name < b.item.name
-	)
+	) 
 
 	for slot in slots:
 		slot.clear()

@@ -178,12 +178,13 @@ func shift_click() -> void:
 		inventory_ui.InventoryState.MAIN:
 			if inventory == inventory_ui.inv:
 				if inventory.slots[slot_index].item is InventoryEquipment:
-					var slot = inventory_ui.find_typed_slot(inventory.slots[slot_index].item.equipment_data.equipment_type)
+					var slot : InventorySlotUI = inventory_ui.find_typed_slot(inventory.slots[slot_index].item.equipment_data.equipment_type)
 					if !slot.has_item():
 						inventory_ui.equipment_inv.set_item_at_slot(slot.slot_index, inventory.slots[slot_index].item, inventory.slots[slot_index].amount)
 						inventory.clear_slot(slot_index)
 			elif inventory == inventory_ui.equipment_inv:
 				if inventory_ui.inv.can_add_item(inventory.slots[slot_index].item, inventory.slots[slot_index].amount):
+					@warning_ignore("confusable_local_declaration")
 					var temp_amount : int = inventory.slots[slot_index].amount
 					inventory.clear_slot(slot_index)
 					inventory_ui.inv.insert(temp_item, temp_amount)
