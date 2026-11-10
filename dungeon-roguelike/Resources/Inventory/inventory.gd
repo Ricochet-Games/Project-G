@@ -109,3 +109,25 @@ func get_slot_index(slot : InventorySlot) -> int:
 			return i
 		i += i
 	return -1
+
+func sort_inventory() -> void:
+	var items: Array[Dictionary] = []
+
+	for slot in slots:
+		if slot.item != null:
+			items.append({
+				"item": slot.item,
+				"amount": slot.amount
+			})
+
+	items.sort_custom(func(a, b):
+		return a.item.name < b.item.name
+	)
+
+	for slot in slots:
+		slot.clear()
+
+	for entry in items:
+		insert(entry.item, entry.amount)
+
+	update.emit()

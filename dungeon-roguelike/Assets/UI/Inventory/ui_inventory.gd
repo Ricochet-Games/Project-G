@@ -62,6 +62,8 @@ func _process(_delta: Variant) -> void:
 			close()
 		else:
 			open_inventory()
+	if Input.is_action_just_pressed("test_input"):
+		inv.sort_inventory()
 	
 func open_inventory() -> void:
 	$EquipmentInventory.show()
