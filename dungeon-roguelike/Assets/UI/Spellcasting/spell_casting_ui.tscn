@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://xp1es14gu0cs" path="res://Assets/UI/Spellcasting/ui_augment_slot.tscn" id="4_k1gdm"]
 [ext_resource type="Resource" uid="uid://ctsof5cfuc254" path="res://Resources/SpellCasting/Augments/split_augment.tres" id="5_fywsd"]
 [ext_resource type="Script" uid="uid://bwmo8hlpn218k" path="res://Assets/UI/Spellcasting/casting_mouse_container.gd" id="5_k1gdm"]
-[ext_resource type="Texture2D" uid="uid://vwcwimkgp1u1" path="res://Assets/SpellCircle.png" id="6_fywsd"]
 
 [node name="SpellCastingUI" type="Control" unique_id=545222661 node_paths=PackedStringArray("augment_slots")]
 layout_mode = 3
@@ -186,6 +185,5 @@ text = "99"
 horizontal_alignment = 2
 
 [node name="Icon" type="Sprite2D" parent="MouseContainer/Augment" unique_id=1876510889]
-texture = ExtResource("6_fywsd")
 
 [editable path="SpellCircle"]
