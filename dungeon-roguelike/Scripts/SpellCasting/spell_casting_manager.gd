@@ -20,10 +20,9 @@ func _process(_delta: float) -> void:
 
 func _get_augments() -> void:
 	for augment in augment_slots:
-		#var spell_modifier := augment.get_node_or_null("SpellModifier")
-		#if spell_modifier:
-			#augment_names.append(spell_modifier.augment_name)
-		augment_names.append(augment.name)
+		var spell_modifier := augment
+		if spell_modifier and spell_modifier.augment:
+			augment_names.append(spell_modifier.augment.name)
 
 func calculate() -> Array[AugmentResource]:
 	reset_values()

@@ -7,6 +7,6 @@
 [resource]
 script = ExtResource("2_pcgqc")
 direction = null
-name = "Split"
+name = "split"
 texture = ExtResource("3_pcgqc")
 metadata/_custom_type_script = "uid://cdrspu4kxxxh2"
