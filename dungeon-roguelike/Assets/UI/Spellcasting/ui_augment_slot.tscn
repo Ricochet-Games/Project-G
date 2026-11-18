@@ -30,6 +30,7 @@ grow_vertical = 2
 [node name="AugmentDisplay" type="Sprite2D" parent="Control" unique_id=264473414]
 
 [node name="Label" type="Label" parent="Control" unique_id=780795606]
+visible = false
 custom_minimum_size = Vector2(20, 23)
 layout_mode = 1
 offset_right = 20.000002

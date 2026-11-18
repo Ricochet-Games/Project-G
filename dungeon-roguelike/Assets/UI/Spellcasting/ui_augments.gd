@@ -13,7 +13,7 @@ func _ready() -> void:
 func pick_up(aug: AugmentResource, from_slot: AugmentSlotUI) -> void:
 	is_holding = true
 	origin_slot = from_slot
-	cursor.set_item(aug)
+	cursor.set_augment(aug)
 
 func clear_held() -> void:
 	is_holding = false
