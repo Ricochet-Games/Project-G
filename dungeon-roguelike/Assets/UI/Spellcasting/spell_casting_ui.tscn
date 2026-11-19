@@ -40,6 +40,30 @@ grow_vertical = 2
 script = ExtResource("3_fywsd")
 cursor = NodePath("../../MouseContainer")
 
+[node name="AugmentUISlot" parent="SpellCircle/Augments_1" index="0" unique_id=166101265]
+slot_type = 2
+
+[node name="AugmentUISlot2" parent="SpellCircle/Augments_1" index="1" unique_id=728045721]
+slot_type = 1
+
+[node name="AugmentUISlot3" parent="SpellCircle/Augments_1" index="2" unique_id=1416213447]
+slot_type = 1
+
+[node name="AugmentUISlot4" parent="SpellCircle/Augments_1" index="3" unique_id=1332802300]
+slot_type = 1
+
+[node name="AugmentUISlot5" parent="SpellCircle/Augments_1" index="4" unique_id=533892713]
+slot_type = 1
+
+[node name="AugmentUISlot6" parent="SpellCircle/Augments_1" index="5" unique_id=1648480484]
+slot_type = 1
+
+[node name="AugmentUISlot7" parent="SpellCircle/Augments_1" index="6" unique_id=1657833176]
+slot_type = 1
+
+[node name="AugmentUISlot8" parent="SpellCircle/Augments_1" index="7" unique_id=1375756629]
+slot_type = 1
+
 [node name="AugmentContainer" type="Panel" parent="SpellCircle/Augments_1" index="8" unique_id=426950174]
 layout_mode = 1
 anchors_preset = 6
@@ -71,7 +95,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="AugmentUISlot9" parent="SpellCircle/Augments_1/AugmentContainer/Slots" unique_id=166101265 instance=ExtResource("4_k1gdm")]
+[node name="AugmentUISlot9" parent="SpellCircle/Augments_1/AugmentContainer/Slots" unique_id=836114313 instance=ExtResource("4_k1gdm")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

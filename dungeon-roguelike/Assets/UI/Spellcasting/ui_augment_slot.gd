@@ -7,6 +7,8 @@ class_name AugmentSlotUI
 		if is_node_ready():
 			_refresh()
 
+@export var slot_type : AugmentResource.type
+
 var root : AugmentUI
 
 @onready var icon: Sprite2D = $Control/AugmentDisplay
@@ -22,7 +24,12 @@ func _refresh() -> void:
 	icon.texture = augment.texture if augment else null
 
 func can_accept(incoming: AugmentResource) -> bool:
-	return incoming != null
+	#return incoming != null
+	if incoming == null:
+		return false
+	if incoming.slot_type != slot_type:
+		return false
+	return true
 
 func _gui_input(event: InputEvent) -> void:
 	if not event is InputEventMouseButton or not event.pressed:

@@ -9,4 +9,5 @@ script = ExtResource("2_pcgqc")
 direction = null
 name = "split"
 texture = ExtResource("3_pcgqc")
+slot_type = 1
 metadata/_custom_type_script = "uid://cdrspu4kxxxh2"
