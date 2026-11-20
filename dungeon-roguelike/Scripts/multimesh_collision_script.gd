@@ -18,7 +18,6 @@ func check_area() -> void:
 	query.collide_with_bodies = true
 	
 	for i in multimesh.instance_count:
-		#var instance_transform := global_transform * multimesh.get_instance_transform(i)
 		var local_transform := multimesh.get_instance_transform(i)
 		query.transform = global_transform * local_transform
 		query.collide_with_areas = false
