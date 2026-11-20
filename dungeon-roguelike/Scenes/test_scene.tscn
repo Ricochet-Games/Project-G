@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://baxkp7h6nixys" path="res://Assets/grass_billboard_standard.tscn" id="6_d3awe"]
 [ext_resource type="Shader" uid="uid://bb46o2gfxcq67" path="res://Shaders/grass_shader.gdshader" id="7_yglu3"]
 [ext_resource type="Texture2D" uid="uid://2t4frt04vp0h" path="res://Assets/GrassV02.png" id="8_bwjpn"]
+[ext_resource type="Script" uid="uid://b0oiiayo5moqp" path="res://Scripts/multimesh_collision_script.gd" id="9_6bfml"]
 [ext_resource type="Script" uid="uid://d2al5c7o8aa2l" path="res://Combat/Hitboxes/timer_hitbox.gd" id="9_yglu3"]
 [ext_resource type="PackedScene" uid="uid://bt8gq4gwbsvh1" path="res://Combat/Hitboxes/Sword_Small_Slash_BH.tscn" id="10_yglu3"]
 [ext_resource type="PackedScene" uid="uid://dj70arsqsdr3s" path="res://Assets/chest.tscn" id="13_4blnk"]
@@ -188,6 +189,15 @@ material = SubResource("ShaderMaterial_ii5jo")
 
 [sub_resource type="Compositor" id="Compositor_ak5v8"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_yguum"]
+size = Vector3(0.418, 1.7, 0.451)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j17jj"]
+size = Vector3(0.418, 1.7, 0.451)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nt6k5"]
+size = Vector3(1.25, 0.05, 1.25)
+
 [node name="test_scene" type="Node3D" unique_id=2004884040]
 
 [node name="ItemPool" type="Node3D" parent="." unique_id=1009087651]
@@ -242,14 +252,17 @@ mesh = SubResource("PlaneMesh_yglu3")
 
 [node name="grass_standard" parent="NavigationRegion3D2/Level/Floor" unique_id=1834418723 instance=ExtResource("6_d3awe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.542014e-17, 0.11402537, 0)
+visible = false
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="NavigationRegion3D2/Level/Floor" unique_id=1003285857]
 transform = Transform3D(0.9999994, -1.3187563e-15, 0, -1.008884e-14, 0.9999996, 4.1220147e-15, 0, 3.122136e-15, 0.9999994, 0, 0.36588416, 0)
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_i0miu")
+script = ExtResource("9_6bfml")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Level/Floor" unique_id=1976826444]
 transform = Transform3D(0.99999994, 1.336945e-07, 0, -1.18733645e-07, 0.99999994, 1.2621406e-07, 0, -7.4804305e-09, 0.99999994, 0, 0, 0)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Level/Floor/StaticBody3D" unique_id=1229381979]
 shape = SubResource("WorldBoundaryShape3D_cqqll")
@@ -259,6 +272,7 @@ transform = Transform3D(0.08835894, 4.440892e-16, -0.248869, 7.106548e-09, 0.291
 mesh = SubResource("BoxMesh_hb2xm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Level/Cube" unique_id=1651322859]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Level/Cube/StaticBody3D" unique_id=572862951]
 shape = SubResource("BoxShape3D_stybw")
@@ -268,6 +282,7 @@ transform = Transform3D(-0.026101619, 8.881784e-16, -0.2784605, 5.318066e-09, 0.
 mesh = SubResource("BoxMesh_hb2xm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Level/Cube2" unique_id=545558320]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Level/Cube2/StaticBody3D" unique_id=233580553]
 shape = SubResource("BoxShape3D_0n4a7")
@@ -277,6 +292,7 @@ transform = Transform3D(-0.0377843, 8.881785e-16, -2.6904473, 7.698351e-09, 0.55
 mesh = SubResource("BoxMesh_hb2xm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Level/Cube4" unique_id=85368718]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Level/Cube4/StaticBody3D" unique_id=1453666396]
 shape = SubResource("BoxShape3D_0n4a7")
@@ -287,6 +303,7 @@ mesh = SubResource("BoxMesh_hb2xm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Level/Cube3" unique_id=107013067]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, -1.7763568e-15, 0.99999994, 0, 0, 0)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Level/Cube3/StaticBody3D" unique_id=2098529239]
 transform = Transform3D(1.0000001, 0, 2.9802322e-08, 3.5527137e-15, 1.0000001, 3.5527137e-15, -2.9802322e-08, 1.7763568e-15, 1.0000001, 0, 0, 0)
@@ -297,6 +314,7 @@ transform = Transform3D(0.21266262, 0, -0.21266262, 8.96306e-09, 0.1967693, -2.6
 mesh = SubResource("CylinderMesh_ak5v8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Level/Cylinder" unique_id=1533037588]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Level/Cylinder/StaticBody3D" unique_id=1535979150]
 shape = SubResource("CylinderShape3D_bai2n")
@@ -341,11 +359,32 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -2.3885512, -0.19011
 [node name="Column1" parent="." unique_id=358344755 instance=ExtResource("15_4qg1e")]
 transform = Transform3D(0.8980609, 0, 0.4398711, 0, 1, 0, -0.4398711, 0, 0.8980609, 2.2431898, -0.36121643, -2.114715)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Column1" unique_id=51594484]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Column1/StaticBody3D" unique_id=859658565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8445575, 0)
+shape = SubResource("BoxShape3D_yguum")
+
 [node name="Column2" parent="." unique_id=413083655 instance=ExtResource("16_i0miu")]
 transform = Transform3D(-0.5842643, 0, -0.8115634, 0, 1, 0, 0.8115634, 0, -0.5842643, 5.0834665, -0.36183465, -2.4164867)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Column2" unique_id=1856791355]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Column2/StaticBody3D" unique_id=494806897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8412517, 0)
+shape = SubResource("BoxShape3D_j17jj")
 
 [node name="Path" parent="." unique_id=1286356267 instance=ExtResource("17_6bfml")]
 transform = Transform3D(0.1564244, 0, -0.5342835, 0, 1, 0, 1.0565703, 0, 0.07910026, 3.9134028, -0.3460117, -0.66869843)
 
 [node name="PathCenter" parent="." unique_id=1430354175 instance=ExtResource("18_0g4ye")]
-transform = Transform3D(0.80503243, 0, -0.5932308, 0, 1, 0, 0.5932308, 0, 0.80503243, 3.64938, -0.30575114, -2.3160381)
+transform = Transform3D(0.80503243, 0, -0.5932308, 0, 1, 0, 0.5932308, 0, 0.80503243, 3.64938, -0.37058765, -2.3160381)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PathCenter" unique_id=925296276]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathCenter/StaticBody3D" unique_id=1598852735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004909724, 0)
+shape = SubResource("BoxShape3D_nt6k5")
