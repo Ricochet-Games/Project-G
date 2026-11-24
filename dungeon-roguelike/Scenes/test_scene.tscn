@@ -19,12 +19,22 @@
 [ext_resource type="PackedScene" uid="uid://chj3nvrekk2ix" path="res://Assets/Column2.glb" id="16_i0miu"]
 [ext_resource type="PackedScene" uid="uid://ccvkuiwglpwft" path="res://Assets/Path.glb" id="17_6bfml"]
 [ext_resource type="PackedScene" uid="uid://ce8jgd4aswh0j" path="res://Assets/PathCenter.glb" id="18_0g4ye"]
+[ext_resource type="Script" uid="uid://bo2qgmqiv2r4c" path="res://Scenes/follow_mouse.gd" id="19_6bfml"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hb2xm"]
 vertices = PackedVector3Array(-0.093135834, -0.27356073, -1.6833715, -0.093135834, -0.27356073, -1.1833715, 0.40686417, -0.27356073, -0.93337154, 1.4068642, -0.27356073, -1.4333715, 1.6568642, -0.27356073, -2.9333715, 8.656864, -0.27356073, 4.5666285, 0.40686417, -0.073560745, 0.066628456, 1.5854359, -0.27356073, 0.709486, -6.843136, -0.27356073, -6.9333715, -2.3431358, -0.27356073, -2.9333715, -2.0931358, -0.27356073, -3.4333715, 13.406864, -0.27356073, 0.066628456, 13.406864, -0.27356073, -0.43337154, 0.15686417, -0.27356073, -13.683372, -0.34313583, -0.27356073, -13.683372, -0.84313583, -0.27356073, -1.1833715, -2.0931358, -0.27356073, -1.6833715, -0.34313583, -0.27356073, 0.81662846, -1.5931358, -0.27356073, 0.56662846, -13.593136, -0.27356073, 0.066628456, -0.34313583, -0.27356073, 13.316628, 0.15686417, -0.27356073, 13.316628, -1.5931358, -0.27356073, -0.43337154, -13.593136, -0.27356073, -0.43337154)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 3, 4), PackedInt32Array(2, 3, 6), PackedInt32Array(6, 3, 7), PackedInt32Array(7, 3, 5), PackedInt32Array(10, 9, 8), PackedInt32Array(11, 5, 12), PackedInt32Array(12, 5, 4), PackedInt32Array(12, 4, 13), PackedInt32Array(10, 8, 4), PackedInt32Array(4, 8, 14), PackedInt32Array(4, 14, 13), PackedInt32Array(1, 15, 0), PackedInt32Array(0, 15, 16), PackedInt32Array(17, 5, 18), PackedInt32Array(18, 5, 21), PackedInt32Array(18, 21, 20), PackedInt32Array(18, 20, 19), PackedInt32Array(16, 15, 22), PackedInt32Array(22, 18, 16), PackedInt32Array(16, 18, 8), PackedInt32Array(8, 18, 23), PackedInt32Array(23, 18, 19), PackedInt32Array(8, 9, 16), PackedInt32Array(6, 7, 17), PackedInt32Array(17, 7, 5)]
 cell_height = 0.01
 region_merge_size = 70.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yguum"]
+size = Vector3(0.418, 1.7, 0.451)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j17jj"]
+size = Vector3(0.418, 1.7, 0.451)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nt6k5"]
+size = Vector3(1.25, 0.05, 1.25)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cgifd"]
 
@@ -189,14 +199,9 @@ material = SubResource("ShaderMaterial_ii5jo")
 
 [sub_resource type="Compositor" id="Compositor_ak5v8"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yguum"]
-size = Vector3(0.418, 1.7, 0.451)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_j17jj"]
-size = Vector3(0.418, 1.7, 0.451)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nt6k5"]
-size = Vector3(1.25, 0.05, 1.25)
+[sub_resource type="SphereMesh" id="SphereMesh_bai2n"]
+radius = 1.0
+height = 2.0
 
 [node name="test_scene" type="Node3D" unique_id=2004884040]
 
@@ -245,6 +250,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2809549, -0.056652993, 0.64
 navigation_mesh = SubResource("NavigationMesh_hb2xm")
 
 [node name="Level" type="Node3D" parent="NavigationRegion3D2" unique_id=1271558426]
+
+[node name="Column1" parent="NavigationRegion3D2/Level" unique_id=358344755 instance=ExtResource("15_4qg1e")]
+transform = Transform3D(0.8980609, 0, 0.43987107, 2.6166277e-15, 1, -2.064117e-15, -0.43987107, 0, 0.8980609, 2.2431898, -0.36121643, -2.114715)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Level/Column1" unique_id=51594484]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Level/Column1/StaticBody3D" unique_id=859658565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8445575, 0)
+shape = SubResource("BoxShape3D_yguum")
+
+[node name="Column2" parent="NavigationRegion3D2/Level" unique_id=413083655 instance=ExtResource("16_i0miu")]
+transform = Transform3D(-0.5842643, 0, -0.8115634, -4.325422e-16, 1, 1.6336046e-15, 0.8115634, 0, -0.5842643, 5.0834665, -0.36183465, -2.4164863)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Level/Column2" unique_id=1856791355]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Level/Column2/StaticBody3D" unique_id=494806897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8412517, 0)
+shape = SubResource("BoxShape3D_j17jj")
+
+[node name="Path" parent="NavigationRegion3D2/Level" unique_id=1286356267 instance=ExtResource("17_6bfml")]
+transform = Transform3D(0.1564244, 0, -0.5342835, -4.1180387e-15, 1, -3.852277e-16, 1.0565703, 0, 0.07910025, 3.9134026, -0.3460117, -0.66869843)
+
+[node name="PathCenter" parent="NavigationRegion3D2/Level" unique_id=1430354175 instance=ExtResource("18_0g4ye")]
+transform = Transform3D(0.80503243, 0, -0.5932308, 1.3301927e-16, 1, -2.2104286e-15, 0.5932308, 0, 0.80503243, 3.6493802, -0.37058765, -2.3160381)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D2/Level/PathCenter" unique_id=925296276]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D2/Level/PathCenter/StaticBody3D" unique_id=1598852735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004909724, 0)
+shape = SubResource("BoxShape3D_nt6k5")
 
 [node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D2/Level" unique_id=379948587]
 transform = Transform3D(2.8171418, -4.214685e-08, -2.8171418, 1.1873366e-07, 1, -1.18733645e-07, 2.8171418, -1.7763568e-15, 2.8171418, -0.11774184, -0.3684851, -0.15361641)
@@ -356,35 +394,15 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.1338577, -0.08077
 [node name="Crafting" parent="." unique_id=1443325700 instance=ExtResource("13_tnimv")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -2.3885512, -0.19011012, 1.2862601)
 
-[node name="Column1" parent="." unique_id=358344755 instance=ExtResource("15_4qg1e")]
-transform = Transform3D(0.8980609, 0, 0.4398711, 0, 1, 0, -0.4398711, 0, 0.8980609, 2.2431898, -0.36121643, -2.114715)
+[node name="Node3D" type="Node3D" parent="." unique_id=575275967 node_paths=PackedStringArray("player")]
+script = ExtResource("19_6bfml")
+player = NodePath("../Player")
+height_offset = -0.35
+mouse_y_offset = 0.0
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Column1" unique_id=51594484]
-collision_layer = 3
+[node name="Small Sphere" type="Node3D" parent="Node3D" unique_id=1895426728]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.125, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Column1/StaticBody3D" unique_id=859658565]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8445575, 0)
-shape = SubResource("BoxShape3D_yguum")
-
-[node name="Column2" parent="." unique_id=413083655 instance=ExtResource("16_i0miu")]
-transform = Transform3D(-0.5842643, 0, -0.8115634, 0, 1, 0, 0.8115634, 0, -0.5842643, 5.0834665, -0.36183465, -2.4164867)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Column2" unique_id=1856791355]
-collision_layer = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Column2/StaticBody3D" unique_id=494806897]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8412517, 0)
-shape = SubResource("BoxShape3D_j17jj")
-
-[node name="Path" parent="." unique_id=1286356267 instance=ExtResource("17_6bfml")]
-transform = Transform3D(0.1564244, 0, -0.5342835, 0, 1, 0, 1.0565703, 0, 0.07910026, 3.9134028, -0.3460117, -0.66869843)
-
-[node name="PathCenter" parent="." unique_id=1430354175 instance=ExtResource("18_0g4ye")]
-transform = Transform3D(0.80503243, 0, -0.5932308, 0, 1, 0, 0.5932308, 0, 0.80503243, 3.64938, -0.37058765, -2.3160381)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="PathCenter" unique_id=925296276]
-collision_layer = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PathCenter/StaticBody3D" unique_id=1598852735]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004909724, 0)
-shape = SubResource("BoxShape3D_nt6k5")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Small Sphere" unique_id=209183694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("SphereMesh_bai2n")
