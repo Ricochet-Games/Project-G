@@ -12,6 +12,9 @@ func _ready() -> void:
 	viewport_container = camera.get_parent().get_parent().get_parent()
 
 func _process(_delta: float) -> void:
+	move_to_mose_position()
+		
+func move_to_mose_position() -> void:
 	var mouse_pos := viewport_container.get_local_mouse_position()
 	mouse_pos /= viewport_container.stretch_shrink
 
@@ -26,3 +29,7 @@ func _process(_delta: float) -> void:
 
 	if intersection:
 		global_position = intersection + Vector3.UP * height_offset
+		
+func place_in_world() -> void:
+	##
+	pass
