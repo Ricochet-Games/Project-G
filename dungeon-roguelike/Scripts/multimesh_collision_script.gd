@@ -10,7 +10,7 @@ func check_area() -> void:
 	
 	# Configuring shape
 	var shape := SphereShape3D.new()
-	shape.radius = .001
+	shape.radius = .01
 	
 	# Query variable parameters
 	var query := PhysicsShapeQueryParameters3D.new()
@@ -19,7 +19,8 @@ func check_area() -> void:
 	
 	for i in multimesh.instance_count:
 		var local_transform := multimesh.get_instance_transform(i)
-		query.transform = global_transform * local_transform
+		var world_transform := global_transform * local_transform
+		query.transform = Transform3D(Basis(), world_transform.origin)
 		query.collide_with_areas = false
 		query.collision_mask = 2
 		
